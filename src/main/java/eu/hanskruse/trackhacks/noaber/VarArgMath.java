@@ -373,4 +373,16 @@ public interface VarArgMath {
 		return acc;
 	}
 	
+	public default boolean And(boolean ...items){
+		if(items ==null || items.length==0){
+			return false;
+		}
+		
+		for(final boolean item:items){	
+			if(!item){
+				return false;
+			}
+		}
+		return true;
+	}
 }
