@@ -5,6 +5,6 @@ package eu.hanskruse.trackhacks.noaber;
  * @author Hans Kruse
  *
  */
-public  interface $ extends PartialApplication, VarArgMath, Compose{
+public  interface $ extends PartialApplication, VarArgMath, Compose, Birds{
  // Only anchor point. Default implementations are in the super interfaces
 }

@@ -1,5 +1,7 @@
 package eu.hanskruse.trackhacks;
 
+import java.util.function.Function;
+
 import eu.hanskruse.trackhacks.noaber.$;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -26,16 +28,6 @@ public class ComposeTests extends TestCase implements $ {
 		return new TestSuite(ComposeTests.class);
 	}
 
-	/**
-	 * Identity function for strings that only returns it's arguments.
-	 * 
-	 * @param argument
-	 *            the argument to return
-	 * @return argument
-	 */
-	private String identity(String argument) {
-		return argument;
-	}
 
 	/**
 	 * Inc function that returns argument + 1.
@@ -64,10 +56,10 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose2() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity); // 2
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -76,11 +68,11 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose3() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f  = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity); // 3
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -89,12 +81,12 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose4() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
 				this::identity); // 4
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -103,13 +95,13 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose5() {
 		final String expected = "42";
-		final String actual = compose(//
-				expected, // 0
+		final Function<String,String> f  = compose(//
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
 				this::identity, // 4
 				this::identity); // 5
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -118,14 +110,14 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose6() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
 				this::identity, // 4
 				this::identity, // 5
 				this::identity); // 6
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -134,8 +126,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose7() {
 		final String expected = "42";
-		final String actual = compose(//
-				expected, // 0
+		final Function<String,String> f  = compose(//
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -143,6 +134,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 5
 				this::identity, // 6
 				this::identity); // 7
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -151,8 +143,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose8() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -161,6 +152,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 6
 				this::identity, // 7
 				this::identity); // 8
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -169,8 +161,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose9() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f  = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -180,6 +171,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 7
 				this::identity, // 8
 				this::identity); // 9
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -188,8 +180,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose10() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f  = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -200,6 +191,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 8
 				this::identity, // 9
 				this::identity); // 10
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -208,8 +200,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose11() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -221,6 +212,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 9
 				this::identity, // 10
 				this::identity); // 11
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -229,8 +221,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose12() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -243,6 +234,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 10
 				this::identity, // 11
 				this::identity); // 12
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -251,8 +243,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose13() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -266,6 +257,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 11
 				this::identity, // 12
 				this::identity); // 13
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -274,8 +266,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose14() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -290,6 +281,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 12
 				this::identity, // 13
 				this::identity); // 14
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -298,8 +290,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose15() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -315,6 +306,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 13
 				this::identity, // 14
 				this::identity); // 15
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -323,8 +315,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	public void testCompose16() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -341,6 +332,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 14
 				this::identity, // 15
 				this::identity); // 16
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -351,8 +343,7 @@ public class ComposeTests extends TestCase implements $ {
 	@SuppressWarnings("unchecked")
 	public void testComposeMore() {
 		final String expected = "42";
-		final String actual = compose( //
-				expected, // 0
+		final Function<String,String> f = compose( //
 				this::identity, // 1
 				this::identity, // 2
 				this::identity, // 3
@@ -371,7 +362,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 16
 				this::identity, // 17
 				this::identity); // 18
-
+		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
 
@@ -382,8 +373,7 @@ public class ComposeTests extends TestCase implements $ {
 	@SuppressWarnings("unchecked")
 	public void testComposeArgCount() {
 		final int expected = 120;
-		final int actual = compose( //
-				0, // 0
+		final Function<Integer, Integer> f = compose( //
 				this::inc, // 1
 				this::inc, // 2
 				this::inc, // 3
@@ -406,6 +396,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::incPlus100); // 20 //last a different function to prevent
 									// of by one errors
 
+		final int actual =f.apply(0);
 		assertEquals(expected, actual);
 	}
 }

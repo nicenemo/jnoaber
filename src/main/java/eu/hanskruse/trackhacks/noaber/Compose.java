@@ -14,20 +14,18 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, R> R compose(
-			final T1 argument, //
+	public default <T1, T2, R> Function<T1,R> compose(
 			final Function<T1, T2> f1, //
 			final Function<T2, R> f2) {
 		if($.stream(f1,f2).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f2.apply( //
+		return (argument) -> f2.apply( //
 			   f1.apply( //
 			   argument));
 	}
@@ -35,22 +33,20 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, R> R compose(
-			final T1 argument, //
+	public default <T1, T2, T3, R> Function<T1,R> compose(
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, R> f3) {
 		if($.stream(f1,f2,f3).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f3.apply( //
+		return (argument) -> f3.apply( //
 			   f2.apply( //
 			   f1.apply( //
 			   argument)));
@@ -60,7 +56,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -68,8 +63,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, // 
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -77,7 +71,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f4.apply( //
+		return (argument) -> f4.apply( //
 			   f3.apply( //
 			   f2.apply( //
 			   f1.apply( //
@@ -87,7 +81,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -96,8 +89,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, R> R compose(  //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, R> Function<T1,R> compose(  //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, // 
 			final Function<T3, T4> f3, //
@@ -106,7 +98,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f5.apply( //
+		return (argument) -> f5.apply( //
 			   f4.apply( //
 			   f3.apply( //
 			   f2.apply( //
@@ -117,7 +109,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -127,8 +118,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -138,7 +128,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f6.apply( // 
+		return (argument) -> f6.apply( // 
 			   f5.apply( // 
 			   f4.apply( // 
 			   f3.apply( //
@@ -150,7 +140,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -161,8 +150,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -173,7 +161,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f7.apply( //
+		return (argument) -> f7.apply( //
 			   f6.apply( //
 			   f5.apply( //
 			   f4.apply( //
@@ -186,7 +174,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -198,8 +185,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, // 
 			final Function<T3, T4> f3, //
@@ -211,7 +197,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f8.apply( //
+		return (argument) -> f8.apply( //
 			   f7.apply( //
 			   f6.apply( //
 			   f5.apply( //
@@ -225,7 +211,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -238,8 +223,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> R compose(//
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> Function<T1,R> compose(//
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, // 
 			final Function<T3, T4> f3, // 
@@ -252,7 +236,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f9.apply( //
+		return (argument) -> f9.apply( //
 			   f8.apply( //
 			   f7.apply( //
 			   f6.apply( //
@@ -267,7 +251,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -281,8 +264,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -296,7 +278,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f10.apply( //
+		return (argument) -> f10.apply( //
 			   f9.apply( //
 			   f8.apply( //
 			   f7.apply( //
@@ -313,7 +295,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -328,8 +309,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -344,7 +324,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f11.apply( //
+		return (argument) -> f11.apply( //
 			   f10.apply( //
 			   f9.apply( //
 			   f8.apply( //
@@ -361,7 +341,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -377,8 +356,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -394,7 +372,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f12.apply( //
+		return (argument) -> f12.apply( //
 			   f11.apply( //
 			   f10.apply( //
 			   f9.apply( //
@@ -412,7 +390,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -429,8 +406,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -447,7 +423,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f13.apply( //
+		return (argument) -> f13.apply( //
 		       f12.apply( //
 			   f11.apply( //
 			   f10.apply( //
@@ -466,7 +442,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -484,8 +459,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -503,7 +477,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f14.apply( //
+		return (argument) -> f14.apply( //
 		       f13.apply( //
 		       f12.apply( //
 			   f11.apply( //
@@ -523,7 +497,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -542,8 +515,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -562,7 +534,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f15.apply( //
+		return (argument) -> f15.apply( //
 		       f14.apply( //
 		       f13.apply( //
 		       f12.apply( //
@@ -583,7 +555,6 @@ public interface Compose {
 	/**
 	 * Compose function chain.
 	 * 
-	 * @param argument argument
 	 * @param f1 first function
 	 * @param f2 second function
 	 * @param f3 third function
@@ -603,8 +574,7 @@ public interface Compose {
 	 * @return result of function chaining.
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, R> R compose( //
-			final T1 argument, //
+	public default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, R> Function<T1,R> compose( //
 			final Function<T1, T2> f1, //
 			final Function<T2, T3> f2, //
 			final Function<T3, T4> f3, //
@@ -626,7 +596,7 @@ public interface Compose {
 		if($.stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16).anyMatch(f -> f == null)){
 			throw new IllegalArgumentException("functions should not be null");
 		}
-		return f16.apply( //
+		return (argument) -> f16.apply( //
 		       f15.apply( //
 		       f14.apply( //
 		       f13.apply( //
@@ -652,8 +622,7 @@ public interface Compose {
 	 * @param functions
 	 * @return result of function chaining.
 	 */
-     public default <T> T compose(
-			final T argument, //
+     public default <T> Function<T,T> compose(
 			@SuppressWarnings("unchecked")
 			final Function<T,T> ...functions) {
 		 if(functions == null){
@@ -661,23 +630,27 @@ public interface Compose {
 		 }
 		 
 		 if (functions.length == 0){
-			 return argument;
+			 return $::identity;
 		 }
 		 
 		 if($.stream(functions).anyMatch(f -> f == null)) {
 			 throw new IllegalArgumentException("functions should not be null");
 		 }
 		 
-		 T acc = functions[0].apply(argument);
+		
 		 
 		 if(functions.length == 1) {
-			 return acc;
+			 return (argument) ->  functions[0].apply(argument);
 		 }
 		 
-		 for(int i=1; i<functions.length; i++){
-			 acc = functions[i].apply(acc);
-		 }
-		 return acc;
+		 return (argument) -> {
+			 T acc =functions[0].apply(argument);
+			 for(int i=1; i<functions.length; i++){
+				 acc = functions[i].apply(acc);
+			 }
+			 return acc;
+		 };
+		
 		 
 	}
 
