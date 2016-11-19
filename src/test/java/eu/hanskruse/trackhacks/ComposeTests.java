@@ -381,7 +381,7 @@ public class ComposeTests extends TestCase implements $ {
 	 */
 	@SuppressWarnings("unchecked")
 	public void testComposeArgCount() {
-		final int expected = 118;
+		final int expected = 120;
 		final int actual = compose( //
 				0, // 0
 				this::inc, // 1
@@ -401,7 +401,9 @@ public class ComposeTests extends TestCase implements $ {
 				this::inc, // 15
 				this::inc, // 16
 				this::inc, // 17
-				this::incPlus100); // 18 //last a different function to prevent
+				this::inc, // 18
+				this::inc, // 19
+				this::incPlus100); // 20 //last a different function to prevent
 									// of by one errors
 
 		assertEquals(expected, actual);
