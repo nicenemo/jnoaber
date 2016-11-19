@@ -464,7 +464,7 @@ public interface VarArgMath {
 	 * @return true if All boolean items are true, false if one item is false or
 	 *         if there are no items or items is null
 	 */
-	public default boolean pr(final boolean... items) {
+	public default boolean or(final boolean... items) {
 		if (items == null || items.length == 0) {
 			return false;
 		}
