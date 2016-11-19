@@ -26,7 +26,7 @@ public interface VarArgMath {
 	 *            the items to calculate the average from
 	 * @return the average
 	 */
-	public default double average(double... items) {
+	public default double average(final double... items) {
 		return doubleSummaryStatistics(items).getAverage();
 	}
 
@@ -37,7 +37,7 @@ public interface VarArgMath {
 	 *            the items to calculate the average from
 	 * @return the average
 	 */
-	public default float average(float... items) {
+	public default float average(final float... items) {
 		return sum(items) / items.length;
 	}
 
@@ -48,7 +48,7 @@ public interface VarArgMath {
 	 *            the items to calculate the average from
 	 * @return the average
 	 */
-	public default double average(int... items) {
+	public default double average(final int... items) {
 		return intSummaryStatistics(items).getAverage();
 	}
 
@@ -59,8 +59,8 @@ public interface VarArgMath {
 	 *            the items to calculate the average from
 	 * @return the average
 	 */
-	public default double average(long... items) {
-		return longSummaryStatistics().getAverage();
+	public default double average(final long... items) {
+		return longSummaryStatistics(items).getAverage();
 	}
 
 	/**
@@ -70,7 +70,7 @@ public interface VarArgMath {
 	 *            the items to calculate the average from
 	 * @return the average
 	 */
-	public default double average(short... items) {
+	public default double average(final short... items) {
 		return sum(items) / items.length;
 	}
 
@@ -81,7 +81,7 @@ public interface VarArgMath {
 	 *            the items to calculate the statistics on
 	 * @return the summary statistics
 	 */
-	public default DoubleSummaryStatistics doubleSummaryStatistics(double... items) {
+	public default DoubleSummaryStatistics doubleSummaryStatistics(final double... items) {
 		return stream(items).summaryStatistics();
 	}
 
@@ -92,7 +92,7 @@ public interface VarArgMath {
 	 *            the items to calculate the statistics on
 	 * @return the summary statistics
 	 */
-	public default IntSummaryStatistics intSummaryStatistics(int... items) {
+	public default IntSummaryStatistics intSummaryStatistics(final int... items) {
 		return stream(items).summaryStatistics();
 	}
 
@@ -103,7 +103,7 @@ public interface VarArgMath {
 	 *            the items to calculate the statistics on
 	 * @return the summary statistics
 	 */
-	public default LongSummaryStatistics longSummaryStatistics(long... items) {
+	public default LongSummaryStatistics longSummaryStatistics(final long... items) {
 		return stream(items).summaryStatistics();
 	}
 
@@ -114,8 +114,8 @@ public interface VarArgMath {
 	 *            the items to calculate the maximum from
 	 * @return the maximum
 	 */
-	public default double max(double... items) {
-		return doubleSummaryStatistics().getMax();
+	public default double max(final double... items) {
+		return doubleSummaryStatistics(items).getMax();
 	}
 
 	/**
@@ -125,7 +125,7 @@ public interface VarArgMath {
 	 *            the items to calculate the maximum from
 	 * @return the maximum
 	 */
-	public default float max(float... items) {
+	public default float max(final float... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -150,8 +150,8 @@ public interface VarArgMath {
 	 *            the items to calculate the maximum from
 	 * @return the maximum
 	 */
-	public default int max(int... items) {
-		return intSummaryStatistics().getMax();
+	public default int max(final int... items) {
+		return intSummaryStatistics(items).getMax();
 	}
 
 	/**
@@ -161,7 +161,7 @@ public interface VarArgMath {
 	 *            the items to calculate the maximum from
 	 * @return the maximum
 	 */
-	public default long max(long... items) {
+	public default long max(final long... items) {
 		return longSummaryStatistics(items).getMax();
 	}
 
@@ -172,7 +172,7 @@ public interface VarArgMath {
 	 *            the items to calculate the maximum from
 	 * @return the maximum
 	 */
-	public default short max(short... items) {
+	public default short max(final short... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -197,7 +197,7 @@ public interface VarArgMath {
 	 *            the items to calculate the minimum from
 	 * @return the maximum
 	 */
-	public default double min(double... items) {
+	public default double min(final double... items) {
 		return doubleSummaryStatistics(items).getMin();
 	}
 
@@ -208,7 +208,7 @@ public interface VarArgMath {
 	 *            the items to calculate the minimum from
 	 * @return the maximum
 	 */
-	public default float min(float... items) {
+	public default float min(final float... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -233,7 +233,7 @@ public interface VarArgMath {
 	 *            the items to calculate the minimum from
 	 * @return the maximum
 	 */
-	public default int min(int... items) {
+	public default int min(final int... items) {
 		return intSummaryStatistics(items).getMin();
 	}
 
@@ -244,11 +244,18 @@ public interface VarArgMath {
 	 *            the items to calculate the minimum from
 	 * @return the maximum
 	 */
-	public default long min(long... items) {
-		return longSummaryStatistics().getMin();
+	public default long min(final long... items) {
+		return longSummaryStatistics(items).getMin();
 	}
 
-	public default short min(short... items) {
+	/**
+	 * Calculats the minimum over a number of items.
+	 * 
+	 * @param items
+	 *            the items to calculate the minumum from
+	 * @return the minimum
+	 */
+	public default short min(final short... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -275,14 +282,13 @@ public interface VarArgMath {
 	 *            the items to be reduced
 	 * @return the reduced value
 	 */
-	public default <T> T reduce(BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") T... items) {
+	public default <T> T reduce(final BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") final T... items) {
 		Optional<T> result = stream(items).reduce(accumulator);
 		if (result.isPresent()) {
 			return result.get();
-		} else {
-			throw new IllegalStateException(String.format("reducing with binary operator %s failed",
-					accumulator.getClass().getCanonicalName()));
 		}
+		throw new IllegalStateException(
+				String.format("reducing with binary operator %s failed", accumulator.getClass().getCanonicalName()));
 	}
 
 	/**
@@ -296,7 +302,8 @@ public interface VarArgMath {
 	 *            the items to be reduced
 	 * @return reduced value
 	 */
-	public default <T> T reduce(T identity, BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") T... items) {
+	public default <T> T reduce(final T identity, final BinaryOperator<T> accumulator,
+			@SuppressWarnings("unchecked") final T... items) {
 		return stream(items).reduce(identity, accumulator);
 	}
 
@@ -307,7 +314,7 @@ public interface VarArgMath {
 	 *            items to convert
 	 * @return the converted stream
 	 */
-	public default DoubleStream stream(double... items) {
+	public default DoubleStream stream(final double... items) {
 		return Arrays.stream(items);
 	}
 
@@ -318,7 +325,7 @@ public interface VarArgMath {
 	 *            items to convert
 	 * @return the converted stream
 	 */
-	public default IntStream stream(int... items) {
+	public default IntStream stream(final int... items) {
 		return Arrays.stream(items);
 	}
 
@@ -329,7 +336,7 @@ public interface VarArgMath {
 	 *            items to convert
 	 * @return the converted stream
 	 */
-	public default LongStream stream(long... items) {
+	public default LongStream stream(final long... items) {
 		return Arrays.stream(items);
 	}
 
@@ -341,7 +348,7 @@ public interface VarArgMath {
 	 * @return the converted stream
 	 */
 	@SuppressWarnings("unchecked")
-	public default <T> Stream<T> stream(T... items) {
+	public default <T> Stream<T> stream(final T... items) {
 		return Arrays.stream(items);
 	}
 
@@ -352,7 +359,7 @@ public interface VarArgMath {
 	 *            the items to sum the minimum from
 	 * @return the maximum
 	 */
-	public default double sum(double... items) {
+	public default double sum(final double... items) {
 		return doubleSummaryStatistics(items).getSum();
 	}
 
@@ -363,7 +370,7 @@ public interface VarArgMath {
 	 *            the items to sum the minimum from
 	 * @return the maximum
 	 */
-	public default float sum(float... items) {
+	public default float sum(final float... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -385,10 +392,10 @@ public interface VarArgMath {
 	 * Calculates the sum over a number of items.
 	 * 
 	 * @param items
-	 *            the items to sum the minimum from
+	 *            the items to sum
 	 * @return the maximum
 	 */
-	public default long sum(int... items) {
+	public default long sum(final int... items) {
 		return intSummaryStatistics(items).getSum();
 	}
 
@@ -396,14 +403,21 @@ public interface VarArgMath {
 	 * Calculates the sum over a number of items.
 	 * 
 	 * @param items
-	 *            the items to sum the minimum from
+	 *            the items to sum
 	 * @return the maximum
 	 */
-	public default long sum(long... items) {
-		return longSummaryStatistics().getSum();
+	public default long sum(final long... items) {
+		return longSummaryStatistics(items).getSum();
 	}
 
-	public default long sum(short... items) {
+	/**
+	 * Calculates the sum over a number of items.
+	 * 
+	 * @param items
+	 *            the items to sum
+	 * @return the sum of the items
+	 */
+	public default long sum(final short... items) {
 		if (items == null || items.length == 0) {
 			throw new IllegalArgumentException("items is null or empty");
 		}
@@ -421,7 +435,15 @@ public interface VarArgMath {
 		return acc;
 	}
 
-	public default boolean And(boolean... items) {
+	/**
+	 * Short circuit evaluated multiarg And
+	 * 
+	 * @param items
+	 *            boolean arguments to And
+	 * @return true if All boolean items are true, false if one item is false or
+	 *         if there are no items or items is null
+	 */
+	public default boolean And(final boolean... items) {
 		if (items == null || items.length == 0) {
 			return false;
 		}
@@ -432,5 +454,26 @@ public interface VarArgMath {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Short circuit evaluated multiarg Or
+	 * 
+	 * @param items
+	 *            boolean arguments to And
+	 * @return true if All boolean items are true, false if one item is false or
+	 *         if there are no items or items is null
+	 */
+	public default boolean Or(final boolean... items) {
+		if (items == null || items.length == 0) {
+			return false;
+		}
+
+		for (final boolean item : items) {
+			if (item) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
