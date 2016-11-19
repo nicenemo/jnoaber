@@ -436,10 +436,10 @@ public interface VarArgMath {
 	}
 
 	/**
-	 * Short circuit evaluated multiarg And
+	 * Short circuit evaluated multiarg and
 	 * 
 	 * @param items
-	 *            boolean arguments to And
+	 *            boolean arguments to and
 	 * @return true if All boolean items are true, false if one item is false or
 	 *         if there are no items or items is null
 	 */
@@ -457,10 +457,10 @@ public interface VarArgMath {
 	}
 
 	/**
-	 * Short circuit evaluated multiarg Or
+	 * Short circuit evaluated multiarg or
 	 * 
 	 * @param items
-	 *            boolean arguments to And
+	 *            boolean arguments to or
 	 * @return true if All boolean items are true, false if one item is false or
 	 *         if there are no items or items is null
 	 */
