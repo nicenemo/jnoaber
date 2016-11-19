@@ -36,6 +36,26 @@ public class ComposeTests extends TestCase implements $ {
 	private String identity(String argument) {
 		return argument;
 	}
+	
+	 /* Inc function that returns argument+1
+	 * 
+	 * @param argument
+	 *            the argument to return
+	 * @return argument+1
+	 */
+	private int inc(int argument) {
+		return argument+1;
+	}
+	
+	 /* Inc function that returns argument+1
+		 * 
+		 * @param argument
+		 *            the argument to return
+		 * @return argument+1
+		 */
+		private int incPlus100(int argument) {
+			return argument+1+100;
+		}
 
 	/**
 	 * Test Compose with 2 function
@@ -348,6 +368,36 @@ public class ComposeTests extends TestCase implements $ {
 				this::identity, // 16
 				this::identity, // 17
 				this::identity); //18
+
+		assertEquals(expected, actual);
+	}
+	
+	/**
+	 * Test Compose with more than 16 functions with same type for argument and return value
+	 */
+	@SuppressWarnings("unchecked")
+	public void testComposeArgCount() {
+		final int expected = 118;
+		final int actual = compose( //
+				0, // 0
+				this::inc, // 1
+				this::inc, // 2
+				this::inc, // 3
+				this::inc, // 4
+				this::inc, // 5
+				this::inc, // 6
+				this::inc, // 7
+				this::inc, // 8
+				this::inc, // 9
+				this::inc, // 10
+				this::inc, // 11
+				this::inc, // 12
+				this::inc, // 13
+				this::inc, // 14
+				this::inc, // 15
+				this::inc, // 16
+				this::inc, // 17
+				this::incPlus100); //18 //last a different function to prevent off by one errors
 
 		assertEquals(expected, actual);
 	}

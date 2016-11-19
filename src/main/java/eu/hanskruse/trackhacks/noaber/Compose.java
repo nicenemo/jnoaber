@@ -670,7 +670,7 @@ public interface Compose {
 			 return acc;
 		 }
 		 
-		 for(int i=1; i<functions.length-1; i++){
+		 for(int i=1; i<functions.length; i++){
 			 acc = functions[i].apply(acc);
 		 }
 		 return acc;
