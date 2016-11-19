@@ -664,6 +664,10 @@ public interface Compose {
 			 return argument;
 		 }
 		 
+		 if($.stream(functions).anyMatch(f -> f == null)) {
+			 throw new IllegalArgumentException("functions should not be null");
+		 }
+		 
 		 T acc = functions[0].apply(argument);
 		 
 		 if(functions.length == 1) {
