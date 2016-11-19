@@ -397,7 +397,7 @@ public class ComposeTests extends TestCase implements $ {
 				this::inc, // 15
 				this::inc, // 16
 				this::inc, // 17
-				this::incPlus100); //18 //last a different function to prevent off by one errors
+				this::incPlus100); //18 //last a different function to prevent of by one errors
 
 		assertEquals(expected, actual);
 	}
