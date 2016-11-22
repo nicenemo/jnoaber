@@ -10,14 +10,14 @@ import junit.framework.TestSuite;
 /**
  * Unit tests for compose.
  */
-public class ComposeTests extends TestCase implements $ {
+public class ComposeTest extends TestCase implements $ {
 	/**
 	 * Create the test case
 	 *
 	 * @param testName
 	 *            name of the test case
 	 */
-	public ComposeTests(String testName) {
+	public ComposeTest(String testName) {
 		super(testName);
 	}
 
@@ -25,7 +25,7 @@ public class ComposeTests extends TestCase implements $ {
 	 * @return the suite of tests being tested
 	 */
 	public static Test suite() {
-		return new TestSuite(ComposeTests.class);
+		return new TestSuite(ComposeTest.class);
 	}
 
 
