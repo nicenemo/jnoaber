@@ -27,13 +27,13 @@ public interface Curry {
 	/**
 	 * Partially applies a bifunction with the leftmost argument.
 	 * 
-	 * @param operator
+	 * @param f
 	 *            operator to lefApply on
 	 * @return a function that accepts an argument for the rightmost argument
 	 *         for the bifunction
 	 */
-	default <T, U, R> Function<T,Function<U, R>> leftCurry(final BiFunction<T, U, R> operator) {
-		return (u) -> (t) -> operator.apply(u, t);
+	default <T, U, R> Function<T,Function<U, R>> leftCurry(final BiFunction<T, U, R> f) {
+		return (u) -> (t) -> f.apply(u, t);
 	}
 
 	/**
@@ -51,12 +51,12 @@ public interface Curry {
 	/**
 	 * Partially applies a bifunction with the rightmost argument.
 	 * 
-	 * @param operator
+	 * @param f
 	 *            operator to rightApply on
 	 * @return a function that accepts an argument for the leftmost argument for
 	 *         the bifunction
 	 */
-	default <U, T, R> Function<T,Function<U, R>> rightCurry(final BiFunction<U, T, R> operator) {
-		return (t) -> (u) -> operator.apply(u, t);
+	default <U, T, R> Function<T,Function<U, R>> rightCurry(final BiFunction<U, T, R> f) {
+		return (t) -> (u) -> f.apply(u, t);
 	}
 }
