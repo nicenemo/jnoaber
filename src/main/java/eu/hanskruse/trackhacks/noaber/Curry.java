@@ -10,34 +10,30 @@ import java.util.function.Function;
  * @author hkruse
  *
  */
-public interface PartialApplication {
+public interface Curry {
 
 	/**
 	 * Partially applies a binary operator with the leftmost argument.
 	 * 
 	 * @param operator
 	 *            operator to lefApply on
-	 * @param t
-	 *            the parameter to be applied
 	 * @return a function that accepts an argument for the rightmost agument of
 	 *         the binary operator
 	 */
-	default <T> Function<T, T> leftApply(final BinaryOperator<T> operator, final T t) {
-		return (u) -> operator.apply(u, t);
+	default <T>  Function<T, Function<T,T>> leftCurry(final BinaryOperator<T> operator) {
+		return (u) ->  (t) -> operator.apply(u, t);
 	}
 
 	/**
 	 * Partially applies a bifunction with the leftmost argument.
 	 * 
-	 * @param operator
+	 * @param f
 	 *            operator to lefApply on
-	 * @param t
-	 *            the parameter to be applied
 	 * @return a function that accepts an argument for the rightmost argument
 	 *         for the bifunction
 	 */
-	default <U, T, R> Function<U, R> leftApply(final BiFunction<U, T, R> operator, final T t) {
-		return (u) -> operator.apply(u, t);
+	default <T, U, R> Function<T,Function<U, R>> leftCurry(final BiFunction<T, U, R> f) {
+		return (u) -> (t) -> f.apply(u, t);
 	}
 
 	/**
@@ -45,26 +41,22 @@ public interface PartialApplication {
 	 * 
 	 * @param operator
 	 *            operator to rightApply on
-	 * @param u
-	 *            the parameter to be applied
 	 * @return a function that accepts an argument for the leftmost argument of
 	 *         the binary operator
 	 */
-	default <T> Function<T, T> rightApply(final BinaryOperator<T> operator, final T u) {
-		return (t) -> operator.apply(u, t);
+	default <T> Function<T,Function<T, T>> rightCurry(final BinaryOperator<T> operator) {
+		return (t) -> (u) -> operator.apply(u, t);
 	}
 
 	/**
 	 * Partially applies a bifunction with the rightmost argument.
 	 * 
-	 * @param operator
+	 * @param f
 	 *            operator to rightApply on
-	 * @param u
-	 *            the parameter to be applied
 	 * @return a function that accepts an argument for the leftmost argument for
 	 *         the bifunction
 	 */
-	default <U, T, R> Function<T, R> rightApply(final BiFunction<U, T, R> operator, final U u) {
-		return (t) -> operator.apply(u, t);
+	default <U, T, R> Function<T,Function<U, R>> rightCurry(final BiFunction<U, T, R> f) {
+		return (t) -> (u) -> f.apply(u, t);
 	}
 }
