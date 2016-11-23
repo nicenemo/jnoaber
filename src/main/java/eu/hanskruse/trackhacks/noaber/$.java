@@ -7,6 +7,7 @@ package eu.hanskruse.trackhacks.noaber;
  */
 public  interface $ extends // 
 	Compose,
+	Curry,
 	Identity,
 	PartialApplication,
 	VarArgMath{
