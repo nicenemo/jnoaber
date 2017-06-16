@@ -10,6 +10,8 @@ public  interface $ extends //
 	Curry,
 	Identity,
 	PartialApplication,
-	VarArgMath{
+	VarArgMath,
+	Leipajuusto
+	{
  // Only anchor point. Default implementations are in the super interfaces
 }
