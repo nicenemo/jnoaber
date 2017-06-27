@@ -1,18 +1,26 @@
 package eu.hanskruse.trackhacks.noaber;
 
 import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * Leipajuusto provides functional programming style pattern matching in Java.
- * It is a bit like a switch statement on steroids.
+ * Advanced pattern matching with the least amount of syntactic noise.
+ * Inspired by functional programming languages such as Scala or F#.
  * 
- * With just
+ * This is an advanced version of Java's switch statement.
+ * There is a function match that corresponds to the switch clause.
+ * The match function accepts a value to match against and a set of clauses called 'kazen'. 
+ * These 'kazen' can be generated with a 'kaas' functions that accepts a predicate as first argument and a function as second argument.
+ * The 'kaas' function closes over the predicate and the second argument and gives an optional result to be used with the beforementioned match function.
  * 
- * The classname Leipajuusto is a Swedisch Cheese usually serverd with coffee.
- * Since Java is American slang for coffee and the combination of cheese and
- * coffee is a bit alien to most people I choose this name.
+ * Several overloads exists for the 'kaas' and 'match' functions for your convenience.
+ * 
+ * Accidently 'kaas' is the Dutch word for cheese with plural 'kazen'. 'Kaas' is use the to prevent a name clash with the 'case' keyword.
+ * Leipajuusto, if fitted with the proper diacritics, is a Swedish/Finish word for a cheese served with coffee. 'Java' is also American slang for coffee.
+ * I Consider it a perfect fit.
  * 
  * @author Hans Kruse
  *
@@ -20,37 +28,30 @@ import java.util.function.Predicate;
 public interface Leipajuusto {
 
 	/**
-	 * function that does a dynamic case. I name it 'kaas' because it is the
-	 * Dutch word for cheese and it does not cause name clashes.
-	 * 
-	 * @param p
-	 *            the predicate a guard for the function. When true, the
-	 *            function of the second argument of kaas will be executed.
-	 * @param f
-	 *            function that will be execute if p results in true
-	 * @return a function that executes p and if p is true f. It returns
-	 *         Option.empty() if p is false, else an option with as value the
-	 *         result of f will be returned.
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
 	public default <T, R> Function<T, Optional<R>> kaas(final Predicate<T> p, final Function<T, R> f) {
 		return (T t) -> p.test(t) ? Optional.of(f.apply(t)) : Optional.empty();
 	}
+	
+	/**
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
+	 */
+	public default <T, R> Function<T, Optional<R>> kaas(final Predicate<T> p, final R value) {
+		return (T t) -> p.test(t) ? Optional.of(value) : Optional.empty();
+	}
 
 	/**
-	 * Overload of the dynamic case function named 'kaas' to prevent name
-	 * clashes. Instead of a predicate, a function with optional result is used
-	 * as guard. If the function returns Optional.empty(), the second argument
-	 * of the dynamic case, is not executed. This is a bit of a filter and map
-	 * in one function.
-	 * 
-	 * @param p
-	 *            the predicate a guard for the function. When true, the
-	 *            function of the second argument of kaas will be executed.
-	 * @param f
-	 *            function that will be execute if p results in true
-	 * @return a function that executes p and if p is true f. It returns
-	 *         Option.empty() if p is false, else an option with as value the
-	 *         result of f will be returned.
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
 	public default <T1, T2, R> Function<T1, Optional<R>> kaas(final Function<T1, Optional<T2>> p,
 			final Function<T2, R> f) {
@@ -59,16 +60,81 @@ public interface Leipajuusto {
 			return pOptionalResult.isPresent() ? Optional.of(f.apply(pOptionalResult.get())) : Optional.empty();
 		};
 	}
+	
 	/**
-	 * Matcher that given a value of t iterates over a list of dynamic case
-	 * clauses, the results of 'kaas' functions calls. These are functions 't'
-	 * is applied to these functions. every function gives an optional result.
-	 * Iteration stops on the first result that is not Optional.empty();
-	 * 
-	 * @param t
-	 *            the function to check wit th
-	 * @param kazen
-	 * @return
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
+	 */
+	public default <T1, T2, R> Function<T1, Optional<R>> kaas(final Function<T1, Optional<T2>> p,
+			final BiFunction<T1,T2, R> f) {
+		return (T1 t) -> {
+			Optional<T2> pOptionalResult = p.apply(t);
+			return pOptionalResult.isPresent() ? Optional.of(f.apply(t,pOptionalResult.get())) : Optional.empty();
+		};
+	}
+	
+	/**
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
+	 */
+
+	public default <T1, T2, R> Function<T1, Optional<R>> kaas(final Function<T1, Optional<T2>> p,
+			final R value) {
+		return (T1 t) -> {
+			Optional<T2> pOptionalResult = p.apply(t);
+			return pOptionalResult.isPresent() ? Optional.of(value) : Optional.empty();
+		};
+	}
+	
+	//TODO: find a better way to prevent ambiguity error when having a consumer as a second argument.
+	//for now renamed these functions KaasConsumer.
+	
+	/**
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
+	 */
+
+	public default <T> Predicate<T> kaasConsumer(final Predicate<T> p, final Consumer<T> f) {
+		return (T t) -> {
+			if(p.test(t)){
+				f.accept(t);
+				return true;
+			}
+		    return false;
+		};
+	}
+	
+	/**
+	 * A case statement.
+	 * @param p the predicate
+	 * @param f the function to execute when p is truthy.
+	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
+	 */
+	public default <T1, T2> Predicate<T1> kaasConsumer(final Function<T1, Optional<T2>> p,
+			final Consumer<T2> f) {
+		return (T1 t) -> {
+			Optional<T2> pOptionalResult = p.apply(t);
+			if(pOptionalResult.isPresent()){
+				f.accept(pOptionalResult.get());
+				return true;
+			}
+			return false;
+		};
+	}
+	
+	/**
+	 * Match function that returns the result of a matching clause.
+	 * Intended to be used with 'kaas' clauses that accept a value, a Function or a BiFunction as second parameter.
+	 * The value of the first function that has a present result will be returned. The remaining functions are not considered.
+	 * @param t value to match
+	 * @param kazen the list of functions to match against t
+	 * @return the non optional value of the result of the first function with a present result.
 	 */
 	@SuppressWarnings("unchecked")
 	public default <T, R> R match(final T t, final Function<T, Optional<R>>... kazen) {
@@ -78,7 +144,53 @@ public interface Leipajuusto {
 				return r.get();
 			}
 		}
-		throw new IllegalStateException("no match found. missing a default kaas. Perhaps your cheese was moved");
+		throw new IllegalStateException("...Perhaps your cheese was moved");
+		
+	}
+	
+	/**
+	 * Creates a match function that captures a set of 'kaas' clauses, returning a function that accepts a value to be matched against the 'kaas' clauses.
+	 * Intended to be used with 'kaas' clauses that accept a value, a Function or a BiFunction as second parameter.
+	 * The value of the first function that has a present result will be returned. The remaining functions are not considered.
+	 * @param t value to match
+	 * @param kazen the list of functions to match against t
+	 * @return the non optional value of the result of the first function with a present result.
+	 */
+	@SuppressWarnings("unchecked")
+	public default <T, R> Function<T,R> CreateMatcher(final Function<T, Optional<R>>... kazen) {
+		return t-> match(t,kazen);			
+	}
+	
 
+	/**
+	 * Matches value t to a list of predicates. Exits on the first predicate which gives true.
+	 * Intended to be used with 'kaas' clauses that have a Consumer as a second parameter.
+	 * The Predicates typically close over an embedded consumer.
+	 * @param t the value to match
+	 * @param kazen the list of predicates to match against t.
+	 */
+	@SuppressWarnings("unchecked")
+	public default <T>  void match(final T t, final Predicate<T>... kazen) {
+		for (final Predicate<T> kaas : kazen) {
+			if (kaas.test(t)) {
+				return;
+			}
+		}
+		throw new IllegalStateException("...Perhaps your cheese was moved");
+		
+	}
+	
+	/**
+	 * Creates a match function that captures a set of 'kaas' clauses, returning a Consumer that accepts a value to be matched against the 'kaas' clauses.
+	 * Intended to be used with 'kaas' clauses that have a Consumer as a second parameter.
+	 * The Predicates typically close over an embedded consumer.
+	 * @param t the value to match
+	 * @param kazen the list of predicates to match against t.
+	 */
+	@SuppressWarnings("unchecked")
+	public default <T>  Consumer<T> createMatcher(final Predicate<T>... kazen) {
+		return (t) -> match(t,kazen);
 	}
 }
+
+//see https://github.com/nicenemo/jnoaber

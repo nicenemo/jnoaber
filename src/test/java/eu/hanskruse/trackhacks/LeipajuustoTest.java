@@ -5,10 +5,9 @@ import org.junit.Test;
 
 import eu.hanskruse.trackhacks.noaber.$;
 
-
+//$ import Leipajuusta as a Cake pattern/Mixin
 public class LeipajuustoTest implements $ {
 
-	
 	@Test
 	public void matchAndKaasEven() {
 
@@ -20,8 +19,7 @@ public class LeipajuustoTest implements $ {
 				);
 		assertEquals("Even", actual);
 	}
-	
-	
+		
 	@Test
 	public void matchAndKaasOdd() {
 
@@ -34,7 +32,6 @@ public class LeipajuustoTest implements $ {
 		assertEquals("Odd", actual);
 	}
 
-	
 	@Test
 	public void matchAndKaasOverload() {
 
