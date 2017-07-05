@@ -11,7 +11,8 @@ public  interface $ extends //
 	Identity,
 	PartialApplication,
 	VarArgMath,
-	Leipajuusto
+	CaseFactory,
+	PatternMatching
 	{
  // Only anchor point. Default implementations are in the super interfaces
 }
