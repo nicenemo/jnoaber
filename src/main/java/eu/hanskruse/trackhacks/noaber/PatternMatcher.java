@@ -22,7 +22,7 @@ public final class PatternMatcher<T,R> {
     }
     
     /**
-     * match
+     * match.
      * @param value value to match
      * @return result of the match
      */
