@@ -16,4 +16,14 @@ public interface PatternMatching {
 	public default <T>  CaseAcceptor<T> match(final T value){
 		return new CaseAcceptor<>(value);
 	}
+	
+	/**
+	 * Creates a pattern matcher to match with
+	 * @param cases cases to match with
+	 * @return a patter matcher to match the cases with
+	 */
+	@SuppressWarnings("unchecked")
+	public default <T,R> PatternMatcher<T,R> with(final Case<T, R>... cases){
+		return new PatternMatcher<>(cases);
+	}
 }

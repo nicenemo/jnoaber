@@ -12,7 +12,7 @@ import java.util.Optional;
  *            type of the argument.
  */
 public final class CaseAcceptor<T> {
-	final T t;
+	private final T t;
 
 	public CaseAcceptor(final T value) {
 		this.t = value;

@@ -61,4 +61,37 @@ public class MatchingTest implements $ {
 	  assertTrue(actual.isPresent());
 	  assertEquals("It is a planet",actual.get());
 	}
+	
+	@Test
+	public void valueTest(){
+		final String n= "42";
+		Optional<String> actual=match(n).with(
+					kaas("3"::equals,"no"),
+					kaas("42"::equals,"yes"),
+					orelse("oops")
+				);
+	   assertEquals("yes",actual.get());
+	}
+	
+	@Test
+	public void valueTest2(){
+		final String n= "42";
+		Optional<String> actual=match(n).with(
+					kaasValue("3","no"),
+					kaasValue("42","yes"),
+					orelse("oops")
+				);
+	   assertEquals("yes",actual.get());
+	}
+	
+	@Test
+	public void valueTest3(){
+		final String n= "42";
+		Optional<String> actual=match(n).with(
+					kaasValue("3", t-> t +" no"),
+					kaasValue("42",t -> t + "yes"),
+					orelse("oops")
+				);
+	   assertEquals("yes",actual.get());
+	}
 }

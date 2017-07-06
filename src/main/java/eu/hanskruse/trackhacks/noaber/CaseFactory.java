@@ -38,9 +38,6 @@ public interface CaseFactory {
 		return (T t) -> (t == null) || clazz.isAssignableFrom(t.getClass()) ? Optional.of(value) : Optional.empty();
 	}
 	
-	
-	//TODO Default for function and value
-	
 	/**
 	 * A case statement.
 	 * @param clazz the class that the value of the argument of the returned function should be assignable from.
@@ -53,7 +50,6 @@ public interface CaseFactory {
 	public default <T1,T2, R> Case<T2,R> kaas(final  Class<T1> clazz, final BiFunction<Class<T1>,T2, R> f) {
 		return (T2 t) -> (t == null ||clazz.isAssignableFrom(t.getClass()) ) ? Optional.of(f.apply(clazz,t)) : Optional.empty();
 	}
-	
 	
 	
 	/**
@@ -121,11 +117,32 @@ public interface CaseFactory {
 	/**
 	 * A case statement.
 	 * @param p the predicate
-	 * @param f the function to execute when p is true.
-	 * @return the Optional result of value if p is true. Return Optional.Empty() if p is false.
+	 * @param f the function to execute when p is true
+	 * @return the Optional result of value if p is true. Return Optional.Empty() if p is false
 	 */
 	public default <T, R> Case<T, R> kaas(final Predicate<T> p, final R value) {
 		return (T t) -> p.test(t) ? Optional.of(value) : Optional.empty();
+	}
+	
+	/**
+	 * A case statement.
+	 * @param t1 value to test for equality with t
+	 * @param f the function to execute when p is true
+	 * @return the Optional result of f if p is true. Return Optional.Empty() if p is false
+	 */
+	public default <T, R> Case<T,R> kaasValue(final T t1, final Function<T, R> f) {
+		return (T t) -> (t==null && t1==null) || (t!=null && t.equals(t1)) ? Optional.of(f.apply(t)) : Optional.empty();
+	}
+	
+	
+	/**
+	 * A case statement.
+	 * @param v the value to test for equality with t
+	 * @param f the function to execute when p is true
+	 * @return the Optional result of value if p is true. Return Optional.Empty() if p is false
+	 */
+	public default <T, R> Case<T, R> kaasValue(T t1, final R value) {
+		return (T t) -> (t==null && t1==null) || (t!=null && t.equals(t1)) ? Optional.of(value) : Optional.empty();
 	}
 	
 	
