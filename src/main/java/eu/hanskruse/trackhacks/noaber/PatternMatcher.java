@@ -10,14 +10,14 @@ import java.util.Optional;
  * @param <R> the return type of match
  */
 public final class PatternMatcher<T,R> {
-	private final Case<T, R>[] cases;
+	private final FunctionalPredicate<T, R>[] cases;
 	
 	/**
 	 * Creates a pattern matcher
 	 * @param caseValues the cases
 	 */
     @SafeVarargs
-    public PatternMatcher(Case<T,R> ...caseValues){
+    public PatternMatcher(FunctionalPredicate<T,R> ...caseValues){
 	  this.cases = caseValues;
     }
     

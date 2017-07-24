@@ -11,6 +11,6 @@ import java.util.function.Function;
  * @param <R> the type of the optional result
  */
 @FunctionalInterface
-public interface Case<T, R> extends Function<T, Optional<R>> {
+public interface FunctionalPredicate<T, R> extends Function<T, Optional<R>> {
  //do nothing. just a shorthand
 }

@@ -6,7 +6,13 @@ import java.util.Optional;
  * Sample 'predicates' for testing the kaas function overloads that results in optional values.
  * @author hans kruse 
  */
-public class SolarSystem {
+public final class SolarSystem {
+	/**
+	 * Do not instantiate.
+	 */
+	private SolarSystem(){
+		//do nothing
+	}
     /**
      * Check whether this is the planet Mercurius.
      * @param p Planet to check

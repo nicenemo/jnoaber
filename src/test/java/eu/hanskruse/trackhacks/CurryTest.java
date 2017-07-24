@@ -1,12 +1,10 @@
 package eu.hanskruse.trackhacks;
-
+import static eu.hanskruse.trackhacks.noaber.$.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-
-import eu.hanskruse.trackhacks.noaber.$;
 import junit.framework.TestCase;
 
-public class CurryTest extends TestCase implements $ {
+public class CurryTest extends TestCase {
 
 	/**
 	 * Create the test case
@@ -18,6 +16,7 @@ public class CurryTest extends TestCase implements $ {
 		super(testName);
 	}
 	
+	@SuppressWarnings("static-method")
 	public void testLeftCurryOnBiFunction(){
 	 final String expected ="42";
 	 BiFunction<Integer,Boolean, String> f = (x,b) -> Integer.toString((b?x:42));	
@@ -27,6 +26,7 @@ public class CurryTest extends TestCase implements $ {
 	 
 	}
 	
+	@SuppressWarnings("static-method")
 	public void testRightCurryOnBiFunction(){
 	  final String expected ="42";
 	  BiFunction<Integer,Boolean, String> f = (x,b) -> Integer.toString((b?x:42));	

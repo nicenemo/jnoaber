@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  * @author Hans Kruse
  *
  */
-public interface CaseFactory {
+public final class CaseFactory {
 
 	/**
 	 * A case statement.
@@ -34,7 +34,7 @@ public interface CaseFactory {
 	 * Return Optional.Empty() if clazz is is not assignable from the given argument of the returned function.
 	 * 
 	 */
-	public default <T, R> Case<T,R> kaas(final Class<T> clazz, final R value) {
+	public static <T, R> FunctionalPredicate<T,R> kaas(final Class<T> clazz, final R value) {
 		return (T t) -> (t == null) || clazz.isAssignableFrom(t.getClass()) ? Optional.of(value) : Optional.empty();
 	}
 	
@@ -47,7 +47,7 @@ public interface CaseFactory {
 	 * Return Optional.Empty() if clazz is not assignable from the given argument of the returning function
 	 * 
 	 */
-	public default <T1,T2, R> Case<T2,R> kaas(final  Class<T1> clazz, final BiFunction<Class<T1>,T2, R> f) {
+	public static <T1,T2, R> FunctionalPredicate<T2,R> kaas(final  Class<T1> clazz, final BiFunction<Class<T1>,T2, R> f) {
 		return (T2 t) -> (t == null ||clazz.isAssignableFrom(t.getClass()) ) ? Optional.of(f.apply(clazz,t)) : Optional.empty();
 	}
 	
@@ -60,7 +60,7 @@ public interface CaseFactory {
 	 * Return Optional.Empty() if clazz is not assignable from the given argument of the returning function
 	 * 
 	 */
-	public default <T1,T2, R> Case<T2,R> kaas(final  Class<T1> clazz, final Function<T2, R> f) {
+	public static <T1,T2, R> FunctionalPredicate<T2,R> kaas(final  Class<T1> clazz, final Function<T2, R> f) {
 		return (T2 t) -> (t == null ||clazz.isAssignableFrom(t.getClass()) ) ? Optional.of(f.apply(t)) : Optional.empty();
 	}
 	
@@ -70,7 +70,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is truthy.
 	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
-	public default <T1, T2, R> Case<T1, R> kaas(final Function<T1, Optional<T2>> p,	final BiFunction<T1,T2, R> f) {
+	public static <T1, T2, R> FunctionalPredicate<T1, R> kaas(final Function<T1, Optional<T2>> p,	final BiFunction<T1,T2, R> f) {
 		return (T1 t) -> {
 			Optional<T2> pOptionalResult = p.apply(t);
 			return pOptionalResult.isPresent() ? Optional.of(f.apply(t,pOptionalResult.get())) : Optional.empty();
@@ -83,7 +83,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is truthy.
 	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
-	public default <T1, T2, R> Case<T1,R> kaas(final Function<T1, Optional<T2>> p, final Function<T2, R> f) {
+	public static <T1, T2, R> FunctionalPredicate<T1,R> kaas(final Function<T1, Optional<T2>> p, final Function<T2, R> f) {
 		return (T1 t) -> {
 			Optional<T2> pOptionalResult = p.apply(t);
 			return pOptionalResult.isPresent() ? Optional.of(f.apply(pOptionalResult.get())) : Optional.empty();
@@ -97,7 +97,7 @@ public interface CaseFactory {
 	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
 
-	public default <T1, T2, R> Case<T1, R> kaas(final Function<T1, Optional<T2>> p, final R value) {
+	public static <T1, T2, R> FunctionalPredicate<T1, R> kaas(final Function<T1, Optional<T2>> p, final R value) {
 		return (T1 t) -> {
 			Optional<T2> pOptionalResult = p.apply(t);
 			return pOptionalResult.isPresent() ? Optional.of(value) : Optional.empty();
@@ -110,7 +110,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is true
 	 * @return the Optional result of f if p is true. Return Optional.Empty() if p is false
 	 */
-	public default <T, R> Case<T,R> kaas(final Predicate<T> p, final Function<T, R> f) {
+	public static <T, R> FunctionalPredicate<T,R> kaas(final Predicate<T> p, final Function<T, R> f) {
 		return (T t) -> p.test(t) ? Optional.of(f.apply(t)) : Optional.empty();
 	}
 	
@@ -120,7 +120,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is true
 	 * @return the Optional result of value if p is true. Return Optional.Empty() if p is false
 	 */
-	public default <T, R> Case<T, R> kaas(final Predicate<T> p, final R value) {
+	public static <T, R> FunctionalPredicate<T, R> kaas(final Predicate<T> p, final R value) {
 		return (T t) -> p.test(t) ? Optional.of(value) : Optional.empty();
 	}
 	
@@ -130,7 +130,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is true
 	 * @return the Optional result of f if p is true. Return Optional.Empty() if p is false
 	 */
-	public default <T, R> Case<T,R> kaasValue(final T t1, final Function<T, R> f) {
+	public static <T, R> FunctionalPredicate<T,R> kaasValue(final T t1, final Function<T, R> f) {
 		return (T t) -> (t==null && t1==null) || (t!=null && t.equals(t1)) ? Optional.of(f.apply(t)) : Optional.empty();
 	}
 	
@@ -141,7 +141,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is true
 	 * @return the Optional result of value if p is true. Return Optional.Empty() if p is false
 	 */
-	public default <T, R> Case<T, R> kaasValue(T t1, final R value) {
+	public static <T, R> FunctionalPredicate<T, R> kaasValue(T t1, final R value) {
 		return (T t) -> (t==null && t1==null) || (t!=null && t.equals(t1)) ? Optional.of(value) : Optional.empty();
 	}
 	
@@ -152,7 +152,7 @@ public interface CaseFactory {
 	 * @param f the function to execute when p is truthy.
 	 * @return the Optional result of f if p is truthy. Return Optional.Empty() if p is falsy.
 	 */
-	public default <T, R> Case<T,R> orelse(final Function<T, R> f) {
+	public static <T, R> FunctionalPredicate<T,R> orelse(final Function<T, R> f) {
 		return (T t) -> {
 			return Optional.of(f.apply(t));
 		};
@@ -163,10 +163,9 @@ public interface CaseFactory {
 	 * @param value to return for every t.
 	 * @return Optional.of(value)
 	 */
-	public default <T, R> Case<T, R> orelse(final R value) {
+	public static <T, R> FunctionalPredicate<T, R> orelse(final R value) {
 		return (T t) -> {
 			return Optional.of(value);
 		};
 	}
 }
-
