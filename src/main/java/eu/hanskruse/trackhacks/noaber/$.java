@@ -1507,9 +1507,38 @@ public final class $ {
 	}
 	//END: Pattern matching
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
     //BEGIN: Other
+	
+	/**
+	 * Wrap a predicate into a function that
+	 * returns the optional value of the argument provided to the predicate 
+	 * if the predicate is true, else return Optional.empty().
+	 * @param p the predicate to wrap
+	 * @return the wrapped predicate
+	 */
 	public static <T> FunctionalPredicate<T> asFunctionalPredicate(final Predicate<T> p){
 		return (t) -> p.test(t) ? Optional.of(t) : Optional.empty();
 	}
+	
 	//END: Other
+	
+	
+	
+	
+	
+	
+	
 }
