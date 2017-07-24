@@ -1502,8 +1502,14 @@ public final class $ {
 	 * @return a patter matcher to match the cases with
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T,R> PatternMatcher<T,R> with(final FunctionalPredicate<T, R>... cases){
+	public static <T,R> PatternMatcher<T,R> with(final Case<T, R>... cases){
 		return new PatternMatcher<>(cases);
 	}
 	//END: Pattern matching
+	
+    //BEGIN: Other
+	public static <T> FunctionalPredicate<T> asFunctionalPredicate(final Predicate<T> p){
+		return (t) -> p.test(t) ? Optional.of(t) : Optional.empty();
+	}
+	//END: Other
 }

@@ -28,9 +28,9 @@ public final class CaseAcceptor<T> {
 	 *         is empty or null Optional.empty() will be returned.
 	 */
 	@SafeVarargs
-	public final <R> Optional<R> with(final FunctionalPredicate<T, R>... cases) {
+	public final <R> Optional<R> with(final Case<T, R>... cases) {
 		if (cases != null) {
-			for (final FunctionalPredicate<T, R> kaas : cases) {
+			for (final Case<T, R> kaas : cases) {
 				final Optional<R> r = kaas.apply(this.t);
 				if (r.isPresent()) {
 					return r;
