@@ -1,5 +1,5 @@
 package eu.hanskruse.trackhacks;
-import static eu.hanskruse.trackhacks.noaber.$.*;
+import static eu.hanskruse.trackhacks.noaber.WithCurry.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import junit.framework.TestCase;

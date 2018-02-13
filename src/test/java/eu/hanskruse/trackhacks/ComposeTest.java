@@ -1,8 +1,9 @@
 package eu.hanskruse.trackhacks;
 
-import static eu.hanskruse.trackhacks.noaber.$.*;
-import eu.hanskruse.trackhacks.noaber.$;
+import static eu.hanskruse.trackhacks.noaber.WithCompose.compose;
 import java.util.function.Function;
+
+import eu.hanskruse.trackhacks.noaber.WithIdentity;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,7 +11,7 @@ import junit.framework.TestSuite;
 /**
  * Unit tests for compose.
  */
-public class ComposeTest extends TestCase  {
+public class ComposeTest extends TestCase   {
 	/**
 	 * Create the test case
 	 *
@@ -58,8 +59,8 @@ public class ComposeTest extends TestCase  {
 	public void testCompose2() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity); // 2
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity); // 2
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -71,9 +72,9 @@ public class ComposeTest extends TestCase  {
 	public void testCompose3() {
 		final String expected = "42";
 		final Function<String,String> f  = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity); // 3
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity); // 3
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -85,10 +86,10 @@ public class ComposeTest extends TestCase  {
 	public void testCompose4() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity); // 4
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity); // 4
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -100,11 +101,11 @@ public class ComposeTest extends TestCase  {
 	public void testCompose5() {
 		final String expected = "42";
 		final Function<String,String> f  = compose(//
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity); // 5
+		    WithIdentity::identity, // 1
+		        WithIdentity::identity, // 2
+				WithIdentity::identity, // 3
+				WithIdentity::identity, // 4
+				WithIdentity::identity); // 5
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -116,12 +117,12 @@ public class ComposeTest extends TestCase  {
 	public void testCompose6() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity); // 6
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity); // 6
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -133,13 +134,13 @@ public class ComposeTest extends TestCase  {
 	public void testCompose7() {
 		final String expected = "42";
 		final Function<String,String> f  = compose(//
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity); // 7
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity); // 7
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -151,14 +152,14 @@ public class ComposeTest extends TestCase  {
 	public void testCompose8() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity); // 8
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity); // 8
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -170,15 +171,15 @@ public class ComposeTest extends TestCase  {
 	public void testCompose9() {
 		final String expected = "42";
 		final Function<String,String> f  = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity); // 9
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity); // 9
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -190,16 +191,16 @@ public class ComposeTest extends TestCase  {
 	public void testCompose10() {
 		final String expected = "42";
 		final Function<String,String> f  = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity); // 10
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity); // 10
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -211,17 +212,17 @@ public class ComposeTest extends TestCase  {
 	public void testCompose11() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity); // 11
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity); // 11
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -233,18 +234,18 @@ public class ComposeTest extends TestCase  {
 	public void testCompose12() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity); // 12
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity); // 12
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -256,19 +257,19 @@ public class ComposeTest extends TestCase  {
 	public void testCompose13() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity, // 12
-				$::identity); // 13
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity, // 12
+		    WithIdentity::identity); // 13
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -280,20 +281,20 @@ public class ComposeTest extends TestCase  {
 	public void testCompose14() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity, // 12
-				$::identity, // 13
-				$::identity); // 14
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity, // 12
+		    WithIdentity::identity, // 13
+		    WithIdentity::identity); // 14
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -305,21 +306,21 @@ public class ComposeTest extends TestCase  {
 	public void testCompose15() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity, // 12
-				$::identity, // 13
-				$::identity, // 14
-				$::identity); // 15
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity, // 12
+		    WithIdentity::identity, // 13
+		    WithIdentity::identity, // 14
+		    WithIdentity::identity); // 15
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -331,22 +332,22 @@ public class ComposeTest extends TestCase  {
 	public void testCompose16() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity, // 12
-				$::identity, // 13
-				$::identity, // 14
-				$::identity, // 15
-				$::identity); // 16
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity, // 12
+		    WithIdentity::identity, // 13
+		    WithIdentity::identity, // 14
+		    WithIdentity::identity, // 15
+		    WithIdentity::identity); // 16
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -359,24 +360,24 @@ public class ComposeTest extends TestCase  {
 	public void testComposeMore() {
 		final String expected = "42";
 		final Function<String,String> f = compose( //
-				$::identity, // 1
-				$::identity, // 2
-				$::identity, // 3
-				$::identity, // 4
-				$::identity, // 5
-				$::identity, // 6
-				$::identity, // 7
-				$::identity, // 8
-				$::identity, // 9
-				$::identity, // 10
-				$::identity, // 11
-				$::identity, // 12
-				$::identity, // 13
-				$::identity, // 14
-				$::identity, // 15
-				$::identity, // 16
-				$::identity, // 17
-				$::identity); // 18
+		    WithIdentity::identity, // 1
+		    WithIdentity::identity, // 2
+		    WithIdentity::identity, // 3
+		    WithIdentity::identity, // 4
+		    WithIdentity::identity, // 5
+		    WithIdentity::identity, // 6
+		    WithIdentity::identity, // 7
+		    WithIdentity::identity, // 8
+		    WithIdentity::identity, // 9
+		    WithIdentity::identity, // 10
+		    WithIdentity::identity, // 11
+		    WithIdentity::identity, // 12
+		    WithIdentity::identity, // 13
+		    WithIdentity::identity, // 14
+			WithIdentity::identity, // 15
+			WithIdentity::identity, // 16
+			WithIdentity::identity, // 17
+			WithIdentity::identity); // 18
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
