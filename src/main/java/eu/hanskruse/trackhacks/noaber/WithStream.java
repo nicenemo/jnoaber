@@ -10,47 +10,47 @@ public interface WithStream {
 
   /**
    * Convert a varargs array to a stream.
-   * 
+   *
    * @param items
-   *            items to convert
+   *          items to convert
    * @return the converted stream
    */
   default DoubleStream stream(final double... items) {
-      return Arrays.stream(items);
+    return Arrays.stream(items);
   }
 
   /**
    * Convert a varargs array to a stream.
-   * 
+   *
    * @param items
-   *            items to convert
+   *          items to convert
    * @return the converted stream
    */
   default IntStream stream(final int... items) {
-      return Arrays.stream(items);
+    return Arrays.stream(items);
   }
 
   /**
    * Convert a varargs array to a stream.
-   * 
+   *
    * @param items
-   *            items to convert
+   *          items to convert
    * @return the converted stream
    */
   default LongStream stream(final long... items) {
-      return Arrays.stream(items);
+    return Arrays.stream(items);
   }
 
   /**
    * Convert a varargs array to a stream.
-   * 
+   *
    * @param items
-   *            items to convert
+   *          items to convert
    * @return the converted stream
    */
   @SuppressWarnings("unchecked")
   default <T> Stream<T> stream(final T... items) {
-      return Arrays.stream(items);
+    return Arrays.stream(items);
   }
 
 }
