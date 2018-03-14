@@ -16,7 +16,7 @@
     <jacoco.version>0.8.0</jacoco.version>
     <mvnprojectinforeports.version>2.9</mvnprojectinforeports.version>
     <mvncheckstyle.version>2.17</mvncheckstyle.version>
-    <mvnpmd.version>3.6</mvnpmd.version>
+    <mvnpmd.version>3.9.0</mvnpmd.version>
     <mvnfindbugs.version>3.0.4</mvnfindbugs.version>
     <owaspdepcheck.version>3.1.1</owaspdepcheck.version>
     <checkstyle.configLocation>hans_kruse_checks.xml</checkstyle.configLocation>
