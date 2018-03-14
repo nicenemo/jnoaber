@@ -21,7 +21,7 @@
     <owaspdepcheck.version>3.1.1</owaspdepcheck.version>
     <checkstyle.configLocation>hans_kruse_checks.xml</checkstyle.configLocation>
     <checkstyle.suppressionsLocation>suppressions.xml</checkstyle.suppressionsLocation>
-    <pmd.configLocation>hans_kruse-pmd-ruleset.xml</pmd.configLocation>
+    <pmd.configLocation>hans_kruse_pmd-ruleset.xml</pmd.configLocation>
     <jxr.version>2.5</jxr.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
