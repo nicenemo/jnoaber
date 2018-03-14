@@ -1,5 +1,6 @@
 package eu.hanskruse.trackhacks.noaber;
 import static java.util.Objects.nonNull;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;
 import java.util.Optional;
@@ -19,8 +20,8 @@ public interface WithPatternMatching {
    * @param predicate predicate to compose with
    * @return FunctionalPredicate
    */
-  public static <T> FunctionalPredicate<T,T> functionalPredicate(final Predicate<T> predicate){
-    return functionalPredicate(predicate,WithIdentity::identity);
+   default <T> FunctionalPredicate<T,T> functionalPredicate(final Predicate<T> predicate){
+    return functionalPredicate(predicate,noaber()::identity);
   }
   
   /**
@@ -29,7 +30,7 @@ public interface WithPatternMatching {
    * @param function function to compose with
    * @return FunctionalPredicate
    */
-  public static <T,R> FunctionalPredicate<T,R> functionalPredicate(final Predicate<T> predicate,final Function<T,R> function){
+  default <T,R> FunctionalPredicate<T,R> functionalPredicate(final Predicate<T> predicate,final Function<T,R> function){
     requireNonNull(predicate);
     requireNonNull(function);
     return t ->{
@@ -49,7 +50,7 @@ public interface WithPatternMatching {
    * @param value the value to capture
    * @return a CaseAcceptor.
    */
-  public static <T>  CaseAcceptor<T> match(final T value){
+  default <T>  CaseAcceptor<T> match(final T value){
       return new CaseAcceptor<>(value);
   }
   
@@ -58,7 +59,7 @@ public interface WithPatternMatching {
    * @param f function to perform on default case
    * @return default case
    */
-  public static <T,R> Case<T,R> orElse(final Function<T,R> f){
+  default <T,R> Case<T,R> orElse(final Function<T,R> f){
     return x -> isNull(f) ? Optional.empty() : Optional.of(f.apply(x));
   }
   
@@ -67,7 +68,7 @@ public interface WithPatternMatching {
    * @param result to return
    * @return default case
    */
-  public static <T,R> Case<T,R> orElse(final R result){
+  default <T,R> Case<T,R> orElse(final R result){
     return x -> isNull(result) ? Optional.empty() : Optional.of(result);
   }
   
@@ -76,7 +77,7 @@ public interface WithPatternMatching {
    * @param clazz class to match
    * @return PredicateWrapper
    */
-  public static <T> FunctionalPredicateWrapper<T,T> whenClass(final Class<T> clazz){
+  default <T> FunctionalPredicateWrapper<T,T> whenClass(final Class<T> clazz){
     requireNonNull(clazz);
     return whenPredicate(t -> nonNull(t) && t.getClass().isAssignableFrom(clazz));
   }
@@ -87,7 +88,7 @@ public interface WithPatternMatching {
    * @param result the result to return if p
    * @return PredicateWrapper
    */
-  public static <T,R> FunctionalPredicateWrapper<T,R> whenFunctionalPredicate(final FunctionalPredicate<T,R> functionalPredicate){
+  default <T,R> FunctionalPredicateWrapper<T,R> whenFunctionalPredicate(final FunctionalPredicate<T,R> functionalPredicate){
     return new FunctionalPredicateWrapper<>(functionalPredicate);
   }
  
@@ -97,7 +98,7 @@ public interface WithPatternMatching {
    * @param result the result to return if p
    * @return PredicateWrapper
    */
-  public static <T> FunctionalPredicateWrapper<T,T> whenPredicate(final Predicate<T> predicate){
+  default <T> FunctionalPredicateWrapper<T,T> whenPredicate(final Predicate<T> predicate){
     return new FunctionalPredicateWrapper<>(functionalPredicate(predicate));
   }
   
@@ -106,7 +107,7 @@ public interface WithPatternMatching {
    * @param pattern to match against
    * @return PredicateWrapper
    */
-  public static FunctionalPredicateWrapper<CharSequence,CharSequence> whenRegEx(final Pattern pattern){
+  default FunctionalPredicateWrapper<CharSequence,CharSequence> whenRegEx(final Pattern pattern){
     requireNonNull(pattern);
     return whenPredicate((t) -> nonNull(t) && pattern.matcher(t).matches());
   }
@@ -116,7 +117,7 @@ public interface WithPatternMatching {
    * @param pattern to match against
    * @return PredicateWrapper
    */
-  public static FunctionalPredicateWrapper<CharSequence,CharSequence> whenRegEx(final String pattern){
+  default FunctionalPredicateWrapper<CharSequence,CharSequence> whenRegEx(final String pattern){
     requireNonNull(pattern);
     return whenRegEx(Pattern.compile(pattern));
   }
@@ -126,7 +127,7 @@ public interface WithPatternMatching {
    * @param value to match
    * @return PredicateWrapper
    */
-  public static <T> FunctionalPredicateWrapper<T,T> whenValue(final T value){
+  default <T> FunctionalPredicateWrapper<T,T> whenValue(final T value){
     return whenPredicate(t -> java.util.Objects.equals(t,value));
   }
   
@@ -135,8 +136,7 @@ public interface WithPatternMatching {
    * @param cases cases to match with
    * @return a patter matcher to match the cases with
    */
-  @SafeVarargs
-  public static <T,R> PatternMatcher<T,R> with(final Case<T, R>... cases){
+  default <T,R> PatternMatcher<T,R> with(final Case<T, R>... cases){
       return new PatternMatcher<>(cases);
   }
 }

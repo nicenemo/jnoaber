@@ -8,12 +8,11 @@ package eu.hanskruse.trackhacks.noaber;
  */
 public interface WithIdentity {
     
-    //BEGIN: Identity
-	/** Identity Function that only returns its arguments.
+   /** Identity Function that only returns its arguments.
 	 * @param argument argument to return
 	 * @return argument
 	 */
-	public static <T> T identity(final T argument){
+    default <T> T identity(final T argument){
 		return argument;
 	}
 	
@@ -24,7 +23,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static boolean identity(final boolean argument) {
+    default boolean identity(final boolean argument) {
 		return argument;
 	}
 
@@ -35,7 +34,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static int identity(final int argument) {
+    default int identity(final int argument) {
 		return argument;
 	}
 	
@@ -46,7 +45,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static long identity(final long argument) {
+    default long identity(final long argument) {
 		return argument;
 	}
 	
@@ -57,7 +56,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static double identity(final double argument) {
+    default double identity(final double argument) {
 		return argument;
 	}
 	
@@ -68,7 +67,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static float identity(final float argument) {
+    default float identity(final float argument) {
 		return argument;
 	}
 	
@@ -79,7 +78,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static short identity(final short argument) {
+    default short identity(final short argument) {
 		return argument;
 	}
 	
@@ -90,7 +89,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static String identity(final String argument) {
+    default String identity(final String argument) {
 		return argument;
 	}
 	
@@ -101,7 +100,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static boolean[] identity(final boolean[] argument) {
+    default boolean[] identity(final boolean[] argument) {
 		return argument;
 	}
 
@@ -112,7 +111,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static int[] identity(final int[] argument) {
+    default int[] identity(final int[] argument) {
 		return argument;
 	}
 	
@@ -123,7 +122,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static long[] identity(final long[] argument) {
+    default long[] identity(final long[] argument) {
 		return argument;
 	}
 	
@@ -134,7 +133,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static double[] identity(final double[] argument) {
+    default double[] identity(final double[] argument) {
 		return argument;
 	}
 	
@@ -145,7 +144,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static float[] identity(final float[] argument) {
+    default float[] identity(final float[] argument) {
 		return argument;
 	}
 	
@@ -156,7 +155,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static short[] identity(final short[] argument) {
+    default short[] identity(final short[] argument) {
 		return argument;
 	}
 	
@@ -167,7 +166,7 @@ public interface WithIdentity {
 	 *            the argument to return
 	 * @return argument
 	 */
-	public static String[] identity(final String[] argument) {
+    default String[] identity(final String[] argument) {
 		return argument;
 	}	
 }

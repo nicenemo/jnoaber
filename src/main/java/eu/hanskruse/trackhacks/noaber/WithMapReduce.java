@@ -1,6 +1,6 @@
 package eu.hanskruse.trackhacks.noaber;
 
-import static eu.hanskruse.trackhacks.noaber.WithStream.stream;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 
 import java.util.Optional;
 import java.util.function.BinaryOperator;
@@ -15,8 +15,8 @@ public interface WithMapReduce {
    *            the items to be reduced
    * @return the reduced value
    */
-  public static <T> T reduce(final BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") final T... items) {
-      Optional<T> result = stream(items).reduce(accumulator);
+  default <T> T reduce(final BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") final T... items) {
+      Optional<T> result = noaber().stream(items).reduce(accumulator);
       if (result.isPresent()) {
           return result.get();
       }
@@ -35,9 +35,9 @@ public interface WithMapReduce {
    *            the items to be reduced
    * @return reduced value
    */
-  public static <T> T reduce(final T identity, final BinaryOperator<T> accumulator,
+  default <T> T reduce(final T identity, final BinaryOperator<T> accumulator,
           @SuppressWarnings("unchecked") final T... items) {
-      return stream(items).reduce(identity, accumulator);
+      return noaber().stream(items).reduce(identity, accumulator);
   }
 
 }

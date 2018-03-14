@@ -1,6 +1,6 @@
 package eu.hanskruse.trackhacks.noaber;
 
-import static eu.hanskruse.trackhacks.noaber.WithStream.stream;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.IntSummaryStatistics;
@@ -14,7 +14,7 @@ public interface WithStats {
    *            the items to calculate the average from
    * @return the average
    */
-  public static double average(final double... items) {
+  default double average(final double... items) {
       return doubleSummaryStatistics(items).getAverage();
   }
 
@@ -25,7 +25,7 @@ public interface WithStats {
    *            the items to calculate the average from
    * @return the average
    */
-  public static float average(final float... items) {
+  default float average(final float... items) {
       return sum(items) / items.length;
   }
 
@@ -36,7 +36,7 @@ public interface WithStats {
    *            the items to calculate the average from
    * @return the average
    */
-  public static double average(final int... items) {
+  default double average(final int... items) {
       return intSummaryStatistics(items).getAverage();
   }
 
@@ -47,7 +47,7 @@ public interface WithStats {
    *            the items to calculate the average from
    * @return the average
    */
-  public static double average(final long... items) {
+  default double average(final long... items) {
       return longSummaryStatistics(items).getAverage();
   }
 
@@ -58,7 +58,7 @@ public interface WithStats {
    *            the items to calculate the average from
    * @return the average
    */
-  public static double average(final short... items) {
+  default double average(final short... items) {
       return sum(items) / items.length;
   }
 
@@ -69,8 +69,8 @@ public interface WithStats {
    *            the items to calculate the statistics on
    * @return the summary statistics
    */
-  public static DoubleSummaryStatistics doubleSummaryStatistics(final double... items) {
-      return stream(items).summaryStatistics();
+  default DoubleSummaryStatistics doubleSummaryStatistics(final double... items) {
+      return noaber().stream(items).summaryStatistics();
   }
 
   /**
@@ -80,8 +80,8 @@ public interface WithStats {
    *            the items to calculate the statistics on
    * @return the summary statistics
    */
-  public static IntSummaryStatistics intSummaryStatistics(final int... items) {
-      return stream(items).summaryStatistics();
+  default IntSummaryStatistics intSummaryStatistics(final int... items) {
+      return noaber().stream(items).summaryStatistics();
   }
 
   /**
@@ -92,7 +92,7 @@ public interface WithStats {
    * @return the summary statistics
    */
   public static LongSummaryStatistics longSummaryStatistics(final long... items) {
-      return stream(items).summaryStatistics();
+      return noaber().stream(items).summaryStatistics();
   }
 
   /**
@@ -103,7 +103,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static double max(final double... items) {
-      return doubleSummaryStatistics(items).getMax();
+      return noaber().doubleSummaryStatistics(items).getMax();
   }
 
   /**
@@ -139,7 +139,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static int max(final int... items) {
-      return intSummaryStatistics(items).getMax();
+      return noaber().intSummaryStatistics(items).getMax();
   }
 
   /**
@@ -186,7 +186,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static double min(final double... items) {
-      return doubleSummaryStatistics(items).getMin();
+      return noaber().doubleSummaryStatistics(items).getMin();
   }
 
   /**
@@ -222,7 +222,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static int min(final int... items) {
-      return intSummaryStatistics(items).getMin();
+      return noaber().intSummaryStatistics(items).getMin();
   }
 
   /**
@@ -269,7 +269,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static double sum(final double... items) {
-      return doubleSummaryStatistics(items).getSum();
+      return noaber().doubleSummaryStatistics(items).getSum();
   }
 
   /**
@@ -305,7 +305,7 @@ public interface WithStats {
    * @return the maximum
    */
   public static long sum(final int... items) {
-      return intSummaryStatistics(items).getSum();
+      return noaber().intSummaryStatistics(items).getSum();
   }
 
   /**

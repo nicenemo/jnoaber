@@ -1,7 +1,7 @@
 package eu.hanskruse.trackhacks.noaber;
 
 import java.util.function.Function;
-import static eu.hanskruse.trackhacks.noaber.WithStream.stream;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 
 public interface WithCompose {
 
@@ -13,10 +13,10 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, R> Function<T1,R> compose(
+  default <T1, T2, R> Function<T1,R> compose(
           final Function<T1, T2> f1, //
           final Function<T2, R> f2) {
-      if(stream(f1,f2).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f2.apply( //
@@ -33,11 +33,11 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, R> Function<T1,R> compose(
+  default <T1, T2, T3, R> Function<T1,R> compose(
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, R> f3) {
-      if(stream(f1,f2,f3).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f3.apply( //
@@ -57,12 +57,12 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, // 
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
           final Function<T4, R> f4) {
-      if(stream(f1,f2,f3,f4).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f4.apply( //
@@ -83,13 +83,13 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, R> Function<T1,R> compose(  //
+  default <T1, T2, T3, T4, T5, R> Function<T1,R> compose(  //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, // 
           final Function<T3, T4> f3, //
           final Function<T4, T5> f4, //
           final Function<T5, R> f5) {
-      if(stream(f1,f2,f3,f4,f5).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f5.apply( //
@@ -112,14 +112,14 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
           final Function<T4, T5> f4, //
           final Function<T5, T6> f5, //
           final Function<T6, R> f6) {
-      if(stream(f1,f2,f3,f4,f5,f6).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f6.apply( // 
@@ -144,7 +144,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -152,7 +152,7 @@ public interface WithCompose {
           final Function<T5, T6> f5, //
           final Function<T6, T7> f6,
           final Function<T7, R> f7) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f7.apply( //
@@ -179,7 +179,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, // 
           final Function<T3, T4> f3, //
@@ -188,7 +188,7 @@ public interface WithCompose {
           final Function<T6, T7> f6, // 
           final Function<T7, T8> f7, //
           final Function<T8, R> f8) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f8.apply( //
@@ -217,7 +217,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> Function<T1,R> compose(//
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> Function<T1,R> compose(//
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, // 
           final Function<T3, T4> f3, // 
@@ -227,7 +227,7 @@ public interface WithCompose {
           final Function<T7, T8> f7, // 
           final Function<T8, T9> f8, //
           final Function<T9, R> f9)  {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f9.apply( //
@@ -258,7 +258,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -269,7 +269,7 @@ public interface WithCompose {
           final Function<T8, T9> f8, //
           final Function<T9, T10> f9, //
           final Function<T10, R> f10) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f10.apply( //
@@ -285,7 +285,6 @@ public interface WithCompose {
              argument))))))))));
   }
   
-
   /**
    * Compose function chain.
    * 
@@ -303,7 +302,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -315,7 +314,7 @@ public interface WithCompose {
           final Function<T9, T10> f9, //
           final Function<T10, T11> f10, //
           final Function<T11,R> f11) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f11.apply( //
@@ -350,7 +349,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -363,7 +362,7 @@ public interface WithCompose {
           final Function<T10, T11> f10, //
           final Function<T11,T12> f11, //
           final Function<T12,R> f12) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f12.apply( //
@@ -400,7 +399,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -414,7 +413,7 @@ public interface WithCompose {
           final Function<T11,T12> f11, //
           final Function<T12,T13> f12, //
           final Function<T13,R> f13) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f13.apply( //
@@ -453,7 +452,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -468,7 +467,7 @@ public interface WithCompose {
           final Function<T12,T13> f12, //
           final Function<T13,T14> f13, //
           final Function<T14,R> f14) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f14.apply( //
@@ -509,7 +508,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -525,7 +524,7 @@ public interface WithCompose {
           final Function<T13,T14> f13, //
           final Function<T14,T15> f14, //
           final Function<T15,R> f15) {
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f15.apply( //
@@ -568,7 +567,7 @@ public interface WithCompose {
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  public static <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, R> Function<T1,R> compose( //
+  default <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, R> Function<T1,R> compose( //
           final Function<T1, T2> f1, //
           final Function<T2, T3> f2, //
           final Function<T3, T4> f3, //
@@ -587,7 +586,7 @@ public interface WithCompose {
           final Function<T16,R> f16) {
       
        
-      if(stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16).anyMatch(f -> f == null)){
+      if(noaber().stream(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16).anyMatch(f -> f == null)){
           throw new IllegalArgumentException("functions should not be null");
       }
       return (argument) -> f16.apply( //
@@ -616,7 +615,7 @@ public interface WithCompose {
    * @param functions
    * @return result of function chaining.
    */
-   public static <T> Function<T,T> compose(
+  default <T> Function<T,T> compose(
           @SuppressWarnings("unchecked")
           final Function<T,T> ...functions) {
        if(functions == null){
@@ -624,10 +623,10 @@ public interface WithCompose {
        }
        
        if (functions.length == 0){
-           return WithIdentity::identity;
+           return noaber()::identity;
        }
        
-       if(stream(functions).anyMatch(f -> f == null)) {
+       if(noaber().stream(functions).anyMatch(f -> f == null)) {
            throw new IllegalArgumentException("functions should not be null");
        }
        

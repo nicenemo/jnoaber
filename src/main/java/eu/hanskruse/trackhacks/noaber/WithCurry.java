@@ -14,7 +14,7 @@ public interface WithCurry {
    * @return a function that accepts an argument for the rightmost agument of
    *         the binary operator
    */
-  public static <T> Function<T, Function<T, T>> leftCurry(final BinaryOperator<T> operator) {
+  default <T> Function<T, Function<T, T>> leftCurry(final BinaryOperator<T> operator) {
       return (u) -> (t) -> operator.apply(u, t);
   }
 
@@ -26,7 +26,7 @@ public interface WithCurry {
    * @return a function that accepts an argument for the rightmost argument
    *         for the bifunction
    */
-  public static <T, U, R> Function<T, Function<U, R>> leftCurry(final BiFunction<T, U, R> f) {
+  default <T, U, R> Function<T, Function<U, R>> leftCurry(final BiFunction<T, U, R> f) {
       return (u) -> (t) -> f.apply(u, t);
   }
 
@@ -38,7 +38,7 @@ public interface WithCurry {
    * @return a function that accepts an argument for the leftmost argument of
    *         the binary operator
    */
-  public static <T> Function<T, Function<T, T>> rightCurry(final BinaryOperator<T> operator) {
+  default <T> Function<T, Function<T, T>> rightCurry(final BinaryOperator<T> operator) {
       return (t) -> (u) -> operator.apply(u, t);
   }
 
@@ -50,7 +50,7 @@ public interface WithCurry {
    * @return a function that accepts an argument for the leftmost argument for
    *         the bifunction
    */
-  public static <U, T, R> Function<T, Function<U, R>> rightCurry(final BiFunction<U, T, R> f) {
+  default <U, T, R> Function<T, Function<U, R>> rightCurry(final BiFunction<U, T, R> f) {
       return (t) -> (u) -> f.apply(u, t);
   }
 }

@@ -15,7 +15,7 @@ public interface WithPartialApplication {
    * @return a function that accepts an argument for the rightmost agument of
    *         the binary operator
    */
-  public static <T> Function<T, T> leftApply(final BinaryOperator<T> operator, final T t) {
+  default <T> Function<T, T> leftApply(final BinaryOperator<T> operator, final T t) {
       return (u) -> operator.apply(u, t);
   }
 
@@ -29,7 +29,7 @@ public interface WithPartialApplication {
    * @return a function that accepts an argument for the rightmost argument
    *         for the bifunction
    */
-  public static <U, T, R> Function<U, R> leftApply(final BiFunction<U, T, R> operator, final T t) {
+  default <U, T, R> Function<U, R> leftApply(final BiFunction<U, T, R> operator, final T t) {
       return (u) -> operator.apply(u, t);
   }
 
@@ -43,7 +43,7 @@ public interface WithPartialApplication {
    * @return a function that accepts an argument for the leftmost argument of
    *         the binary operator
    */
-  public static <T> Function<T, T> rightApply(final BinaryOperator<T> operator, final T u) {
+  default <T> Function<T, T> rightApply(final BinaryOperator<T> operator, final T u) {
       return (t) -> operator.apply(u, t);
   }
 
@@ -57,7 +57,7 @@ public interface WithPartialApplication {
    * @return a function that accepts an argument for the leftmost argument for
    *         the bifunction
    */
-  public static <U, T, R> Function<T, R> rightApply(final BiFunction<U, T, R> operator, final U u) {
+  default <U, T, R> Function<T, R> rightApply(final BiFunction<U, T, R> operator, final U u) {
       return (t) -> operator.apply(u, t);
   }
 }

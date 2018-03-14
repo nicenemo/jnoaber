@@ -15,7 +15,7 @@ public interface WithStream {
    *            items to convert
    * @return the converted stream
    */
-  public static DoubleStream stream(final double... items) {
+  default DoubleStream stream(final double... items) {
       return Arrays.stream(items);
   }
 
@@ -26,7 +26,7 @@ public interface WithStream {
    *            items to convert
    * @return the converted stream
    */
-  public static IntStream stream(final int... items) {
+  default IntStream stream(final int... items) {
       return Arrays.stream(items);
   }
 
@@ -37,7 +37,7 @@ public interface WithStream {
    *            items to convert
    * @return the converted stream
    */
-  public static LongStream stream(final long... items) {
+  default LongStream stream(final long... items) {
       return Arrays.stream(items);
   }
 
@@ -49,7 +49,7 @@ public interface WithStream {
    * @return the converted stream
    */
   @SuppressWarnings("unchecked")
-  public static <T> Stream<T> stream(final T... items) {
+  default <T> Stream<T> stream(final T... items) {
       return Arrays.stream(items);
   }
 

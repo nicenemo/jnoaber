@@ -13,7 +13,7 @@ public interface WithLogic {
    * @return true if All boolean items are true, false if one item is false or
    *         if there are no items or items is null
    */
-  public static boolean and(final boolean... items) {
+  default boolean and(final boolean... items) {
       if (items == null || items.length == 0) {
           return false;
       }
@@ -34,7 +34,7 @@ public interface WithLogic {
    * @return true if All boolean items are true, false if one item is false or
    *         if there are no items or items is null
    */
-  public static boolean or(final boolean... items) {
+  default boolean or(final boolean... items) {
       if (items == null || items.length == 0) {
           return false;
       }
@@ -56,7 +56,7 @@ public interface WithLogic {
    *         if there are no items or items is null
    */
   @SuppressWarnings("unchecked")
-  public static <T> Predicate<T> or(final Predicate<T>... items) {
+  default <T> Predicate<T> or(final Predicate<T>... items) {
       return (t) -> {
         if (items == null || items.length == 0) {
           return false;
@@ -76,7 +76,7 @@ public interface WithLogic {
    * @return a predicate of a predicate.
    */
   @SuppressWarnings("unchecked")
-  public static <T> Predicate<Predicate<T>> or(final T... items){
+  default <T> Predicate<Predicate<T>> or(final T... items){
       return predicate -> or(predicate,items);
   }
   

@@ -3,9 +3,7 @@ package eu.hanskruse.trackhacks;
 import org.junit.Test;
 
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
-import static eu.hanskruse.trackhacks.noaber.WithPatternMatching.whenPredicate;
-import static eu.hanskruse.trackhacks.noaber.WithPatternMatching.orElse;
-import static eu.hanskruse.trackhacks.noaber.WithPatternMatching.match;
+import eu.hanskruse.trackhacks.noaber.WithPatternMatching;
 import java.util.Optional;
 
 import org.quicktheories.WithQuickTheories;
@@ -15,7 +13,7 @@ import org.quicktheories.WithQuickTheories;
  * @author Hans Kruse
  *
  */
-public class PatternMatchingTest implements WithQuickTheories {
+public class PatternMatchingTest implements WithQuickTheories, WithPatternMatching {
 
   /**
    *   FizzBuzz example.

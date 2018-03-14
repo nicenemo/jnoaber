@@ -1,9 +1,7 @@
 package eu.hanskruse.trackhacks;
-
-import static eu.hanskruse.trackhacks.noaber.WithCompose.compose;
 import java.util.function.Function;
 
-import eu.hanskruse.trackhacks.noaber.WithIdentity;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -11,7 +9,7 @@ import junit.framework.TestSuite;
 /**
  * Unit tests for compose.
  */
-public class ComposeTest extends TestCase   {
+public class ComposeTest extends TestCase {
 	/**
 	 * Create the test case
 	 *
@@ -55,12 +53,11 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 2 function.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose2() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity); // 2
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity); // 2
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -68,13 +65,12 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 3 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose3() {
 		final String expected = "42";
-		final Function<String,String> f  = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity); // 3
+		final Function<String,String> f  = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity); // 3
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -82,14 +78,13 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 4 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose4() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity); // 4
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity); // 4
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -97,15 +92,14 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 5 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose5() {
 		final String expected = "42";
-		final Function<String,String> f  = compose(//
-		    WithIdentity::identity, // 1
-		        WithIdentity::identity, // 2
-				WithIdentity::identity, // 3
-				WithIdentity::identity, // 4
-				WithIdentity::identity); // 5
+		final Function<String,String> f  = noaber().compose(//
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity); // 5
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -113,16 +107,15 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 6 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose6() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity); // 6
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity); // 6
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -130,17 +123,16 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 7 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose7() {
 		final String expected = "42";
-		final Function<String,String> f  = compose(//
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity); // 7
+		final Function<String,String> f  = noaber().compose(//
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity); // 7
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -148,18 +140,17 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 8 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose8() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity); // 8
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity); // 8
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -167,19 +158,18 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 9 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose9() {
 		final String expected = "42";
-		final Function<String,String> f  = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity); // 9
+		final Function<String,String> f  = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity); // 9
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -187,20 +177,19 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 10 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose10() {
 		final String expected = "42";
-		final Function<String,String> f  = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity); // 10
+		final Function<String,String> f  = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity); // 10
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -208,21 +197,20 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 11 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose11() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity); // 11
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity); // 11
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -230,22 +218,21 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 12 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose12() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity); // 12
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity); // 12
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -253,23 +240,22 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 13 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose13() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity, // 12
-		    WithIdentity::identity); // 13
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity, // 12
+		    noaber()::identity); // 13
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -277,24 +263,23 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 14 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose14() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity, // 12
-		    WithIdentity::identity, // 13
-		    WithIdentity::identity); // 14
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity, // 12
+		    noaber()::identity, // 13
+		    noaber()::identity); // 14
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -302,25 +287,24 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 15 functions.
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose15() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity, // 12
-		    WithIdentity::identity, // 13
-		    WithIdentity::identity, // 14
-		    WithIdentity::identity); // 15
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity, // 12
+		    noaber()::identity, // 13
+		    noaber()::identity, // 14
+		    noaber()::identity); // 15
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -328,26 +312,25 @@ public class ComposeTest extends TestCase   {
 	/**
 	 * Test Compose with 16 functions
 	 */
-	@SuppressWarnings("static-method")
 	public void testCompose16() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity, // 12
-		    WithIdentity::identity, // 13
-		    WithIdentity::identity, // 14
-		    WithIdentity::identity, // 15
-		    WithIdentity::identity); // 16
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity, // 12
+		    noaber()::identity, // 13
+		    noaber()::identity, // 14
+		    noaber()::identity, // 15
+		    noaber()::identity); // 16
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -356,28 +339,28 @@ public class ComposeTest extends TestCase   {
 	 * Test Compose with more than 16 functions with same type for argument and
 	 * return value.
 	 */
-	@SuppressWarnings({ "unchecked", "static-method" })
+	@SuppressWarnings({ "unchecked" })
 	public void testComposeMore() {
 		final String expected = "42";
-		final Function<String,String> f = compose( //
-		    WithIdentity::identity, // 1
-		    WithIdentity::identity, // 2
-		    WithIdentity::identity, // 3
-		    WithIdentity::identity, // 4
-		    WithIdentity::identity, // 5
-		    WithIdentity::identity, // 6
-		    WithIdentity::identity, // 7
-		    WithIdentity::identity, // 8
-		    WithIdentity::identity, // 9
-		    WithIdentity::identity, // 10
-		    WithIdentity::identity, // 11
-		    WithIdentity::identity, // 12
-		    WithIdentity::identity, // 13
-		    WithIdentity::identity, // 14
-			WithIdentity::identity, // 15
-			WithIdentity::identity, // 16
-			WithIdentity::identity, // 17
-			WithIdentity::identity); // 18
+		final Function<String,String> f = noaber().compose( //
+		    noaber()::identity, // 1
+		    noaber()::identity, // 2
+		    noaber()::identity, // 3
+		    noaber()::identity, // 4
+		    noaber()::identity, // 5
+		    noaber()::identity, // 6
+		    noaber()::identity, // 7
+		    noaber()::identity, // 8
+		    noaber()::identity, // 9
+		    noaber()::identity, // 10
+		    noaber()::identity, // 11
+		    noaber()::identity, // 12
+		    noaber()::identity, // 13
+		    noaber()::identity, // 14
+		    noaber()::identity, // 15
+		    noaber()::identity, // 16
+			noaber()::identity, // 17
+			noaber()::identity); // 18
 		final String actual =f.apply(expected);
 		assertEquals(expected, actual);
 	}
@@ -389,7 +372,7 @@ public class ComposeTest extends TestCase   {
 	@SuppressWarnings("unchecked")
 	public void testComposeArgCount() {
 		final int expected = 120;
-		final Function<Integer, Integer> f = compose( //
+		final Function<Integer, Integer> f = noaber().compose( //
 				this::inc, // 1
 				this::inc, // 2
 				this::inc, // 3

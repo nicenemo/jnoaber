@@ -1,5 +1,5 @@
 package eu.hanskruse.trackhacks;
-import static eu.hanskruse.trackhacks.noaber.WithCurry.*;
+import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import junit.framework.TestCase;
@@ -20,7 +20,7 @@ public class CurryTest extends TestCase {
 	public void testLeftCurryOnBiFunction(){
 	 final String expected ="42";
 	 BiFunction<Integer,Boolean, String> f = (x,b) -> Integer.toString((b?x:42));	
-	 Function<Integer, Function<Boolean, String>> cf=leftCurry(f);
+	 Function<Integer, Function<Boolean, String>> cf=noaber().leftCurry(f);
 	 final String actual =cf.apply(3).apply(false);
 	 assertEquals(expected, actual);
 	 
@@ -30,7 +30,7 @@ public class CurryTest extends TestCase {
 	public void testRightCurryOnBiFunction(){
 	  final String expected ="42";
 	  BiFunction<Integer,Boolean, String> f = (x,b) -> Integer.toString((b?x:42));	
-	  Function<Boolean, Function<Integer, String>> cf=rightCurry(f);
+	  Function<Boolean, Function<Integer, String>> cf=noaber().rightCurry(f);
 	  String actual = cf.apply(false).apply(3);
 	  assertEquals(expected, actual);
 	}
