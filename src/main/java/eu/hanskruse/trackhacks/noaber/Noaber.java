@@ -1,7 +1,7 @@
 package eu.hanskruse.trackhacks.noaber;
 
 /**
- * Noaber library with all kinds of handy functionality.
+ * Noaber utility with all kinds of handy functionality.
  *
  * @author Hans Kruse
  * @version 1.0.0

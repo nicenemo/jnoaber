@@ -6,10 +6,12 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * CaseAcceptor captures the argument of the match function and provides a with
- * method that accepts case clauses to evaluate.
+ * Capture argument of match function for pattern matching.
+ * Accepts an array of Case clauses.
  *
  * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <T>
  *          type of the argument.

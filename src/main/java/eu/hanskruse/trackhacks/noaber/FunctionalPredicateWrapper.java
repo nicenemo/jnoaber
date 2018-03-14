@@ -10,6 +10,8 @@ import java.util.function.Function;
  * Wraps a FunctionalPredicate.
  * 
  * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <T>
  *          type of the predicate

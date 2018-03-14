@@ -4,9 +4,11 @@ import java.util.Optional;
 import java.util.function.Function;
 
 /**
- * Shorthand modelling a case clause.
+ * Case Clause for pattern matching.
  * 
  * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <T>
  *          the type of the argument

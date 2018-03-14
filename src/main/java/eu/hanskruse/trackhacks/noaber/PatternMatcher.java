@@ -6,6 +6,8 @@ import java.util.Optional;
  * A Pattern matcher that captures cases to match with.
  * 
  * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <T>
  *          the type of the value to match with

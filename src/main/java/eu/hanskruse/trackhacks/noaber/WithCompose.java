@@ -4,6 +4,12 @@ import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 
 import java.util.function.Function;
 
+/**
+ * Compose functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithCompose {
 
   /**

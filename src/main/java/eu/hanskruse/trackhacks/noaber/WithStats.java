@@ -6,6 +6,12 @@ import java.util.DoubleSummaryStatistics;
 import java.util.IntSummaryStatistics;
 import java.util.LongSummaryStatistics;
 
+/**
+ * Statistics functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithStats {
 
   /**

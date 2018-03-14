@@ -4,6 +4,12 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 
+/**
+ * Partial application functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithPartialApplication {
 
   /**

@@ -6,6 +6,12 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+/**
+ * Stream functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithStream {
 
   /**

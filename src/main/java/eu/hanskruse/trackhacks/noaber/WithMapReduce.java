@@ -5,6 +5,12 @@ import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
 
+/**
+ * Map Reduce functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithMapReduce {
 
   /**

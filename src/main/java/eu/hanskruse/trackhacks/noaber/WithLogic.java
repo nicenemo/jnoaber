@@ -3,6 +3,12 @@ package eu.hanskruse.trackhacks.noaber;
 import java.util.Collection;
 import java.util.function.Predicate;
 
+/**
+ * Logic functionality.
+ * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public interface WithLogic {
 
   /**

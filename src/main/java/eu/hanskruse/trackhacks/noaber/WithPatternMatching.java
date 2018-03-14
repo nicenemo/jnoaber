@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 
 /**
  * Pattern matching functionality.
- * 
  * @author Hans Kruse
- *
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public interface WithPatternMatching {
 

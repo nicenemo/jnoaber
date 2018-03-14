@@ -4,12 +4,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 /**
- * Composition of a Function and a Predicate.
- * if the wrapped predicate is true,
- * apply the function and return the the result wrapped as an Optional.
- * If the wrapped predicate is false return Optional.empty()
- * 
+ * Composition of a Predicate and a Function.
  * @author Hans Kruse
+ * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <T>
  *          the type of the argument
