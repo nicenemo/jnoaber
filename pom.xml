@@ -89,11 +89,6 @@
         <version>${mvnfindbugs.version}</version>
       </plugin>
       <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>${sonar.plugin}</version>
-      </plugin>
-      <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.7.7.201606060606</version>
@@ -107,6 +102,24 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+        <dependency>
+      <groupId>org.quicktheories</groupId>
+      <artifactId>quicktheories</artifactId>
+      <version>0.25</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-all</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>2.15.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

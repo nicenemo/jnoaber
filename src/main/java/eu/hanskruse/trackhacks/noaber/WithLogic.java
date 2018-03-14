@@ -1,7 +1,6 @@
 package eu.hanskruse.trackhacks.noaber;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface WithLogic {
@@ -128,14 +127,4 @@ public interface WithLogic {
             return false;  
   }
 
-  /**
-   * Wrap a predicate into a function that
-   * returns the optional value of the argument provided to the predicate 
-   * if the predicate is true, else return Optional.empty().
-   * @param p the predicate to wrap
-   * @return the wrapped predicate
-   */
-  public static <T> FunctionalPredicate<T> asFunctionalPredicate(final Predicate<T> p){
-      return (t) -> p.test(t) ? Optional.of(t) : Optional.empty();
-  }
 }
