@@ -5,6 +5,7 @@
 "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
+      <suppress checks="[a-zA-Z0-9]*" files="[\\/]no.identification.viewmodel[\\/]"/>
       <suppress checks="Translation" files=".*\.java"/>
       <suppress checks="whitespace" files=".*\.java"/>
       <suppress checks="AvoidInlineConditionals" files=".*\.java"/>
