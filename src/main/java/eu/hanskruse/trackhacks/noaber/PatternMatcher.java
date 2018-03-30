@@ -19,7 +19,7 @@ public final class PatternMatcher<T, R> {
   private final Case<T, R>[] cases;
 
   /**
-   * Creates a pattern matcher
+   * Creates a pattern matcher.
    * 
    * @param caseValues
    *          the cases

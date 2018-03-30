@@ -21,7 +21,7 @@ public interface WithStats {
    *          the items to calculate the statistics on
    * @return the summary statistics
    */
-  public static LongSummaryStatistics longSummaryStatistics(final long... items) {
+  default LongSummaryStatistics longSummaryStatistics(final long... items) {
     return noaber().stream(items).summaryStatistics();
   }
 
@@ -32,7 +32,7 @@ public interface WithStats {
    *          the items to calculate the maximum from
    * @return the maximum
    */
-  public static double max(final double... items) {
+  default double max(final double... items) {
     return noaber().doubleSummaryStatistics(items).getMax();
   }
 
@@ -43,7 +43,7 @@ public interface WithStats {
    *          the items to calculate the maximum from
    * @return the maximum
    */
-  public static float max(final float... items) {
+  default float max(final float... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }
@@ -68,7 +68,7 @@ public interface WithStats {
    *          the items to calculate the maximum from
    * @return the maximum
    */
-  public static int max(final int... items) {
+  default int max(final int... items) {
     return noaber().intSummaryStatistics(items).getMax();
   }
 
@@ -79,7 +79,7 @@ public interface WithStats {
    *          the items to calculate the maximum from
    * @return the maximum
    */
-  public static long max(final long... items) {
+  default long max(final long... items) {
     return longSummaryStatistics(items).getMax();
   }
 
@@ -90,7 +90,7 @@ public interface WithStats {
    *          the items to calculate the maximum from
    * @return the maximum
    */
-  public static short max(final short... items) {
+  default short max(final short... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }
@@ -115,7 +115,7 @@ public interface WithStats {
    *          the items to calculate the minimum from
    * @return the maximum
    */
-  public static double min(final double... items) {
+  default double min(final double... items) {
     return noaber().doubleSummaryStatistics(items).getMin();
   }
 
@@ -126,7 +126,7 @@ public interface WithStats {
    *          the items to calculate the minimum from
    * @return the maximum
    */
-  public static float min(final float... items) {
+  default float min(final float... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }
@@ -151,7 +151,7 @@ public interface WithStats {
    *          the items to calculate the minimum from
    * @return the maximum
    */
-  public static int min(final int... items) {
+  default int min(final int... items) {
     return noaber().intSummaryStatistics(items).getMin();
   }
 
@@ -162,7 +162,7 @@ public interface WithStats {
    *          the items to calculate the minimum from
    * @return the maximum
    */
-  public static long min(final long... items) {
+  default long min(final long... items) {
     return longSummaryStatistics(items).getMin();
   }
 
@@ -173,7 +173,7 @@ public interface WithStats {
    *          the items to calculate the minumum from
    * @return the minimum
    */
-  public static short min(final short... items) {
+  default short min(final short... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }
@@ -198,7 +198,7 @@ public interface WithStats {
    *          the items to sum the minimum from
    * @return the maximum
    */
-  public static double sum(final double... items) {
+  default double sum(final double... items) {
     return noaber().doubleSummaryStatistics(items).getSum();
   }
 
@@ -209,7 +209,7 @@ public interface WithStats {
    *          the items to sum the minimum from
    * @return the maximum
    */
-  public static float sum(final float... items) {
+  default float sum(final float... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }
@@ -234,7 +234,7 @@ public interface WithStats {
    *          the items to sum
    * @return the maximum
    */
-  public static long sum(final int... items) {
+  default long sum(final int... items) {
     return noaber().intSummaryStatistics(items).getSum();
   }
 
@@ -245,7 +245,7 @@ public interface WithStats {
    *          the items to sum
    * @return the maximum
    */
-  public static long sum(final long... items) {
+  default long sum(final long... items) {
     return longSummaryStatistics(items).getSum();
   }
 
@@ -256,7 +256,7 @@ public interface WithStats {
    *          the items to sum
    * @return the sum of the items
    */
-  public static long sum(final short... items) {
+  default long sum(final short... items) {
     if (items == null || items.length == 0) {
       throw new IllegalArgumentException("items is null or empty");
     }

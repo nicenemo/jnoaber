@@ -18,7 +18,7 @@ public interface WithLogic {
    *          the items to apply an predicate over with an or in short circuit fashion
    * @return a predicate of a predicate.
    */
-  public static <T> Predicate<Predicate<T>> or(final Collection<T> items) {
+  default <T> Predicate<Predicate<T>> or(final Collection<T> items) {
     return predicate -> or(predicate, items);
   }
 
@@ -31,7 +31,7 @@ public interface WithLogic {
    *          the items to apply the predicate on
    * @return true on the first item that the predicates gives true on, else false.
    */
-  public static <T> boolean or(final Predicate<T> predicate, final Collection<T> items) {
+  default <T> boolean or(final Predicate<T> predicate, final Collection<T> items) {
     if (items == null || items.isEmpty()) {
       return false;
     }

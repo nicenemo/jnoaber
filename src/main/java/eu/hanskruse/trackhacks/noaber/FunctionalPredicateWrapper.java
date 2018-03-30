@@ -13,20 +13,23 @@ import java.util.function.Function;
  * @version 1.0.0
  * @since 1.0.0
  *
+ * @param <W> type of the function result of the FunctionalPredicate
  * @param <T>
- *          type of the predicate
+ *          type of the predicate argument
+ *          
  */
-public class FunctionalPredicateWrapper<T, R1> {
+public class FunctionalPredicateWrapper<T, W> {
 
-  private final FunctionalPredicate<T, R1> functionalPredicate;
+  /** capture of the FunctionalPredicate. */
+  private final FunctionalPredicate<T, W> functionalPredicate;
 
   /**
-   * Creates a PredicateWrapper
+   * Creates a PredicateWrapper.
    * 
    * @param value
    *          FunctionalPredicate to wrap.
    */
-  public FunctionalPredicateWrapper(FunctionalPredicate<T, R1> value) {
+  public FunctionalPredicateWrapper(FunctionalPredicate<T, W> value) {
     requireNonNull(value);
     this.functionalPredicate = value;
   }
@@ -38,13 +41,13 @@ public class FunctionalPredicateWrapper<T, R1> {
    *          function to execute
    * @return a Case
    */
-  public <R> Case<T, R> then(Function<R1, R> f) {
+  public <R> Case<T, R> then(Function<W, R> f) {
 
     return t -> {
       if (isNull(f)) {
         return Optional.empty();
       }
-      final Optional<R1> predicateResult = this.functionalPredicate.apply(t);
+      final Optional<W> predicateResult = this.functionalPredicate.apply(t);
       if (!predicateResult.isPresent()) {
         return Optional.empty();
       }
@@ -59,7 +62,7 @@ public class FunctionalPredicateWrapper<T, R1> {
 
   /**
    * Value to return when the wrapped predicate is true.
-   * 
+   * @param <R> type of the Optional result of the case
    * @param result
    * @return a Case
    */
@@ -68,7 +71,7 @@ public class FunctionalPredicateWrapper<T, R1> {
       if (isNull(result)) {
         return Optional.empty();
       }
-      final Optional<R1> predicateResult = this.functionalPredicate.apply(t);
+      final Optional<W> predicateResult = this.functionalPredicate.apply(t);
       if (!predicateResult.isPresent()) {
         return Optional.empty();
       }

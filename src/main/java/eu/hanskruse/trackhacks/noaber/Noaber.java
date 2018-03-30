@@ -10,8 +10,8 @@ package eu.hanskruse.trackhacks.noaber;
  */
 public final class Noaber implements WithNoaber {
 
-  /** Singleton instance of noaber */
-  private static final WithNoaber singleton = new Noaber();
+  /** Singleton instance of noaber. */
+  private static final WithNoaber SINGLETON = new Noaber();
 
   /**
    * Shorthand for getting singleton instance of WithNoaber.
@@ -19,7 +19,7 @@ public final class Noaber implements WithNoaber {
    * @return WithNoaber
    */
   public static WithNoaber $() {
-    return singleton;
+    return SINGLETON;
   }
 
   /**
@@ -28,7 +28,7 @@ public final class Noaber implements WithNoaber {
    * @return WithNoaber
    */
   public static WithNoaber noaber() {
-    return singleton;
+    return SINGLETON;
   }
 
   /**
