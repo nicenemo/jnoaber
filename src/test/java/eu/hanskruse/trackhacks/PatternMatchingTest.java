@@ -7,19 +7,10 @@ import java.util.Optional;
 import org.junit.Test;
 import org.quicktheories.WithQuickTheories;
 
-import eu.hanskruse.trackhacks.noaber.CaseAcceptor;
 import eu.hanskruse.trackhacks.noaber.WithPatternMatching;
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
-import eu.hanskruse.trackhacks.testdata.food.FastFood;
-import eu.hanskruse.trackhacks.testdata.food.Food;
-import eu.hanskruse.trackhacks.testdata.food.Fruit;
-import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
 import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
-import eu.hanskruse.trackhacks.testdata.food.fruit.Banana;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Braeburn;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Fuji;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McIntosh;
 
 /**
  * Pattern matching examples.
@@ -48,8 +39,26 @@ public class PatternMatchingTest implements WithQuickTheories, WithPatternMatchi
   }
   
   /**
+   * A class should match an instance of itself
+   */
+  @Test
+  public void classMatchesInstanceOfItself() {
+    assertTrue(classMatches(Elstar.class).test(new Elstar()));
+  }
+  
+  
+  /**
+   * A class should match an instance of itself
+   */
+  @Test
+  public void classMatchesInstanceOfADirectSubClass() {
+    assertTrue(classMatches(Apple.class).test(new Elstar()));
+  }
+  
+  /**
    * Class matching example.
    */
+  /*
   @Test
   public void classMatchingExample() {
       final Food food = new Hamburger();
@@ -66,7 +75,6 @@ public class PatternMatchingTest implements WithQuickTheories, WithPatternMatchi
              orElse(n -> "Not edible" + n)//
       );
       //result.ifPresent(System.err::println);
-      return result.isPresent();
-    });
-  }
+      assertTrue(result.isPresent());
+  }*/
 }

@@ -171,4 +171,20 @@ public interface WithPatternMatching {
   default <T, R> PatternMatcher<T, R> with(final Case<T, R>... cases) {
     return new PatternMatcher<>(cases);
   }
+  
+  /**
+   * A function returns true when a given value is not null and assignable from clazz.
+   * @param clazz clazz to match the value against.
+   * @param value value to match against clazz
+   * @return true if value is not null and is assignable from clazz
+   */
+  default <T> boolean classMatches(Class<T> clazz,Object value){
+    return nonNull(value) && value.getClass().isAssignableFrom(clazz);
+  }
+  
+  @SuppressWarnings("unchecked")
+  default <T> Predicate<Object> classMatches(Class<T> clazz){
+    return (Predicate<Object>) noaber().rightApply(this::classMatches, clazz);        
+  }
 }
+  

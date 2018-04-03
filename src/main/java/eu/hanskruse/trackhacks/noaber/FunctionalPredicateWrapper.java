@@ -41,7 +41,7 @@ public class FunctionalPredicateWrapper<T, W> {
    *          function to execute
    * @return a Case
    */
-  public <R> Case<T, ? extends R> then(Function<W, R> f) {
+  public <R> Case<T,R> then(Function<W, R> f) {
 
     return t -> {
       if (isNull(f)) {
@@ -66,7 +66,7 @@ public class FunctionalPredicateWrapper<T, W> {
    * @param result
    * @return a Case
    */
-  public <R> Case<T, ? extends R> then(R result) {
+  public <R> Case<T, R> then(R result) {
     return t -> {
       if (isNull(result)) {
         return Optional.empty();
