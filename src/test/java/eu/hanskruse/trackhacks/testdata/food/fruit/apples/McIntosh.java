@@ -3,17 +3,17 @@ package eu.hanskruse.trackhacks.testdata.food.fruit.apples;
 import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
 
 /**
- * McInTosh Apple.
+ * McIntosh Apple.
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
  */
-public final class McInTosh extends Apple {
+public final class McIntosh extends Apple {
 
   /**
-   * Creates a McInTosh Apple.
+   * Creates a McIntosh Apple.
    */
-  public McInTosh()  {
+  public McIntosh()  {
     // Do Nothing.
   }
 

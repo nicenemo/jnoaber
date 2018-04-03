@@ -19,7 +19,7 @@ import eu.hanskruse.trackhacks.testdata.food.fruit.Banana;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Braeburn;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Fuji;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McInTosh;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McIntosh;
 
 /**
  * Pattern matching examples.
@@ -54,15 +54,16 @@ public class PatternMatchingTest implements WithQuickTheories, WithPatternMatchi
   public void classMatchingExample() {
       final Food food = new Hamburger();
       final Optional<String> result = //
-          match(new Elstar()).with(//
-          whenClass(Elstar.class).then("Elstar"),
-          whenClass(Fuji.class).then("Fuji"),
-          whenClass(Braeburn.class).then("Braeburn"),
-          whenClass(Apple.class).then(a ->"Not a known apple: "+ a.getClass().getName()),
-          whenClass(Fruit.class).then(a ->"Not an Apple but it is fruit: "+ a.getClass().getName()),
-          whenClass(FastFood.class).then(a ->"Not an Apple but fastfood :( : "+ a.getClass().getName()),
-          whenClass(Food.class).then(a ->"Not an apple but you can eat it! : "+ a.getClass().getName()),
-              orElse(n -> "Not edible" + n)//
+         match(new Elstar()).with(//
+             whenClass(Elstar.class).then("Elstar"),
+             whenClass(Fuji.class).then("Fuji"),
+             whenClass(Braeburn.class).then("Braeburn"),
+             whenClass(McIntosh.class).then("McIntosh"),
+             whenClass(Apple.class).then(a ->"Not a known apple: "+ a.getClass().getName()),
+             whenClass(Fruit.class).then(a ->"Not an Apple but it is fruit: "+ a.getClass().getName()),
+             whenClass(FastFood.class).then(a ->"Not an Apple but fastfood :( : "+ a.getClass().getName()),
+             whenClass(Food.class).then(a ->"Not an apple but you can eat it! : "+ a.getClass().getName()),
+             orElse(n -> "Not edible" + n)//
       );
       //result.ifPresent(System.err::println);
       return result.isPresent();
