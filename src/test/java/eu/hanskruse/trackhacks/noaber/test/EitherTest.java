@@ -247,10 +247,11 @@ public class EitherTest {
 
   @Test
   public void ifLeftNotPresentOtherGet() {
-    final Supplier<IllegalStateException> other = () -> new IllegalStateException("other");
+    final IllegalStateException expected = new IllegalStateException("other");
+    final Supplier<IllegalStateException> other = () -> expected;
     sut = Either.empty();
     final IllegalStateException actual = sut.ifLeftNotPresentGet(other);
-    assertEquals(other, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -303,10 +304,11 @@ public class EitherTest {
 
   @Test
   public void ifRightNotPresentOtherGet() {
-    final Supplier<String> other = () -> "other";
+    final String expected = "other";
+    final Supplier<String> other = () -> expected;
     sut = Either.empty();
     final String actual = sut.ifRightNotPresentGet(other);
-    assertEquals(other, actual);
+    assertEquals(expected, actual);
   }
 
   @Test
@@ -330,7 +332,7 @@ public class EitherTest {
     final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
     sut = Either.ofRight(right);
     final String actual = sut.ifRightNotPresentThrow(thrower);
-    assertEquals(left, actual);
+    assertEquals(right, actual);
   }
 
   @Test
