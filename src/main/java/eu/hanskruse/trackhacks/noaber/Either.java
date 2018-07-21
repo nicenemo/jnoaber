@@ -70,6 +70,9 @@ public final class Either<E, T> {
    * @return Either with left value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableLeft(final E1 left) {
+    if(null == left) {
+      return empty();
+    }
     return new Either<>(left, null);
   }
 
@@ -85,6 +88,9 @@ public final class Either<E, T> {
    * @return Either with right value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableRight(final T1 right) {
+    if(null == right) {
+      return empty();
+    }
     return new Either<>(null, right);
   }
 

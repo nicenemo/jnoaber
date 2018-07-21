@@ -374,4 +374,33 @@ public class EitherTest {
     verify(consumerCheck, times(1)).rightConsumer(right);
   }
 
+  @Test
+  public void toStringOnEmptyEitherWorks() {
+    sut = Either.empty();
+    assertTrue(sut.toString().length()>0);
+  }
+
+  @Test
+  public void hashCodeOnEmptyEitherWorks() {
+    sut = Either.empty();
+    assertTrue(sut.hashCode()>0);
+  }
+
+  @Test
+  public void emptyEqualsEmpty() {
+    sut =Either.empty();
+       assertTrue(sut.equals(Either.empty()));
+  }
+
+  @Test
+  public void emptyEqualsNullableLeftWithnull() {
+    sut =Either.empty();
+       assertTrue(sut.equals(Either.ofNullableLeft(null)));
+  }
+
+  @Test
+  public void emptyEqualsNullableRightWithnull() {
+    sut =Either.empty();
+       assertTrue(sut.equals(Either.ofNullableRight(null)));
+  }
 }
