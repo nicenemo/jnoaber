@@ -7,7 +7,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
- * Either implementation
+ * Either implementation.
  *
  * @author kruse@hanskruse.eu
  *
