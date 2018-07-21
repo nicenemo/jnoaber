@@ -16,7 +16,7 @@ import java.util.function.Predicate;
  * @param <T>
  *          right field for Either, typically used for the value if there is no error.
  */
-public class Either<E, T> {
+public final class Either<E, T> {
 
   /**
    * Creates an empty Either.
