@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.function.Predicate;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
@@ -21,6 +22,7 @@ public class RightAppliedTest {
   }
 
   @SuppressWarnings("static-method")
+  @Ignore
   @Test
   public void testRightAppliedAHamburger() {
     assertFalse(isApple(new Hamburger()));
