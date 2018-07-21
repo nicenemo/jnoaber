@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks;
+package eu.hanskruse.trackhacks.noaber.test;
 
 import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 
@@ -55,6 +55,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 10 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose10() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -75,6 +76,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 11 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose11() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -96,6 +98,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 12 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose12() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -118,6 +121,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 13 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose13() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -141,6 +145,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 14 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose14() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -165,6 +170,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 15 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose15() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -190,6 +196,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 16 functions
    */
+  @SuppressWarnings("static-method")
   public void testCompose16() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -216,6 +223,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 2 function.
    */
+  @SuppressWarnings("static-method")
   public void testCompose2() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -228,6 +236,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 3 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose3() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -241,6 +250,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 4 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose4() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -255,6 +265,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 5 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose5() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose(//
@@ -270,6 +281,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 6 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose6() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -286,6 +298,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 7 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose7() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose(//
@@ -303,6 +316,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 8 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose8() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -321,6 +335,7 @@ public class ComposeTest extends TestCase {
   /**
    * Test Compose with 9 functions.
    */
+  @SuppressWarnings("static-method")
   public void testCompose9() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
@@ -375,7 +390,7 @@ public class ComposeTest extends TestCase {
    * Test Compose with more than 16 functions with same type for argument and
    * return value.
    */
-  @SuppressWarnings({ "unchecked" })
+  @SuppressWarnings({ "unchecked","static-method" })
   public void testComposeMore() {
     final String expected = "42";
     final Function<String, String> f = noaber().compose( //
