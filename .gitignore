@@ -9,3 +9,4 @@
 .checkstyle
 pom.xml.versionsBackup
 pom.xml.bak
+.settings/**/*
