@@ -263,6 +263,9 @@ public final class Either<E, T> {
    *          consumer to apply
    */
   public void ifLeftPresent(Consumer<? super E> consumer) {
+    if (null == consumer) {
+      throw new NullPointerException("Either.ifLeftPresent: consumer should not be null");
+    }
     if (isLeftPresent()) {
       consumer.accept(left);
     }
@@ -275,6 +278,9 @@ public final class Either<E, T> {
    *          consumer to apply
    */
   public void ifRightPresent(Consumer<? super T> consumer) {
+    if (null == consumer) {
+      throw new NullPointerException("Either.ifRightPresent: consumer should not be null");
+    }
     if (isRightPresent()) {
       consumer.accept(right);
     }

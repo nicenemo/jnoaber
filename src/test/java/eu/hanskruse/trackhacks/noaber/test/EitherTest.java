@@ -289,6 +289,13 @@ public class EitherTest {
   }
 
   @Test
+  public void leftIfLeftPresentWithNullConsumerThrowsNullPointerException() {
+    sut = Either.ofLeft(left);
+    exception.expect(NullPointerException.class);
+    sut.ifLeftPresent(null);
+  }
+
+  @Test
   public void leftNotEqualEmpty() {
     sut = Either.ofLeft(left);
     assertFalse(sut.equals(Either.empty()));
@@ -449,6 +456,13 @@ public class EitherTest {
   public void rightGivesRightPresentTrue() {
     sut = Either.ofRight(right);
     assertTrue(sut.isRightPresent());
+  }
+
+  @Test
+  public void rightIfRightPresentWithNullConsumerThrowsNullPointerException() {
+    sut = Either.ofRight(right);
+    exception.expect(NullPointerException.class);
+    sut.ifRightPresent(null);
   }
 
   @Test
