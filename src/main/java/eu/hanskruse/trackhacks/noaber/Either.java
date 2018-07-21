@@ -18,6 +18,11 @@ import java.util.function.Predicate;
  */
 public final class Either<E, T> {
 
+  /*
+   * Just One empty is enough.
+   */
+  private static final Either<?,?> EMPTY = new Either<>(null,null);
+
   /**
    * Creates an empty Either.
    *
@@ -28,8 +33,9 @@ public final class Either<E, T> {
    * @return Empty Either.
    */
   public static <E1, T1> Either<E1, T1> empty() {
-    // Not using a caching singleton with Empty values because it is generic.
-    return new Either<>(null, null);
+    @SuppressWarnings("unchecked")
+    final Either<E1,T1> either = (Either<E1,T1>) EMPTY;
+    return either;
   }
 
   /**
