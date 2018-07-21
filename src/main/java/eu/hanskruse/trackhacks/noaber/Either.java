@@ -179,7 +179,7 @@ public final class Either<E, T> {
    * @throws NullPointerException
    *           if the predicate is null
    */
-  public Optional<E> filterLeft(Predicate<? super E> predicate) {
+  public Optional<E> filterLeft(final Predicate<? super E> predicate) {
     if (null == predicate) {
       throw new NullPointerException("Either.filterLeft: Predicate should not be null");
     }
@@ -206,7 +206,7 @@ public final class Either<E, T> {
    * @throws NullPointerException
    *           if the predicate is null
    */
-  public Optional<T> filterRight(Predicate<? super T> predicate) {
+  public Optional<T> filterRight(final Predicate<? super T> predicate) {
     if (null == predicate) {
       throw new NullPointerException("Either.filterRight: Predicate should not be null");
     }
@@ -262,7 +262,7 @@ public final class Either<E, T> {
    * @param consumer
    *          consumer to apply
    */
-  public void ifLeftPresent(Consumer<? super E> consumer) {
+  public void ifLeftPresent(final Consumer<? super E> consumer) {
     if (null == consumer) {
       throw new NullPointerException("Either.ifLeftPresent: consumer should not be null");
     }
@@ -277,7 +277,7 @@ public final class Either<E, T> {
    * @param consumer
    *          consumer to apply
    */
-  public void ifRightPresent(Consumer<? super T> consumer) {
+  public void ifRightPresent(final Consumer<? super T> consumer) {
     if (null == consumer) {
       throw new NullPointerException("Either.ifRightPresent: consumer should not be null");
     }
@@ -326,7 +326,7 @@ public final class Either<E, T> {
    * @throws NullPointerException
    *           if the mapper is null
    */
-  public <U> Optional<? extends U> mapLeft(Function<? super E, ? extends U> mapper) {
+  public <U> Optional<? extends U> mapLeft(final Function<? super E, ? extends U> mapper) {
     if (null == mapper) {
       throw new NullPointerException("Either.mapLeft: Mapper should not be null");
     }
@@ -349,7 +349,7 @@ public final class Either<E, T> {
    * @throws NullPointerException
    *           if the mapper is null
    */
-  public <U> Optional<? extends U> mapRight(Function<? super T, ? extends U> mapper) {
+  public <U> Optional<? extends U> mapRight(final Function<? super T, ? extends U> mapper) {
     if (null == mapper) {
       throw new NullPointerException("Either.mapRight: Mapper should not be null");
     }
