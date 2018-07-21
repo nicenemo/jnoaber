@@ -1,0 +1,22 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = null
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.java]
+continuation_indent_size = 0
+
+[*.log]
+indent_size = null
+trim_trailing_whitespace = false
+
