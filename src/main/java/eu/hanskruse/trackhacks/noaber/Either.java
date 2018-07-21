@@ -275,7 +275,7 @@ public final class Either<E, T> {
    * Returns value provided by a provider if left is not Present.
    *
    * @param other
-   *          value to return if left is not present
+   *          provider to provide a value to return if left is not present
    * @return left if left is present else other
    * @throws NullPointerException
    *           if other is null
@@ -286,6 +286,27 @@ public final class Either<E, T> {
     }
     if (!isLeftPresent()) {
       return other.get();
+    }
+    return left;
+  }
+
+  /**
+   * Throw exception provided by a provider if left is not present.
+   *
+   * @param other
+   *          provider to provide exception to throw if left is not present
+   * @return left if left is present else other
+   * @throws X
+   *           Exception that will be thrown if left is not Present
+   * @throws NullPointerException
+   *           if other is null
+   */
+  public <X extends Throwable> E ifLeftNotPresentThrow(Supplier<? extends X> other) throws X {
+    if (null == other) {
+      throw new NullPointerException("Either.ifLeftNotPresentThrow: other should not be null");
+    }
+    if (!isLeftPresent()) {
+      throw other.get();
     }
     return left;
   }
@@ -306,11 +327,11 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns provided value if right is not Present.
+   * Returns provided value if right is not present.
    *
    * @param other
-   *          value to return if left is not present
-   * @return left if left is present else other
+   *          value to return if right is not present
+   * @return right if right is present else other
    */
   public T ifRightNotPresent(T other) {
     if (!isRightPresent()) {
@@ -320,10 +341,10 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns value provided by a provider if right is not Present.
+   * Returns value provided by a provider if right is not present.
    *
    * @param other
-   *          value to return if right is not present
+   *          provider to provide a value to return if right is not present
    * @return right if right is present else value provided by other
    * @throws NullPointerException
    *           if other is null
@@ -339,7 +360,28 @@ public final class Either<E, T> {
   }
 
   /**
-   * If right has a value apply the consumer to the left value.
+   * Throw exception provided by a provider if right is not present.
+   *
+   * @param other
+   *          provider to provide exception to throw if right is not present
+   * @return right if right is present else other
+   * @throws X
+   *           Exception that will be thrown if right is not present
+   * @throws NullPointerException
+   *           if other is null
+   */
+  public <X extends Throwable> T ifRightNotPresentThrow(Supplier<? extends X> other) throws X {
+    if (null == other) {
+      throw new NullPointerException("Either.ifRightNotPresentThrow: other should not be null");
+    }
+    if (!isRightPresent()) {
+      throw other.get();
+    }
+    return right;
+  }
+
+  /**
+   * If right has a value apply the consumer to the right value.
    *
    * @param consumer
    *          consumer to apply
