@@ -360,7 +360,7 @@ public final class Either<E, T> {
   }
 
   /**
-   * Gets a new Either With left and right Swapped.
+   * Gets a new Either with left and right swapped.
    *
    * @return Swapped Either;
    */
