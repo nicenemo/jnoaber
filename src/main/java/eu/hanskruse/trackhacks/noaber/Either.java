@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * Either implementation.
@@ -257,6 +258,39 @@ public final class Either<E, T> {
   }
 
   /**
+   * Returns provided value if left is not Present.
+   *
+   * @param other
+   *          value to return if left is not present
+   * @return left if left is present else other
+   */
+  public E ifLeftNotPresent(E other) {
+    if (!isLeftPresent()) {
+      return other;
+    }
+    return left;
+  }
+
+  /**
+   * Returns value provided by a provider if left is not Present.
+   *
+   * @param other
+   *          value to return if left is not present
+   * @return left if left is present else other
+   * @throws NullPointerException
+   *           if other is null
+   */
+  public E ifLeftNotPresentGet(Supplier<? extends E> other) {
+    if (null == other) {
+      throw new NullPointerException("Either.ifLeftNotPresentGet: other should not be null");
+    }
+    if (!isLeftPresent()) {
+      return other.get();
+    }
+    return left;
+  }
+
+  /**
    * If left has a value apply the consumer to the left value.
    *
    * @param consumer
@@ -269,6 +303,39 @@ public final class Either<E, T> {
     if (isLeftPresent()) {
       consumer.accept(left);
     }
+  }
+
+  /**
+   * Returns provided value if right is not Present.
+   *
+   * @param other
+   *          value to return if left is not present
+   * @return left if left is present else other
+   */
+  public T ifRightNotPresent(T other) {
+    if (!isRightPresent()) {
+      return other;
+    }
+    return right;
+  }
+
+  /**
+   * Returns value provided by a provider if right is not Present.
+   *
+   * @param other
+   *          value to return if right is not present
+   * @return right if right is present else value provided by other
+   * @throws NullPointerException
+   *           if other is null
+   */
+  public T ifRightNotPresentGet(Supplier<? extends T> other) {
+    if (null == other) {
+      throw new NullPointerException("Either.ifRightNotPresentGet: other should not be null");
+    }
+    if (!isRightPresent()) {
+      return other.get();
+    }
+    return right;
   }
 
   /**
@@ -335,6 +402,8 @@ public final class Either<E, T> {
     }
     return Optional.ofNullable(mapper.apply(left));
   }
+
+  // <? extends T> other
 
   /**
    * If a right value is present, apply the provided mapping function to it, and if the result is non-null, return an

@@ -10,6 +10,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -234,6 +235,86 @@ public class EitherTest {
   public void hashCodeOnEmptyEitherWorks() {
     sut = Either.empty();
     assertTrue(sut.hashCode() > 0);
+  }
+
+  @Test
+  public void ifLeftNotPresentOther() {
+    final IllegalStateException other = new IllegalStateException("other");
+    sut = Either.empty();
+    final IllegalStateException actual = sut.ifLeftNotPresent(other);
+    assertEquals(other, actual);
+  }
+
+  @Test
+  public void ifLeftNotPresentOtherGet() {
+    final Supplier<IllegalStateException> other = () -> new IllegalStateException("other");
+    sut = Either.empty();
+    final IllegalStateException actual = sut.ifLeftNotPresentGet(other);
+    assertEquals(other, actual);
+  }
+
+  @Test
+  public void ifLeftNotPresentOtherGetWithNullSupplierThrowsNullPointerException() {
+    final Supplier<IllegalStateException> other = null;
+    sut = Either.empty();
+    exception.expect(NullPointerException.class);
+    sut.ifLeftNotPresentGet(other);
+  }
+
+  @Test
+  public void ifLeftPresentNotOther() {
+    final IllegalStateException other = new IllegalStateException("other");
+    sut = Either.ofLeft(left);
+    final IllegalStateException actual = sut.ifLeftNotPresent(other);
+    assertEquals(left, actual);
+  }
+
+  @Test
+  public void ifLeftPresentNotOtherGet() {
+    final Supplier<IllegalStateException> other = () -> new IllegalStateException("other");
+    sut = Either.ofLeft(left);
+    final IllegalStateException actual = sut.ifLeftNotPresentGet(other);
+    assertEquals(left, actual);
+  }
+
+  @Test
+  public void ifRightNotPresentOther() {
+    final String other = "other";
+    sut = Either.empty();
+    final String actual = sut.ifRightNotPresent(other);
+    assertEquals(other, actual);
+  }
+
+  @Test
+  public void ifRightNotPresentOtherGet() {
+    final Supplier<String> other = () -> "other";
+    sut = Either.empty();
+    final String actual = sut.ifRightNotPresentGet(other);
+    assertEquals(other, actual);
+  }
+
+  @Test
+  public void ifRightNotPresentOtherGetWithNullSupplierThrowsNullPointerException() {
+    final Supplier<String> other = null;
+    sut = Either.empty();
+    exception.expect(NullPointerException.class);
+    sut.ifRightNotPresentGet(other);
+  }
+
+  @Test
+  public void ifRightPresentNotOther() {
+    final String other = "other";
+    sut = Either.ofRight(right);
+    final String actual = sut.ifRightNotPresent(other);
+    assertEquals(right, actual);
+  }
+
+  @Test
+  public void ifRightPresentNotOtherGet() {
+    final Supplier<String> other = () -> "other";
+    sut = Either.ofRight(right);
+    final String actual = sut.ifRightNotPresentGet(other);
+    assertEquals(right, actual);
   }
 
   /**
