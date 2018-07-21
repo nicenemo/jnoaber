@@ -13,7 +13,7 @@ public interface WithNoaber extends //
     WithIdentity, //
     WithLogic, //
     WithMapReduce, //
-    WithPatternMatching,
+    /* WithPatternMatching, */
     WithStats,
     WithStream {
   // facade that combines other interfaces into one interface to be extended
