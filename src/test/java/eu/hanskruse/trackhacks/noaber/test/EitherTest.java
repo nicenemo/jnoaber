@@ -262,6 +262,22 @@ public class EitherTest {
   }
 
   @Test
+  public void ifLeftNotPresentThrow() {
+    final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
+    sut = Either.empty();
+    exception.expect(IllegalArgumentException.class);
+    sut.ifLeftNotPresentThrow(thrower);
+  }
+
+  @Test
+  public void ifLeftPresentDoNotThrow() {
+    final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
+    sut = Either.ofLeft(left);
+    final IllegalStateException actual = sut.ifLeftNotPresentThrow(thrower);
+    assertEquals(left, actual);
+  }
+
+  @Test
   public void ifLeftPresentNotOther() {
     final IllegalStateException other = new IllegalStateException("other");
     sut = Either.ofLeft(left);
@@ -299,6 +315,22 @@ public class EitherTest {
     sut = Either.empty();
     exception.expect(NullPointerException.class);
     sut.ifRightNotPresentGet(other);
+  }
+
+  @Test
+  public void ifRightNotPresentThrow() {
+    final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
+    sut = Either.empty();
+    exception.expect(IllegalArgumentException.class);
+    sut.ifRightNotPresentThrow(thrower);
+  }
+
+  @Test
+  public void ifRightPresentDoNotThrow() {
+    final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
+    sut = Either.ofRight(right);
+    final String actual = sut.ifRightNotPresentThrow(thrower);
+    assertEquals(left, actual);
   }
 
   @Test
