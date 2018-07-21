@@ -99,6 +99,24 @@ public class EitherTest {
   }
 
   @Test
+  public void emptyEqualsEmpty() {
+    sut = Either.empty();
+    assertTrue(sut.equals(Either.empty()));
+  }
+
+  @Test
+  public void emptyEqualsNullableLeftWithNull() {
+    sut = Either.empty();
+    assertTrue(sut.equals(Either.ofNullableLeft(null)));
+  }
+
+  @Test
+  public void emptyEqualsNullableRightWithNull() {
+    sut = Either.empty();
+    assertTrue(sut.equals(Either.ofNullableRight(null)));
+  }
+
+  @Test
   public void emptyWithIfLeftIsNotConsumed() {
     sut = Either.empty();
     sut.ifLeftPresent(consumerCheck::leftConsumer);
@@ -212,6 +230,12 @@ public class EitherTest {
     sut.getRight();
   }
 
+  @Test
+  public void hashCodeOnEmptyEitherWorks() {
+    sut = Either.empty();
+    assertTrue(sut.hashCode() > 0);
+  }
+
   /**
    * Initializes test.
    */
@@ -229,6 +253,30 @@ public class EitherTest {
   }
 
   @Test
+  public void leftEqualEitherWithSameLeftValue() {
+    sut = Either.ofLeft(left);
+    assertTrue(sut.equals(Either.ofLeft(left)));
+  }
+
+  @Test
+  public void leftEqualItSelf() {
+    sut = Either.ofLeft(left);
+    assertTrue(sut.equals(sut));
+  }
+
+  @Test
+  public void leftEqualsDifferentLeftWorks() {
+    sut = Either.ofLeft(left);
+    assertFalse(sut.equals(Either.ofLeft(new IllegalStateException("different"))));
+  }
+
+  @Test
+  public void leftEqualsWithNullWorks() {
+    sut = Either.ofLeft(left);
+    assertFalse(sut.equals(null));
+  }
+
+  @Test
   public void leftGivesLeftPresentTrue() {
     sut = Either.ofLeft(left);
     assertTrue(sut.isLeftPresent());
@@ -238,6 +286,18 @@ public class EitherTest {
   public void leftGivesRightPresentFalse() {
     sut = Either.ofLeft(left);
     assertFalse(sut.isRightPresent());
+  }
+
+  @Test
+  public void leftNotEqualEmpty() {
+    sut = Either.ofLeft(left);
+    assertFalse(sut.equals(Either.empty()));
+  }
+
+  @Test
+  public void leftNotEqualRight() {
+    sut = Either.ofLeft(left);
+    assertFalse(sut.equals(Either.ofRight(right)));
   }
 
   @Test
@@ -349,6 +409,37 @@ public class EitherTest {
   }
 
   @Test
+  public void rightEqualEitherWithSameRightValue() {
+    sut = Either.ofRight(right);
+    assertTrue(sut.equals(Either.ofRight(right)));
+  }
+
+  @Test
+  public void rightEqualItSelf() {
+    sut = Either.ofRight(right);
+    assertTrue(sut.equals(sut));
+  }
+
+  @Test
+  public void rightEqualsDifferentRightWorks() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.equals(Either.ofRight("different")));
+  }
+
+  @SuppressWarnings("unlikely-arg-type")
+  @Test
+  public void rightEqualsSomethingDifferentWorks() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.equals("different"));
+  }
+
+  @Test
+  public void rightEqualsWithNullWorks() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.equals(null));
+  }
+
+  @Test
   public void rightGivesLeftPresentFalse() {
     sut = Either.ofRight(right);
     assertFalse(sut.isLeftPresent());
@@ -358,6 +449,18 @@ public class EitherTest {
   public void rightGivesRightPresentTrue() {
     sut = Either.ofRight(right);
     assertTrue(sut.isRightPresent());
+  }
+
+  @Test
+  public void rightNotEqualEmpty() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.equals(Either.empty()));
+  }
+
+  @Test
+  public void rightNotEqualLeft() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.equals(Either.ofLeft(left)));
   }
 
   @Test
@@ -377,30 +480,7 @@ public class EitherTest {
   @Test
   public void toStringOnEmptyEitherWorks() {
     sut = Either.empty();
-    assertTrue(sut.toString().length()>0);
+    assertTrue(sut.toString().length() > 0);
   }
 
-  @Test
-  public void hashCodeOnEmptyEitherWorks() {
-    sut = Either.empty();
-    assertTrue(sut.hashCode()>0);
-  }
-
-  @Test
-  public void emptyEqualsEmpty() {
-    sut =Either.empty();
-       assertTrue(sut.equals(Either.empty()));
-  }
-
-  @Test
-  public void emptyEqualsNullableLeftWithnull() {
-    sut =Either.empty();
-       assertTrue(sut.equals(Either.ofNullableLeft(null)));
-  }
-
-  @Test
-  public void emptyEqualsNullableRightWithnull() {
-    sut =Either.empty();
-       assertTrue(sut.equals(Either.ofNullableRight(null)));
-  }
 }
