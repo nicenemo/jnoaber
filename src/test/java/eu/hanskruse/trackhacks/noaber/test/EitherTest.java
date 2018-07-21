@@ -492,9 +492,38 @@ public class EitherTest {
   }
 
   @Test
+  public void swapEmptyIsEmpty() {
+    sut = Either.empty();
+    assertEquals(sut, sut.swap());
+  }
+
+  @Test
+  public void swapLeftGivesIsLeftPresentFalse() {
+    sut = Either.ofLeft(left);
+    assertFalse(sut.swap().isLeftPresent());
+  }
+
+  @Test
+  public void swapLeftGivesLeftOngetRight() {
+    sut = Either.ofLeft(left);
+    assertEquals(left, sut.swap().getRight());
+  }
+
+  @Test
+  public void swapRightGivesRightOngetLeft() {
+    sut = Either.ofRight(right);
+    assertEquals(right, sut.swap().getLeft());
+  }
+
+  @Test
+  public void swapRightGivesRightPresentFalse() {
+    sut = Either.ofRight(right);
+    assertFalse(sut.swap().isRightPresent());
+  }
+
+  @Test
   public void toStringOnEmptyEitherWorks() {
     sut = Either.empty();
     assertTrue(sut.toString().length() > 0);
   }
-
 }

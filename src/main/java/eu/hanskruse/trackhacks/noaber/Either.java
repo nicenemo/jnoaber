@@ -359,6 +359,18 @@ public final class Either<E, T> {
     return Optional.ofNullable(mapper.apply(right));
   }
 
+  /**
+   * Gets a new Either With left and right Swapped.
+   *
+   * @return Swapped Either;
+   */
+  public Either<T, E> swap() {
+    if (isEmpty()) {
+      return empty();
+    }
+    return new Either<>(right, left);
+  }
+
   /*
    * (non-Javadoc)
    * @see java.lang.Object#toString()
