@@ -18,7 +18,6 @@
     <mvncheckstyle.version>3.0.0</mvncheckstyle.version>
     <mvnpmd.version>3.10.0</mvnpmd.version>
     <mvnfindbugs.version>3.0.5</mvnfindbugs.version>
-    <owaspdepcheck.version>3.2.1</owaspdepcheck.version>
     <checkstyle.configLocation>hans_kruse_checks.xml</checkstyle.configLocation>
     <checkstyle.suppressionsLocation>suppressions.xml</checkstyle.suppressionsLocation>
     <pmd.configLocation>hans_kruse_pmd-ruleset.xml</pmd.configLocation>
@@ -58,22 +57,6 @@
   <build>
     <defaultGoal>install</defaultGoal>
     <plugins>
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>${owaspdepcheck.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <cveValidForHours>12</cveValidForHours>
-          <failBuildOnCVSS>4</failBuildOnCVSS>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -266,21 +249,6 @@
   </build>
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>${owaspdepcheck.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-        <configuration>
-          <format>all</format>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
