@@ -7,6 +7,6 @@ package eu.hanskruse.trackhacks.testdata.food;
  * @since 1.0.0
  *
  */
-public abstract class Food {
+public class Food {
  // Do nothing
 }

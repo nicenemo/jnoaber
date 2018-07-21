@@ -96,9 +96,9 @@ public interface WithPatternMatching {
    */
   default <T> FunctionalPredicateWrapper<T, T> whenClass(final Class<T> clazz) {
     requireNonNull(clazz);
-    return whenPredicate(t -> nonNull(t) && t.getClass().isAssignableFrom(clazz));
+    return whenPredicate(t -> nonNull(t) &&  clazz.isInstance(t) );
   }
-
+  
   /**
    * When wraps a value as predicate.
    * 
@@ -168,23 +168,8 @@ public interface WithPatternMatching {
    *          cases to match with
    * @return a patter matcher to match the cases with
    */
-  default <T, R> PatternMatcher<T, R> with(final Case<T, R>... cases) {
+  default <T, R> PatternMatcher<T, R> with(@SuppressWarnings("unchecked") final Case<T, R>... cases) {
     return new PatternMatcher<>(cases);
-  }
-  
-  /**
-   * A function returns true when a given value is not null and assignable from clazz.
-   * @param clazz clazz to match the value against.
-   * @param value value to match against clazz
-   * @return true if value is not null and is assignable from clazz
-   */
-  default <T> boolean classMatches(Class<T> clazz,Object value){
-    return nonNull(value) && value.getClass().isAssignableFrom(clazz);
-  }
-  
-  @SuppressWarnings("unchecked")
-  default <T> Predicate<Object> classMatches(Class<T> clazz){
-    return (Predicate<Object>) noaber().rightApply(this::classMatches, clazz);        
   }
 }
   

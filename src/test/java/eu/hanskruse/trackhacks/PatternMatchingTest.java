@@ -1,16 +1,24 @@
 package eu.hanskruse.trackhacks;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
-
 import org.junit.Test;
 import org.quicktheories.WithQuickTheories;
 
-import eu.hanskruse.trackhacks.noaber.WithPatternMatching;
+import eu.hanskruse.trackhacks.noaber.Case;
+import eu.hanskruse.trackhacks.noaber.WithNoaber;
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
+import eu.hanskruse.trackhacks.testdata.food.FastFood;
+import eu.hanskruse.trackhacks.testdata.food.Food;
+import eu.hanskruse.trackhacks.testdata.food.Fruit;
+import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
 import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Braeburn;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Fuji;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McIntosh;
 
 /**
  * Pattern matching examples.
@@ -18,7 +26,7 @@ import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
  * @author Hans Kruse
  *
  */
-public class PatternMatchingTest implements WithQuickTheories, WithPatternMatching {
+public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
 
   /**
    * FizzBuzz example.
@@ -38,21 +46,45 @@ public class PatternMatchingTest implements WithQuickTheories, WithPatternMatchi
     });
   }
   
-  /**
-   * A class should match an instance of itself
-   */
-  @Test
-  public void classMatchesInstanceOfItself() {
-    assertTrue(classMatches(Elstar.class).test(new Elstar()));
+  public  boolean isApple(final Object o) {
+   return whenClass(Apple.class).then(Boolean.TRUE).apply(o).isPresent();
   }
   
   
-  /**
-   * A class should match an instance of itself
-   */
+  @Test 
+  public void anElstartIsAnApple() {
+    assertTrue(isApple(new Elstar()));
+  }
+  
+  @Test 
+  public void aHamburgerIsNotAnApple() {
+    assertFalse(isApple(new Hamburger()));
+  }
+  
   @Test
-  public void classMatchesInstanceOfADirectSubClass() {
-    assertTrue(classMatches(Apple.class).test(new Elstar()));
+  public void aa() {
+   final Case<Elstar, String> caseClause= whenClass(Elstar.class).then(x -> "Elstar"+ x.getClass());
+   Optional<String> result =match(new Elstar()).with(caseClause);
+   assertTrue(result.isPresent());
+  }
+  
+  @Test
+  public void classMatchingExample() {
+      final Fruit o = new Elstar();
+      final Optional<String> result = //
+         match(o).with(//
+             whenClass(Elstar.class).then("Elstar"),
+             whenClass(Fuji.class).then("Fuji"),
+             whenClass(Braeburn.class).then("Braeburn"),
+             whenClass(McIntosh.class).then("McIntosh"),
+             whenClass(Apple.class).then(a ->"Not a known apple: "+ a.getClass().getName()),
+             whenClass(Fruit.class).then(a ->"Not an Apple but it is fruit: "+ a.getClass().getName()),
+             whenClass(FastFood.class).then(a ->"Not an Apple but fastfood :( : "+ a.getClass().getName()),
+             whenClass(Food.class).then(a ->"Not an apple but you can eat it! : "+ a.getClass().getName()),
+             orElse(n -> "Not edible" + n)//
+      );
+      //result.ifPresent(System.err::println);
+      assertTrue(result.isPresent());
   }
   
   /**

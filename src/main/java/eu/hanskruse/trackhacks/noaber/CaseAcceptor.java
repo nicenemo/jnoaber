@@ -34,7 +34,7 @@ public final class CaseAcceptor<T> {
    *         empty or null Optional.empty() will be returned.
    */
   @SafeVarargs
-  public final <R> Optional<R> with(final Case<T, R>... cases) {
+  public final <R> Optional<? extends R> with(final Case<? super T, R>... cases) {
     if (isNull(cases)) {
       return Optional.empty();
     }

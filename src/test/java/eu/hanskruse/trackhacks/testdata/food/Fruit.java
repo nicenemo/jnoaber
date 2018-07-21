@@ -10,6 +10,6 @@ package eu.hanskruse.trackhacks.testdata.food;
  * @version 1.0.0
  * @since 1.0.0
  */
-public abstract class Fruit extends Food {
+public class Fruit extends Food {
  // Do nothing
 }
