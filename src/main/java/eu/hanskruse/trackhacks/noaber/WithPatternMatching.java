@@ -20,7 +20,7 @@ public interface WithPatternMatching {
 
   /**
    * Composes a predicate with the identity function.
-   * 
+   *
    * @param predicate
    *          predicate to compose with
    * @return FunctionalPredicate
@@ -31,7 +31,7 @@ public interface WithPatternMatching {
 
   /**
    * Composes a predicate and a function.
-   * 
+   *
    * @param predicate
    *          predicate to compose with
    * @param function
@@ -56,7 +56,7 @@ public interface WithPatternMatching {
 
   /**
    * Match captures the value to match against returning a CaseAcceptor.
-   * 
+   *
    * @param value
    *          the value to capture
    * @return a CaseAcceptor.
@@ -67,7 +67,7 @@ public interface WithPatternMatching {
 
   /**
    * Default case.
-   * 
+   *
    * @param f
    *          function to perform on default case
    * @return default case
@@ -78,7 +78,7 @@ public interface WithPatternMatching {
 
   /**
    * Default case.
-   * 
+   *
    * @param result
    *          to return
    * @return default case
@@ -89,7 +89,7 @@ public interface WithPatternMatching {
 
   /**
    * When wraps a class as predicate to match against that class.
-   * 
+   *
    * @param clazz
    *          class to match
    * @return PredicateWrapper
@@ -98,10 +98,10 @@ public interface WithPatternMatching {
     requireNonNull(clazz);
     return whenPredicate(t -> nonNull(t) &&  clazz.isInstance(t) );
   }
-  
+
   /**
    * When wraps a value as predicate.
-   * 
+   *
    * @param ppredicate
    *          predicate
    * @param result
@@ -115,7 +115,7 @@ public interface WithPatternMatching {
 
   /**
    * When wraps a value as predicate.
-   * 
+   *
    * @param ppredicate
    *          predicate
    * @param result
@@ -128,7 +128,7 @@ public interface WithPatternMatching {
 
   /**
    * When wraps a regular expression pattern as predicate.
-   * 
+   *
    * @param pattern
    *          to match against
    * @return PredicateWrapper
@@ -140,7 +140,7 @@ public interface WithPatternMatching {
 
   /**
    * When wraps a regular expression pattern as predicate.
-   * 
+   *
    * @param pattern
    *          to match against
    * @return PredicateWrapper
@@ -152,7 +152,7 @@ public interface WithPatternMatching {
 
   /**
    * When wraps a value as predicate to match for equality.
-   * 
+   *
    * @param value
    *          to match
    * @return PredicateWrapper
@@ -163,7 +163,7 @@ public interface WithPatternMatching {
 
   /**
    * Creates a pattern matcher to match with.
-   * 
+   *
    * @param cases
    *          cases to match with
    * @return a patter matcher to match the cases with
@@ -172,4 +172,4 @@ public interface WithPatternMatching {
     return new PatternMatcher<>(cases);
   }
 }
-  
+

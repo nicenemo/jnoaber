@@ -16,7 +16,7 @@ import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
 
 /**
  * Pattern matching examples.
- * 
+ *
  * @author Hans Kruse
  *
  */
@@ -40,22 +40,22 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
       return result.isPresent();
     });
   }
-  
+
   public  boolean isApple(final Object o) {
    return whenClass(Apple.class).then(Boolean.TRUE).apply((Apple) o).isPresent();
   }
-  
-  
-  @Test 
+
+
+  @Test
   public void anElstartIsAnApple() {
     assertTrue(isApple(new Elstar()));
   }
-  
-  @Test 
+
+  @Test
   public void aHamburgerIsNotAnApple() {
     assertFalse(isApple(new Hamburger()));
   }
-  
+
   @Test
   public void aa() {
    final Case<Elstar, String> caseClause= whenClass(Elstar.class).then(x -> "Elstar"+ x.getClass());
@@ -63,7 +63,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
   Optional<String> result =(Optional<String>) match(new Elstar()).with(caseClause);
    assertTrue(result.isPresent());
   }
-  
+
   /*
   @Test
   public void classMatchingExample() {
@@ -83,7 +83,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
       //result.ifPresent(System.err::println);
       assertTrue(result.isPresent());
   }*/
-  
+
   /**
    * Class matching example.
    */

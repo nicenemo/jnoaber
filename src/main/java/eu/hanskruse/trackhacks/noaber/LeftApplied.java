@@ -13,7 +13,7 @@ import java.util.function.BiFunction;
 public class LeftApplied<T,V,R> {
   private final BiFunction<T,V,R> bf;
   private final T l;
-  
+
   /**
    * Creates a LefApplied.
    * @param biFunction BiFunction to wrap
@@ -23,7 +23,7 @@ public class LeftApplied<T,V,R> {
     this.bf = biFunction;
     this.l = left;
   }
-  
+
   /**
    * Apply the right parameter.
    * @param right right parameter

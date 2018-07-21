@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 /**
  * Wraps a FunctionalPredicate.
- * 
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -16,7 +16,7 @@ import java.util.function.Function;
  * @param <W> type of the function result of the FunctionalPredicate
  * @param <T>
  *          type of the predicate argument
- *          
+ *
  */
 public class FunctionalPredicateWrapper<T, W> {
 
@@ -25,7 +25,7 @@ public class FunctionalPredicateWrapper<T, W> {
 
   /**
    * Creates a PredicateWrapper.
-   * 
+   *
    * @param value
    *          FunctionalPredicate to wrap.
    */
@@ -36,7 +36,7 @@ public class FunctionalPredicateWrapper<T, W> {
 
   /**
    * function to execute when the wrapped predicate is true.
-   * 
+   *
    * @param f
    *          function to execute
    * @return a Case

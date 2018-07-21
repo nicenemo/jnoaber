@@ -12,7 +12,7 @@ import java.util.function.BiPredicate;
 public class LeftAppliedPredicate<T,V> {
   private final BiPredicate<T,V> bf;
   private final T l;
-  
+
   /**
    * Creates a RightAppliedPredicate.
    * @param biFunction BiFunction to wrap
@@ -22,7 +22,7 @@ public class LeftAppliedPredicate<T,V> {
     this.bf = biPredicate;
     this.l = left;
   }
-  
+
   /**
    * Apply the right parameter.
    * @param right right parameter

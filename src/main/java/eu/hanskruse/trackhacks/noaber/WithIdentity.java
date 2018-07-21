@@ -10,7 +10,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -21,7 +21,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -32,7 +32,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -43,7 +43,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -54,7 +54,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -65,7 +65,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -76,7 +76,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -87,7 +87,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -98,7 +98,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -109,7 +109,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -120,7 +120,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -131,7 +131,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -142,7 +142,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -153,7 +153,7 @@ public interface WithIdentity {
 
   /**
    * Identity function that only returns it's arguments.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument
@@ -164,7 +164,7 @@ public interface WithIdentity {
 
   /**
    * Identity Function that only returns its arguments.
-   * 
+   *
    * @param argument
    *          argument to return
    * @return argument

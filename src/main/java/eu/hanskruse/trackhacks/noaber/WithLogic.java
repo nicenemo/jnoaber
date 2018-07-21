@@ -13,7 +13,7 @@ public interface WithLogic {
 
   /**
    * Gets a predicate of a predicate on the supplied items
-   * 
+   *
    * @param items
    *          the items to apply an predicate over with an or in short circuit fashion
    * @return a predicate of a predicate.
@@ -24,7 +24,7 @@ public interface WithLogic {
 
   /**
    * Applies a predicate of supplied items and or them in short circuit fashion.
-   * 
+   *
    * @param predicate
    *          the predicate to apply to the supplied items
    * @param items
@@ -45,7 +45,7 @@ public interface WithLogic {
 
   /**
    * Applies a predicate of supplied items and or them in short circuit fashion.
-   * 
+   *
    * @param predicate
    *          the predicate to apply to the supplied items
    * @param items
@@ -134,7 +134,7 @@ public interface WithLogic {
 
   /**
    * Gets a predicate of a predicate on the supplied items
-   * 
+   *
    * @param items
    *          the items to apply an predicate over with an or in short circuit fashion
    * @return a predicate of a predicate.

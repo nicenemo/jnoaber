@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package eu.hanskruse.trackhacks.testdata.food;
 

@@ -2,7 +2,7 @@ package eu.hanskruse.trackhacks.testdata;
 
 /**
  * Modeling the classic fizzbuzz puzzle to be used in a pattern matching use case.
- * 
+ *
  * @author Hans Kruse
  *
  */
@@ -10,7 +10,7 @@ public final class FizzBuzz {
 
   /**
    * buzz.
-   * 
+   *
    * @param n
    *          the number to check
    * @return true if and only if n can be divided by 5.
@@ -21,7 +21,7 @@ public final class FizzBuzz {
 
   /**
    * fizz.
-   * 
+   *
    * @param n
    *          the number to check
    * @return true if and only if n can be divided by 3.
@@ -32,7 +32,7 @@ public final class FizzBuzz {
 
   /**
    * fizzBuzz.
-   * 
+   *
    * @param n
    *          the number to check
    * @return true if and only if n can be divided by both 3 and 5.

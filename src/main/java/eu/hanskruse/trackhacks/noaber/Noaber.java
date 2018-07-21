@@ -15,7 +15,7 @@ public final class Noaber implements WithNoaber {
 
   /**
    * Shorthand for getting singleton instance of WithNoaber.
-   * 
+   *
    * @return WithNoaber
    */
   public static WithNoaber $() {
@@ -24,7 +24,7 @@ public final class Noaber implements WithNoaber {
 
   /**
    * Gets a WithNoaber instance.
-   * 
+   *
    * @return WithNoaber
    */
   public static WithNoaber noaber() {

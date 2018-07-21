@@ -4,7 +4,7 @@ import java.util.Optional;
 
 /**
  * A Pattern matcher that captures cases to match with.
- * 
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -20,7 +20,7 @@ public final class PatternMatcher<T, R> {
 
   /**
    * Creates a pattern matcher.
-   * 
+   *
    * @param caseValues
    *          the cases
    */
@@ -31,7 +31,7 @@ public final class PatternMatcher<T, R> {
 
   /**
    * match.
-   * 
+   *
    * @param value
    *          value to match
    * @return result of the match

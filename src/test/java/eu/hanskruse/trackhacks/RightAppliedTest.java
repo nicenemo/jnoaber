@@ -19,20 +19,20 @@ public class RightAppliedTest {
   public void testRightAppliedAnApple() {
     assertTrue(isApple(new McIntosh()));
   }
- 
+
   @SuppressWarnings("static-method")
   @Test
   public void testRightAppliedAHamburger() {
     assertFalse(isApple(new Hamburger()));
   }
-  
+
   public static Predicate<Object> matchClass(final Class<?> clazz){
      return o -> clazz.isInstance(o);
   }
- 
-  
+
+
   public static boolean isApple(final Object o) {
     return matchClass(Apple.class).test(o);
   }
-  
+
 }

@@ -32,7 +32,7 @@ public class ComposeTest extends TestCase {
 
   /**
    * Inc function that returns argument + 1.
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument+1
@@ -43,7 +43,7 @@ public class ComposeTest extends TestCase {
 
   /**
    * Inc function that returns argument+1
-   * 
+   *
    * @param argument
    *          the argument to return
    * @return argument+1
