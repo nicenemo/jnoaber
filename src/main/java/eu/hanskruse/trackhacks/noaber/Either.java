@@ -53,7 +53,7 @@ public final class Either<E, T> {
    */
   public static <E1, T1> Either<E1, T1> ofLeft(final E1 left) {
     if (null == left) {
-      throw new NullPointerException("Left should not be null.");
+      throw new NullPointerException("Either.ofLeft: Left should not be null.");
     }
     return new Either<>(left, null);
   }
@@ -109,7 +109,7 @@ public final class Either<E, T> {
    */
   public static <E1, T1> Either<E1, T1> ofRight(final T1 right) {
     if (null == right) {
-      throw new NullPointerException("Right should not be null.");
+      throw new NullPointerException("Either.ofRight: Right should not be null.");
     }
     return new Either<>(null, right);
   }
@@ -181,7 +181,7 @@ public final class Either<E, T> {
    */
   public Optional<E> filterLeft(Predicate<? super E> predicate) {
     if (null == predicate) {
-      throw new NullPointerException("Predicate should not be null");
+      throw new NullPointerException("Either.filterLeft: Predicate should not be null");
     }
     if (!isLeftPresent()) {
       return Optional.empty();
@@ -208,7 +208,7 @@ public final class Either<E, T> {
    */
   public Optional<T> filterRight(Predicate<? super T> predicate) {
     if (null == predicate) {
-      throw new NullPointerException("Predicate should not be null");
+      throw new NullPointerException("Either.filterRight: Predicate should not be null");
     }
     if (!isRightPresent()) {
       return Optional.empty();
@@ -226,7 +226,7 @@ public final class Either<E, T> {
    */
   public E getLeft() {
     if (!isLeftPresent()) {
-      throw new NoSuchElementException("Left is not present.");
+      throw new NoSuchElementException("Either.getLeft: Left is not present.");
     }
     return left;
   }
@@ -238,7 +238,7 @@ public final class Either<E, T> {
    */
   public T getRight() {
     if (!isRightPresent()) {
-      throw new NoSuchElementException("right is not present.");
+      throw new NoSuchElementException("Either.getRight: right is not present.");
     }
     return right;
   }
@@ -289,7 +289,7 @@ public final class Either<E, T> {
   /**
    * True if neither left or right are present.
    *
-   * @return true if neither eft or right are present
+   * @return true if neither left or right are present
    */
   public boolean isEmpty() {
     return !isLeftPresent() && !isRightPresent();
@@ -328,7 +328,7 @@ public final class Either<E, T> {
    */
   public <U> Optional<? extends U> mapLeft(Function<? super E, ? extends U> mapper) {
     if (null == mapper) {
-      throw new NullPointerException("Mapper should not be null");
+      throw new NullPointerException("Either.mapLeft: Mapper should not be null");
     }
     if (!isLeftPresent()) {
       return Optional.empty();
@@ -351,7 +351,7 @@ public final class Either<E, T> {
    */
   public <U> Optional<? extends U> mapRight(Function<? super T, ? extends U> mapper) {
     if (null == mapper) {
-      throw new NullPointerException("Mapper should not be null");
+      throw new NullPointerException("Either.mapRight: Mapper should not be null");
     }
     if (!isRightPresent()) {
       return Optional.empty();
