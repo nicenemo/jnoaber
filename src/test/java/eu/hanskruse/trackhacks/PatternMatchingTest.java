@@ -1,12 +1,24 @@
 package eu.hanskruse.trackhacks;
 
-import java.util.Optional;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Optional;
 import org.junit.Test;
 import org.quicktheories.WithQuickTheories;
 
-import eu.hanskruse.trackhacks.noaber.WithPatternMatching;
+import eu.hanskruse.trackhacks.noaber.Case;
+import eu.hanskruse.trackhacks.noaber.WithNoaber;
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
+import eu.hanskruse.trackhacks.testdata.food.FastFood;
+import eu.hanskruse.trackhacks.testdata.food.Food;
+import eu.hanskruse.trackhacks.testdata.food.Fruit;
+import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
+import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Braeburn;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Fuji;
+import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McIntosh;
 
 /**
  * Pattern matching examples.
@@ -14,7 +26,7 @@ import eu.hanskruse.trackhacks.testdata.FizzBuzz;
  * @author Hans Kruse
  *
  */
-public class PatternMatchingTest implements WithQuickTheories, WithPatternMatching {
+public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
 
   /**
    * FizzBuzz example.
@@ -22,15 +34,79 @@ public class PatternMatchingTest implements WithQuickTheories, WithPatternMatchi
   @Test
   public void fizzBuzzExample() {
     qt().forAll(integers().all()).check(i -> {
-      final Optional<String> r = //
+      final Optional<String> result = //
           match(i).with(//
               whenPredicate(FizzBuzz::fizzBuzz).then(n -> "FizzBuzz:" + n),
               whenPredicate(FizzBuzz::fizz).then(n -> "Fizz:" + n),
               whenPredicate(FizzBuzz::buzz).then(n -> "Buzz:" + n), //
               orElse(n -> "Something else:" + n)//
       );
-      r.ifPresent(System.err::println);
-      return r.isPresent();
+      //result.ifPresent(System.err::println);
+      return result.isPresent();
     });
   }
+  
+  public  boolean isApple(final Object o) {
+   return whenClass(Apple.class).then(Boolean.TRUE).apply(o).isPresent();
+  }
+  
+  
+  @Test 
+  public void anElstartIsAnApple() {
+    assertTrue(isApple(new Elstar()));
+  }
+  
+  @Test 
+  public void aHamburgerIsNotAnApple() {
+    assertFalse(isApple(new Hamburger()));
+  }
+  
+  @Test
+  public void aa() {
+   final Case<Elstar, String> caseClause= whenClass(Elstar.class).then(x -> "Elstar"+ x.getClass());
+   Optional<String> result =match(new Elstar()).with(caseClause);
+   assertTrue(result.isPresent());
+  }
+  
+  @Test
+  public void classMatchingExample() {
+      final Fruit o = new Elstar();
+      final Optional<String> result = //
+         match(o).with(//
+             whenClass(Elstar.class).then("Elstar"),
+             whenClass(Fuji.class).then("Fuji"),
+             whenClass(Braeburn.class).then("Braeburn"),
+             whenClass(McIntosh.class).then("McIntosh"),
+             whenClass(Apple.class).then(a ->"Not a known apple: "+ a.getClass().getName()),
+             whenClass(Fruit.class).then(a ->"Not an Apple but it is fruit: "+ a.getClass().getName()),
+             whenClass(FastFood.class).then(a ->"Not an Apple but fastfood :( : "+ a.getClass().getName()),
+             whenClass(Food.class).then(a ->"Not an apple but you can eat it! : "+ a.getClass().getName()),
+             orElse(n -> "Not edible" + n)//
+      );
+      //result.ifPresent(System.err::println);
+      assertTrue(result.isPresent());
+  }
+  
+  /**
+   * Class matching example.
+   */
+  /*
+  @Test
+  public void classMatchingExample() {
+      final Food food = new Hamburger();
+      final Optional<String> result = //
+         match(new Elstar()).with(//
+             whenClass(Elstar.class).then("Elstar"),
+             whenClass(Fuji.class).then("Fuji"),
+             whenClass(Braeburn.class).then("Braeburn"),
+             whenClass(McIntosh.class).then("McIntosh"),
+             whenClass(Apple.class).then(a ->"Not a known apple: "+ a.getClass().getName()),
+             whenClass(Fruit.class).then(a ->"Not an Apple but it is fruit: "+ a.getClass().getName()),
+             whenClass(FastFood.class).then(a ->"Not an Apple but fastfood :( : "+ a.getClass().getName()),
+             whenClass(Food.class).then(a ->"Not an apple but you can eat it! : "+ a.getClass().getName()),
+             orElse(n -> "Not edible" + n)//
+      );
+      //result.ifPresent(System.err::println);
+      assertTrue(result.isPresent());
+  }*/
 }

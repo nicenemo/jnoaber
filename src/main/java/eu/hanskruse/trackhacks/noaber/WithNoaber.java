@@ -10,11 +10,9 @@ package eu.hanskruse.trackhacks.noaber;
  */
 public interface WithNoaber extends //
     WithCompose, //
-    WithCurry, //
     WithIdentity, //
     WithLogic, //
     WithMapReduce, //
-    WithPartialApplication, //
     WithPatternMatching,
     WithStats,
     WithStream {

@@ -96,9 +96,9 @@ public interface WithPatternMatching {
    */
   default <T> FunctionalPredicateWrapper<T, T> whenClass(final Class<T> clazz) {
     requireNonNull(clazz);
-    return whenPredicate(t -> nonNull(t) && t.getClass().isAssignableFrom(clazz));
+    return whenPredicate(t -> nonNull(t) &&  clazz.isInstance(t) );
   }
-
+  
   /**
    * When wraps a value as predicate.
    * 
@@ -168,7 +168,8 @@ public interface WithPatternMatching {
    *          cases to match with
    * @return a patter matcher to match the cases with
    */
-  default <T, R> PatternMatcher<T, R> with(final Case<T, R>... cases) {
+  default <T, R> PatternMatcher<T, R> with(@SuppressWarnings("unchecked") final Case<T, R>... cases) {
     return new PatternMatcher<>(cases);
   }
 }
+  

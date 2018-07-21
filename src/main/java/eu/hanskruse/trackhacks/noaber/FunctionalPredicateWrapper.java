@@ -41,7 +41,7 @@ public class FunctionalPredicateWrapper<T, W> {
    *          function to execute
    * @return a Case
    */
-  public <R> Case<T, R> then(Function<W, R> f) {
+  public <R> Case<T,R> then(Function<W, R> f) {
 
     return t -> {
       if (isNull(f)) {
