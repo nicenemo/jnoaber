@@ -10,15 +10,9 @@ import org.quicktheories.WithQuickTheories;
 import eu.hanskruse.trackhacks.noaber.Case;
 import eu.hanskruse.trackhacks.noaber.WithNoaber;
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
-import eu.hanskruse.trackhacks.testdata.food.FastFood;
-import eu.hanskruse.trackhacks.testdata.food.Food;
-import eu.hanskruse.trackhacks.testdata.food.Fruit;
 import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
 import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Braeburn;
 import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Fuji;
-import eu.hanskruse.trackhacks.testdata.food.fruit.apples.McIntosh;
 
 /**
  * Pattern matching examples.
@@ -34,20 +28,21 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
   @Test
   public void fizzBuzzExample() {
     qt().forAll(integers().all()).check(i -> {
+      @SuppressWarnings("unchecked")
       final Optional<String> result = //
-          match(i).with(//
-              whenPredicate(FizzBuzz::fizzBuzz).then(n -> "FizzBuzz:" + n),
-              whenPredicate(FizzBuzz::fizz).then(n -> "Fizz:" + n),
-              whenPredicate(FizzBuzz::buzz).then(n -> "Buzz:" + n), //
-              orElse(n -> "Something else:" + n)//
-      );
+          (Optional<String>) match(i).with(//
+          whenPredicate(FizzBuzz::fizzBuzz).then(n -> "FizzBuzz:" + n),
+          whenPredicate(FizzBuzz::fizz).then(n -> "Fizz:" + n),
+          whenPredicate(FizzBuzz::buzz).then(n -> "Buzz:" + n), //
+          orElse(n -> "Something else:" + n)//
+   );
       //result.ifPresent(System.err::println);
       return result.isPresent();
     });
   }
   
   public  boolean isApple(final Object o) {
-   return whenClass(Apple.class).then(Boolean.TRUE).apply(o).isPresent();
+   return whenClass(Apple.class).then(Boolean.TRUE).apply((Apple) o).isPresent();
   }
   
   
@@ -64,10 +59,12 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
   @Test
   public void aa() {
    final Case<Elstar, String> caseClause= whenClass(Elstar.class).then(x -> "Elstar"+ x.getClass());
-   Optional<String> result =match(new Elstar()).with(caseClause);
+   @SuppressWarnings("unchecked")
+  Optional<String> result =(Optional<String>) match(new Elstar()).with(caseClause);
    assertTrue(result.isPresent());
   }
   
+  /*
   @Test
   public void classMatchingExample() {
       final Fruit o = new Elstar();
@@ -85,7 +82,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
       );
       //result.ifPresent(System.err::println);
       assertTrue(result.isPresent());
-  }
+  }*/
   
   /**
    * Class matching example.

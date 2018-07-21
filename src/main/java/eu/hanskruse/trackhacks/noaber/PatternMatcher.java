@@ -36,7 +36,7 @@ public final class PatternMatcher<T, R> {
    *          value to match
    * @return result of the match
    */
-  public Optional<R> match(final T value) {
+  public Optional<? extends R> match(final T value) {
     return new CaseAcceptor<>(value).with(this.cases);
   }
 }
