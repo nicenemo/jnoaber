@@ -8,14 +8,18 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * Either implementation.
+ * Represents a value of one of two possible types. (a disjoint union.)
+ * Instances of {@code Either} are either an instance of {@code left} or {@code right}.
+ * This implementation of {@code Either} also allows for an empty value, where neither {@code left} or @code{right} are set.
+ * A common use of Either is as an alternative to exception handling. Convention in other languages,
+ * such as Scala, is that left is used for the exception and right for the success.
  *
  * @author kruse@hanskruse.eu
  *
  * @param <E>
- *          left field of Either, typically used for errors.
+ *          {code left} type parameter, typically used for errors.
  * @param <T>
- *          right field for Either, typically used for the value if there is no error.
+ *          {@code right} type parameter, typically used for the value if there is no error.
  */
 public final class Either<E, T> {
 
@@ -25,12 +29,12 @@ public final class Either<E, T> {
   private static final Either<?, ?> EMPTY = new Either<>(null, null);
 
   /**
-   * Creates an empty Either.
+   * Creates an empty {@code Either}.
    *
    * @param <E1>
-   *          left type parameter.
+   *          {@code left} type parameter
    * @param <T1>
-   *          right type parameter.
+   *          {@code right} type parameter
    * @return Empty Either.
    */
   public static <E1, T1> Either<E1, T1> empty() {
@@ -40,15 +44,15 @@ public final class Either<E, T> {
   }
 
   /**
-   * Creates an Either with the left value set. Left may not be null.
+   * Creates an {@code Either} with the {@code left} value set. The {@code left} value may not be null.
    *
    * @param <E1>
-   *          left type parameter.
+   *          {@code left} type parameter
    * @param <T1>
-   *          right type parameter.
+   *          {@code right} type parameter
    * @param left
    *          left value
-   * @return Either with left value set
+   * @return {@code Either} with left value set
    * @throws NullPointerException
    *           if left is null
    */
@@ -60,15 +64,15 @@ public final class Either<E, T> {
   }
 
   /**
-   * Creates an Either with the left value set. Left may be null.
+   * Creates an {@code Either} with the {@code left} value set.The {@code left} value may be null.
    *
    * @param <E1>
-   *          left type parameter.
+   *          {@code left} type parameter.
    * @param <T1>
-   *          right type parameter.
+   *          {@code right} type parameter.
    * @param left
-   *          left value
-   * @return Either with left value set
+   *          {@code left} value
+   * @return {@code Either} with {@code left} value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableLeft(final E1 left) {
     if (null == left) {
@@ -78,15 +82,15 @@ public final class Either<E, T> {
   }
 
   /**
-   * Creates an Either with the right value set. Right may be null.
+   * Creates an {@code Either} with the right value set. Right may be null.
    *
    * @param <E1>
-   *          left type parameter.
+   *          {@code left} type parameter
    * @param <T1>
-   *          right type parameter.
+   *          {@code right} type parameter
    * @param right
-   *          right value
-   * @return Either with right value set
+   *          {@code right} value
+   * @return {@code Either} with {@code right} value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableRight(final T1 right) {
     if (null == right) {
@@ -96,17 +100,17 @@ public final class Either<E, T> {
   }
 
   /**
-   * Creates an Either with the right value set. Right may not be null.
+   * Creates an {@code Either} with the right value set. The {@code right} value may not be null.
    *
    * @param <E1>
-   *          left type parameter.
+   *          {@code left} type parameter
    * @param <T1>
-   *          right type parameter.
+   *          {@code right} type parameter
    * @param right
    *          right value
-   * @return Either with right value set
+   * @return {@code Either} with {@code right} value set
    * @throws NullPointerException
-   *           if right is null
+   *           if {@code right} is null
    */
   public static <E1, T1> Either<E1, T1> ofRight(final T1 right) {
     if (null == right) {
@@ -122,10 +126,10 @@ public final class Either<E, T> {
   private final T right;
 
   /**
-   * Creates an Either instance.
+   * Creates an {@code Either} instance.
    *
-   * @param left
-   * @param right
+   * @param left {@code left} value
+   * @param right {@code right} value
    */
   private Either(final E left, final T right) {
     this.left = left;
@@ -147,6 +151,7 @@ public final class Either<E, T> {
     if (getClass() != obj.getClass()) {
       return false;
     }
+    // Best we can do because of type erasure in Java.
     @SuppressWarnings("rawtypes")
     final Either other = (Either) obj;
     if (left == null) {
@@ -167,18 +172,18 @@ public final class Either<E, T> {
   }
 
   /**
-   * If a left value is present,
+   * If a {@code left} value is present,
    * and the value matches the given predicate,
-   * return an Optional describing the value,
-   * otherwise return an empty Optional.
+   * return an {@code Optional} describing the value,
+   * otherwise return an {@code Optional.empty}.
    *
    * @param predicate
-   *          to apply to the left value, if present
-   * @return an Optional describing the value of this Optional
-   *         if a left value is present and the left value matches the given predicate,
+   *          {@code Predicate} to apply to the {@code left} value, if present
+   * @return an {@code Optional} describing filtered {@code left} value,
+   *         if a {@code left} value is present and the {@code left} value matches the given predicate,
    *         otherwise an empty Optional
    * @throws NullPointerException
-   *           if the predicate is null
+   *           if the predicate is null throw a {@code NullPointerException}
    */
   public Optional<E> filterLeft(final Predicate<? super E> predicate) {
     if (null == predicate) {
@@ -194,18 +199,18 @@ public final class Either<E, T> {
   }
 
   /**
-   * If a right value is present,
+  * If a {@code right} value is present,
    * and the value matches the given predicate,
-   * return an Optional describing the value,
-   * otherwise return an empty Optional.
+   * return an {@code Optional} describing the value,
+   * otherwise return an {@code Optional.empty}.
    *
    * @param predicate
-   *          to apply to the right value, if present
-   * @return an Optional describing the value of this Optional
-   *         if a right value is present and the right value matches the given predicate,
+   *          to apply to the {@code right} value, if present
+   * @return an {@code Optional} describing filtered {@code right} value,
+   *         if a {@code right} value is present and the {@code right} value matches the given predicate,
    *         otherwise an empty Optional
    * @throws NullPointerException
-   *           if the predicate is null
+   *           if the predicate is null throw a {@code NullPointerException}
    */
   public Optional<T> filterRight(final Predicate<? super T> predicate) {
     if (null == predicate) {
@@ -221,9 +226,11 @@ public final class Either<E, T> {
   }
 
   /**
-   * Gets the left value.
+   * Gets the {@code left} value.
    *
-   * @return left value
+   * @return left {@code left} value
+   * @throws NoSuchElementException
+   *           a {@code NoSuchElementException} is thrown when {@code left} is not present
    */
   public E getLeft() {
     if (!isLeftPresent()) {
@@ -235,7 +242,9 @@ public final class Either<E, T> {
   /**
    * Gets the right value.
    *
-   * @return right value
+   * @return right  {@code right} value
+   * @throws NoSuchElementException
+   *           a {@code NoSuchElementException} is thrown when {@code right} is not present
    */
   public T getRight() {
     if (!isRightPresent()) {
@@ -258,13 +267,13 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns provided value if left is not Present.
+   * Returns provided {@code other} value if {@code left} is not present.
    *
    * @param other
-   *          value to return if left is not present
-   * @return left if left is present else other
+   *          value to return if {@code left} is not present
+   * @return left if {@code left} is present else other
    */
-  public E ifLeftNotPresent(E other) {
+  public E ifLeftNotPresent(final E other) {
     if (!isLeftPresent()) {
       return other;
     }
@@ -272,15 +281,15 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns value provided by a provider if left is not Present.
+   * Returns value provided by a {@code Provider} if {@code left} is not present.
    *
    * @param other
-   *          provider to provide a value to return if left is not present
-   * @return left if left is present else other
+   *          provider to provide a value to return if {@code left} is not present
+   * @return left if {@code left} is present else other
    * @throws NullPointerException
-   *           if other is null
+   *           throws a {@code NullPointerException} if other is null
    */
-  public E ifLeftNotPresentGet(Supplier<? extends E> other) {
+  public E ifLeftNotPresentGet(final Supplier<? extends E> other) {
     if (null == other) {
       throw new NullPointerException("Either.ifLeftNotPresentGet: other should not be null");
     }
@@ -291,17 +300,17 @@ public final class Either<E, T> {
   }
 
   /**
-   * Throw exception provided by a provider if left is not present.
+   * Throw a {@code Throwable} of type {@code X} provided by a {@code Provider} if {code left} is not present.
    *
    * @param other
-   *          provider to provide exception to throw if left is not present
-   * @return left if left is present else other
+   *          provider to provide exception to throw if {code left} is not present
+   * @return left if {@code left} is present
    * @throws X
-   *           Exception that will be thrown if left is not Present
+   *           {@code Throwable} that will be thrown if {code left} is not present
    * @throws NullPointerException
-   *           if other is null
+   *          throws a {@code NullPointerException} if other is null
    */
-  public <X extends Throwable> E ifLeftNotPresentThrow(Supplier<? extends X> other) throws X {
+  public <X extends Throwable> E ifLeftNotPresentThrow(final Supplier<? extends X> other) throws X {
     if (null == other) {
       throw new NullPointerException("Either.ifLeftNotPresentThrow: other should not be null");
     }
@@ -312,10 +321,12 @@ public final class Either<E, T> {
   }
 
   /**
-   * If left has a value apply the consumer to the left value.
+   * If {code left} has a value apply the {@code Consumer} to the {code left} value.
    *
    * @param consumer
-   *          consumer to apply
+   *          {@code left} to apply if {@code left} is present
+   * @throws NullPointerException
+   *          throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifLeftPresent(final Consumer<? super E> consumer) {
     if (null == consumer) {
@@ -327,13 +338,13 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns provided value if right is not present.
+   * Returns provided {@code other} value if {@code right} is not present.
    *
    * @param other
-   *          value to return if right is not present
-   * @return right if right is present else other
+   *          value to return if {@code right} is not present
+   * @return left if {@code right} is present else other
    */
-  public T ifRightNotPresent(T other) {
+  public T ifRightNotPresent(final T other) {
     if (!isRightPresent()) {
       return other;
     }
@@ -341,15 +352,15 @@ public final class Either<E, T> {
   }
 
   /**
-   * Returns value provided by a provider if right is not present.
+   * Returns value provided by a {@code Provider} if {@code right} is not present.
    *
    * @param other
-   *          provider to provide a value to return if right is not present
-   * @return right if right is present else value provided by other
+   *          provider to provide a value to return if {@code right} is not present
+   * @return right if {@code right} is present else other
    * @throws NullPointerException
-   *           if other is null
+   *          throws a {@code NullPointerException} if other is null
    */
-  public T ifRightNotPresentGet(Supplier<? extends T> other) {
+  public T ifRightNotPresentGet(final Supplier<? extends T> other) {
     if (null == other) {
       throw new NullPointerException("Either.ifRightNotPresentGet: other should not be null");
     }
@@ -360,17 +371,17 @@ public final class Either<E, T> {
   }
 
   /**
-   * Throw exception provided by a provider if right is not present.
+   * Throw a {@code Throwable} of type {@code X} provided by a {@code Provider} if {code right} is not present.
    *
    * @param other
-   *          provider to provide exception to throw if right is not present
-   * @return right if right is present else other
+   *          provider to provide exception to throw if {code right} is not present
+   * @return right if {@code right} is present
    * @throws X
-   *           Exception that will be thrown if right is not present
-   * @throws NullPointerException
-   *           if other is null
+   *           {@code Throwable} that will be thrown if {code right} is not present
+  * @throws NullPointerException
+   *          throws a {@code NullPointerException} if other is null
    */
-  public <X extends Throwable> T ifRightNotPresentThrow(Supplier<? extends X> other) throws X {
+  public <X extends Throwable> T ifRightNotPresentThrow(final Supplier<? extends X> other) throws X {
     if (null == other) {
       throw new NullPointerException("Either.ifRightNotPresentThrow: other should not be null");
     }
@@ -380,11 +391,15 @@ public final class Either<E, T> {
     return right;
   }
 
+
+
   /**
-   * If right has a value apply the consumer to the right value.
+   * If {code right} has a value apply the {@code Consumer} to the {code right} value.
    *
    * @param consumer
-   *          consumer to apply
+   *          {@code left} to apply if {@code right} is present
+   * @throws NullPointerException
+   *          throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifRightPresent(final Consumer<? super T> consumer) {
     if (null == consumer) {
@@ -396,44 +411,43 @@ public final class Either<E, T> {
   }
 
   /**
-   * True if neither left or right are present.
+   * True if neither {@code left} or {@code right} are present.
    *
-   * @return true if neither left or right are present
+   * @return true if neither {@code left} or {@code right} are present
    */
   public boolean isEmpty() {
     return !isLeftPresent() && !isRightPresent();
   }
 
   /**
-   * True if the left value exists.
+   * True if the {@code left} value is present.
    *
-   * @return true if the left value exists
+   * @return true if the {@code left} value is present
    */
   public boolean isLeftPresent() {
     return left != null;
   }
 
   /**
-   * True if this right value exists.
+   * True if the {@code right} value is present.
    *
-   * @return true if the right value exists
+   * @return true if the {@code right} value is present
    */
   public boolean isRightPresent() {
     return right != null;
   }
 
   /**
-   * If a left value is present, apply the provided mapping function to it, and if the result is non-null, return an
-   * Optional describing the result.
+   * If a {@code left} value is present, apply the provided mapping function to it,
+   *  and if the result is non-null, return an Optional describing the result.
    *
    * @param <U>
-   *          he type of the result of the mapping function
+   *          the type of the result of the mapping function
    * @param mapper
-   *          a mapping function to apply to the left value, if present
-   * @return an Optional describing the result of applying a mapping function to the left value of this Either, if a
-   *         left value is present, otherwise an empty Optional
-   * @throws NullPointerException
-   *           if the mapper is null
+   *          a mapping function to apply to the {@code left} value,
+   *           if present {@code left} value of this {@code Either}, if a
+   *         {@code left} value is present, otherwise an empty {@code Optional}
+    *          throws a {@code NullPointerException} if {@code mapper} is null
    */
   public <U> Optional<? extends U> mapLeft(final Function<? super E, ? extends U> mapper) {
     if (null == mapper) {
@@ -445,20 +459,17 @@ public final class Either<E, T> {
     return Optional.ofNullable(mapper.apply(left));
   }
 
-  // <? extends T> other
-
   /**
-   * If a right value is present, apply the provided mapping function to it, and if the result is non-null, return an
-   * Optional describing the result.
+   * If a {@code right} value is present, apply the provided mapping function to it,
+   *  and if the result is non-null, return an Optional describing the result.
    *
    * @param <U>
-   *          he type of the result of the mapping function
+   *          the type of the result of the mapping function
    * @param mapper
-   *          a mapping function to apply to the right value, if present
-   * @return an Optional describing the result of applying a mapping function to the right value of this Either, if a
-   *         right value is present, otherwise an empty Optional
-   * @throws NullPointerException
-   *           if the mapper is null
+   *          a mapping function to apply to the {@code right} value,
+   *           if present {@code right} value of this {@code Either}, if a
+   *         {@code right} value is present, otherwise an empty {@code Optional}
+    *          throws a {@code NullPointerException} if {@code mapper} is null
    */
   public <U> Optional<? extends U> mapRight(final Function<? super T, ? extends U> mapper) {
     if (null == mapper) {
@@ -471,9 +482,9 @@ public final class Either<E, T> {
   }
 
   /**
-   * Gets a new Either with left and right swapped.
+   * Gets a new {@code Either} with {@code left} and {@code right} swapped.
    *
-   * @return Swapped Either;
+   * @return Swapped {@code Either}
    */
   public Either<T, E> swap() {
     if (isEmpty()) {
