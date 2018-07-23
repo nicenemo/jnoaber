@@ -10,7 +10,8 @@ import java.util.function.Supplier;
 /**
  * Represents a value of one of two possible types. (a disjoint union.)
  * Instances of {@code Either} are either an instance of {@code left} or {@code right}.
- * This implementation of {@code Either} also allows for an empty value, where neither {@code left} or @code{right} are set.
+ * This implementation of {@code Either} also allows for an empty value, where neither {@code left} or @code{right} are
+ * set.
  * A common use of Either is as an alternative to exception handling. Convention in other languages,
  * such as Scala, is that left is used for the exception and right for the success.
  *
@@ -128,8 +129,10 @@ public final class Either<E, T> {
   /**
    * Creates an {@code Either} instance.
    *
-   * @param left {@code left} value
-   * @param right {@code right} value
+   * @param left
+   *          {@code left} value
+   * @param right
+   *          {@code right} value
    */
   private Either(final E left, final T right) {
     this.left = left;
@@ -199,7 +202,7 @@ public final class Either<E, T> {
   }
 
   /**
-  * If a {@code right} value is present,
+   * If a {@code right} value is present,
    * and the value matches the given predicate,
    * return an {@code Optional} describing the value,
    * otherwise return an {@code Optional.empty}.
@@ -242,7 +245,7 @@ public final class Either<E, T> {
   /**
    * Gets the right value.
    *
-   * @return right  {@code right} value
+   * @return right {@code right} value
    * @throws NoSuchElementException
    *           a {@code NoSuchElementException} is thrown when {@code right} is not present
    */
@@ -302,13 +305,15 @@ public final class Either<E, T> {
   /**
    * Throw a {@code Throwable} of type {@code X} provided by a {@code Provider} if {code left} is not present.
    *
+   * @param <X>
+   *          type of the {@code Throwable} to throw
    * @param other
    *          provider to provide exception to throw if {code left} is not present
    * @return left if {@code left} is present
    * @throws X
    *           {@code Throwable} that will be thrown if {code left} is not present
    * @throws NullPointerException
-   *          throws a {@code NullPointerException} if other is null
+   *           throws a {@code NullPointerException} if other is null
    */
   public <X extends Throwable> E ifLeftNotPresentThrow(final Supplier<? extends X> other) throws X {
     if (null == other) {
@@ -326,7 +331,7 @@ public final class Either<E, T> {
    * @param consumer
    *          {@code left} to apply if {@code left} is present
    * @throws NullPointerException
-   *          throws a {@code NullPointerException} if {@code consumer} is null
+   *           throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifLeftPresent(final Consumer<? super E> consumer) {
     if (null == consumer) {
@@ -358,7 +363,7 @@ public final class Either<E, T> {
    *          provider to provide a value to return if {@code right} is not present
    * @return right if {@code right} is present else other
    * @throws NullPointerException
-   *          throws a {@code NullPointerException} if other is null
+   *           throws a {@code NullPointerException} if other is null
    */
   public T ifRightNotPresentGet(final Supplier<? extends T> other) {
     if (null == other) {
@@ -373,13 +378,15 @@ public final class Either<E, T> {
   /**
    * Throw a {@code Throwable} of type {@code X} provided by a {@code Provider} if {code right} is not present.
    *
+   * @param <X>
+   *          type of the {@code Throwable} to throw
    * @param other
    *          provider to provide exception to throw if {code right} is not present
    * @return right if {@code right} is present
    * @throws X
    *           {@code Throwable} that will be thrown if {code right} is not present
-  * @throws NullPointerException
-   *          throws a {@code NullPointerException} if other is null
+   * @throws NullPointerException
+   *           throws a {@code NullPointerException} if other is null
    */
   public <X extends Throwable> T ifRightNotPresentThrow(final Supplier<? extends X> other) throws X {
     if (null == other) {
@@ -391,15 +398,13 @@ public final class Either<E, T> {
     return right;
   }
 
-
-
   /**
    * If {code right} has a value apply the {@code Consumer} to the {code right} value.
    *
    * @param consumer
    *          {@code left} to apply if {@code right} is present
    * @throws NullPointerException
-   *          throws a {@code NullPointerException} if {@code consumer} is null
+   *           throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifRightPresent(final Consumer<? super T> consumer) {
     if (null == consumer) {
@@ -439,15 +444,20 @@ public final class Either<E, T> {
 
   /**
    * If a {@code left} value is present, apply the provided mapping function to it,
-   *  and if the result is non-null, return an Optional describing the result.
+   * and if the result is non-null, return an Optional describing the result.
    *
    * @param <U>
    *          the type of the result of the mapping function
    * @param mapper
    *          a mapping function to apply to the {@code left} value,
-   *           if present {@code left} value of this {@code Either}, if a
-   *         {@code left} value is present, otherwise an empty {@code Optional}
-    *          throws a {@code NullPointerException} if {@code mapper} is null
+   *          if present {@code left} value of this {@code Either}, if a
+   *          {@code left} value is present, otherwise an empty {@code Optional}
+   * @return an {@code Optional} describing mapped {@code left} value,
+   *         if a {@code left} value is present,
+   *         otherwise an empty Optional
+   * @throws NullPointerException
+   *           a {@code NullPointerException} if {@code mapper} is null
+   *
    */
   public <U> Optional<? extends U> mapLeft(final Function<? super E, ? extends U> mapper) {
     if (null == mapper) {
@@ -461,15 +471,19 @@ public final class Either<E, T> {
 
   /**
    * If a {@code right} value is present, apply the provided mapping function to it,
-   *  and if the result is non-null, return an Optional describing the result.
+   * and if the result is non-null, return an Optional describing the result.
    *
    * @param <U>
    *          the type of the result of the mapping function
    * @param mapper
    *          a mapping function to apply to the {@code right} value,
-   *           if present {@code right} value of this {@code Either}, if a
-   *         {@code right} value is present, otherwise an empty {@code Optional}
-    *          throws a {@code NullPointerException} if {@code mapper} is null
+   *          if present {@code right} value of this {@code Either}, if a
+   *          {@code right} value is present, otherwise an empty {@code Optional}
+   * @return an {@code Optional} describing mapped {@code right} value,
+   *         if a {@code right} value is present,
+   *         otherwise an empty Optional
+   * @throws NullPointerException
+   *           a {@code NullPointerException} if {@code mapper} is null
    */
   public <U> Optional<? extends U> mapRight(final Function<? super T, ? extends U> mapper) {
     if (null == mapper) {
