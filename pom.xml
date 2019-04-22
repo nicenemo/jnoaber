@@ -9,20 +9,20 @@
   <url>http://maven.apache.org</url>
   <properties>
     <jdk.version>1.8</jdk.version>
-    <javadoc.version>3.0.1</javadoc.version>
-    <reporting.version>2.9</reporting.version>
-    <mvncompiler.version>3.7.0</mvncompiler.version>
-    <mvnsurefire.version>2.22.0</mvnsurefire.version>
-    <jacoco.version>0.8.1</jacoco.version>
+    <javadoc.version>3.1.0</javadoc.version>
+    <reporting.version>2.7.1</reporting.version>
+    <mvncompiler.version>3.8.0</mvncompiler.version>
+    <mvnsurefire.version>3.0.0-M3</mvnsurefire.version>
+    <jacoco.version>0.8.3</jacoco.version>
     <mvnprojectinforeports.version>3.0.0</mvnprojectinforeports.version>
     <mvncheckstyle.version>3.0.0</mvncheckstyle.version>
-    <mvnpmd.version>3.10.0</mvnpmd.version>
+    <mvnpmd.version>3.12.0</mvnpmd.version>
     <mvnfindbugs.version>3.0.5</mvnfindbugs.version>
     <checkstyle.configLocation>hans_kruse_checks.xml</checkstyle.configLocation>
     <checkstyle.suppressionsLocation>suppressions.xml</checkstyle.suppressionsLocation>
     <pmd.configLocation>hans_kruse_pmd-ruleset.xml</pmd.configLocation>
-    <jxr.version>2.5</jxr.version>
-    <maven.jar.version>3.1.0</maven.jar.version>
+    <jxr.version>3.0.0</jxr.version>
+    <maven.jar.version>3.1.1</maven.jar.version>
     <maven.clean.version>3.1.0</maven.clean.version>
     <maven.dependency.version>3.1.1</maven.dependency.version>
     <maven.resources.version>3.1.0</maven.resources.version>
