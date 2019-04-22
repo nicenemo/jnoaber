@@ -102,10 +102,8 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate.
    *
-   * @param ppredicate
-   *          predicate
-   * @param result
-   *          the result to return if p
+   * @param functionalPredicate
+   *          functional predicate
    * @return PredicateWrapper
    */
   default <T, R> FunctionalPredicateWrapper<T, R> whenFunctionalPredicate(
@@ -116,10 +114,8 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate.
    *
-   * @param ppredicate
+   * @param predicate
    *          predicate
-   * @param result
-   *          the result to return if p
    * @return PredicateWrapper
    */
   default <T> FunctionalPredicateWrapper<T, T> whenPredicate(final Predicate<T> predicate) {

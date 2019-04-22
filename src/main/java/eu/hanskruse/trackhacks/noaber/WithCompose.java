@@ -15,8 +15,6 @@ public interface WithCompose {
   /**
    * Compose function chain.
    *
-   * @param argument
-   *          argument
    * @param functions
    * @return result of function chaining.
    */

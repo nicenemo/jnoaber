@@ -15,7 +15,7 @@ public class LeftAppliedPredicate<T,V> {
 
   /**
    * Creates a RightAppliedPredicate.
-   * @param biFunction BiFunction to wrap
+   * @param biPredicate biPredicate to wrap
    * @param left left parameter
    */
   public LeftAppliedPredicate(final BiPredicate<T,V> biPredicate, final T left) {
