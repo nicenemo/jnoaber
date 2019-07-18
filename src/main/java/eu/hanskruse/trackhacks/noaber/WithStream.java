@@ -3,6 +3,7 @@ package eu.hanskruse.trackhacks.noaber;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.Supplier;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -64,40 +65,38 @@ public interface WithStream {
 
   /**
    * Combine two streams. Similar to Scala's for comprehension or .NET LINQ's from clause.
-   * @param <T1> type of the first stream
-   * @param <T2> type of the seconds stream
-   * @param s1 the first stream
-   * @param s2 the second stream
+   * We use {@code Supplier}s because a {@code Stream} can be consumed only once.
+   * @param <T0> type of the 0th stream
+   * @param <T1> type of the 1th stream
+   * @param s0 the 0th stream supplier
+   * @param s1 the 1th stream supplier
    * @return combined stream
    */
-  default <T1,T2> Stream<SimpleEntry<T1,T2>> stream(final Stream<T1> s1, final Stream<T2> s2){
-    return stream(s1,s2, SimpleEntry::new);
+  default <T0,T1> Stream<Tuple> stream(final Supplier<Stream<T1>> s0, final Supplier<Stream<T1>> s1) {
+    return s0.get().flatMap(t0 -> s1.get().map( t1 -> Tuple.of(t0,t1)));
   }
 
-  /**
-   * Combine two streams. Similar to Scala's for comprehension or .NET LINQ's from clause.
-    @param <T1> type of the first stream
-   * @param <T2> type of the seconds stream
-   * @param s1 the first stream
-   * @param s2 the second stream
-   * @param mapper a mapper function that combines values from the two streams
-   * @return combined stream
-   */
-  default <T1,T2,R> Stream<R> stream(final Stream<T1> s1, final Stream<T2> s2, final BiFunction<T1,T2,R> mapper){
-    return s1.flatMap(t1 -> s2.map(t2 -> mapper.apply(t1, t2)));
+  default <//
+  T0,//
+  T1, //
+  T2> //
+  Stream<Tuple> stream(//
+    final Supplier<Stream<T1>> s0, //
+    final Supplier<Stream<T1>> s1,//
+    final Supplier<Stream<T2>> s2) {
+    return s0.get().flatMap(t0 -> s1.get().flatMap(t1 -> s2.get().map( t2 -> Tuple.of(t0 , t1, t2))));
   }
 
-  /**
-   * Combine two streams. Similar to Scala's for comprehension or .NET LINQ's from clause.
-    @param <T1> type of the first stream
-   * @param <T2> type of the seconds stream
-   * @param s1 the first stream
-   * @param s2 the second stream
-   * @param p a {@code BiPredicate} predicate to filter out unwanted values
-   * @param mapper a mapper function that combines values from the two streams
-   * @return combined stream
-   */
-  default <T1,T2,R> Stream<R> stream(final Stream<T1> s1,final Stream<T2> s2,final BiPredicate<T1,T2> p, final BiFunction<T1,T2,R> mapper){
-    return s1.flatMap(t1 -> s2.filter( t2-> p.test(t1, t2)).map(t2 -> mapper.apply(t1, t2)));
+  default <//
+  T0,//
+  T1, //
+  T2,//
+  T3> //
+  Stream<Tuple> stream(//
+    final Supplier<Stream<T1>> s0, //
+    final Supplier<Stream<T1>> s1,//
+    final Supplier<Stream<T2>> s2,//
+    final Supplier<Stream<T3>> s3) {
+    return s0.get().flatMap(t0 -> s1.get().flatMap(t1 -> s2.get().flatMap( t2 -> s3.get().map(t3 -> Tuple.of(t0, t1, t2, t3)))));
   }
 }
