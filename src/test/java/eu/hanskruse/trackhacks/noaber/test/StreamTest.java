@@ -22,8 +22,8 @@ public class StreamTest implements WithStream {
   @Test
   public void testForComprehension2() {
     final Supplier<Stream<Integer>> ns = () -> Arrays.stream(new Integer[] { 0, 1, 2 });
-    final Supplier<Stream<String>> streamsupplier = () -> Arrays.stream(new String[] { "Apple", "Pear", "Banana" });
-    final Stream<Tuple> actual = stream(ns, streamsupplier);
+    final Supplier<Stream<String>> xs = () -> Arrays.stream(new String[] { "Apple", "Pear", "Banana" });
+    final Stream<Tuple> actual = stream(ns, xs);
     final Tuple[] arr= actual.toArray( n-> new Tuple[n]);
     assertEquals(9, arr.length);
 
