@@ -12,7 +12,7 @@ import java.util.AbstractMap.SimpleEntry;
 
 /**
  * Stream functionality.
- * 
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -64,7 +64,7 @@ public interface WithStream {
    * Combine two streams. Similar to Scala's for comprehension or .NET LINQ's from
    * clause. We use {@code Supplier}s because a {@code Stream} can be consumed
    * only once.
-   * 
+   *
    * @param <T0> type of the 0th stream
    * @param <T1> type of the 1th stream
    * @param s0   the 0th stream supplier
