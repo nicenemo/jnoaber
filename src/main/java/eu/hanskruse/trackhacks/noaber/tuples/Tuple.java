@@ -1,6 +1,8 @@
 package eu.hanskruse.trackhacks.noaber.tuples;
 
 import java.util.Iterator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Tuple is a generic readonly container for multiple fields of possible
@@ -27,6 +29,21 @@ public interface Tuple {
    */
   public int size();
 
+  /**
+   * Stream the tuple's values
+   * @param <T> type the values must be casted to.
+   * @return stream of the tuple's values.
+   */
+  public default <T> Stream<T> stream() {
+   final Iterable<T> iterable = asIterable();
+   return StreamSupport.stream(iterable.spliterator(), false);
+  }
+
+  /**
+   * Return an iterable of the Tuple's values.
+   * @param <T> type the vlaues must be casted to.
+   * @return stream of the tuple's values
+   */
   public default <T> Iterable<T> asIterable() {
     return new Iterable<T>() {
 
