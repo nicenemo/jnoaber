@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.withNoaber;
 
 import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 

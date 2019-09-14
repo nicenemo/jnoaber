@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.patternMatching;
 
 import java.util.Optional;
 import java.util.function.Function;

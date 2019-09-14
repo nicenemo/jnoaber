@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.withNoaber;
 
 import static eu.hanskruse.trackhacks.noaber.Noaber.noaber;
 import static java.util.Objects.isNull;
@@ -10,8 +10,15 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
+import eu.hanskruse.trackhacks.noaber.patternMatching.Case;
+import eu.hanskruse.trackhacks.noaber.patternMatching.CaseAcceptor;
+import eu.hanskruse.trackhacks.noaber.patternMatching.FunctionalPredicate;
+import eu.hanskruse.trackhacks.noaber.patternMatching.FunctionalPredicateWrapper;
+import eu.hanskruse.trackhacks.noaber.patternMatching.PatternMatcher;
+
 /**
  * Pattern matching functionality.
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -21,8 +28,7 @@ public interface WithPatternMatching {
   /**
    * Composes a predicate with the identity function.
    *
-   * @param predicate
-   *          predicate to compose with
+   * @param predicate predicate to compose with
    * @return FunctionalPredicate
    */
   default <T> FunctionalPredicate<T, T> functionalPredicate(final Predicate<T> predicate) {
@@ -32,10 +38,8 @@ public interface WithPatternMatching {
   /**
    * Composes a predicate and a function.
    *
-   * @param predicate
-   *          predicate to compose with
-   * @param function
-   *          function to compose with
+   * @param predicate predicate to compose with
+   * @param function  function to compose with
    * @return FunctionalPredicate
    */
   default <T, R> FunctionalPredicate<T, R> functionalPredicate(final Predicate<T> predicate,
@@ -57,8 +61,7 @@ public interface WithPatternMatching {
   /**
    * Match captures the value to match against returning a CaseAcceptor.
    *
-   * @param value
-   *          the value to capture
+   * @param value the value to capture
    * @return a CaseAcceptor.
    */
   default <T> CaseAcceptor<T> match(final T value) {
@@ -68,8 +71,7 @@ public interface WithPatternMatching {
   /**
    * Default case.
    *
-   * @param f
-   *          function to perform on default case
+   * @param f function to perform on default case
    * @return default case
    */
   default <T, R> Case<T, R> orElse(final Function<T, R> f) {
@@ -79,8 +81,7 @@ public interface WithPatternMatching {
   /**
    * Default case.
    *
-   * @param result
-   *          to return
+   * @param result to return
    * @return default case
    */
   default <T, R> Case<T, R> orElse(final R result) {
@@ -90,20 +91,18 @@ public interface WithPatternMatching {
   /**
    * When wraps a class as predicate to match against that class.
    *
-   * @param clazz
-   *          class to match
+   * @param clazz class to match
    * @return PredicateWrapper
    */
   default <T> FunctionalPredicateWrapper<T, T> whenClass(final Class<T> clazz) {
     requireNonNull(clazz);
-    return whenPredicate(t -> nonNull(t) &&  clazz.isInstance(t) );
+    return whenPredicate(t -> nonNull(t) && clazz.isInstance(t));
   }
 
   /**
    * When wraps a value as predicate.
    *
-   * @param functionalPredicate
-   *          functional predicate
+   * @param functionalPredicate functional predicate
    * @return PredicateWrapper
    */
   default <T, R> FunctionalPredicateWrapper<T, R> whenFunctionalPredicate(
@@ -114,8 +113,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate.
    *
-   * @param predicate
-   *          predicate
+   * @param predicate predicate
    * @return PredicateWrapper
    */
   default <T> FunctionalPredicateWrapper<T, T> whenPredicate(final Predicate<T> predicate) {
@@ -125,8 +123,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a regular expression pattern as predicate.
    *
-   * @param pattern
-   *          to match against
+   * @param pattern to match against
    * @return PredicateWrapper
    */
   default FunctionalPredicateWrapper<CharSequence, CharSequence> whenRegEx(final Pattern pattern) {
@@ -137,8 +134,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a regular expression pattern as predicate.
    *
-   * @param pattern
-   *          to match against
+   * @param pattern to match against
    * @return PredicateWrapper
    */
   default FunctionalPredicateWrapper<CharSequence, CharSequence> whenRegEx(final String pattern) {
@@ -149,8 +145,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate to match for equality.
    *
-   * @param value
-   *          to match
+   * @param value to match
    * @return PredicateWrapper
    */
   default <T> FunctionalPredicateWrapper<T, T> whenValue(final T value) {
@@ -160,12 +155,10 @@ public interface WithPatternMatching {
   /**
    * Creates a pattern matcher to match with.
    *
-   * @param cases
-   *          cases to match with
+   * @param cases cases to match with
    * @return a patter matcher to match the cases with
    */
   default <T, R> PatternMatcher<T, R> with(@SuppressWarnings("unchecked") final Case<T, R>... cases) {
     return new PatternMatcher<>(cases);
   }
 }
-

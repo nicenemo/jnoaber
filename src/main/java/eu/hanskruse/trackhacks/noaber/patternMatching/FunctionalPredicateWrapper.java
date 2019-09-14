@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.patternMatching;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.requireNonNull;

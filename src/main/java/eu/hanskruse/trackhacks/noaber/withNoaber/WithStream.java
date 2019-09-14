@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.withNoaber;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
@@ -22,6 +22,8 @@ import eu.hanskruse.trackhacks.noaber.functions.Function13;
 import eu.hanskruse.trackhacks.noaber.functions.Function14;
 import eu.hanskruse.trackhacks.noaber.functions.Function15;
 import eu.hanskruse.trackhacks.noaber.functions.Function16;
+
+import eu.hanskruse.trackhacks.noaber.Streamable;
 
 /**
  * Stream functionality.

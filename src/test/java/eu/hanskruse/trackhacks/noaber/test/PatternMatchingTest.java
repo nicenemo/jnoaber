@@ -9,9 +9,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.quicktheories.WithQuickTheories;
 
-import eu.hanskruse.trackhacks.noaber.Case;
+import eu.hanskruse.trackhacks.noaber.patternMatching.Case;
 import eu.hanskruse.trackhacks.noaber.WithNoaber;
-import eu.hanskruse.trackhacks.noaber.WithPatternMatching;
 import eu.hanskruse.trackhacks.testdata.FizzBuzz;
 import eu.hanskruse.trackhacks.testdata.food.fastfood.Hamburger;
 import eu.hanskruse.trackhacks.testdata.food.fruit.Apple;
@@ -23,7 +22,7 @@ import eu.hanskruse.trackhacks.testdata.food.fruit.apples.Elstar;
  * @author Hans Kruse
  *
  */
-public class PatternMatchingTest implements WithQuickTheories, WithNoaber, WithPatternMatching {
+public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
 
   /**
    * FizzBuzz example.
