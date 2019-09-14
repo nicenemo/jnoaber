@@ -1,5 +1,6 @@
 package eu.hanskruse.trackhacks.noaber;
 
+import java.util.Arrays;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -45,5 +46,17 @@ public interface Streamable<T> {
    */
   default <R> Streamable<R> flatMap(Function<? super T, ? extends Streamable<? extends R>> mapper) {
     return () -> this.stream().flatMap(streamable -> mapper.apply(streamable).stream());
+  }
+
+  default Streamable<T> concat(Streamable<T> ...streamables){
+     return Streamable.concat(this,streamables);
+  }
+
+  static <T1> Streamable<T1> concat(Streamable<T1> a,Streamable<T1> ...streamables){
+    return () -> {
+      final Streamable<T1> seed = a == null? Stream::empty : a;
+      final Stream<Streamable<T1>> xs= streamables == null ? Stream.empty() : Arrays.stream(streamables);
+      return xs.filter(x -> x!=null).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
+    };
   }
 }
