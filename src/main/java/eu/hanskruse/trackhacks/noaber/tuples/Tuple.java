@@ -20,31 +20,53 @@ public interface Tuple {
    * @throws IndexOutOfBoundsException thrown when i<0 or i>n where n is the last
    *                                   index of the Tuple
    */
-  public <R> R get(int i);
+  <R> R get(int i);
 
   /**
    * Gets the number of elements of the {@link Tuple}.
    *
    * @return the number of elements of the {@Link Tuple}
    */
-  public int size();
+  int size();
+
+  /**
+   * Gets the first element of the tuple
+   *
+   * @param <R> type to cast to.
+   * @return first element of the tuple
+   */
+  default <R> R first() {
+    return get(0);
+  }
+
+  /**
+   * Gets the last element of the tuple
+   *
+   * @param <R> type to cast to.
+   * @return the last element of the tuple
+   */
+  default <R> R last() {
+    return get(size() - 1);
+  }
 
   /**
    * Stream the tuple's values
+   *
    * @param <T> type the values must be casted to.
    * @return stream of the tuple's values.
    */
-  public default <T> Stream<T> stream() {
-   final Iterable<T> iterable = asIterable();
-   return StreamSupport.stream(iterable.spliterator(), false);
+  default <T> Stream<T> stream() {
+    final Iterable<T> iterable = asIterable();
+    return StreamSupport.stream(iterable.spliterator(), false);
   }
 
   /**
    * Return an iterable of the Tuple's values.
+   *
    * @param <T> type the vlaues must be casted to.
    * @return stream of the tuple's values
    */
-  public default <T> Iterable<T> asIterable() {
+  default <T> Iterable<T> asIterable() {
     return new Iterable<T>() {
 
       @Override
