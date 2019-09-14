@@ -1,9 +1,10 @@
-package eu.hanskruse.trackhacks.noaber.tuples;
+package eu.hanskruse.trackhacks.noaber.with;
 
+import eu.hanskruse.trackhacks.noaber.Tuple;
 /**
  * Create tuples of up to 16 elements.
  */
-public final class Tuples {
+public interface WithTuples {
     /**
    * Helper method to create a {@link java.lang.IndexOutOfBoundException} for use
    * when not {@code} 0 lt; index lt; Tuple.size()} is used with
@@ -13,7 +14,7 @@ public final class Tuples {
    * @param size the size of the Tuple
    * @return an {@code java.lang.IndexOutOfBoundsException}
    */
-  public static IndexOutOfBoundsException createIndexOutOfBoundsException(int i, int size) {
+  static IndexOutOfBoundsException createIndexOutOfBoundsException(int i, int size) {
     return new IndexOutOfBoundsException(i + " is out of bounds for this tuple, use 0.." + (size - 1) + " inclusive.");
   }
 
@@ -26,10 +27,10 @@ public final class Tuples {
    * @param t1   1th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
-      T2> Tuple of(//
+      T2> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1) {
     return new Tuple() {
@@ -65,10 +66,10 @@ public final class Tuples {
    * @param t2   2th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
-      T2> Tuple of(//
+      T2> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2) {
@@ -110,11 +111,11 @@ public final class Tuples {
    * @param t3   3th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
-      T3> Tuple of(//
+      T3> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -159,12 +160,12 @@ public final class Tuples {
    * @param t4   4th element
    * @return the created {@link Tuple}
    */
-  public static < //
+  default < //
       T0, //
       T1, //
       T2, //
       T3, //
-      T4> Tuple of(//
+      T4> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -214,13 +215,13 @@ public final class Tuples {
    * @param t5   5th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
       T3, //
       T4, //
-      T5> Tuple of(//
+      T5> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -275,14 +276,14 @@ public final class Tuples {
    * @param t6   6th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
       T3, //
       T4, //
       T5, //
-      T6> Tuple of(//
+      T6> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -342,7 +343,7 @@ public final class Tuples {
    * @param t7   7th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -350,7 +351,7 @@ public final class Tuples {
       T4, //
       T5, //
       T6, //
-      T7> Tuple of(//
+      T7> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -415,7 +416,7 @@ public final class Tuples {
    * @param t8   8th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -424,7 +425,7 @@ public final class Tuples {
       T5, //
       T6, //
       T7, //
-      T8> Tuple of(//
+      T8> Tuple tupleOf(//
 
           final T0 t0, //
           final T1 t1, //
@@ -495,7 +496,7 @@ public final class Tuples {
    * @param t9   9th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -505,7 +506,7 @@ public final class Tuples {
       T6, //
       T7, //
       T8, //
-      T9> Tuple of(//
+      T9> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -580,7 +581,7 @@ public final class Tuples {
    * @param t10   10th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -591,7 +592,7 @@ public final class Tuples {
       T7, //
       T8, //
       T9, //
-      T10> Tuple of(//
+      T10> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -671,7 +672,7 @@ public final class Tuples {
    * @param t11   11th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -683,7 +684,7 @@ public final class Tuples {
       T8, //
       T9, //
       T10, //
-      T11> Tuple of(//
+      T11> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -768,7 +769,7 @@ public final class Tuples {
    * @param t12   12th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -781,7 +782,7 @@ public final class Tuples {
       T9, //
       T10, //
       T11, //
-      T12> Tuple of(//
+      T12> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -871,7 +872,7 @@ public final class Tuples {
    * @param t13   13th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -885,7 +886,7 @@ public final class Tuples {
       T10, //
       T11, //
       T12, //
-      T13> Tuple of(//
+      T13> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -980,7 +981,7 @@ public final class Tuples {
    * @param t14   14th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -995,7 +996,7 @@ public final class Tuples {
       T11, //
       T12, //
       T13, //
-      T14> Tuple of(//
+      T14> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -1095,7 +1096,7 @@ public final class Tuples {
    * @param t15   15th element
    * @return the created {@link Tuple}
    */
-  public static <//
+  default <//
       T0, //
       T1, //
       T2, //
@@ -1111,7 +1112,7 @@ public final class Tuples {
       T12, //
       T13, //
       T14, //
-      T15> Tuple of(//
+      T15> Tuple tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //

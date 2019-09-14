@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber.tuples;
+package eu.hanskruse.trackhacks.noaber;
 
 import java.util.Iterator;
 

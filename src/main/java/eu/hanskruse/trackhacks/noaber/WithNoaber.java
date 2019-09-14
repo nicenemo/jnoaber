@@ -8,6 +8,7 @@ import eu.hanskruse.trackhacks.noaber.with.WithMapReduce;
 import eu.hanskruse.trackhacks.noaber.with.WithPatternMatching;
 import eu.hanskruse.trackhacks.noaber.with.WithStats;
 import eu.hanskruse.trackhacks.noaber.with.WithStream;
+import eu.hanskruse.trackhacks.noaber.with.WithTuples;
 
 /**
  * {@code WithNoaber} is an interface that you can implement to get all kinds of utility
@@ -27,6 +28,7 @@ public interface WithNoaber extends //
     WithMapReduce, //
     WithPatternMatching,
     WithStats,
-    WithStream {
+    WithStream,
+    WithTuples {
   // nothing here
 }
