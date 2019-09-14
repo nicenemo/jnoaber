@@ -1,6 +1,22 @@
 package eu.hanskruse.trackhacks.noaber.with;
 
-import eu.hanskruse.trackhacks.noaber.Tuple;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple10;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple2;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple3;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple4;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple5;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple6;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple7;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple8;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple9;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple10;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple11;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple12;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple13;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple14;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple15;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple16;
 /**
  * Create tuples of up to 16 elements.
  */
@@ -19,21 +35,21 @@ public interface WithTuples {
   }
 
   /**
-   * Creates a {@link Tuple} of 2 elements.
+   * Creates a {@link Tuple2}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
    * @param t0   0th element
    * @param t1   1th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple2}
    */
   default <//
       T0, //
       T1, //
-      T2> Tuple tupleOf(//
+      T2> Tuple2 tupleOf(//
           final T0 t0, //
           final T1 t1) {
-    return new Tuple() {
+    return new Tuple2() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -48,15 +64,11 @@ public interface WithTuples {
         }
       }
 
-      @Override
-      public int size() {
-        return 2;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 3 elements.
+   * Creates a {@link Tuple3}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -64,16 +76,16 @@ public interface WithTuples {
    * @param t0   0th element
    * @param t1   1th element
    * @param t2   2th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple3}
    */
   default <//
       T0, //
       T1, //
-      T2> Tuple tupleOf(//
+      T2> Tuple3 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2) {
-    return new Tuple() {
+    return new Tuple3() {
 
       @SuppressWarnings("unchecked")
       @Override
@@ -90,16 +102,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 3;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 4 elements.
+   * Creates a {@link Tuple4}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -109,18 +116,18 @@ public interface WithTuples {
    * @param t1   1th element
    * @param t2   2th element
    * @param t3   3th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple4}
    */
   default <//
       T0, //
       T1, //
       T2, //
-      T3> Tuple tupleOf(//
+      T3> Tuple4 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3) {
-    return new Tuple() {
+    return new Tuple4() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -137,16 +144,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 4;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 5 elements.
+   * Creates a {@link Tuple5}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -158,20 +160,20 @@ public interface WithTuples {
    * @param t2   2th element
    * @param t3   3th element
    * @param t4   4th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple5}
    */
   default < //
       T0, //
       T1, //
       T2, //
       T3, //
-      T4> Tuple tupleOf(//
+      T4> Tuple5 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3, //
           final T4 t4) {
-    return new Tuple() {
+    return new Tuple5() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -190,16 +192,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 5;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 6 elements.
+   * Creates a {@link Tuple6}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -213,7 +210,7 @@ public interface WithTuples {
    * @param t3   3th element
    * @param t4   4th element
    * @param t5   5th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple6}
    */
   default <//
       T0, //
@@ -221,14 +218,14 @@ public interface WithTuples {
       T2, //
       T3, //
       T4, //
-      T5> Tuple tupleOf(//
+      T5> Tuple6 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3, //
           final T4 t4, //
           final T5 t5) {
-    return new Tuple() {
+    return new Tuple6() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -249,16 +246,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 6;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 7 elements.
+   * Creates a {@link Tuple7}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -274,7 +266,7 @@ public interface WithTuples {
    * @param t4   4th element
    * @param t5   5th element
    * @param t6   6th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple7}
    */
   default <//
       T0, //
@@ -283,7 +275,7 @@ public interface WithTuples {
       T3, //
       T4, //
       T5, //
-      T6> Tuple tupleOf(//
+      T6> Tuple7 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -291,7 +283,7 @@ public interface WithTuples {
           final T4 t4, //
           final T5 t5, //
           final T6 t6) {
-    return new Tuple() {
+    return new Tuple7() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -314,16 +306,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 7;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 8 elements.
+   * Creates a {@link Tuple8}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -341,7 +328,7 @@ public interface WithTuples {
    * @param t5   5th element
    * @param t6   6th element
    * @param t7   7th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple8}
    */
   default <//
       T0, //
@@ -351,7 +338,7 @@ public interface WithTuples {
       T4, //
       T5, //
       T6, //
-      T7> Tuple tupleOf(//
+      T7> Tuple8 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -360,7 +347,7 @@ public interface WithTuples {
           final T5 t5, //
           final T6 t6, //
           final T7 t7) {
-    return new Tuple() {
+    return new Tuple8() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -385,16 +372,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 8;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 9 elements.
+   * Creates a {@link Tuple9}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -414,7 +396,7 @@ public interface WithTuples {
    * @param t6   6th element
    * @param t7   7th element
    * @param t8   8th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple9}
    */
   default <//
       T0, //
@@ -425,7 +407,7 @@ public interface WithTuples {
       T5, //
       T6, //
       T7, //
-      T8> Tuple tupleOf(//
+      T8> Tuple9 tupleOf(//
 
           final T0 t0, //
           final T1 t1, //
@@ -436,7 +418,7 @@ public interface WithTuples {
           final T6 t6, //
           final T7 t7, //
           final T8 t8) {
-    return new Tuple() {
+    return new Tuple9() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -463,16 +445,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 9;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 10 elements.
+   * Creates a {@link Tuple10}.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -494,7 +471,7 @@ public interface WithTuples {
    * @param t7   7th element
    * @param t8   8th element
    * @param t9   9th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple10}
    */
   default <//
       T0, //
@@ -506,7 +483,7 @@ public interface WithTuples {
       T6, //
       T7, //
       T8, //
-      T9> Tuple tupleOf(//
+      T9> Tuple10 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -517,7 +494,7 @@ public interface WithTuples {
           final T7 t7, //
           final T8 t8, //
           final T9 t9) {
-    return new Tuple() {
+    return new Tuple10() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -546,16 +523,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 10;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 11 elements.
+   * Creates a {@link Tuple11}.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -579,7 +551,7 @@ public interface WithTuples {
    * @param t8    8th element
    * @param t9    9th element
    * @param t10   10th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple11}
    */
   default <//
       T0, //
@@ -592,7 +564,7 @@ public interface WithTuples {
       T7, //
       T8, //
       T9, //
-      T10> Tuple tupleOf(//
+      T10> Tuple11 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -604,7 +576,7 @@ public interface WithTuples {
           final T8 t8, //
           final T9 t9, //
           final T10 t10) {
-    return new Tuple() {
+    return new Tuple11() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -635,16 +607,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 11;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 12 elements.
+   * Creates a {@link Tuple12}.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -670,7 +637,7 @@ public interface WithTuples {
    * @param t9    9th element
    * @param t10   10th element
    * @param t11   11th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple12}
    */
   default <//
       T0, //
@@ -684,7 +651,7 @@ public interface WithTuples {
       T8, //
       T9, //
       T10, //
-      T11> Tuple tupleOf(//
+      T11> Tuple12 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -697,7 +664,7 @@ public interface WithTuples {
           final T9 t9, //
           final T10 t10, //
           final T11 t11) {
-    return new Tuple() {
+    return new Tuple12() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -730,16 +697,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 12;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 13 elements.
+   * Creates a {@link Tuple13}.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -767,7 +729,7 @@ public interface WithTuples {
    * @param t10   10th element
    * @param t11   11th element
    * @param t12   12th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple13}
    */
   default <//
       T0, //
@@ -782,7 +744,7 @@ public interface WithTuples {
       T9, //
       T10, //
       T11, //
-      T12> Tuple tupleOf(//
+      T12> Tuple13 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -796,7 +758,7 @@ public interface WithTuples {
           final T10 t10, //
           final T11 t11, //
           final T12 t12) {
-    return new Tuple() {
+    return new Tuple13() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -831,16 +793,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 13;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 14 elements.
+   * Creates a {@link Tuple14}.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -870,7 +827,7 @@ public interface WithTuples {
    * @param t11   11th element
    * @param t12   12th element
    * @param t13   13th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple14}
    */
   default <//
       T0, //
@@ -901,7 +858,7 @@ public interface WithTuples {
           final T11 t11, //
           final T12 t12, //
           final T13 t13) {
-    return new Tuple() {
+    return new Tuple14() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -938,16 +895,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 14;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 15 elements.
+   * Creates a {@link Tuple15}.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -979,7 +931,7 @@ public interface WithTuples {
    * @param t12   12th element
    * @param t13   13th element
    * @param t14   14th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple15}
    */
   default <//
       T0, //
@@ -996,7 +948,7 @@ public interface WithTuples {
       T11, //
       T12, //
       T13, //
-      T14> Tuple tupleOf(//
+      T14> Tuple15 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -1012,7 +964,7 @@ public interface WithTuples {
           final T12 t12, //
           final T13 t13, //
           final T14 t14) {
-    return new Tuple() {
+    return new Tuple15() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -1051,16 +1003,11 @@ public interface WithTuples {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
-
-      @Override
-      public int size() {
-        return 15;
-      }
     };
   }
 
   /**
-   * Creates a {@link Tuple} of 16 elements.
+   * Creates a {@link Tuple16} of 16 elements.
    *
    * @param <T0>  type of 0th element
    * @param <T1>  type of 1th element
@@ -1094,7 +1041,7 @@ public interface WithTuples {
    * @param t13   13th element
    * @param t14   14th element
    * @param t15   15th element
-   * @return the created {@link Tuple}
+   * @return the created {@link Tuple16}
    */
   default <//
       T0, //
@@ -1112,7 +1059,7 @@ public interface WithTuples {
       T12, //
       T13, //
       T14, //
-      T15> Tuple tupleOf(//
+      T15> Tuple16 tupleOf(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -1129,7 +1076,7 @@ public interface WithTuples {
           final T13 t13, //
           final T14 t14, //
           final T15 t15) {
-    return new Tuple() {
+    return new Tuple16() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -1169,11 +1116,6 @@ public interface WithTuples {
         default:
           throw createIndexOutOfBoundsException(i, size());
         }
-      }
-
-      @Override
-      public int size() {
-        return 16;
       }
     };
   }

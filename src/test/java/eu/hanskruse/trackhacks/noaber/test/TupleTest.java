@@ -8,7 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import eu.hanskruse.trackhacks.noaber.Tuple;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple;
 import eu.hanskruse.trackhacks.noaber.WithNoaber;
 
 public class TupleTest implements WithNoaber{
