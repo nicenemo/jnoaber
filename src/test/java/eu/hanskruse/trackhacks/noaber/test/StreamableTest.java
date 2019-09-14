@@ -1,8 +1,6 @@
 package eu.hanskruse.trackhacks.noaber.test;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import org.junit.Before;
@@ -26,9 +24,9 @@ public class StreamableTest implements WithNoaber {
    */
   @Before
   public void initialize() {
-    names = Arrays.asList("Maria", "Anna", "Katie", "Judy", "Tim", "Jake", "William")::stream;
-    postalCodes = Arrays.asList("3122NH", "7577AM", "7419CN")::stream;
-    houseNumbers = Arrays.asList(3, 14, 159, 26, 5, 35, 89, 79, 323, 84, 62)::stream;
+    names = tuple("Maria", "Anna", "Katie", "Judy", "Tim", "Jake", "William")::stream;
+    postalCodes = tuple("3122NH", "7577AM", "7419CN")::stream;
+    houseNumbers = tuple(3, 14, 159, 26, 5, 35, 89, 79, 323, 84, 62)::stream;
     numberOfNames = names.stream().toArray().length;
     numberOfPostalCodes = postalCodes.stream().toArray().length;
     numberOfHouseNumbers = houseNumbers.stream().toArray().length;

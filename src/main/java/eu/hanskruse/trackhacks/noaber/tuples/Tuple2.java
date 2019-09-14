@@ -35,6 +35,11 @@ public abstract class Tuple2 extends BaseTuple {
         }
       }
 
+      @Override
+      public T0 head(){
+        return t0;
+      }
+
     };
   }
 

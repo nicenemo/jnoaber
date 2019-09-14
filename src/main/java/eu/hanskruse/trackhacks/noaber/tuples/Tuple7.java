@@ -62,6 +62,11 @@ public abstract class Tuple7 extends BaseTuple {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
+
+      @Override
+      public T0 head(){
+        return t0;
+      }
     };
   }
 

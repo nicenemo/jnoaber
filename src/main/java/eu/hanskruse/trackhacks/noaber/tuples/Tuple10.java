@@ -80,6 +80,11 @@ public abstract class Tuple10 extends BaseTuple {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
+
+      @Override
+      public T0 head(){
+        return t0;
+      }
     };
   }
     @Override
