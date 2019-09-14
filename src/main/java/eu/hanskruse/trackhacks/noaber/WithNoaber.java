@@ -1,6 +1,5 @@
 package eu.hanskruse.trackhacks.noaber;
 
-
 import eu.hanskruse.trackhacks.noaber.with.*;
 
 /**
