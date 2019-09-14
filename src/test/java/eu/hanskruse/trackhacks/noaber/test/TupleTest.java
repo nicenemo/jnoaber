@@ -9,6 +9,21 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple2;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple3;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple4;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple5;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple6;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple7;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple8;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple9;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple10;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple11;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple12;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple13;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple14;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple15;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple16;
 import eu.hanskruse.trackhacks.noaber.WithNoaber;
 
 public class TupleTest implements WithNoaber{
@@ -95,7 +110,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple2() {
 
-    Tuple sut = tupleOf(//
+    Tuple2 sut = tuple(//
         et0, //
         et1);
     final T0 at0 = sut.get(0);
@@ -108,7 +123,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple3() {
 
-    Tuple sut = tupleOf(//
+    Tuple3 sut = tuple(//
         et0, //
         et1, //
         et2);
@@ -124,7 +139,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple4() {
 
-    Tuple sut = tupleOf(//
+    Tuple4 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -143,7 +158,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple5() {
 
-    Tuple sut = tupleOf(//
+    Tuple5 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -165,7 +180,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple6() {
 
-    Tuple sut = tupleOf(//
+    Tuple6 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -190,7 +205,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple7() {
 
-    Tuple sut = tupleOf(//
+    Tuple7 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -218,7 +233,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple8() {
 
-    Tuple sut = tupleOf(//
+    Tuple8 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -249,7 +264,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple9() {
 
-    Tuple sut = tupleOf(//
+    Tuple9 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -283,7 +298,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple10() {
 
-    Tuple sut = tupleOf(//
+    Tuple10 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -320,7 +335,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple11() {
 
-    Tuple sut = tupleOf(//
+    Tuple11 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -360,7 +375,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple12() {
 
-    Tuple sut = tupleOf(//
+    Tuple12 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -403,7 +418,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple13() {
 
-    Tuple sut = tupleOf(//
+    Tuple13 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -449,7 +464,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple14() {
 
-    Tuple sut = tupleOf(//
+    Tuple14 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -498,7 +513,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple15() {
 
-    Tuple sut = tupleOf(//
+    Tuple15 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -550,7 +565,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple16() {
 
-    Tuple sut = tupleOf(//
+    Tuple16 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -605,7 +620,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple2Get2() {
 
-    Tuple sut = tupleOf(//
+    Tuple2 sut = tuple(//
         et0, //
         et1);
     exception.expect(IndexOutOfBoundsException.class);
@@ -615,7 +630,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple2GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple2 sut = tuple(//
         et0, //
         et1);
     exception.expect(IndexOutOfBoundsException.class);
@@ -625,7 +640,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple3Get3() {
 
-    Tuple sut = tupleOf(//
+    Tuple3 sut = tuple(//
         et0, //
         et1, //
         et2);
@@ -636,7 +651,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple3GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple3 sut = tuple(//
         et0, //
         et1, //
         et2);
@@ -647,7 +662,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple4Get4() {
 
-    Tuple sut = tupleOf(//
+    Tuple4 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -659,7 +674,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple4GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple4 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -671,7 +686,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple5Get5() {
 
-    Tuple sut = tupleOf(//
+    Tuple5 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -684,7 +699,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple5GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple5 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -697,7 +712,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple6Get6() {
 
-    Tuple sut = tupleOf(//
+    Tuple6 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -711,7 +726,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple6GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple6 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -725,7 +740,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple7Get7() {
 
-    Tuple sut = tupleOf(//
+    Tuple7 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -740,7 +755,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple7GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple7 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -755,7 +770,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple8Get8() {
 
-    Tuple sut = tupleOf(//
+    Tuple8 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -771,7 +786,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple8GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple8 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -787,7 +802,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple9Get9() {
 
-    Tuple sut = tupleOf(//
+    Tuple9 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -804,7 +819,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple9GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple9 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -821,7 +836,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple10Get10() {
 
-    Tuple sut = tupleOf(//
+    Tuple10 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -839,7 +854,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple10GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple10 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -857,7 +872,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple11Get11() {
 
-    Tuple sut = tupleOf(//
+    Tuple11 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -876,7 +891,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple11GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple11 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -895,7 +910,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple12Get12() {
 
-    Tuple sut = tupleOf(//
+    Tuple12 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -915,7 +930,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple12GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple12 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -935,7 +950,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple13Get13() {
 
-    Tuple sut = tupleOf(//
+    Tuple13 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -956,7 +971,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple13GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple13 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -977,21 +992,21 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple14Get14() {
 
-    Tuple sut = tupleOf(//
-        et0, //
-        et1, //
-        et2, //
-        et3, //
-        et4, //
-        et5, //
-        et6, //
-        et7, //
-        et8, //
-        et9, //
-        et10, //
-        et11, //
-        et12, //
-        et13);
+    Tuple14 sut = tuple(//
+    et0, //
+    et1, //
+    et2, //
+    et3, //
+    et4, //
+    et5, //
+    et6, //
+    et7, //
+    et8, //
+    et9, //
+    et10, //
+    et11, //
+    et12,
+    et13);
     exception.expect(IndexOutOfBoundsException.class);
     sut.get(14);
   }
@@ -999,7 +1014,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple14GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple14 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -1021,7 +1036,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple15Get15() {
 
-    Tuple sut = tupleOf(//
+    Tuple15 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -1044,7 +1059,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple15GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple15 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -1067,7 +1082,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple16Get16() {
 
-    Tuple sut = tupleOf(//
+    Tuple16 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -1091,7 +1106,7 @@ public class TupleTest implements WithNoaber{
   @Test
   public void testTuple16GetMinus1() {
 
-    Tuple sut = tupleOf(//
+    Tuple16 sut = tuple(//
         et0, //
         et1, //
         et2, //
@@ -1114,7 +1129,7 @@ public class TupleTest implements WithNoaber{
 
   @Test
   public void testTuple3WithBooleanStringAndInteger() {
-    Tuple sut = tupleOf(Boolean.TRUE, "Hello", 42);
+    Tuple sut = tuple(Boolean.TRUE, "Hello", 42);
     final Boolean actualBoolean = sut.get(0);
     assertTrue(actualBoolean.booleanValue());
     assertEquals("Hello", sut.get(1));
@@ -1124,7 +1139,7 @@ public class TupleTest implements WithNoaber{
 
   @Test
   public void tupleIterationWithIntegers() {
-    Tuple sut = tupleOf(1, 2, 3);
+    Tuple sut = tuple(1, 2, 3);
     int sum = 0;
     final Iterable<Integer> iterable = sut.asIterable();
     for (Integer i : iterable) {

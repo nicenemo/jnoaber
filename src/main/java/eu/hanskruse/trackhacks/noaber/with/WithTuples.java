@@ -2,6 +2,12 @@ package eu.hanskruse.trackhacks.noaber.with;
 
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple10;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple11;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple12;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple13;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple14;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple15;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuple16;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple2;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple3;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple4;
@@ -10,29 +16,11 @@ import eu.hanskruse.trackhacks.noaber.tuples.Tuple6;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple7;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple8;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple9;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple10;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple11;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple12;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple13;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple14;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple15;
-import eu.hanskruse.trackhacks.noaber.tuples.Tuple16;
+
 /**
  * Create tuples of up to 16 elements.
  */
 public interface WithTuples {
-    /**
-   * Helper method to create a {@link java.lang.IndexOutOfBoundException} for use
-   * when not {@code} 0 lt; index lt; Tuple.size()} is used with
-   * {@code Tuple.get()}. Consider private.
-   *
-   * @param i    the index tried to get
-   * @param size the size of the Tuple
-   * @return an {@code java.lang.IndexOutOfBoundsException}
-   */
-  static IndexOutOfBoundsException createIndexOutOfBoundsException(int i, int size) {
-    return new IndexOutOfBoundsException(i + " is out of bounds for this tuple, use 0.." + (size - 1) + " inclusive.");
-  }
 
   /**
    * Creates a {@link Tuple2}.
@@ -45,26 +33,10 @@ public interface WithTuples {
    */
   default <//
       T0, //
-      T1, //
-      T2> Tuple2 tupleOf(//
+      T1> Tuple2 tuple(//
           final T0 t0, //
           final T1 t1) {
-    return new Tuple2() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-
-    };
+    return Tuple2.of(t0, t1);
   }
 
   /**
@@ -81,28 +53,11 @@ public interface WithTuples {
   default <//
       T0, //
       T1, //
-      T2> Tuple3 tupleOf(//
+      T2> Tuple3 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2) {
-    return new Tuple3() {
-
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple3.of(t0, t1, t2);
   }
 
   /**
@@ -122,29 +77,12 @@ public interface WithTuples {
       T0, //
       T1, //
       T2, //
-      T3> Tuple4 tupleOf(//
+      T3> Tuple4 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3) {
-    return new Tuple4() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple4.of(t0, t1, t2, t3);
   }
 
   /**
@@ -167,32 +105,13 @@ public interface WithTuples {
       T1, //
       T2, //
       T3, //
-      T4> Tuple5 tupleOf(//
+      T4> Tuple5 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3, //
           final T4 t4) {
-    return new Tuple5() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple5.of(t0, t1, t2, t3, t4);
   }
 
   /**
@@ -218,35 +137,14 @@ public interface WithTuples {
       T2, //
       T3, //
       T4, //
-      T5> Tuple6 tupleOf(//
+      T5> Tuple6 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
           final T3 t3, //
           final T4 t4, //
           final T5 t5) {
-    return new Tuple6() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple6.of(t0, t1, t2, t3, t4, t5);
   }
 
   /**
@@ -275,7 +173,7 @@ public interface WithTuples {
       T3, //
       T4, //
       T5, //
-      T6> Tuple7 tupleOf(//
+      T6> Tuple7 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -283,30 +181,7 @@ public interface WithTuples {
           final T4 t4, //
           final T5 t5, //
           final T6 t6) {
-    return new Tuple7() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple7.of(t0, t1, t2, t3, t4, t5, t6);
   }
 
   /**
@@ -338,7 +213,7 @@ public interface WithTuples {
       T4, //
       T5, //
       T6, //
-      T7> Tuple8 tupleOf(//
+      T7> Tuple8 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -347,32 +222,7 @@ public interface WithTuples {
           final T5 t5, //
           final T6 t6, //
           final T7 t7) {
-    return new Tuple8() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple8.of(t0, t1, t2, t3, t4, t5, t6, t7);
   }
 
   /**
@@ -407,7 +257,7 @@ public interface WithTuples {
       T5, //
       T6, //
       T7, //
-      T8> Tuple9 tupleOf(//
+      T8> Tuple9 tuple(//
 
           final T0 t0, //
           final T1 t1, //
@@ -418,34 +268,7 @@ public interface WithTuples {
           final T6 t6, //
           final T7 t7, //
           final T8 t8) {
-    return new Tuple9() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple9.of(t0, t1, t2, t3, t4, t5, t6, t7, t8);
   }
 
   /**
@@ -483,7 +306,7 @@ public interface WithTuples {
       T6, //
       T7, //
       T8, //
-      T9> Tuple10 tupleOf(//
+      T9> Tuple10 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -494,36 +317,7 @@ public interface WithTuples {
           final T7 t7, //
           final T8 t8, //
           final T9 t9) {
-    return new Tuple10() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple10.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9);
   }
 
   /**
@@ -564,7 +358,7 @@ public interface WithTuples {
       T7, //
       T8, //
       T9, //
-      T10> Tuple11 tupleOf(//
+      T10> Tuple11 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -576,38 +370,7 @@ public interface WithTuples {
           final T8 t8, //
           final T9 t9, //
           final T10 t10) {
-    return new Tuple11() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple11.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
   }
 
   /**
@@ -651,7 +414,7 @@ public interface WithTuples {
       T8, //
       T9, //
       T10, //
-      T11> Tuple12 tupleOf(//
+      T11> Tuple12 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -664,40 +427,7 @@ public interface WithTuples {
           final T9 t9, //
           final T10 t10, //
           final T11 t11) {
-    return new Tuple12() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        case 11:
-          return (R) t11;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple12.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11);
   }
 
   /**
@@ -744,7 +474,7 @@ public interface WithTuples {
       T9, //
       T10, //
       T11, //
-      T12> Tuple13 tupleOf(//
+      T12> Tuple13 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -758,42 +488,7 @@ public interface WithTuples {
           final T10 t10, //
           final T11 t11, //
           final T12 t12) {
-    return new Tuple13() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        case 11:
-          return (R) t11;
-        case 12:
-          return (R) t12;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple13.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12);
   }
 
   /**
@@ -843,7 +538,7 @@ public interface WithTuples {
       T10, //
       T11, //
       T12, //
-      T13> Tuple tupleOf(//
+      T13> Tuple14 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -858,44 +553,7 @@ public interface WithTuples {
           final T11 t11, //
           final T12 t12, //
           final T13 t13) {
-    return new Tuple14() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        case 11:
-          return (R) t11;
-        case 12:
-          return (R) t12;
-        case 13:
-          return (R) t13;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple14.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13);
   }
 
   /**
@@ -948,7 +606,7 @@ public interface WithTuples {
       T11, //
       T12, //
       T13, //
-      T14> Tuple15 tupleOf(//
+      T14> Tuple15 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -964,46 +622,7 @@ public interface WithTuples {
           final T12 t12, //
           final T13 t13, //
           final T14 t14) {
-    return new Tuple15() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        case 11:
-          return (R) t11;
-        case 12:
-          return (R) t12;
-        case 13:
-          return (R) t13;
-        case 14:
-          return (R) t14;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple15.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14);
   }
 
   /**
@@ -1059,7 +678,7 @@ public interface WithTuples {
       T12, //
       T13, //
       T14, //
-      T15> Tuple16 tupleOf(//
+      T15> Tuple16 tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -1076,47 +695,6 @@ public interface WithTuples {
           final T13 t13, //
           final T14 t14, //
           final T15 t15) {
-    return new Tuple16() {
-      @SuppressWarnings("unchecked")
-      @Override
-      public <R> R get(int i) {
-        switch (i) {
-        case 0:
-          return (R) t0;
-        case 1:
-          return (R) t1;
-        case 2:
-          return (R) t2;
-        case 3:
-          return (R) t3;
-        case 4:
-          return (R) t4;
-        case 5:
-          return (R) t5;
-        case 6:
-          return (R) t6;
-        case 7:
-          return (R) t7;
-        case 8:
-          return (R) t8;
-        case 9:
-          return (R) t9;
-        case 10:
-          return (R) t10;
-        case 11:
-          return (R) t11;
-        case 12:
-          return (R) t12;
-        case 13:
-          return (R) t13;
-        case 14:
-          return (R) t14;
-        case 15:
-          return (R) t15;
-        default:
-          throw createIndexOutOfBoundsException(i, size());
-        }
-      }
-    };
+    return Tuple16.of(t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15);
   }
 }
