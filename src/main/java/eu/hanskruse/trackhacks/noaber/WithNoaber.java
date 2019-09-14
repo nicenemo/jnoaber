@@ -1,13 +1,13 @@
 package eu.hanskruse.trackhacks.noaber;
 
 
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithCompose;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithIdentity;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithLogic;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithMapReduce;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithPatternMatching;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithStats;
-import eu.hanskruse.trackhacks.noaber.withNoaber.WithStream;
+import eu.hanskruse.trackhacks.noaber.with.WithCompose;
+import eu.hanskruse.trackhacks.noaber.with.WithIdentity;
+import eu.hanskruse.trackhacks.noaber.with.WithLogic;
+import eu.hanskruse.trackhacks.noaber.with.WithMapReduce;
+import eu.hanskruse.trackhacks.noaber.with.WithPatternMatching;
+import eu.hanskruse.trackhacks.noaber.with.WithStats;
+import eu.hanskruse.trackhacks.noaber.with.WithStream;
 
 /**
  * {@code WithNoaber} is an interface that you can implement to get all kinds of utility

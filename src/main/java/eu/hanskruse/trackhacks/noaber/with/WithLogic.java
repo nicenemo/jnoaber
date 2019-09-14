@@ -1,4 +1,4 @@
-package eu.hanskruse.trackhacks.noaber.withNoaber;
+package eu.hanskruse.trackhacks.noaber.with;
 
 import java.util.Collection;
 import java.util.function.Predicate;
