@@ -18,9 +18,10 @@ public interface WithNoaber extends //
     WithIdentity, //
     WithLogic, //
     WithMapReduce, //
-    WithPatternMatching,
-    WithStats,
-    WithStream,
+    WithPatternMatching, //
+    WithPredicate, //
+    WithStats, //
+    WithStream, //
     WithTuples {
   // nothing here
 }

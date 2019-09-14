@@ -1,5 +1,6 @@
 package eu.hanskruse.trackhacks.noaber.with;
 
+import static eu.hanskruse.trackhacks.noaber.Noaber.$;
 import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -102,21 +103,20 @@ public interface WithStream {
   }
 
   default < //
+  T1, //
+  T2, //
+  R> Streamable<R> comprehend( //
+    final Streamable<T1> s1, //
+    final Streamable<T2> s2, //
+    BiFunction< //
     T1, //
     T2, //
-    R> Streamable<R> comprehend( //
-      final Streamable<T1> s1, //
-      final Streamable<T2> s2, //
-      BiFunction< //
-      T1, //
-      T2, //
-      R> f) {
-    return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().map( //
-    t2 -> f.apply( //
-    t1, //
-    t2)));
-  }
+    R> f) {
+      return s1.flatMap( //
+      t1 -> s2.map( //
+      $().leftApply(f).apply(t1)));
+    }
+
 
   default < //
     T1, //
@@ -129,13 +129,13 @@ public interface WithStream {
       T1, //
       T2, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().filter(//
-    t2 -> p.test(t1,t2)).map( //
-    t2p -> f.apply( //
-    t1, //
-    t2p)));
+    return s1.flatMap( //
+    t1 -> s2.filter(//
+    $().leftApply(p).apply(t1)).map( //
+    $().leftApply(f).apply( //
+    t1)));
   }
+
 
   default <//
     T1, //
@@ -150,9 +150,9 @@ public interface WithStream {
       T2, //
       T3, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-      t1 -> s2.stream().flatMap( //
-      t2 -> s3.stream().map( //
+    return s1.flatMap( //
+      t1 -> s2.flatMap( //
+      t2 -> s3.map( //
       t3 -> f.apply( //
       t1, //
       t2, //
@@ -175,10 +175,10 @@ public interface WithStream {
       T3, //
       T4, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-      t1 -> s2.stream().flatMap( //
-      t2 -> s3.stream().flatMap( //
-      t3 -> s4.stream().map( //
+    return s1.flatMap( //
+      t1 -> s2.flatMap( //
+      t2 -> s3.flatMap( //
+      t3 -> s4.map( //
       t4 -> f.apply( //
       t1, //
       t2, //
@@ -205,11 +205,11 @@ public interface WithStream {
       T4, //
       T5, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-      t1 -> s2.stream().flatMap( //
-      t2 -> s3.stream().flatMap( //
-      t3 -> s4.stream().flatMap( //
-      t4 -> s5.stream().map( //
+    return s1.flatMap( //
+      t1 -> s2.flatMap( //
+      t2 -> s3.flatMap( //
+      t3 -> s4.flatMap( //
+      t4 -> s5.map( //
       t5 ->  f.apply( //
       t1, //
       t2, //
@@ -240,12 +240,12 @@ public interface WithStream {
       T5, //
       T6, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-      t1 -> s2.stream().flatMap( //
-      t2 -> s3.stream().flatMap( //
-      t3 -> s4.stream().flatMap( //
-      t4 -> s5.stream().flatMap( //
-      t5 -> s6.stream().map( //
+    return s1.flatMap( //
+      t1 -> s2.flatMap( //
+      t2 -> s3.flatMap( //
+      t3 -> s4.flatMap( //
+      t4 -> s5.flatMap( //
+      t5 -> s6.map( //
       t6 -> f.apply( //
       t1, //
       t2, //
@@ -280,13 +280,13 @@ public interface WithStream {
       T6, //
       T7, //
       R> f) {
-    return () -> s1.stream().flatMap( //
-      t1 -> s2.stream().flatMap( //
-      t2 -> s3.stream().flatMap( //
-      t3 -> s4.stream().flatMap( //
-      t4 -> s5.stream().flatMap( //
-      t5 -> s6.stream().flatMap( //
-      t6 -> s7.stream().map(//
+    return s1.flatMap( //
+      t1 -> s2.flatMap( //
+      t2 -> s3.flatMap( //
+      t3 -> s4.flatMap( //
+      t4 -> s5.flatMap( //
+      t5 -> s6.flatMap( //
+      t6 -> s7.map(//
       t7 -> f.apply( //
       t1, //
       t2, //
@@ -325,14 +325,14 @@ public interface WithStream {
     T7, //
     T8, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().map(//
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.map(//
     t8 -> f.apply( //
     t1, //
     t2, //
@@ -375,15 +375,15 @@ public interface WithStream {
     T8, //
     T9, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().map(
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.map(
     t9 -> f.apply( //
     t1, //
     t2, //
@@ -431,16 +431,16 @@ public interface WithStream {
     T9, //
     T10, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().map( //
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.map( //
     t10 -> f.apply( //
     t1, //
     t2, //
@@ -491,17 +491,17 @@ public interface WithStream {
     T10, //
     T11, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().map(
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.map(
     t11 -> f.apply( //
     t1, //
     t2, //
@@ -556,18 +556,18 @@ public interface WithStream {
     T11, //
     T12, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().flatMap( //
-    t11 -> s12.stream().map(
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.flatMap( //
+    t11 -> s12.map(
     t12 -> f.apply( //
     t1, //
     t2, //
@@ -626,19 +626,19 @@ public interface WithStream {
     T12, //
     T13, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().flatMap( //
-    t11 -> s12.stream().flatMap( //
-    t12 -> s13.stream().map(//
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.flatMap( //
+    t11 -> s12.flatMap( //
+    t12 -> s13.map(//
     t13 -> f.apply( //
     t1, //
     t2, //
@@ -701,20 +701,20 @@ public interface WithStream {
     T13, //
     T14, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().flatMap( //
-    t11 -> s12.stream().flatMap( //
-    t12 -> s13.stream().flatMap(//
-    t13 -> s14.stream().map( //
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.flatMap( //
+    t11 -> s12.flatMap( //
+    t12 -> s13.flatMap(//
+    t13 -> s14.map( //
     t14 -> f.apply( //
     t1, //
     t2, //
@@ -782,21 +782,21 @@ public interface WithStream {
     T14, //
     T15, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().flatMap( //
-    t11 -> s12.stream().flatMap( //
-    t12 -> s13.stream().flatMap(//
-    t13 -> s14.stream().flatMap( //
-    t14 -> s15.stream().map( //
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.flatMap( //
+    t11 -> s12.flatMap( //
+    t12 -> s13.flatMap(//
+    t13 -> s14.flatMap( //
+    t14 -> s15.map( //
     t15 -> f.apply( //
     t1, //
     t2, //
@@ -868,22 +868,22 @@ public interface WithStream {
     T15, //
     T16, //
     R> f) {
-  return () -> s1.stream().flatMap( //
-    t1 -> s2.stream().flatMap( //
-    t2 -> s3.stream().flatMap( //
-    t3 -> s4.stream().flatMap( //
-    t4 -> s5.stream().flatMap( //
-    t5 -> s6.stream().flatMap( //
-    t6 -> s7.stream().flatMap( //
-    t7 -> s8.stream().flatMap( //
-    t8 -> s9.stream().flatMap( //
-    t9 -> s10.stream().flatMap( //
-    t10 -> s11.stream().flatMap( //
-    t11 -> s12.stream().flatMap( //
-    t12 -> s13.stream().flatMap(//
-    t13 -> s14.stream().flatMap( //
-    t14 -> s15.stream().flatMap( //
-    t15 -> s16.stream().map( //
+  return s1.flatMap( //
+    t1 -> s2.flatMap( //
+    t2 -> s3.flatMap( //
+    t3 -> s4.flatMap( //
+    t4 -> s5.flatMap( //
+    t5 -> s6.flatMap( //
+    t6 -> s7.flatMap( //
+    t7 -> s8.flatMap( //
+    t8 -> s9.flatMap( //
+    t9 -> s10.flatMap( //
+    t10 -> s11.flatMap( //
+    t11 -> s12.flatMap( //
+    t12 -> s13.flatMap(//
+    t13 -> s14.flatMap( //
+    t14 -> s15.flatMap( //
+    t15 -> s16.map( //
     t16 -> f.apply( //
     t1, //
     t2, //
