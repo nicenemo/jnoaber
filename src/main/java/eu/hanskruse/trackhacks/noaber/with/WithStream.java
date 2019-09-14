@@ -2,6 +2,7 @@ package eu.hanskruse.trackhacks.noaber.with;
 
 import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -115,6 +116,25 @@ public interface WithStream {
     t2 -> f.apply( //
     t1, //
     t2)));
+  }
+
+  default < //
+    T1, //
+    T2, //
+    R> Streamable<R> comprehend( //
+      final Streamable<T1> s1, //
+      final Streamable<T2> s2, //
+      BiPredicate<T1,T2> p, //
+      BiFunction< //
+      T1, //
+      T2, //
+      R> f) {
+    return () -> s1.stream().flatMap( //
+    t1 -> s2.stream().filter(//
+    t2 -> p.test(t1,t2)).map( //
+    t2p -> f.apply( //
+    t1, //
+    t2p)));
   }
 
   default <//

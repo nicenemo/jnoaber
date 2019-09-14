@@ -1,6 +1,8 @@
 package eu.hanskruse.trackhacks.noaber.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.stream.Collectors;
 
 import org.junit.Before;
@@ -45,11 +47,11 @@ public class StreamableTest implements WithNoaber {
     assertEquals(expectedNumberOfCombinations, actualNumberOfCombinations);
 
     final String s = combinations.stream().collect(Collectors.joining(",\n"));
-    System.out.println(s);
+    assertTrue(!s.isEmpty());
   }
 
   @Test
-  public void testForComprehension() {
+  public void testForComprehension3() {
     Streamable<String> combinations = this.comprehend(//
         names, //
         postalCodes, //
@@ -60,6 +62,19 @@ public class StreamableTest implements WithNoaber {
     assertEquals(expectedNumberOfCombinations, actualNumberOfCombinations);
 
     final String s = combinations.stream().collect(Collectors.joining(",\n"));
+    assertTrue(!s.isEmpty());
+  }
+
+  @Test
+  public void testForComprehension2WithPredicate() {
+    Streamable<String> combinations = this.comprehend(//
+        names, //
+        postalCodes, //
+        (name, postalCode) -> name.equals("Katie") && postalCode.equals("3122NH"),
+        (name, postalCode) -> String.format("%s %s", name, postalCode));
+
+    final String s = combinations.stream().collect(Collectors.joining(",\n"));
+    assertTrue(s, !s.isEmpty());
     System.out.println(s);
   }
 }
