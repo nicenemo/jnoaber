@@ -48,14 +48,26 @@ public interface Streamable<T> {
     return () -> this.stream().flatMap(streamable -> mapper.apply(streamable).stream());
   }
 
+  /**
+   * Concatenenats streameables.
+   * @param streamables streamables to be concatenated
+   * @return streamable consisting of the concatenation of streamables
+   */
   default Streamable<T> concat(Streamable<T> ...streamables){
      return Streamable.concat(this,streamables);
   }
 
-  static <T1> Streamable<T1> concat(Streamable<T1> a,Streamable<T1> ...streamables){
+  /**
+   *  Concatenate Streamables.
+   * @param <T1>
+   * @param head first streamable
+   * @param tail other streameables to be concatenated to the head.
+   * @return  streamable consisting of the concatenation of streamables
+   */
+  static <T1> Streamable<T1> concat(Streamable<T1> head,Streamable<T1> ...tail){
     return () -> {
-      final Streamable<T1> seed = a == null? Stream::empty : a;
-      final Stream<Streamable<T1>> xs= streamables == null ? Stream.empty() : Arrays.stream(streamables);
+      final Streamable<T1> seed = head == null? Stream::empty : head;
+      final Stream<Streamable<T1>> xs= tail == null ? Stream.empty() : Arrays.stream(tail);
       return xs.filter(x -> x!=null).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
     };
   }

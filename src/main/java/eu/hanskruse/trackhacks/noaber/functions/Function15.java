@@ -1,7 +1,7 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.functions;
 
 /**
- * A function with 16 arguments.
+ * A function with 15 arguments.
  * @param <T1> 1st type argument
  * @param <T2> 2nd type argument
  * @param <T3> 3th type argument
@@ -17,11 +17,10 @@ package eu.hanskruse.trackhacks.noaber;
  * @param <T13> 13th type argument
  * @param <T14> 14th type argument
  * @param <T15> 15th type argument
- * @param <T16> 16th type argument
  * @param <R> type argument for the return type
  */
 @FunctionalInterface
-public interface Function16<//
+public interface Function15<//
     T1, //
     T2, //
     T3, //
@@ -37,7 +36,6 @@ public interface Function16<//
     T13, //
     T14, //
     T15, //
-    T16, //
     R> {
 
     /**
@@ -57,7 +55,6 @@ public interface Function16<//
      * @param t13 13th argument
      * @param t14 14th argument
      * @param t15 15th argument
-     * @param t16 16th argument
      * @return the result of applying the function
      */
     public R apply(//
@@ -75,6 +72,5 @@ public interface Function16<//
       T12 t12, //
       T13 t13, //
       T14 t14, //
-      T15 t15, //
-      T16 t16);
+      T15 t15);
 }

@@ -8,6 +8,21 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import eu.hanskruse.trackhacks.noaber.functions.Function3;
+import eu.hanskruse.trackhacks.noaber.functions.Function4;
+import eu.hanskruse.trackhacks.noaber.functions.Function5;
+import eu.hanskruse.trackhacks.noaber.functions.Function6;
+import eu.hanskruse.trackhacks.noaber.functions.Function7;
+import eu.hanskruse.trackhacks.noaber.functions.Function8;
+import eu.hanskruse.trackhacks.noaber.functions.Function9;
+import eu.hanskruse.trackhacks.noaber.functions.Function10;
+import eu.hanskruse.trackhacks.noaber.functions.Function11;
+import eu.hanskruse.trackhacks.noaber.functions.Function12;
+import eu.hanskruse.trackhacks.noaber.functions.Function13;
+import eu.hanskruse.trackhacks.noaber.functions.Function14;
+import eu.hanskruse.trackhacks.noaber.functions.Function15;
+import eu.hanskruse.trackhacks.noaber.functions.Function16;
+
 /**
  * Stream functionality.
  *

@@ -1,7 +1,7 @@
-package eu.hanskruse.trackhacks.noaber;
+package eu.hanskruse.trackhacks.noaber.functions;
 
 /**
- * A function with 9 arguments.
+ * A function with 14 arguments.
  * @param <T1> 1st type argument
  * @param <T2> 2nd type argument
  * @param <T3> 3th type argument
@@ -11,10 +11,15 @@ package eu.hanskruse.trackhacks.noaber;
  * @param <T7> 7th type argument
  * @param <T8> 8th type argument
  * @param <T9> 9th type argument
+ * @param <T10> 10th type argument
+ * @param <T11> 11th type argument
+ * @param <T12> 12th type argument
+ * @param <T13> 13th type argument
+ * @param <T14> 14th type argument
  * @param <R> type argument for the return type
  */
 @FunctionalInterface
-public interface Function9<//
+public interface Function14<//
     T1, //
     T2, //
     T3, //
@@ -24,6 +29,11 @@ public interface Function9<//
     T7, //
     T8, //
     T9, //
+    T10, //
+    T11, //
+    T12, //
+    T13, //
+    T14, //
     R> {
 
     /**
@@ -37,6 +47,11 @@ public interface Function9<//
      * @param t7 7th argument
      * @param t8 8th argument
      * @param t9 9th argument
+     * @param t10 10th argument
+     * @param t11 11th argument
+     * @param t12 12th argument
+     * @param t13 13th argument
+     * @param t14 14th argument
      * @return the result of applying the function
      */
     public R apply(//
@@ -48,5 +63,10 @@ public interface Function9<//
       T6 t6, //
       T7 t7, //
       T8 t8, //
-      T9 t9);
+      T9 t9, //
+      T10 t10, //
+      T11 t11, //
+      T12 t12, //
+      T13 t13, //
+      T14 t14);
 }
