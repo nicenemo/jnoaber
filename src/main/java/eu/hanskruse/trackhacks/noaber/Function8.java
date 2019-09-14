@@ -35,7 +35,7 @@ public interface Function8<//
      * @param t7 7th argument
      * @param t8 8th argument
      * @return the result of applying the function
-     */  
+     */
     public R apply(//
       T1 t1, //
       T2 t2, //

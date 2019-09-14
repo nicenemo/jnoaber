@@ -44,7 +44,7 @@ public interface Function11<//
      * @param t10 10th argument
      * @param t11 11th argument
      * @return the result of applying the function
-     */  
+     */
     public R apply(//
       T1 t1, //
       T2 t2, //

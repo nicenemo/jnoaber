@@ -26,7 +26,7 @@ public interface Function5<//
      * @param t4 4th argument
      * @param t5 5th argument
      * @return the result of applying the function
-     */  
+     */
     public R apply(//
       T1 t1, //
       T2 t2, //

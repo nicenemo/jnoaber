@@ -49,7 +49,7 @@ public class StreamableTest implements WithNoaber {
     final String s = combinations.stream().collect(Collectors.joining(",\n"));
     System.out.println(s);
   }
-  
+
   @Test
   public void testForComprehension() {
     Streamable<String> combinations = this.comprehend(//
@@ -57,7 +57,7 @@ public class StreamableTest implements WithNoaber {
         postalCodes, //
         houseNumbers, //
         (name, postalCode, houseNumber) -> String.format("%s %s %s", name, postalCode, houseNumber));
-    
+
     final int actualNumberOfCombinations = combinations.stream().toArray().length;
     assertEquals(expectedNumberOfCombinations, actualNumberOfCombinations);
 

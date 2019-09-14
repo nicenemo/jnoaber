@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple;
+import eu.hanskruse.trackhacks.noaber.tuples.Tuples;
 
 public class TupleTest {
 
@@ -94,7 +95,7 @@ public class TupleTest {
   @Test
   public void testTuple2() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1);
     final T0 at0 = sut.get(0);
@@ -107,7 +108,7 @@ public class TupleTest {
   @Test
   public void testTuple3() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2);
@@ -123,7 +124,7 @@ public class TupleTest {
   @Test
   public void testTuple4() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -142,7 +143,7 @@ public class TupleTest {
   @Test
   public void testTuple5() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -164,7 +165,7 @@ public class TupleTest {
   @Test
   public void testTuple6() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -189,7 +190,7 @@ public class TupleTest {
   @Test
   public void testTuple7() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -217,7 +218,7 @@ public class TupleTest {
   @Test
   public void testTuple8() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -248,7 +249,7 @@ public class TupleTest {
   @Test
   public void testTuple9() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -282,7 +283,7 @@ public class TupleTest {
   @Test
   public void testTuple10() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -319,7 +320,7 @@ public class TupleTest {
   @Test
   public void testTuple11() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -359,7 +360,7 @@ public class TupleTest {
   @Test
   public void testTuple12() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -402,7 +403,7 @@ public class TupleTest {
   @Test
   public void testTuple13() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -448,7 +449,7 @@ public class TupleTest {
   @Test
   public void testTuple14() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -497,7 +498,7 @@ public class TupleTest {
   @Test
   public void testTuple15() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -549,7 +550,7 @@ public class TupleTest {
   @Test
   public void testTuple16() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -604,7 +605,7 @@ public class TupleTest {
   @Test
   public void testTuple2Get2() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1);
     exception.expect(IndexOutOfBoundsException.class);
@@ -614,7 +615,7 @@ public class TupleTest {
   @Test
   public void testTuple2GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1);
     exception.expect(IndexOutOfBoundsException.class);
@@ -624,7 +625,7 @@ public class TupleTest {
   @Test
   public void testTuple3Get3() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2);
@@ -635,7 +636,7 @@ public class TupleTest {
   @Test
   public void testTuple3GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2);
@@ -646,7 +647,7 @@ public class TupleTest {
   @Test
   public void testTuple4Get4() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -658,7 +659,7 @@ public class TupleTest {
   @Test
   public void testTuple4GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -670,7 +671,7 @@ public class TupleTest {
   @Test
   public void testTuple5Get5() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -683,7 +684,7 @@ public class TupleTest {
   @Test
   public void testTuple5GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -696,7 +697,7 @@ public class TupleTest {
   @Test
   public void testTuple6Get6() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -710,7 +711,7 @@ public class TupleTest {
   @Test
   public void testTuple6GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -724,7 +725,7 @@ public class TupleTest {
   @Test
   public void testTuple7Get7() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -739,7 +740,7 @@ public class TupleTest {
   @Test
   public void testTuple7GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -754,7 +755,7 @@ public class TupleTest {
   @Test
   public void testTuple8Get8() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -770,7 +771,7 @@ public class TupleTest {
   @Test
   public void testTuple8GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -786,7 +787,7 @@ public class TupleTest {
   @Test
   public void testTuple9Get9() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -803,7 +804,7 @@ public class TupleTest {
   @Test
   public void testTuple9GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -820,7 +821,7 @@ public class TupleTest {
   @Test
   public void testTuple10Get10() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -838,7 +839,7 @@ public class TupleTest {
   @Test
   public void testTuple10GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -856,7 +857,7 @@ public class TupleTest {
   @Test
   public void testTuple11Get11() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -875,7 +876,7 @@ public class TupleTest {
   @Test
   public void testTuple11GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -894,7 +895,7 @@ public class TupleTest {
   @Test
   public void testTuple12Get12() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -914,7 +915,7 @@ public class TupleTest {
   @Test
   public void testTuple12GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -934,7 +935,7 @@ public class TupleTest {
   @Test
   public void testTuple13Get13() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -955,7 +956,7 @@ public class TupleTest {
   @Test
   public void testTuple13GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -976,7 +977,7 @@ public class TupleTest {
   @Test
   public void testTuple14Get14() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -998,7 +999,7 @@ public class TupleTest {
   @Test
   public void testTuple14GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -1020,7 +1021,7 @@ public class TupleTest {
   @Test
   public void testTuple15Get15() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -1043,7 +1044,7 @@ public class TupleTest {
   @Test
   public void testTuple15GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -1066,7 +1067,7 @@ public class TupleTest {
   @Test
   public void testTuple16Get16() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -1090,7 +1091,7 @@ public class TupleTest {
   @Test
   public void testTuple16GetMinus1() {
 
-    Tuple sut = Tuple.of(//
+    Tuple sut = Tuples.of(//
         et0, //
         et1, //
         et2, //
@@ -1113,7 +1114,7 @@ public class TupleTest {
 
   @Test
   public void testTuple3WithBooleanStringAndInteger() {
-    Tuple sut = Tuple.of(Boolean.TRUE, "Hello", 42);
+    Tuple sut = Tuples.of(Boolean.TRUE, "Hello", 42);
     final Boolean actualBoolean = sut.get(0);
     assertTrue(actualBoolean.booleanValue());
     assertEquals("Hello", sut.get(1));
@@ -1123,7 +1124,7 @@ public class TupleTest {
 
   @Test
   public void tupleIterationWithIntegers() {
-    Tuple sut = Tuple.of(1, 2, 3);
+    Tuple sut = Tuples.of(1, 2, 3);
     int sum = 0;
     final Iterable<Integer> iterable = sut.asIterable();
     for (Integer i : iterable) {

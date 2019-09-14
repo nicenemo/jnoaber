@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  * This  provides such a type. Currently it lifts {@code filter(...)}, {@code map(...)} and {@code flatMap(...)} of {@code Stream} into itself.
  *
  *  REMARK: in future iterations more functions of {@code Stream} may be lifted into this type.
- * 
+ *
  * @param <T> type of the {@link Streamable}'s {@code Stream} elements.
  */
 @FunctionalInterface

@@ -60,7 +60,7 @@ public interface WithStream {
 
   /**
    * Turns an {@code Iterable} of {@code T} into a {@code Stream} of {@code T}
-   * 
+   *
    * @param <T> the type of the elements of the {@code Iterable} and resulting
    *            {@code Stream}.
    * @param i   the {@code Iterable} of {@code T}
@@ -73,7 +73,7 @@ public interface WithStream {
   /**
    * Turns an {@code Iterable} of {@code T} into a parallel {@code Stream} of
    * {@code T}
-   * 
+   *
    * @param <T> the type of the elements of the {@code Iterable} and resulting
    *            {@code Stream}.
    * @param i   the {@code Iterable} of {@code T}
@@ -100,7 +100,7 @@ public interface WithStream {
     t2)));
   }
 
-  default <// 
+  default <//
     T1, //
     T2, //
     T3, //
@@ -359,7 +359,7 @@ public interface WithStream {
     t9))))))))));
   }
 
-  
+
   default < //
   T1, //
   T2, //
@@ -478,7 +478,7 @@ public interface WithStream {
     t10, //
     t11))))))))))));
   }
- 
+
   default < //
   T1, //
   T2, //
@@ -545,7 +545,7 @@ public interface WithStream {
     t11, //
     t12)))))))))))));
   }
- 
+
   default < //
   T1, //
   T2, //
@@ -695,7 +695,7 @@ public interface WithStream {
     t14)))))))))))))));
   }
 
-  
+
   default < //
   T1, //
   T2, //
@@ -778,7 +778,7 @@ public interface WithStream {
     t15))))))))))))))));
   }
 
-   
+
   default < //
   T1, //
   T2, //

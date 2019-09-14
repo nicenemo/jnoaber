@@ -20,7 +20,7 @@ public interface Function3<//
      * @param t2 2nd argument
      * @param t3 3th argument
      * @return the result of applying the function
-     */  
+     */
     public R apply(//
       T1 t1, //
       T2 t2, //
