@@ -52,7 +52,7 @@ public class StreamableTest implements WithNoaber {
 
   @Test
   public void testForComprehension3() {
-    Streamable<String> combinations = this.comprehend(//
+    Streamable<String> combinations = this.forEach3(//
         names, //
         postalCodes, //
         houseNumbers, //
@@ -67,7 +67,7 @@ public class StreamableTest implements WithNoaber {
 
   @Test
   public void testForComprehension2WithPredicate() {
-    Streamable<String> combinations = this.comprehend(//
+    Streamable<String> combinations = this.forEach2(//
         names, //
         postalCodes, //
         (name, postalCode) -> name.equals("Katie") && postalCode.equals("3122NH"),
