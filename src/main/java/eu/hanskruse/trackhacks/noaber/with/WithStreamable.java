@@ -1,6 +1,7 @@
 package eu.hanskruse.trackhacks.noaber.with;
 
 import static eu.hanskruse.trackhacks.noaber.Noaber.$;
+
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 
@@ -81,13 +82,17 @@ public interface WithStreamable {
   R> f) {
     return s1.flatMap( //
     t1 -> s2.flatMap( //
-    t2 -> s3.map( //
-    t3 -> f.apply( //
+    t2 -> s3.filter(//
+    t3 -> p.test(//
     t1, //
     t2, //
-    t3))));
+    t3))
+    .map( //
+    tp3 -> f.apply( //
+    t1, //
+    t2, //
+    tp3))));
   }
-  
   
   default < //
   T1, //
@@ -105,7 +110,7 @@ public interface WithStreamable {
   T3, //
   T4, //
   R> f) {
-    return forEach4(s1,s2,s3,s4,(t1, t2, t3, t4) -> true, f);
+    return forEach4(s1, s2, s3, s4, (t1, t2, t3, t4) -> true, f);
   }
   
   default < //
@@ -132,14 +137,18 @@ public interface WithStreamable {
     return s1.flatMap( //
     t1 -> s2.flatMap( //
     t2 -> s3.flatMap( //
-    t3 -> s4.map( //
-    t4 -> f.apply( //
+    t3 -> s4.filter( //
+    t4 -> p.test(//
     t1, //
     t2, //
     t3, //
-    t4)))));
+    t4))
+    .map(tp4 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    tp4)))));
   }
-  
   
   default < //
   T1, //
@@ -160,8 +169,9 @@ public interface WithStreamable {
   T4, //
   T5, //
   R> f) {
-    return forEach5(s1,s2,s3,s4,s5,(t1,t2,t3,t4,t5) -> true, f);
+    return forEach5(s1, s2, s3, s4, s5, (t1, t2, t3, t4, t5) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -191,13 +201,20 @@ public interface WithStreamable {
     t1 -> s2.flatMap( //
     t2 -> s3.flatMap( //
     t3 -> s4.flatMap( //
-    t4 -> s5.map( //
-    t5 -> f.apply( //
+    t4 -> s5.filter(//
+    t5 -> p.test(//
     t1, //
     t2, //
     t3, //
     t4, //
-    t5))))));
+    t5))
+    .map( //
+    tp5 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    tp5))))));
   }
   
   default < //
@@ -222,8 +239,9 @@ public interface WithStreamable {
   T5, //
   T6, //
   R> f) {
-    return forEach6(s1,s2,s3,s4,s5,s6,(t1,t2,t3,t4,t5,t6) -> true, f);
+    return forEach6(s1, s2, s3, s4, s5, s6, (t1, t2, t3, t4, t5, t6) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -258,14 +276,22 @@ public interface WithStreamable {
     t2 -> s3.flatMap( //
     t3 -> s4.flatMap( //
     t4 -> s5.flatMap( //
-    t5 -> s6.map( //
-    t6 -> f.apply( //
+    t5 -> s6.filter(//
+    t6 -> p.test(//
     t1, //
     t2, //
     t3, //
     t4, //
     t5, //
-    t6)))))));
+    t6 //
+    )).map( //
+    tp6 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    tp6)))))));
   }
   
   default < //
@@ -293,8 +319,9 @@ public interface WithStreamable {
   T6, //
   T7, //
   R> f) {
-    return forEach7(s1,s2,s3,s4,s5,s6,s7,(t1,t2,t3,t4,t5,t6,t7) -> true, f);
+    return forEach7(s1, s2, s3, s4, s5, s6, s7, (t1, t2, t3, t4, t5, t6, t7) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -334,7 +361,16 @@ public interface WithStreamable {
     t3 -> s4.flatMap( //
     t4 -> s5.flatMap( //
     t5 -> s6.flatMap( //
-    t6 -> s7.map(//
+    t6 -> s7.filter(//
+    t7 -> p.test(//
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7))
+    .map(//
     t7 -> f.apply( //
     t1, //
     t2, //
@@ -373,8 +409,9 @@ public interface WithStreamable {
   T7, //
   T8, //
   R> f) {
-    return forEach8(s1,s2,s3,s4,s5,s6,s7,s8, (t1,t2,t3,t4,t5,t6,t7,t8) -> true, f);
+    return forEach8(s1, s2, s3, s4, s5, s6, s7, s8, (t1, t2, t3, t4, t5, t6, t7, t8) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -419,8 +456,8 @@ public interface WithStreamable {
     t4 -> s5.flatMap( //
     t5 -> s6.flatMap( //
     t6 -> s7.flatMap( //
-    t7 -> s8.map(//
-    t8 -> f.apply( //
+    t7 -> s8.filter(//
+    t8 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -428,8 +465,19 @@ public interface WithStreamable {
     t5, //
     t6, //
     t7, //
-    t8)))))))));
+    t8))
+    .map(//
+    tp8 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    tp8)))))))));
   }
+  
   default < //
   T1, //
   T2, //
@@ -461,8 +509,9 @@ public interface WithStreamable {
   T8, //
   T9, //
   R> f) {
-    return forEach9(s1,s2,s3,s4,s5,s6,s7,s8,s9,(t1,t2,t3,t4,t5,t6,t7,t8,t9) -> true, f);
+    return forEach9(s1, s2, s3, s4, s5, s6, s7, s8, s9, (t1, t2, t3, t4, t5, t6, t7, t8, t9) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -523,6 +572,7 @@ public interface WithStreamable {
     t8, //
     t9))))))))));
   }
+  
   default < //
   T1, //
   T2, //
@@ -557,7 +607,7 @@ public interface WithStreamable {
   T9, //
   T10, //
   R> f) {
-    return forEach10(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10, (t1,t2,t3,t4,t5,t6,t7,t8,t9,t10) -> true, f);
+    return forEach10(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> true, f);
   }
   
   default < //
@@ -665,8 +715,10 @@ public interface WithStreamable {
   T10, //
   T11, //
   R> f) {
-    return forEach11(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11, (t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11) -> true, f);
+    return forEach11(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -780,8 +832,10 @@ public interface WithStreamable {
   T11, //
   T12, //
   R> f) {
-    return forEach12(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12) -> true, f);
+    return forEach12(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -904,8 +958,10 @@ public interface WithStreamable {
   T12, //
   T13, //
   R> f) {
-    return forEach13(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13) -> true, f);
+    return forEach13(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -1038,8 +1094,10 @@ public interface WithStreamable {
   T13, //
   T14, //
   R> f) {
-    return forEach14(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14) -> true, f);
+    return forEach14(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -1181,8 +1239,10 @@ public interface WithStreamable {
   T14, //
   T15, //
   R> f) {
-    return forEach15(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15, (t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15) -> true,f);
+    return forEach15(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
@@ -1333,8 +1393,10 @@ public interface WithStreamable {
   T15, //
   T16, //
   R> f) {
-    return forEach16(s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16, (t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,t16)-> true, f);
+    return forEach16(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16,
+    (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16) -> true, f);
   }
+  
   default < //
   T1, //
   T2, //
