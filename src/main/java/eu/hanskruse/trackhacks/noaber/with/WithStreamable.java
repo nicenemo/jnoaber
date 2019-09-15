@@ -19,20 +19,20 @@ public interface WithStreamable {
   default < //
   T1, //
   T2, //
-  R> Streamable<R> forEach2( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   BiFunction< //
   T1, //
   T2, //
   R> f) {
-    return forEach2(s1, s2, (t1, t2) -> true, f);
+    return forEach(s1, s2, (t1, t2) -> true, f);
   }
 
   default < //
   T1, //
   T2, //
-  R> Streamable<R> forEach2( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   BiPredicate<T1, T2> p, //
@@ -51,7 +51,7 @@ public interface WithStreamable {
   T1, //
   T2, //
   T3, //
-  R> Streamable<R> forEach3( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -60,14 +60,14 @@ public interface WithStreamable {
   T2, //
   T3, //
   R> f) {
-    return forEach3(s1, s2, s3, (t1, t2, t3) -> true, f);
+    return forEach(s1, s2, s3, (t1, t2, t3) -> true, f);
   }
 
   default <//
   T1, //
   T2, //
   T3, //
-  R> Streamable<R> forEach3( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -99,7 +99,7 @@ public interface WithStreamable {
   T2, //
   T3, //
   T4, //
-  R> Streamable<R> forEach4( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -110,7 +110,7 @@ public interface WithStreamable {
   T3, //
   T4, //
   R> f) {
-    return forEach4(s1, s2, s3, s4, (t1, t2, t3, t4) -> true, f);
+    return forEach(s1, s2, s3, s4, (t1, t2, t3, t4) -> true, f);
   }
 
   default < //
@@ -118,7 +118,7 @@ public interface WithStreamable {
   T2, //
   T3, //
   T4, //
-  R> Streamable<R> forEach4( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -156,7 +156,7 @@ public interface WithStreamable {
   T3, //
   T4, //
   T5, //
-  R> Streamable<R> forEach5( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -169,7 +169,7 @@ public interface WithStreamable {
   T4, //
   T5, //
   R> f) {
-    return forEach5(s1, s2, s3, s4, s5, (t1, t2, t3, t4, t5) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, (t1, t2, t3, t4, t5) -> true, f);
   }
 
   default < //
@@ -178,7 +178,7 @@ public interface WithStreamable {
   T3, //
   T4, //
   T5, //
-  R> Streamable<R> forEach5( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -224,7 +224,7 @@ public interface WithStreamable {
   T4, //
   T5, //
   T6, //
-  R> Streamable<R> forEach6( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -239,7 +239,7 @@ public interface WithStreamable {
   T5, //
   T6, //
   R> f) {
-    return forEach6(s1, s2, s3, s4, s5, s6, (t1, t2, t3, t4, t5, t6) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, s6, (t1, t2, t3, t4, t5, t6) -> true, f);
   }
 
   default < //
@@ -249,7 +249,7 @@ public interface WithStreamable {
   T4, //
   T5, //
   T6, //
-  R> Streamable<R> forEach6( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -302,7 +302,7 @@ public interface WithStreamable {
   T5, //
   T6, //
   T7, //
-  R> Streamable<R> forEach7( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -319,7 +319,7 @@ public interface WithStreamable {
   T6, //
   T7, //
   R> f) {
-    return forEach7(s1, s2, s3, s4, s5, s6, s7, (t1, t2, t3, t4, t5, t6, t7) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, s6, s7, (t1, t2, t3, t4, t5, t6, t7) -> true, f);
   }
 
   default < //
@@ -330,7 +330,7 @@ public interface WithStreamable {
   T5, //
   T6, //
   T7, //
-  R> Streamable<R> forEach7( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -390,7 +390,7 @@ public interface WithStreamable {
   T6, //
   T7, //
   T8, //
-  R> Streamable<R> forEach8( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -409,7 +409,7 @@ public interface WithStreamable {
   T7, //
   T8, //
   R> f) {
-    return forEach8(s1, s2, s3, s4, s5, s6, s7, s8, (t1, t2, t3, t4, t5, t6, t7, t8) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, (t1, t2, t3, t4, t5, t6, t7, t8) -> true, f);
   }
 
   default < //
@@ -421,7 +421,7 @@ public interface WithStreamable {
   T6, //
   T7, //
   T8, //
-  R> Streamable<R> forEach8( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -488,7 +488,7 @@ public interface WithStreamable {
   T7, //
   T8, //
   T9, //
-  R> Streamable<R> forEach9( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -509,7 +509,7 @@ public interface WithStreamable {
   T8, //
   T9, //
   R> f) {
-    return forEach9(s1, s2, s3, s4, s5, s6, s7, s8, s9, (t1, t2, t3, t4, t5, t6, t7, t8, t9) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, (t1, t2, t3, t4, t5, t6, t7, t8, t9) -> true, f);
   }
 
   default < //
@@ -522,7 +522,7 @@ public interface WithStreamable {
   T7, //
   T8, //
   T9, //
-  R> Streamable<R> forEach9( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -595,7 +595,7 @@ public interface WithStreamable {
   T8, //
   T9, //
   T10, //
-  R> Streamable<R> forEach10( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -618,7 +618,7 @@ public interface WithStreamable {
   T9, //
   T10, //
   R> f) {
-    return forEach10(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> true, f);
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> true, f);
   }
 
   default < //
@@ -632,7 +632,7 @@ public interface WithStreamable {
   T8, //
   T9, //
   T10, //
-  R> Streamable<R> forEach10( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -712,7 +712,7 @@ public interface WithStreamable {
   T9, //
   T10, //
   T11, //
-  R> Streamable<R> forEach11( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -737,7 +737,7 @@ public interface WithStreamable {
   T10, //
   T11, //
   R> f) {
-    return forEach11(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> true, f);
   }
 
@@ -753,7 +753,7 @@ public interface WithStreamable {
   T9, //
   T10, //
   T11, //
-  R> Streamable<R> forEach11( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -840,7 +840,7 @@ public interface WithStreamable {
   T10, //
   T11, //
   T12, //
-  R> Streamable<R> forEach12( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -867,7 +867,7 @@ public interface WithStreamable {
   T11, //
   T12, //
   R> f) {
-    return forEach12(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> true, f);
   }
 
@@ -884,7 +884,7 @@ public interface WithStreamable {
   T10, //
   T11, //
   T12, //
-  R> Streamable<R> forEach12( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -978,7 +978,7 @@ public interface WithStreamable {
   T11, //
   T12, //
   T13, //
-  R> Streamable<R> forEach13( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1007,7 +1007,7 @@ public interface WithStreamable {
   T12, //
   T13, //
   R> f) {
-    return forEach13(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> true, f);
   }
 
@@ -1025,7 +1025,7 @@ public interface WithStreamable {
   T11, //
   T12, //
   T13, //
-  R> Streamable<R> forEach13( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1126,7 +1126,7 @@ public interface WithStreamable {
   T12, //
   T13, //
   T14, //
-  R> Streamable<R> forEach14( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1157,7 +1157,7 @@ public interface WithStreamable {
   T13, //
   T14, //
   R> f) {
-    return forEach14(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> true, f);
   }
 
@@ -1176,7 +1176,7 @@ public interface WithStreamable {
   T12, //
   T13, //
   T14, //
-  R> Streamable<R> forEach14( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1284,7 +1284,7 @@ public interface WithStreamable {
   T13, //
   T14, //
   T15, //
-  R> Streamable<R> forEach15( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1317,7 +1317,7 @@ public interface WithStreamable {
   T14, //
   T15, //
   R> f) {
-    return forEach15(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> true, f);
   }
 
@@ -1337,7 +1337,7 @@ public interface WithStreamable {
   T13, //
   T14, //
   T15, //
-  R> Streamable<R> forEach15( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1452,7 +1452,7 @@ public interface WithStreamable {
   T14, //
   T15, //
   T16, //
-  R> Streamable<R> forEach16( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -1487,7 +1487,7 @@ public interface WithStreamable {
   T15, //
   T16, //
   R> f) {
-    return forEach16(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16,
+    return forEach(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16) -> true, f);
   }
 
@@ -1508,7 +1508,7 @@ public interface WithStreamable {
   T14, //
   T15, //
   T16, //
-  R> Streamable<R> forEach16( //
+  R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
