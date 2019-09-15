@@ -1,15 +1,8 @@
 package eu.hanskruse.trackhacks.noaber.with;
 
 import static eu.hanskruse.trackhacks.noaber.Noaber.$;
-import java.util.Arrays;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 import eu.hanskruse.trackhacks.noaber.functions.*;
 import eu.hanskruse.trackhacks.noaber.Streamable;
