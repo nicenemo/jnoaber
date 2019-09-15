@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 /**
  * Compose functionality.
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -18,8 +19,7 @@ public interface WithCompose {
    * @param functions
    * @return result of function chaining.
    */
-  default <T> Function<T, T> compose(
-      @SuppressWarnings("unchecked") final Function<T, T>... functions) {
+  default <T> Function<T, T> compose(@SuppressWarnings("unchecked") final Function<T, T>... functions) {
     if (functions == null) {
       throw new IllegalArgumentException("functions is null");
     }
@@ -49,61 +49,44 @@ public interface WithCompose {
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
+   * @param f1 first function
+   * @param f2 second function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  default <T1, T2, R> Function<T1, R> compose(
-      final Function<T1, T2> f1, //
+  default <T1, T2, R> Function<T1, R> compose(final Function<T1, T2> f1, //
       final Function<T2, R> f2) {
     if (noaber().stream(f1, f2).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f2.apply( //
-        f1.apply( //
-            argument));
+    return f2.compose(f1);
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
-  default <T1, T2, T3, R> Function<T1, R> compose(
-      final Function<T1, T2> f1, //
+  default <T1, T2, T3, R> Function<T1, R> compose(final Function<T1, T2> f1, //
       final Function<T2, T3> f2, //
       final Function<T3, R> f3) {
     if (noaber().stream(f1, f2, f3).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f3.apply( //
-        f2.apply( //
-            f1.apply( //
-                argument)));
+    return f3.compose(compose(f1, f2));
   }
 
   /**
-   * /**
-   * Compose function chain.
+   * /** Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -115,26 +98,17 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f4.apply( //
-        f3.apply( //
-            f2.apply( //
-                f1.apply( //
-                    argument))));
+    return f4.compose(compose(f1, f2, f3));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
+   * @param f5 fifth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -147,29 +121,18 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f5.apply( //
-        f4.apply( //
-            f3.apply( //
-                f2.apply( //
-                    f1.apply(
-                        argument)))));
+    return f5.compose(compose(f1, f2, f3, f4));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
+   * @param f5 fifth function
+   * @param f6 sixth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -183,32 +146,19 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f6.apply( //
-        f5.apply( //
-            f4.apply( //
-                f3.apply( //
-                    f2.apply( //
-                        f1.apply( //
-                            argument))))));
+    return f6.compose(compose(f1, f2, f3, f4, f5));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
+   * @param f5 fifth function
+   * @param f6 sixth function
+   * @param f7 sixth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -218,40 +168,24 @@ public interface WithCompose {
       final Function<T3, T4> f3, //
       final Function<T4, T5> f4, //
       final Function<T5, T6> f5, //
-      final Function<T6, T7> f6,
-      final Function<T7, R> f7) {
+      final Function<T6, T7> f6, final Function<T7, R> f7) {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f7.apply( //
-        f6.apply( //
-            f5.apply( //
-                f4.apply( //
-                    f3.apply( //
-                        f2.apply( //
-                            f1.apply( //
-                                argument)))))));
+    return f7.compose(compose(f1, f2, f3, f4, f5, f6));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
+   * @param f5 fifth function
+   * @param f6 sixth function
+   * @param f7 sixth function
+   * @param f8 eighth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -267,38 +201,21 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f8.apply( //
-        f7.apply( //
-            f6.apply( //
-                f5.apply( //
-                    f4.apply( //
-                        f3.apply( //
-                            f2.apply( //
-                                f1.apply( //
-                                    argument))))))));
+    return f8.compose(compose(f1, f2, f3, f4, f5, f6, f7));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
+   * @param f1 first function
+   * @param f2 second function
+   * @param f3 third function
+   * @param f4 fourth function
+   * @param f5 fifth function
+   * @param f6 sixth function
+   * @param f7 sixth function
+   * @param f8 eighth function
+   * @param f9 ninth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -315,41 +232,22 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f9.apply( //
-        f8.apply( //
-            f7.apply( //
-                f6.apply( //
-                    f5.apply( //
-                        f4.apply( //
-                            f3.apply( //
-                                f2.apply( //
-                                    f1.apply( //
-                                        argument)))))))));
+    return f9.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -367,44 +265,23 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f10.apply( //
-        f9.apply( //
-            f8.apply( //
-                f7.apply( //
-                    f6.apply( //
-                        f5.apply( //
-                            f4.apply( //
-                                f3.apply( //
-                                    f2.apply( //
-                                        f1.apply( //
-                                            argument))))))))));
+    return f10.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -423,47 +300,24 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f11.apply( //
-        f10.apply( //
-            f9.apply( //
-                f8.apply( //
-                    f7.apply( //
-                        f6.apply( //
-                            f5.apply( //
-                                f4.apply( //
-                                    f3.apply( //
-                                        f2.apply( //
-                                            f1.apply( //
-                                                argument)))))))))));
+    return f11.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
-   * @param f12
-   *          twelfth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
+   * @param f12 twelfth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -483,50 +337,25 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f12.apply( //
-        f11.apply( //
-            f10.apply( //
-                f9.apply( //
-                    f8.apply( //
-                        f7.apply( //
-                            f6.apply( //
-                                f5.apply( //
-                                    f4.apply( //
-                                        f3.apply( //
-                                            f2.apply( //
-                                                f1.apply( //
-                                                    argument))))))))))));
+    return f12.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
-   * @param f12
-   *          twelfth function
-   * @param f13
-   *          thirteenth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
+   * @param f12 twelfth function
+   * @param f13 thirteenth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -547,53 +376,26 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f13.apply( //
-        f12.apply( //
-            f11.apply( //
-                f10.apply( //
-                    f9.apply( //
-                        f8.apply( //
-                            f7.apply( //
-                                f6.apply( //
-                                    f5.apply( //
-                                        f4.apply( //
-                                            f3.apply( //
-                                                f2.apply( //
-                                                    f1.apply( //
-                                                        argument)))))))))))));
+    return f13.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
-   * @param f12
-   *          twelfth function
-   * @param f13
-   *          thirteenth function
-   * @param f14
-   *          fourteenth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
+   * @param f12 twelfth function
+   * @param f13 thirteenth function
+   * @param f14 fourteenth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -615,56 +417,27 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f14.apply( //
-        f13.apply( //
-            f12.apply( //
-                f11.apply( //
-                    f10.apply( //
-                        f9.apply( //
-                            f8.apply( //
-                                f7.apply( //
-                                    f6.apply( //
-                                        f5.apply( //
-                                            f4.apply( //
-                                                f3.apply( //
-                                                    f2.apply( //
-                                                        f1.apply( //
-                                                            argument))))))))))))));
+    return f14.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
-   * @param f12
-   *          twelfth function
-   * @param f13
-   *          thirteenth function
-   * @param f14
-   *          fourteenth function
-   * @param f15
-   *          fifteenth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
+   * @param f12 twelfth function
+   * @param f13 thirteenth function
+   * @param f14 fourteenth function
+   * @param f15 fifteenth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -687,59 +460,28 @@ public interface WithCompose {
     if (noaber().stream(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15).anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f15.apply( //
-        f14.apply( //
-            f13.apply( //
-                f12.apply( //
-                    f11.apply( //
-                        f10.apply( //
-                            f9.apply( //
-                                f8.apply( //
-                                    f7.apply( //
-                                        f6.apply( //
-                                            f5.apply( //
-                                                f4.apply( //
-                                                    f3.apply( //
-                                                        f2.apply( //
-                                                            f1.apply( //
-                                                                argument)))))))))))))));
+    return f15.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14));
   }
 
   /**
    * Compose function chain.
    *
-   * @param f1
-   *          first function
-   * @param f2
-   *          second function
-   * @param f3
-   *          third function
-   * @param f4
-   *          fourth function
-   * @param f5
-   *          fifth function
-   * @param f6
-   *          sixth function
-   * @param f7
-   *          sixth function
-   * @param f8
-   *          eighth function
-   * @param f9
-   *          ninth function
-   * @param f10
-   *          tenth function
-   * @param f11
-   *          eleventh function
-   * @param f12
-   *          twelfth function
-   * @param f13
-   *          thirteenth function
-   * @param f14
-   *          fourteenth function
-   * @param f15
-   *          fifteenth function
-   * @param f16
-   *          sixteenth function
+   * @param f1  first function
+   * @param f2  second function
+   * @param f3  third function
+   * @param f4  fourth function
+   * @param f5  fifth function
+   * @param f6  sixth function
+   * @param f7  sixth function
+   * @param f8  eighth function
+   * @param f9  ninth function
+   * @param f10 tenth function
+   * @param f11 eleventh function
+   * @param f12 twelfth function
+   * @param f13 thirteenth function
+   * @param f14 fourteenth function
+   * @param f15 fifteenth function
+   * @param f16 sixteenth function
    * @return result of function chaining.
    */
   @SuppressWarnings("unchecked")
@@ -765,22 +507,6 @@ public interface WithCompose {
         .anyMatch(f -> f == null)) {
       throw new IllegalArgumentException("functions should not be null");
     }
-    return (argument) -> f16.apply( //
-        f15.apply( //
-            f14.apply( //
-                f13.apply( //
-                    f12.apply( //
-                        f11.apply( //
-                            f10.apply( //
-                                f9.apply( //
-                                    f8.apply( //
-                                        f7.apply( //
-                                            f6.apply( //
-                                                f5.apply( //
-                                                    f4.apply( //
-                                                        f3.apply( //
-                                                            f2.apply( //
-                                                                f1.apply( //
-                                                                    argument))))))))))))))));
+    return f16.compose(compose(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15));
   }
 }
