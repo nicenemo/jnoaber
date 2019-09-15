@@ -16,11 +16,13 @@ import eu.hanskruse.trackhacks.noaber.with.*;
 public interface WithNoaber extends //
     WithCompose, //
     WithIdentity, //
+    WithFunction, //
     WithLogic, //
     WithMapReduce, //
-    WithPatternMatching,
-    WithStats,
-    WithStream,
+    WithPatternMatching, //
+    WithStats, //
+    WithStream, //
+    WithStreamable, //
     WithTuples {
   // nothing here
 }
