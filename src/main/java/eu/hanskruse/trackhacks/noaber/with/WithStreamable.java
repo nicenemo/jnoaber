@@ -28,7 +28,7 @@ public interface WithStreamable {
   R> f) {
     return forEach2(s1, s2, (t1, t2) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -46,7 +46,7 @@ public interface WithStreamable {
     $().leftApply(f).apply( //
     t1)));
   }
-  
+
   default <//
   T1, //
   T2, //
@@ -62,7 +62,7 @@ public interface WithStreamable {
   R> f) {
     return forEach3(s1, s2, s3, (t1, t2, t3) -> true, f);
   }
-  
+
   default <//
   T1, //
   T2, //
@@ -93,7 +93,7 @@ public interface WithStreamable {
     t2, //
     tp3))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -112,7 +112,7 @@ public interface WithStreamable {
   R> f) {
     return forEach4(s1, s2, s3, s4, (t1, t2, t3, t4) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -149,7 +149,7 @@ public interface WithStreamable {
     t3, //
     tp4)))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -171,7 +171,7 @@ public interface WithStreamable {
   R> f) {
     return forEach5(s1, s2, s3, s4, s5, (t1, t2, t3, t4, t5) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -216,7 +216,7 @@ public interface WithStreamable {
     t4, //
     tp5))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -241,7 +241,7 @@ public interface WithStreamable {
   R> f) {
     return forEach6(s1, s2, s3, s4, s5, s6, (t1, t2, t3, t4, t5, t6) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -293,7 +293,7 @@ public interface WithStreamable {
     t5, //
     tp6)))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -321,7 +321,7 @@ public interface WithStreamable {
   R> f) {
     return forEach7(s1, s2, s3, s4, s5, s6, s7, (t1, t2, t3, t4, t5, t6, t7) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -380,7 +380,7 @@ public interface WithStreamable {
     t6, //
     t7))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -411,7 +411,7 @@ public interface WithStreamable {
   R> f) {
     return forEach8(s1, s2, s3, s4, s5, s6, s7, s8, (t1, t2, t3, t4, t5, t6, t7, t8) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -477,7 +477,7 @@ public interface WithStreamable {
     t7, //
     tp8)))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -511,7 +511,7 @@ public interface WithStreamable {
   R> f) {
     return forEach9(s1, s2, s3, s4, s5, s6, s7, s8, s9, (t1, t2, t3, t4, t5, t6, t7, t8, t9) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -561,7 +561,8 @@ public interface WithStreamable {
     t5 -> s6.flatMap( //
     t6 -> s7.flatMap( //
     t7 -> s8.flatMap( //
-    t8 -> s9.map(t9 -> f.apply( //
+    t8 -> s9.filter(//
+    t9 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -570,9 +571,19 @@ public interface WithStreamable {
     t6, //
     t7, //
     t8, //
-    t9))))))))));
+    t9)).map(//
+    tp9 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    tp9))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -609,7 +620,7 @@ public interface WithStreamable {
   R> f) {
     return forEach10(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -664,8 +675,8 @@ public interface WithStreamable {
     t6 -> s7.flatMap( //
     t7 -> s8.flatMap( //
     t8 -> s9.flatMap( //
-    t9 -> s10.map( //
-    t10 -> f.apply( //
+    t9 -> s10.filter(//
+    t10-> p.test(//
     t1, //
     t2, //
     t3, //
@@ -675,9 +686,20 @@ public interface WithStreamable {
     t7, //
     t8, //
     t9, //
-    t10)))))))))));
+    t10)).map( //
+    tp10 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    tp10)))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -718,7 +740,7 @@ public interface WithStreamable {
     return forEach11(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -778,7 +800,8 @@ public interface WithStreamable {
     t7 -> s8.flatMap( //
     t8 -> s9.flatMap( //
     t9 -> s10.flatMap( //
-    t10 -> s11.map(t11 -> f.apply( //
+    t10 -> s11.filter(//
+    t11 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -789,9 +812,21 @@ public interface WithStreamable {
     t8, //
     t9, //
     t10, //
-    t11))))))))))));
+    t11)).map(//
+    tp11 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    tp11))))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -835,7 +870,7 @@ public interface WithStreamable {
     return forEach12(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -900,7 +935,8 @@ public interface WithStreamable {
     t8 -> s9.flatMap( //
     t9 -> s10.flatMap( //
     t10 -> s11.flatMap( //
-    t11 -> s12.map(t12 -> f.apply( //
+    t11 -> s12.filter( //
+    t12 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -912,9 +948,22 @@ public interface WithStreamable {
     t9, //
     t10, //
     t11, //
-    t12)))))))))))));
+    t12)).map(//
+    tp12 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    t11, //
+    tp12)))))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -929,7 +978,7 @@ public interface WithStreamable {
   T11, //
   T12, //
   T13, //
-  R> Streamable<R> forEach( //
+  R> Streamable<R> forEach13( //
   final Streamable<T1> s1, //
   final Streamable<T2> s2, //
   final Streamable<T3> s3, //
@@ -961,7 +1010,7 @@ public interface WithStreamable {
     return forEach13(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1031,8 +1080,8 @@ public interface WithStreamable {
     t9 -> s10.flatMap( //
     t10 -> s11.flatMap( //
     t11 -> s12.flatMap( //
-    t12 -> s13.map(//
-    t13 -> f.apply( //
+    t12 -> s13.filter( //
+    t13 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -1045,9 +1094,23 @@ public interface WithStreamable {
     t10, //
     t11, //
     t12, //
-    t13))))))))))))));
+    t13)).map(//
+    tp13 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    t11, //
+    t12, //
+    tp13))))))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1097,7 +1160,7 @@ public interface WithStreamable {
     return forEach14(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1172,7 +1235,22 @@ public interface WithStreamable {
     t10 -> s11.flatMap( //
     t11 -> s12.flatMap( //
     t12 -> s13.flatMap(//
-    t13 -> s14.map( //
+    t13 -> s14.filter(//
+    t14 -> p.test(//
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    t11, //
+    t12, //
+    t13, //
+    t14)).map( //
     t14 -> f.apply( //
     t1, //
     t2, //
@@ -1189,7 +1267,7 @@ public interface WithStreamable {
     t13, //
     t14)))))))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1242,7 +1320,7 @@ public interface WithStreamable {
     return forEach15(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1322,8 +1400,8 @@ public interface WithStreamable {
     t11 -> s12.flatMap( //
     t12 -> s13.flatMap(//
     t13 -> s14.flatMap( //
-    t14 -> s15.map( //
-    t15 -> f.apply( //
+    t14 -> s15.filter(//
+    t15 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -1338,9 +1416,25 @@ public interface WithStreamable {
     t12, //
     t13, //
     t14, //
-    t15))))))))))))))));
+    t15)).map( //
+    tp15 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    t11, //
+    t12, //
+    t13, //
+    t14, //
+    tp15))))))))))))))));
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1396,7 +1490,7 @@ public interface WithStreamable {
     return forEach16(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16,
     (t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16) -> true, f);
   }
-  
+
   default < //
   T1, //
   T2, //
@@ -1481,8 +1575,8 @@ public interface WithStreamable {
     t12 -> s13.flatMap(//
     t13 -> s14.flatMap( //
     t14 -> s15.flatMap( //
-    t15 -> s16.map( //
-    t16 -> f.apply( //
+    t15 -> s16.filter(//
+    t16 -> p.test(//
     t1, //
     t2, //
     t3, //
@@ -1498,6 +1592,23 @@ public interface WithStreamable {
     t13, //
     t14, //
     t15, //
-    t16)))))))))))))))));
+    t16)).map( //
+    tp16 -> f.apply( //
+    t1, //
+    t2, //
+    t3, //
+    t4, //
+    t5, //
+    t6, //
+    t7, //
+    t8, //
+    t9, //
+    t10, //
+    t11, //
+    t12, //
+    t13, //
+    t14, //
+    t15, //
+    tp16)))))))))))))))));
   }
 }
