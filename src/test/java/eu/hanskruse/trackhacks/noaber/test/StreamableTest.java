@@ -45,48 +45,48 @@ public class StreamableTest implements WithNoaber {
   @Test
   public void testForEach2() {
     Streamable<Integer> xs = forEach2(xxs.get(0), xxs.get(1), (t0, t1) -> t0 + t1);
-    assertEquals(prodLengths(2), xs.stream().toArray().length);
+    assertEquals(prodLengths(2), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach3() {
     Streamable<Integer> xs = forEach3(xxs.get(0), xxs.get(1), xxs.get(2), (t0, t1, t2) -> t0 + t1 + t2);
-    assertEquals(prodLengths(3), xs.stream().toArray().length);
+    assertEquals(prodLengths(3), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach4() {
     Streamable<Integer> xs = forEach4(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3),
         (t0, t1, t2, t3) -> t0 + t1 + t2 + t3);
-    assertEquals(prodLengths(4), xs.stream().toArray().length);
+    assertEquals(prodLengths(4), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach5() {
     Streamable<Integer> xs = forEach5(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4),
         (t0, t1, t2, t3, t4) -> t0 + t1 + t2 + t3 + t4);
-    assertEquals(prodLengths(5), xs.stream().toArray().length);
+    assertEquals(prodLengths(5), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach6() {
     Streamable<Integer> xs = forEach6(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         (t0, t1, t2, t3, t4, t5) -> t0 + t1 + t2 + t3 + t4 + t5);
-    assertEquals(prodLengths(6), xs.stream().toArray().length);
+    assertEquals(prodLengths(6), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach7() {
     Streamable<Integer> xs = forEach7(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), (t0, t1, t2, t3, t4, t5, t6) -> t0 + t1 + t2 + t3 + t4 + t5 + t6);
-    assertEquals(prodLengths(7), xs.stream().toArray().length);
+    assertEquals(prodLengths(7), xs.stream().parallel().toArray().length);
   }
 
   @Test
   public void testForEach8() {
     Streamable<Integer> xs = forEach8(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), (t0, t1, t2, t3, t4, t5, t6, t7) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7);
-    assertEquals(prodLengths(8), xs.stream().toArray().length);
+    assertEquals(prodLengths(8), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -94,7 +94,7 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = forEach9(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), xxs.get(8),
         (t0, t1, t2, t3, t4, t5, t6, t7, t8) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8);
-    assertEquals(prodLengths(9), xs.stream().toArray().length);
+    assertEquals(prodLengths(9), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -102,7 +102,7 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = forEach10(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9),
         (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9);
-    assertEquals(prodLengths(10), xs.stream().toArray().length);
+    assertEquals(prodLengths(10), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -110,7 +110,7 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = forEach11(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10),
         (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10);
-    assertEquals(prodLengths(11), xs.stream().toArray().length);
+    assertEquals(prodLengths(11), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -118,7 +118,7 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = forEach12(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10), xxs.get(11), (t0, t1, t2, t3, t4, t5, t6, t7, t8,
             t9, t10, t11) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10 + t11);
-    assertEquals(prodLengths(12), xs.stream().toArray().length);
+    assertEquals(prodLengths(12), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -126,7 +126,7 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = forEach13(xxs.get(0), xxs.get(1), xxs.get(2), xxs.get(3), xxs.get(4), xxs.get(5),
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10), xxs.get(11), xxs.get(12), (t0, t1, t2, t3, t4, t5,
             t6, t7, t8, t9, t10, t11, t12) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10 + t11 + t12);
-    assertEquals(prodLengths(13), xs.stream().toArray().length);
+    assertEquals(prodLengths(13), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -135,7 +135,7 @@ public class StreamableTest implements WithNoaber {
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10), xxs.get(11), xxs.get(12), xxs.get(13),
         (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9
             + t10 + t11 + t12 + t13);
-    assertEquals(prodLengths(14), xs.stream().toArray().length);
+    assertEquals(prodLengths(14), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -144,7 +144,7 @@ public class StreamableTest implements WithNoaber {
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10), xxs.get(11), xxs.get(12), xxs.get(13), xxs.get(14),
         (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8
             + t9 + t10 + t11 + t12 + t13 + t14);
-    assertEquals(prodLengths(15), xs.stream().toArray().length);
+    assertEquals(prodLengths(15), xs.stream().parallel().toArray().length);
   }
 
   @Test
@@ -153,8 +153,7 @@ public class StreamableTest implements WithNoaber {
         xxs.get(6), xxs.get(7), xxs.get(8), xxs.get(9), xxs.get(10), xxs.get(11), xxs.get(12), xxs.get(13), xxs.get(14),
         xxs.get(15), (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> t0 + t1 + t2 + t3 + t4
             + t5 + t6 + t7 + t8 + t9 + t10 + t11 + t12 + t13 + t14 + t15);
-    assertEquals(prodLengths(16), xs.stream().toArray().length);
-    //System.out.println(xs.stream().map(i -> i.toString()).collect(Collectors.joining(",\n")));
+    assertEquals(prodLengths(16), xs.stream().parallel().toArray().length);
   }
 
 }
