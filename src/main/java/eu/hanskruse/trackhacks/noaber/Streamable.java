@@ -71,4 +71,8 @@ public interface Streamable<T> {
       return xs.filter(x -> x!=null).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
     };
   }
+
+  default Streamable<T> distinct(){
+    return () -> this.stream().distinct();
+  }
 }

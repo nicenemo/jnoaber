@@ -1,5 +1,6 @@
 package eu.hanskruse.trackhacks.noaber.test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.util.List;
@@ -575,4 +576,9 @@ public class StreamableTest implements WithNoaber {
     assertEquals(prodLengths(16), xs.stream().parallel().toArray().length);
   }
 
+  @Test 
+  public void testDistinct(){
+    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    assertArrayEquals(new Integer[]{3,4,5}, xs.distinct().stream().toArray(Integer[]::new));
+  }
 }
