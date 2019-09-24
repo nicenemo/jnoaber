@@ -2,9 +2,12 @@ package eu.hanskruse.trackhacks.noaber.test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -578,13 +581,45 @@ public class StreamableTest implements WithNoaber {
 
   @Test
   public void testDistinct(){
-    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    final Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
     assertArrayEquals(new Integer[]{3,4,5}, xs.distinct().stream().toArray(Integer[]::new));
   }
 
   @Test
   public void testLimit(){
-    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    final Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
     assertArrayEquals(new Integer[]{3,3,4}, xs.limit(3L).stream().toArray(Integer[]::new));
   }
+
+  @Test
+  public void testParallel(){
+    final Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    assertFalse(xs.stream().isParallel());
+    assertTrue(xs.parallel().stream().isParallel());
+  }
+
+  @Test
+  public void testPeek(){
+    final AtomicInteger sum = new AtomicInteger(0);
+    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    xs.peek( i -> sum.addAndGet(i)).stream().forEach( i -> {/* process the stream, do nothing */});
+    assertEquals(sum(xs.stream().mapToInt(Integer::intValue).toArray()), sum.get());
+  }
+
+  @Test
+  public void testSequential(){
+    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    assertFalse(xs.stream().isParallel());
+    xs =xs.parallel();
+    assertTrue(xs.stream().isParallel());
+    xs =xs.sequential();
+    assertFalse(xs.stream().isParallel());
+  }
+
+  @Test
+  public void testskip(){
+    final Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    assertArrayEquals(new Integer[]{4,5,5}, xs.skip(2L).stream().toArray(Integer[]::new));
+  }
+
 }
