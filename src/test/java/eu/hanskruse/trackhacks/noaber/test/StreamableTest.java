@@ -581,4 +581,10 @@ public class StreamableTest implements WithNoaber {
     Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
     assertArrayEquals(new Integer[]{3,4,5}, xs.distinct().stream().toArray(Integer[]::new));
   }
+
+  @Test
+  public void testLimit(){
+    Streamable<Integer> xs =Arrays.asList(3,3,4,5,5)::stream;
+    assertArrayEquals(new Integer[]{3,3,4}, xs.limit(3L).stream().toArray(Integer[]::new));
+  }
 }

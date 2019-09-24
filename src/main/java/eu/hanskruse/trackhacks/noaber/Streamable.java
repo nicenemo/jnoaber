@@ -71,8 +71,20 @@ public interface Streamable<T> {
       return xs.filter(x -> x!=null).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
     };
   }
-
+  /**
+   * Filters a {@link Streamable} in to a {@ink Streamable} of distinct values.
+   * @return {@link Streamable} of distinct values.
+   */
   default Streamable<T> distinct(){
     return () -> this.stream().distinct();
+  }
+
+  /**
+   * Limits the {@Link Streamable} to {@code maxSize} elements.
+   * @param maxSize the maximum number of elements to return
+   * @return a {@link Streamable} of {@code maxSize} elements
+   */
+  default Streamable<T> limit(long maxSize){
+    return () -> this.stream().limit(maxSize);
   }
 }
