@@ -4,9 +4,11 @@ import static eu.hanskruse.trackhacks.noaber.Noaber.$;
 
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
+import java.util.function.Function;
 
 import eu.hanskruse.trackhacks.noaber.functions.*;
 import eu.hanskruse.trackhacks.noaber.Streamable;
+import eu.hanskruse.trackhacks.noaber.tuples.*;
 
 /**
 * Streamable functionality.
@@ -21,7 +23,7 @@ public interface WithStreamable {
   T2, //
   R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
-  final Streamable<T2> s2, //
+  final Function<T1,Streamable<T2>> s2, //
   BiFunction< //
   T1, //
   T2, //
@@ -34,14 +36,14 @@ public interface WithStreamable {
   T2, //
   R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
-  final Streamable<T2> s2, //
+  final Function<T1,Streamable<T2>> s2, //
   BiPredicate<T1, T2> p, //
   BiFunction< //
   T1, //
   T2, //
   R> f) {
     return s1.flatMap( //
-    t1 -> s2.filter(//
+    t1 -> s2.apply(t1).filter(//
     $().leftApply(p).apply(t1)).map( //
     $().leftApply(f).apply( //
     t1)));
@@ -53,8 +55,8 @@ public interface WithStreamable {
   T3, //
   R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
-  final Streamable<T2> s2, //
-  final Streamable<T3> s3, //
+  final Function<T1, Streamable<T2>> s2, //
+  final Function<Tuple2, Streamable<T3>> s3, //
   final Function3< //
   T1, //
   T2, //
@@ -69,8 +71,8 @@ public interface WithStreamable {
   T3, //
   R> Streamable<R> forEach( //
   final Streamable<T1> s1, //
-  final Streamable<T2> s2, //
-  final Streamable<T3> s3, //
+  final Function<T1, Streamable<T2>> s2, //
+  final Function<Tuple2, Streamable<T3>> s3, //
   final Predicate3< //
   T1, //
   T2, //
@@ -81,8 +83,8 @@ public interface WithStreamable {
   T3, //
   R> f) {
     return s1.flatMap( //
-    t1 -> s2.flatMap( //
-    t2 -> s3.filter(//
+    t1 -> s2.apply(t1).flatMap( //
+    t2 -> s3.apply($().tuple(t1,t2)).filter(//
     t3 -> p.test(//
     t1, //
     t2, //

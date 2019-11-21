@@ -49,7 +49,7 @@ public interface WithStream {
 
   /**
    * Convert a varargs array to a stream.
-   *
+   * @param <T> type of elements
    * @param items items to convert
    * @return the converted stream
    */

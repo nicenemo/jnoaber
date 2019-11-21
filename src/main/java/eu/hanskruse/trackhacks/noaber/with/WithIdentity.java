@@ -164,7 +164,7 @@ public interface WithIdentity {
 
   /**
    * Identity Function that only returns its arguments.
-   *
+   * @param <T>  type of argument
    * @param argument
    *          argument to return
    * @return argument

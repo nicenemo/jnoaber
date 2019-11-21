@@ -33,7 +33,7 @@ public interface WithTuples {
    */
   default <//
       T0, //
-      T1> Tuple2 tuple(//
+      T1> Tuple2<T0, T1> tuple(//
           final T0 t0, //
           final T1 t1) {
     return Tuple2.of(t0, t1);
@@ -53,7 +53,7 @@ public interface WithTuples {
   default <//
       T0, //
       T1, //
-      T2> Tuple3 tuple(//
+      T2> Tuple3<T0, T1, T2> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2) {
@@ -77,7 +77,7 @@ public interface WithTuples {
       T0, //
       T1, //
       T2, //
-      T3> Tuple4 tuple(//
+      T3> Tuple4<T0, T1, T2, T3> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -105,7 +105,7 @@ public interface WithTuples {
       T1, //
       T2, //
       T3, //
-      T4> Tuple5 tuple(//
+      T4> Tuple5<T0, T1, T2, T3, T4> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -137,7 +137,7 @@ public interface WithTuples {
       T2, //
       T3, //
       T4, //
-      T5> Tuple6 tuple(//
+      T5> Tuple6<T0, T1, T2, T3, T4, T5> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -173,7 +173,7 @@ public interface WithTuples {
       T3, //
       T4, //
       T5, //
-      T6> Tuple7 tuple(//
+      T6> Tuple7<T0, T1, T2, T3, T4, T5, T6> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -213,7 +213,7 @@ public interface WithTuples {
       T4, //
       T5, //
       T6, //
-      T7> Tuple8 tuple(//
+      T7> Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -257,7 +257,7 @@ public interface WithTuples {
       T5, //
       T6, //
       T7, //
-      T8> Tuple9 tuple(//
+      T8> Tuple9<T0, T1, T2, T3, T4, T5, T6, T7, T8> tuple(//
 
           final T0 t0, //
           final T1 t1, //
@@ -306,7 +306,7 @@ public interface WithTuples {
       T6, //
       T7, //
       T8, //
-      T9> Tuple10 tuple(//
+      T9> Tuple10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -358,7 +358,7 @@ public interface WithTuples {
       T7, //
       T8, //
       T9, //
-      T10> Tuple11 tuple(//
+      T10> Tuple11<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -414,7 +414,7 @@ public interface WithTuples {
       T8, //
       T9, //
       T10, //
-      T11> Tuple12 tuple(//
+      T11> Tuple12<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -474,7 +474,7 @@ public interface WithTuples {
       T9, //
       T10, //
       T11, //
-      T12> Tuple13 tuple(//
+      T12> Tuple13<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -538,7 +538,7 @@ public interface WithTuples {
       T10, //
       T11, //
       T12, //
-      T13> Tuple14 tuple(//
+      T13> Tuple14<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -606,7 +606,7 @@ public interface WithTuples {
       T11, //
       T12, //
       T13, //
-      T14> Tuple15 tuple(//
+      T14> Tuple15<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -678,7 +678,7 @@ public interface WithTuples {
       T12, //
       T13, //
       T14, //
-      T15> Tuple16 tuple(//
+      T15> Tuple16<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> tuple(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //

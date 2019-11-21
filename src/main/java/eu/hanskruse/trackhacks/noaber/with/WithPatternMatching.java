@@ -28,6 +28,7 @@ public interface WithPatternMatching {
   /**
    * Composes a predicate with the identity function.
    *
+   * @param <T>       type of the predicate argument
    * @param predicate predicate to compose with
    * @return FunctionalPredicate
    */
@@ -38,6 +39,8 @@ public interface WithPatternMatching {
   /**
    * Composes a predicate and a function.
    *
+   * @param <T>       type of the predicate argument
+   * @param <R>       type of the result of the function
    * @param predicate predicate to compose with
    * @param function  function to compose with
    * @return FunctionalPredicate
@@ -61,6 +64,7 @@ public interface WithPatternMatching {
   /**
    * Match captures the value to match against returning a CaseAcceptor.
    *
+   * @param <T>   type of the value to capture
    * @param value the value to capture
    * @return a CaseAcceptor.
    */
@@ -71,7 +75,9 @@ public interface WithPatternMatching {
   /**
    * Default case.
    *
-   * @param f function to perform on default case
+   * @param <T> type of the argument of the case expression
+   * @param <R> type of the result of the case expression
+   * @param f   function to perform on default case
    * @return default case
    */
   default <T, R> Case<T, R> orElse(final Function<T, R> f) {
@@ -81,6 +87,8 @@ public interface WithPatternMatching {
   /**
    * Default case.
    *
+   * @param <T>    type of the argument of the case expression
+   * @param <R>    type of the result of the case expression
    * @param result to return
    * @return default case
    */
@@ -91,6 +99,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a class as predicate to match against that class.
    *
+   * @param <T>   type of the class
    * @param clazz class to match
    * @return PredicateWrapper
    */
@@ -102,6 +111,8 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate.
    *
+   * @param <T>                 type of the predicate argument
+   * @param <R>                 type of the result of the function
    * @param functionalPredicate functional predicate
    * @return PredicateWrapper
    */
@@ -113,6 +124,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate.
    *
+   * @param <T>       type of the predicate argument
    * @param predicate predicate
    * @return PredicateWrapper
    */
@@ -145,6 +157,7 @@ public interface WithPatternMatching {
   /**
    * When wraps a value as predicate to match for equality.
    *
+   * @param <T>   type of the value
    * @param value to match
    * @return PredicateWrapper
    */
@@ -155,6 +168,8 @@ public interface WithPatternMatching {
   /**
    * Creates a pattern matcher to match with.
    *
+   * @param <T>   type of the argument of the case expression
+   * @param <R>   type of the result of the case expression
    * @param cases cases to match with
    * @return a patter matcher to match the cases with
    */

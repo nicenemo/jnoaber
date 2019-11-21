@@ -2,11 +2,20 @@ package eu.hanskruse.trackhacks.noaber.tuples;
 
 /**
  * Tuple of 4 elements.
+ *
+ * @param <T0> type of 0th element
+ * @param <T1> type of 1th element
+ * @param <T2> type of 2th element
+ * @param <T3> type of 3th element
  */
-public abstract class Tuple4 extends BaseTuple {
+public abstract class Tuple4<//
+    T0, //
+    T1, //
+    T2, //
+    T3> extends BaseTuple {
 
   /**
-   * Creates a {@link Tuple4}.
+   * Creates a {@link Tuple4} of 4 elements.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -22,12 +31,20 @@ public abstract class Tuple4 extends BaseTuple {
       T0, //
       T1, //
       T2, //
-      T3> Tuple4 of(//
-          final T0 t0, //
-          final T1 t1, //
-          final T2 t2, //
-          final T3 t3) {
-    return new Tuple4() {
+      T3> Tuple4<//
+          T0, //
+          T1, //
+          T2, //
+          T3> of(//
+              final T0 t0, //
+              final T1 t1, //
+              final T2 t2, //
+              final T3 t3) {
+    return new Tuple4<//
+        T0, //
+        T1, //
+        T2, //
+        T3>() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -44,6 +61,27 @@ public abstract class Tuple4 extends BaseTuple {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
+
+      @Override
+      public T0 get_0() {
+        return t0;
+      }
+
+      @Override
+      public T1 get_1() {
+        return t1;
+      }
+
+      @Override
+      public T2 get_2() {
+        return t2;
+      }
+
+      @Override
+      public T3 get_3() {
+        return t3;
+      }
+
     };
   }
 
@@ -51,4 +89,33 @@ public abstract class Tuple4 extends BaseTuple {
   public int size() {
     return 4;
   }
+
+  /**
+   * Gets the 0th element.
+   *
+   * @return 0th element
+   */
+  public abstract T0 get_0();
+
+  /**
+   * Gets the 1st element.
+   *
+   * @return 1st element
+   */
+  public abstract T1 get_1();
+
+  /**
+   * Gets the 2nd element.
+   *
+   * @return 2nd element
+   */
+  public abstract T2 get_2();
+
+  /**
+   * Gets the 3th element.
+   *
+   * @return 3th element
+   */
+  public abstract T3 get_3();
+
 }

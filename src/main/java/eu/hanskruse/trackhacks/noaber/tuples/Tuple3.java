@@ -2,11 +2,18 @@ package eu.hanskruse.trackhacks.noaber.tuples;
 
 /**
  * Tuple of 3 elements.
+ *
+ * @param <T0> type of 0th element
+ * @param <T1> type of 1th element
+ * @param <T2> type of 2th element
  */
-public abstract class Tuple3 extends BaseTuple {
+public abstract class Tuple3<//
+    T0, //
+    T1, //
+    T2> extends BaseTuple {
 
   /**
-   * Creates a {@link Tuple3}.
+   * Creates a {@link Tuple3} of 3 elements.
    *
    * @param <T0> type of 0th element
    * @param <T1> type of 1th element
@@ -19,16 +26,20 @@ public abstract class Tuple3 extends BaseTuple {
   public static <//
       T0, //
       T1, //
-      T2> Tuple3 of(//
-          final T0 t0, //
-          final T1 t1, //
-          final T2 t2) {
-    return new Tuple3() {
-
+      T2> Tuple3<//
+          T0, //
+          T1, //
+          T2> of(//
+              final T0 t0, //
+              final T1 t1, //
+              final T2 t2) {
+    return new Tuple3<//
+        T0, //
+        T1, //
+        T2>() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
-
         switch (i) {
         case 0:
           return (R) t0;
@@ -40,6 +51,22 @@ public abstract class Tuple3 extends BaseTuple {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
+
+      @Override
+      public T0 get_0() {
+        return t0;
+      }
+
+      @Override
+      public T1 get_1() {
+        return t1;
+      }
+
+      @Override
+      public T2 get_2() {
+        return t2;
+      }
+
     };
   }
 
@@ -47,4 +74,26 @@ public abstract class Tuple3 extends BaseTuple {
   public int size() {
     return 3;
   }
+
+  /**
+   * Gets the 0th element.
+   *
+   * @return 0th element
+   */
+  public abstract T0 get_0();
+
+  /**
+   * Gets the 1st element.
+   *
+   * @return 1st element
+   */
+  public abstract T1 get_1();
+
+  /**
+   * Gets the 2nd element.
+   *
+   * @return 2nd element
+   */
+  public abstract T2 get_2();
+
 }

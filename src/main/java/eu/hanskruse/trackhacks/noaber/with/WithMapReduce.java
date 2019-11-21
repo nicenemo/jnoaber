@@ -15,7 +15,7 @@ public interface WithMapReduce {
 
   /**
    * Reduce a number of items.
-   *
+   * @param <T> type of items
    * @param accumulator
    *          the reducing operator
    * @param items
@@ -33,7 +33,7 @@ public interface WithMapReduce {
 
   /**
    * Reduce a number of items.
-   *
+   * @param <T> type of items
    * @param identity
    *          the identity, e.g. 0 for addition, 1 for multiplication.
    * @param accumulator

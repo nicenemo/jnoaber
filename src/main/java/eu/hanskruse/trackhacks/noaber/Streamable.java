@@ -71,7 +71,7 @@ public interface Streamable<T> {
   /**
   * Concatenate Streamables.
   *
-  * @param <T1>
+  * @param <T1> type of {@code Streamable}s in tail
   * @param head first streamable
   * @param tail other streameables to be concatenated to the head.
   * @return streamable consisting of the concatenation of streamables
@@ -85,7 +85,7 @@ public interface Streamable<T> {
   }
 
   /**
-  * Filters a {@link Streamable} in to a {@ink Streamable} of distinct values.
+  * Filters a {@link Streamable} in to a {@link Streamable} of distinct values.
   *
   * @return {@link Streamable} of distinct values.
   */
@@ -94,7 +94,7 @@ public interface Streamable<T> {
   }
 
   /**
-  * Limits the {@Link Streamable} to {@code maxSize} elements.
+  * Limits the {@link Streamable} to {@code maxSize} elements.
   *
   * @param maxSize the maximum number of elements to return
   * @return a {@link Streamable} of {@code maxSize} elements
