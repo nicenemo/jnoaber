@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -26,6 +27,7 @@ import eu.hanskruse.trackhacks.noaber.tuples.Tuple15;
 import eu.hanskruse.trackhacks.noaber.tuples.Tuple16;
 import eu.hanskruse.trackhacks.noaber.WithNoaber;
 
+@Ignore
 public class TupleTest implements WithNoaber{
 
   private static final class T0 {

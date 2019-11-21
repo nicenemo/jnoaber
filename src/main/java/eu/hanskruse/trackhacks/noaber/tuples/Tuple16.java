@@ -3,7 +3,23 @@ package eu.hanskruse.trackhacks.noaber.tuples;
 /**
  * Tuple of 16 elements.
  */
-public abstract class Tuple16 extends BaseTuple {
+public abstract class Tuple16<//
+T0, //
+T1, //
+T2, //
+T3, //
+T4,//
+T5, //
+T6, //
+T7, //
+T8, //
+T9, //
+T10, //
+T11, //
+T12, //
+T13, //
+T14, //
+T15> extends BaseTuple {
 
   /**
    * Creates a {@link Tuple16} of 16 elements.
@@ -58,7 +74,23 @@ public abstract class Tuple16 extends BaseTuple {
       T12, //
       T13, //
       T14, //
-      T15> Tuple16 of(//
+      T15> Tuple16<//
+      T0, //
+      T1, //
+      T2, //
+      T3, //
+      T4, //
+      T5, //
+      T6, //
+      T7, //
+      T8, //
+      T9, //
+      T10, //
+      T11, //
+      T12, //
+      T13, //
+      T14, //
+      T15> of(//
           final T0 t0, //
           final T1 t1, //
           final T2 t2, //
@@ -75,7 +107,23 @@ public abstract class Tuple16 extends BaseTuple {
           final T13 t13, //
           final T14 t14, //
           final T15 t15) {
-    return new Tuple16() {
+    return new Tuple16<//
+    T0, //
+    T1, //
+    T2, //
+    T3, //
+    T4, //
+    T5, //
+    T6, //
+    T7, //
+    T8, //
+    T9, //
+    T10, //
+    T11, //
+    T12, //
+    T13, //
+    T14, //
+    T15>() {
       @SuppressWarnings("unchecked")
       @Override
       public <R> R get(int i) {
@@ -116,6 +164,86 @@ public abstract class Tuple16 extends BaseTuple {
           throw createIndexOutOfBoundsException(i, size());
         }
       }
+
+      @Override
+      public T0 get_0() {
+        return t0;
+      }
+
+      @Override
+      public T1 get_1() {
+        return t1;
+      }
+
+      @Override
+      public T2 get_2() {
+        return t2;
+      }
+
+      @Override
+      public T3 get_3() {
+        return t3;
+      }
+
+      @Override
+      public T4 get_4() {
+        return t4;
+      }
+
+      @Override
+      public T5 get_5() {
+        return t5;
+      }
+
+      @Override
+      public T6 get_6() {
+        return t6;
+      }
+
+      @Override
+      public T7 get_7() {
+        return t7;
+      }
+
+      @Override
+      public T8 get_8() {
+        return t8;
+      }
+
+      @Override
+      public T9 get_9() {
+        return t9;
+      }
+
+      @Override
+      public T10 get_10() {
+        return t10;
+      }
+
+      @Override
+      public T11 get_11() {
+        return t11;
+      }
+
+      @Override
+      public T12 get_12() {
+        return t12;
+      }
+
+      @Override
+      public T13 get_13() {
+        return t13;
+      }
+
+      @Override
+      public T14 get_14() {
+        return t14;
+      }
+
+      @Override
+      public T15 get_15() {
+        return t15;
+      }
     };
   }
 
@@ -123,4 +251,86 @@ public abstract class Tuple16 extends BaseTuple {
   public int size() {
     return 16;
   }
+
+  /**
+   * Gets the 0th element.
+   */
+  public abstract T0 get_0();
+  
+  /**
+   * Gets the 1th element.
+   */
+  public abstract T1 get_1();
+
+  /**
+   * Gets the 2th element.
+   */
+  public abstract T2 get_2();
+
+  /**
+   * Gets the 3th element.
+   */
+  public abstract T3 get_3();
+
+  /**
+   * Gets the 4th element.
+   */
+  public abstract T4 get_4();
+
+  /**
+   * Gets the 5th element.
+   */
+  public abstract T5 get_5();
+
+  /**
+   * Gets the 6th element.
+   */
+  public abstract T6 get_6();
+
+  /**
+   * Gets the 7th element.
+   */
+  public abstract T7 get_7();
+
+  /**
+   * Gets the 8th element.
+   */
+  public abstract T8 get_8();
+
+  /**
+   * Gets the 9th element.
+   */
+  public abstract T9 get_9();
+
+  /**
+   * Gets the 10th element.
+   */
+  public abstract T10 get_10();
+
+  /**
+   * Gets the 11th element.
+   */
+  public abstract T11 get_11();
+
+  /**
+   * Gets the 12th element.
+   */
+  public abstract T12 get_12();
+  
+  /**
+   * Gets the 13th element.
+   */
+  public abstract T13 get_13();
+  
+  /**
+   * Gets the 14th element.
+   */
+  public abstract T14 get_14();
+
+  
+  /**
+   * Gets the 15th element.
+   */
+  public abstract T15 get_15();
+
 }
