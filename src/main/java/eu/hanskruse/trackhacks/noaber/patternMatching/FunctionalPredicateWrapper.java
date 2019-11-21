@@ -36,7 +36,7 @@ public class FunctionalPredicateWrapper<T, W> {
 
   /**
    * function to execute when the wrapped predicate is true.
-   *
+   * @param <R> return type of the {@code Case}
    * @param f
    *          function to execute
    * @return a Case
@@ -63,7 +63,7 @@ public class FunctionalPredicateWrapper<T, W> {
   /**
    * Value to return when the wrapped predicate is true.
    * @param <R> type of the Optional result of the case
-   * @param result
+   * @param result the result
    * @return a Case
    */
   public <R> Case<T, R> then(R result) {

@@ -27,7 +27,7 @@ public final class CaseAcceptor<T> {
   /**
    * Evaluate a set of cases until one has a none Optional.Empty() result. Return
    * that result.
-   *
+   * @param <R> type of the result
    * @param cases
    *          set of cases
    * @return the first case that has a none Optional.empty result. If the list is
