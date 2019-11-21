@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 /**
  * Logic functionality.
- * 
+ *
  * @author Hans Kruse
  * @version 1.0.0
  * @since 1.0.0
@@ -14,7 +14,7 @@ public interface WithLogic {
 
   /**
    * Gets a predicate of a predicate on the supplied items
-   * 
+   *
    * @param <T>   type of items
    * @param items the items to apply an predicate over with an or in short circuit
    *              fashion
@@ -26,7 +26,7 @@ public interface WithLogic {
 
   /**
    * Applies a predicate of supplied items and or them in short circuit fashion.
-   * 
+   *
    * @param <T>       type of items
    * @param predicate the predicate to apply to the supplied items
    * @param items     the items to apply the predicate on
@@ -46,7 +46,7 @@ public interface WithLogic {
 
   /**
    * Applies a predicate of supplied items and or them in short circuit fashion.
-   * 
+   *
    * @param <T>       type of items
    * @param predicate the predicate to apply to the supplied items
    * @param items     the items to apply the predicate on
@@ -67,7 +67,7 @@ public interface WithLogic {
 
   /**
    * Short circuit evaluated multiarg and
-   * 
+   *
    * @param items boolean arguments to and
    * @return true if All boolean items are true, false if one item is false or if
    *         there are no items or items is null
@@ -87,7 +87,7 @@ public interface WithLogic {
 
   /**
    * Short circuit evaluated multiarg or
-   * 
+   *
    * @param items boolean arguments to or
    * @return true if All boolean items are true, false if one item is false or if
    *         there are no items or items is null
@@ -107,7 +107,7 @@ public interface WithLogic {
 
   /**
    * Short circuit evaluated multiarg or
-   * 
+   *
    * @param <T>   type of items
    * @param items predicates boolean arguments to or
    * @return true if All boolean items are true, false if one item is false or if
@@ -131,7 +131,7 @@ public interface WithLogic {
 
   /**
    * Gets a predicate of a predicate on the supplied items
-   * 
+   *
    * @param <T>   type of items
    * @param items the items to apply an predicate over with an or in short circuit
    *              fashion

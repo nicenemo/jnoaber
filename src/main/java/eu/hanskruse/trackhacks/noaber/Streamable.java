@@ -70,7 +70,7 @@ public interface Streamable<T> {
 
   /**
   * Concatenate Streamables.
-  * 
+  *
   * @param <T1> type of {@code Streamable}s in tail
   * @param head first streamable
   * @param tail other streameables to be concatenated to the head.
