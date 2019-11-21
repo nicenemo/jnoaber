@@ -17,7 +17,7 @@ public interface Tuple {
    * @param <R> return type of the selected field
    * @param i   {@code 0..n} index of the field to get
    * @return the selected field at position {@code i} in the tuple.
-   * @throws IndexOutOfBoundsException thrown when i<0 or i>n where n is the last
+   * @throws IndexOutOfBoundsException thrown when i &lt; 0 or i &gt; n where n is the last
    *                                   index of the Tuple
    */
   <R> R get(int i);
@@ -25,7 +25,7 @@ public interface Tuple {
   /**
    * Gets the number of elements of the {@link Tuple}.
    *
-   * @return the number of elements of the {@Link Tuple}
+   * @return the number of elements of the {@link Tuple}
    */
   int size();
 
