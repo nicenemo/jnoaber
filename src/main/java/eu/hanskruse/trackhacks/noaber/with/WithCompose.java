@@ -16,7 +16,7 @@ public interface WithCompose {
   /**
    * Compose function chain.
    *
-   * @param functions
+   * @param functions functions to compose
    * @return result of function chaining.
    */
   default <T> Function<T, T> compose(@SuppressWarnings("unchecked") final Function<T, T>... functions) {
@@ -49,6 +49,9 @@ public interface WithCompose {
   /**
    * Compose function chain.
    *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @return result of function chaining.
@@ -64,7 +67,10 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -82,7 +88,11 @@ public interface WithCompose {
 
   /**
    * /** Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -103,7 +113,12 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -126,7 +141,13 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -151,7 +172,14 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -177,7 +205,15 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -206,7 +242,16 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <R> return type
    * @param f1 first function
    * @param f2 second function
    * @param f3 third function
@@ -237,7 +282,17 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -270,7 +325,18 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -305,7 +371,19 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <T12> type of 12th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -342,7 +420,20 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <T12> type of 12th function argument
+   * @param <T13> type of 13th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -381,7 +472,21 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <T12> type of 12th function argument
+   * @param <T13> type of 13th function argument
+   * @param <T14> type of 14th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -422,7 +527,22 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <T12> type of 12th function argument
+   * @param <T13> type of 13th function argument
+   * @param <T14> type of 14th function argument
+   * @param <T15> type of 15th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function
@@ -465,7 +585,23 @@ public interface WithCompose {
 
   /**
    * Compose function chain.
-   *
+   * @param <T1> type of 1st function argument
+   * @param <T2> type of 2nd function argument
+   * @param <T3> type of 3th function argument
+   * @param <T4> type of 4th function argument
+   * @param <T5> type of 5th function argument
+   * @param <T6> type of 6th function argument
+   * @param <T7> type of 7th function argument
+   * @param <T8> type of 8th function argument
+   * @param <T9> type of 9th function argument
+   * @param <T10> type of 10th function argument
+   * @param <T11> type of 11th function argument
+   * @param <T12> type of 12th function argument
+   * @param <T13> type of 13th function argument
+   * @param <T14> type of 14th function argument
+   * @param <T15> type of 15th function argument
+   * @param <T16> type of 16th function argument
+   * @param <R> return type
    * @param f1  first function
    * @param f2  second function
    * @param f3  third function

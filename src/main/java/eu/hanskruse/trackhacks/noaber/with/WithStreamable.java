@@ -64,7 +64,7 @@ public interface WithStreamable {
   R> f) {
     return forEach(s1, s2, s3, (t1, t2, t3) -> true, f);
   }
-  
+
   default <//
   T1, //
   T2, //
