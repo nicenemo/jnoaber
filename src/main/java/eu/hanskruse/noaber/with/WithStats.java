@@ -1,6 +1,6 @@
 package eu.hanskruse.noaber.with;
 
-import static eu.hanskruse.noaber.Noaber.noaber;
+import static eu.hanskruse.noaber.Noaber.$;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.IntSummaryStatistics;
@@ -22,7 +22,7 @@ public interface WithStats {
    * @return the summary statistics
    */
   default LongSummaryStatistics longSummaryStatistics(final long... items) {
-    return noaber().stream(items).summaryStatistics();
+    return $.stream(items).summaryStatistics();
   }
 
   /**
@@ -33,7 +33,7 @@ public interface WithStats {
    * @return the maximum
    */
   default double max(final double... items) {
-    return noaber().doubleSummaryStatistics(items).getMax();
+    return $.doubleSummaryStatistics(items).getMax();
   }
 
   /**
@@ -69,7 +69,7 @@ public interface WithStats {
    * @return the maximum
    */
   default int max(final int... items) {
-    return noaber().intSummaryStatistics(items).getMax();
+    return $.intSummaryStatistics(items).getMax();
   }
 
   /**
@@ -116,7 +116,7 @@ public interface WithStats {
    * @return the maximum
    */
   default double min(final double... items) {
-    return noaber().doubleSummaryStatistics(items).getMin();
+    return $.doubleSummaryStatistics(items).getMin();
   }
 
   /**
@@ -152,7 +152,7 @@ public interface WithStats {
    * @return the maximum
    */
   default int min(final int... items) {
-    return noaber().intSummaryStatistics(items).getMin();
+    return $.intSummaryStatistics(items).getMin();
   }
 
   /**
@@ -199,7 +199,7 @@ public interface WithStats {
    * @return the maximum
    */
   default double sum(final double... items) {
-    return noaber().doubleSummaryStatistics(items).getSum();
+    return $.doubleSummaryStatistics(items).getSum();
   }
 
   /**
@@ -235,7 +235,7 @@ public interface WithStats {
    * @return the maximum
    */
   default long sum(final int... items) {
-    return noaber().intSummaryStatistics(items).getSum();
+    return $.intSummaryStatistics(items).getSum();
   }
 
   /**
@@ -337,7 +337,7 @@ public interface WithStats {
    * @return the summary statistics
    */
   default DoubleSummaryStatistics doubleSummaryStatistics(final double... items) {
-    return noaber().stream(items).summaryStatistics();
+    return $.stream(items).summaryStatistics();
   }
 
   /**
@@ -348,7 +348,7 @@ public interface WithStats {
    * @return the summary statistics
    */
   default IntSummaryStatistics intSummaryStatistics(final int... items) {
-    return noaber().stream(items).summaryStatistics();
+    return $.stream(items).summaryStatistics();
   }
 
 }

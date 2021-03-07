@@ -11,25 +11,7 @@ package eu.hanskruse.noaber;
 public final class Noaber implements WithNoaber {
 
   /** Singleton instance of noaber. */
-  private static final WithNoaber SINGLETON = new Noaber();
-
-  /**
-   * Shorthand for getting singleton instance of WithNoaber.
-   *
-   * @return WithNoaber
-   */
-  public static WithNoaber $() {
-    return SINGLETON;
-  }
-
-  /**
-   * Gets a WithNoaber instance.
-   *
-   * @return WithNoaber
-   */
-  public static WithNoaber noaber() {
-    return SINGLETON;
-  }
+  public static final WithNoaber $ = new Noaber();
 
   /**
    * Not to be instantiated.

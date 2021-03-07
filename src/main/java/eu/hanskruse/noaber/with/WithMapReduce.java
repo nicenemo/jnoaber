@@ -1,6 +1,6 @@
 package eu.hanskruse.noaber.with;
 
-import static eu.hanskruse.noaber.Noaber.noaber;
+import static eu.hanskruse.noaber.Noaber.$;
 
 import java.util.Optional;
 import java.util.function.BinaryOperator;
@@ -23,7 +23,7 @@ public interface WithMapReduce {
    * @return the reduced value
    */
   default <T> T reduce(final BinaryOperator<T> accumulator, @SuppressWarnings("unchecked") final T... items) {
-    final Optional<T> result = noaber().stream(items).reduce(accumulator);
+    final Optional<T> result = $.stream(items).reduce(accumulator);
     if (result.isPresent()) {
       return result.get();
     }
@@ -44,7 +44,7 @@ public interface WithMapReduce {
    */
   default <T> T reduce(final T identity, final BinaryOperator<T> accumulator,
       @SuppressWarnings("unchecked") final T... items) {
-    return noaber().stream(items).reduce(identity, accumulator);
+    return $.stream(items).reduce(identity, accumulator);
   }
 
 }

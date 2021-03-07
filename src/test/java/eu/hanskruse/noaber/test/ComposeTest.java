@@ -1,7 +1,7 @@
 package eu.hanskruse.noaber.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static eu.hanskruse.noaber.Noaber.noaber;
+import static eu.hanskruse.noaber.Noaber.$;
 
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
@@ -37,17 +37,17 @@ public class ComposeTest {
   @Test
   public void testCompose10() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity); // 10
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity); // 10
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -58,18 +58,18 @@ public class ComposeTest {
   @Test
   public void testCompose11() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity); // 11
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity); // 11
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -80,19 +80,19 @@ public class ComposeTest {
   @Test
   public void testCompose12() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity); // 12
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity); // 12
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -103,20 +103,20 @@ public class ComposeTest {
   @Test
   public void testCompose13() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity, // 12
-    noaber()::identity); // 13
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity, // 12
+    $::identity); // 13
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -127,21 +127,21 @@ public class ComposeTest {
   @Test
   public void testCompose14() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity, // 12
-    noaber()::identity, // 13
-    noaber()::identity); // 14
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity, // 12
+    $::identity, // 13
+    $::identity); // 14
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -152,22 +152,22 @@ public class ComposeTest {
   @Test
   public void testCompose15() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity, // 12
-    noaber()::identity, // 13
-    noaber()::identity, // 14
-    noaber()::identity); // 15
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity, // 12
+    $::identity, // 13
+    $::identity, // 14
+    $::identity); // 15
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -178,23 +178,23 @@ public class ComposeTest {
   @Test
   public void testCompose16() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity, // 12
-    noaber()::identity, // 13
-    noaber()::identity, // 14
-    noaber()::identity, // 15
-    noaber()::identity); // 16
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity, // 12
+    $::identity, // 13
+    $::identity, // 14
+    $::identity, // 15
+    $::identity); // 16
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -205,9 +205,9 @@ public class ComposeTest {
   @Test
   public void testCompose2() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity); // 2
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity); // 2
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -218,10 +218,10 @@ public class ComposeTest {
   @Test
   public void testCompose3() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity); // 3
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity); // 3
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -232,11 +232,11 @@ public class ComposeTest {
   @Test
   public void testCompose4() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity); // 4
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity); // 4
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -247,12 +247,12 @@ public class ComposeTest {
   @Test
   public void testCompose5() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose(//
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity); // 5
+    final Function<String, String> f = $.compose(//
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity); // 5
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -263,13 +263,13 @@ public class ComposeTest {
   @Test
   public void testCompose6() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity); // 6
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity); // 6
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -280,14 +280,14 @@ public class ComposeTest {
   @Test
   public void testCompose7() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose(//
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity); // 7
+    final Function<String, String> f = $.compose(//
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity); // 7
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -298,15 +298,15 @@ public class ComposeTest {
   @Test
   public void testCompose8() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity); // 8
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity); // 8
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -317,16 +317,16 @@ public class ComposeTest {
   @Test
   public void testCompose9() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity); // 9
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity); // 9
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
@@ -338,7 +338,7 @@ public class ComposeTest {
   @Test
   public void testComposeArgCount() {
     final int expected = 120;
-    final Function<Integer, Integer> f = noaber().compose( //
+    final Function<Integer, Integer> f = $.compose( //
     this::inc, // 1
     this::inc, // 2
     this::inc, // 3
@@ -372,25 +372,25 @@ public class ComposeTest {
   @Test
   public void testComposeMore() {
     final String expected = "42";
-    final Function<String, String> f = noaber().compose( //
-    noaber()::identity, // 1
-    noaber()::identity, // 2
-    noaber()::identity, // 3
-    noaber()::identity, // 4
-    noaber()::identity, // 5
-    noaber()::identity, // 6
-    noaber()::identity, // 7
-    noaber()::identity, // 8
-    noaber()::identity, // 9
-    noaber()::identity, // 10
-    noaber()::identity, // 11
-    noaber()::identity, // 12
-    noaber()::identity, // 13
-    noaber()::identity, // 14
-    noaber()::identity, // 15
-    noaber()::identity, // 16
-    noaber()::identity, // 17
-    noaber()::identity); // 18
+    final Function<String, String> f = $.compose( //
+    $::identity, // 1
+    $::identity, // 2
+    $::identity, // 3
+    $::identity, // 4
+    $::identity, // 5
+    $::identity, // 6
+    $::identity, // 7
+    $::identity, // 8
+    $::identity, // 9
+    $::identity, // 10
+    $::identity, // 11
+    $::identity, // 12
+    $::identity, // 13
+    $::identity, // 14
+    $::identity, // 15
+    $::identity, // 16
+    $::identity, // 17
+    $::identity); // 18
     final String actual = f.apply(expected);
     assertEquals(expected, actual);
   }
