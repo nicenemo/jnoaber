@@ -132,7 +132,7 @@ public interface Tuple {
    * @return an {@code Object[]} representation of this {@code Tuple}.
    */
   /***
-   * Fill an arrat with the elements of this {@code Tuple}.
+   * Fill an array with the elements of this {@code Tuple}.
    *
    * @param <T> type of the provided array
    * @param arr the array to file
