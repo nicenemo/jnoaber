@@ -366,11 +366,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-<<<<<<< .merge_file_62OyG9
-        <version>1.5.1</version>
-=======
         <version>${nexus-staging-maven-plugin.version}</version>
->>>>>>> .merge_file_On0ePh
         <executions>
           <execution>
             <id>default-deploy</id>
@@ -380,14 +376,11 @@
             </goals>
           </execution>
         </executions>
-<<<<<<< .merge_file_62OyG9
-=======
         <configuration>
           <serverId>ossrh</serverId>
           <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
           <skipStaging>false</skipStaging>
         </configuration>
->>>>>>> .merge_file_On0ePh
       </plugin>
     </plugins>
   </build>
