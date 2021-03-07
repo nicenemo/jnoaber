@@ -1,6 +1,6 @@
 package eu.hanskruse.noaber.with;
 
-import static eu.hanskruse.noaber.Noaber.noaber;
+import static eu.hanskruse.noaber.Noaber.$;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
@@ -33,7 +33,7 @@ public interface WithPatternMatching {
    * @return FunctionalPredicate
    */
   default <T> FunctionalPredicate<T, T> functionalPredicate(final Predicate<T> predicate) {
-    return functionalPredicate(predicate, noaber()::identity);
+    return functionalPredicate(predicate, $::identity);
   }
 
   /**

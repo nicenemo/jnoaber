@@ -44,8 +44,8 @@ public interface WithStreamable {
   R> f) {
     return s1.flatMap( //
     t1 -> s2.apply(t1).filter(//
-    $().leftApply(p).apply(t1)).map( //
-    $().leftApply(f).apply( //
+    $.leftApply(p).apply(t1)).map( //
+    $.leftApply(f).apply( //
     t1)));
   }
 
@@ -84,7 +84,7 @@ public interface WithStreamable {
   R> f) {
     return s1.flatMap( //
     t1 -> s2.apply(t1).flatMap( //
-    t2 -> s3.apply($().tuple(t1,t2)).filter(//
+    t2 -> s3.apply($.tuple(t1,t2)).filter(//
     t3 -> p.test(//
     t1, //
     t2, //
