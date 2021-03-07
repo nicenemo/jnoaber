@@ -1,0 +1,13 @@
+/target/
+/bin/
+/build/
+.cache-main
+.cache-tests
+.classpath
+.settings
+.vscode/
+.checkstyle
+pom.xml.versionsBackup
+pom.xml.bak
+.settings/**/*
+.classpath
