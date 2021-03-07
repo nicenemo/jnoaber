@@ -20,10 +20,8 @@ public interface WithNoaber extends //
     WithFunction, //
     WithLogic, //
     WithMapReduce, //
-    WithPatternMatching, //
     WithStats, //
     WithStream, //
-    WithStreamable, //
     WithTuples {
   // nothing here
 }
