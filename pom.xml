@@ -6,7 +6,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>jnoaber</name>
-  <description>Utility library for functional programming in Java</description>
+  <description>A utility library for functional programming in Java 8</description>
   <url>https://github.com/nicenemo/jnoaber</url>
   <licenses>
     <license>

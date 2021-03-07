@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Joepie</name>
-	<comment></comment>
+	<name>Jnoaber</name>
+	<comment>A utility library for functional programming in Java 8</comment>
 	<projects>
 	</projects>
 	<buildSpec>
