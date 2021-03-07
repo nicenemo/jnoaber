@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.hanskruse</groupId>
   <artifactId>noaber</artifactId>
-  <version>0.0.8</version>
+  <version>0.0.9</version>
   <packaging>jar</packaging>
   <name>jnoaber</name>
   <description>A utility library for functional programming in Java 8</description>
