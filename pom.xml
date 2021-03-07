@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.hanskruse</groupId>
   <artifactId>noaber</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <packaging>jar</packaging>
   <name>jnoaber</name>
   <description>A utility library for functional programming in Java 8</description>
@@ -72,6 +72,7 @@
     <mvn-gpg-plugin.version>1.6</mvn-gpg-plugin.version>
     <mvnprojectinforeports.version>3.1.1</mvnprojectinforeports.version>
     <mvnsurefire.version>3.0.0-M5</mvnsurefire.version>
+    <nexus-staging-maven-plugin.version>1.5.1</nexus-staging-maven-plugin.version>
     <pitest-junit5-plugin.version>0.12</pitest-junit5-plugin.version>
     <pitest.version>1.6.3</pitest.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -365,7 +366,11 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
+<<<<<<< .merge_file_62OyG9
         <version>1.5.1</version>
+=======
+        <version>${nexus-staging-maven-plugin.version}</version>
+>>>>>>> .merge_file_On0ePh
         <executions>
           <execution>
             <id>default-deploy</id>
@@ -375,6 +380,14 @@
             </goals>
           </execution>
         </executions>
+<<<<<<< .merge_file_62OyG9
+=======
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <skipStaging>false</skipStaging>
+        </configuration>
+>>>>>>> .merge_file_On0ePh
       </plugin>
     </plugins>
   </build>
