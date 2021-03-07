@@ -110,32 +110,32 @@ public class TupleTest implements WithNoaber {
   private static final T14 et14 = new T14();
   private static final T15 et15 = new T15();
 
-  private static final Tuple0 tuple0 = $().tuple();
-  private static final Tuple1<T0> tuple1 = $().tuple(//
+  private static final Tuple0 tuple0 = $.tuple();
+  private static final Tuple1<T0> tuple1 = $.tuple(//
       et0);
-  private static final Tuple2<T0, T1> tuple2 = $().tuple(//
+  private static final Tuple2<T0, T1> tuple2 = $.tuple(//
       et0, //
       et1);
 
-  private static final Tuple3<T0, T1, T2> tuple3 = $().tuple(//
+  private static final Tuple3<T0, T1, T2> tuple3 = $.tuple(//
       et0, //
       et1, //
       et2);
 
-  private static final Tuple4<T0, T1, T2, T3> tuple4 = $().tuple(//
+  private static final Tuple4<T0, T1, T2, T3> tuple4 = $.tuple(//
       et0, //
       et1, //
       et2, //
       et3);
 
-  private static final Tuple5<T0, T1, T2, T3, T4> tuple5 = $().tuple(//
+  private static final Tuple5<T0, T1, T2, T3, T4> tuple5 = $.tuple(//
       et0, //
       et1, //
       et2, //
       et3, //
       et4);
 
-  private static final Tuple6<T0, T1, T2, T3, T4, T5> tuple6 = $().tuple(//
+  private static final Tuple6<T0, T1, T2, T3, T4, T5> tuple6 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -143,7 +143,7 @@ public class TupleTest implements WithNoaber {
       et4, //
       et5);
 
-  private static final Tuple7<T0, T1, T2, T3, T4, T5, T6> tuple7 = $().tuple(//
+  private static final Tuple7<T0, T1, T2, T3, T4, T5, T6> tuple7 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -152,7 +152,7 @@ public class TupleTest implements WithNoaber {
       et5, //
       et6);
 
-  private static final Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> tuple8 = $().tuple(//
+  private static final Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> tuple8 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -162,7 +162,7 @@ public class TupleTest implements WithNoaber {
       et6, //
       et7);
 
-  private static final Tuple9<T0, T1, T2, T3, T4, T5, T6, T7, T8> tuple9 = $().tuple(//
+  private static final Tuple9<T0, T1, T2, T3, T4, T5, T6, T7, T8> tuple9 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -173,7 +173,7 @@ public class TupleTest implements WithNoaber {
       et7, //
       et8);
 
-  private static final Tuple10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> tuple10 = $().tuple(//
+  private static final Tuple10<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> tuple10 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -185,7 +185,7 @@ public class TupleTest implements WithNoaber {
       et8, //
       et9);
 
-  private static final Tuple11<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> tuple11 = $().tuple(//
+  private static final Tuple11<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10> tuple11 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -198,7 +198,7 @@ public class TupleTest implements WithNoaber {
       et9, //
       et10);
 
-  private static final Tuple12<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> tuple12 = $().tuple(//
+  private static final Tuple12<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11> tuple12 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -212,7 +212,7 @@ public class TupleTest implements WithNoaber {
       et10, //
       et11);
 
-  private static final Tuple13<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> tuple13 = $().tuple(//
+  private static final Tuple13<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12> tuple13 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -227,7 +227,7 @@ public class TupleTest implements WithNoaber {
       et11, //
       et12);
 
-  private static final Tuple14<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> tuple14 = $().tuple(//
+  private static final Tuple14<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13> tuple14 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -243,7 +243,7 @@ public class TupleTest implements WithNoaber {
       et12, //
       et13);
 
-  private static final Tuple15<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> tuple15 = $().tuple(//
+  private static final Tuple15<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14> tuple15 = $.tuple(//
       et0, //
       et1, //
       et2, //
@@ -260,8 +260,7 @@ public class TupleTest implements WithNoaber {
       et13, //
       et14);
 
-  private static final Tuple16<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> tuple16 = $()
-      .tuple(//
+  private static final Tuple16<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15> tuple16 = $.tuple(//
           et0, //
           et1, //
           et2, //

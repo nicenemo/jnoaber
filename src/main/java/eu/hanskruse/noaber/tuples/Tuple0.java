@@ -71,7 +71,7 @@ public abstract class Tuple0 extends BaseTuple {
    * @return an {@code Object[]} representation of this {@code Tuple}.
    */
   /***
-  *  Fill an arrat with the elements of this {@code Tuple}.
+  *  Fill an array with the elements of this {@code Tuple}.
    * @param <T> type of the provided array
    * @param arr the array to file
    * @return arr filled with the elements of the tuple or a new array with the elements of the tuple if the provided array was too small.
