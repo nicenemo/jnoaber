@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.hanskruse</groupId>
   <artifactId>noaber</artifactId>
-  <version>0.0.12</version>
+  <version>0.0.13</version>
   <packaging>jar</packaging>
   <name>jnoaber</name>
   <description>A utility library for functional programming in Java 8</description>
@@ -45,8 +45,6 @@
     </snapshotRepository>
   </distributionManagement>
   <properties>
-    <checkstyle.configLocation>hans_kruse_checks.xml</checkstyle.configLocation>
-    <checkstyle.suppressionsLocation>suppressions.xml</checkstyle.suppressionsLocation>
     <editorconfig-plugin.version>0.1.1</editorconfig-plugin.version>
     <hamcrest.version>2.2</hamcrest.version>
     <jacoco.version>0.8.6</jacoco.version>
@@ -67,7 +65,6 @@
     <maven.resources.version>3.2.0</maven.resources.version>
     <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
     <mockito.version>3.8.0</mockito.version>
-    <mvncheckstyle.version>3.1.2</mvncheckstyle.version>
     <mvncompiler.version>3.8.1</mvncompiler.version>
     <mvn-gpg-plugin.version>1.6</mvn-gpg-plugin.version>
     <mvnprojectinforeports.version>3.1.1</mvnprojectinforeports.version>
@@ -261,21 +258,6 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${mvncheckstyle.version}</version>
-        <configuration>
-          <configLocation>${checkstyle.configLocation}</configLocation>
-          <suppressionsLocation>${checkstyle.suppressionsLocation}</suppressionsLocation>
-          <encoding>UTF-8</encoding>
-          <consoleOutput>true</consoleOutput>
-          <failOnValidation>false</failOnValidation>
-          <failOnViolation>false</failOnViolation>
-          <failsOnError>false</failsOnError>
-          <linkXRef>true</linkXRef>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>${mvnprojectinforeports.version}</version>
       </plugin>
@@ -400,28 +382,6 @@
         <configuration>
           <port>9000</port>
           <tempWebappDirectory>${project.build.directory}/target/${project.artifactId}</tempWebappDirectory>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${mvncheckstyle.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>checkstyle</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-        <configuration>
-          <configLocation>${checkstyle.configLocation}</configLocation>
-          <suppressionsLocation>${checkstyle.suppressionsLocation}</suppressionsLocation>
-          <encoding>UTF-8</encoding>
-          <consoleOutput>true</consoleOutput>
-          <failOnValidation>false</failOnValidation>
-          <failOnViolation>false</failOnViolation>
-          <failsOnError>false</failsOnError>
-          <linkXRef>true</linkXRef>
         </configuration>
       </plugin>
       <plugin>
