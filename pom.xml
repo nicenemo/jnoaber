@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.hanskruse</groupId>
   <artifactId>noaber</artifactId>
-  <version>0.0.11</version>
+  <version>0.0.12</version>
   <packaging>jar</packaging>
   <name>jnoaber</name>
   <description>A utility library for functional programming in Java 8</description>
@@ -26,7 +26,7 @@
   <scm>
     <connection>scm:git:git://github.com/nicenemo/jnoaber.git</connection>
     <developerConnection>scm:git:git@github.com:nicenemo/jnoaber.git</developerConnection>
-    <url>https://github.com/nicenemo/jnoabler</url>
+    <url>https://github.com/nicenemo/jnoaber</url>
   </scm>
   <issueManagement>
     <system>GitHub Issues</system>
