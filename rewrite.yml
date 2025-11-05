@@ -1,0 +1,9 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: com.github.timtebeek.Java21ForTests
+displayName: Adopt Java 25 for tests
+description: Upgrade your tests to Java 25.
+preconditions:
+  - org.openrewrite.java.search.IsLikelyTest
+recipeList:
+  - org.openrewrite.java.migrate.UpgradeToJava25
