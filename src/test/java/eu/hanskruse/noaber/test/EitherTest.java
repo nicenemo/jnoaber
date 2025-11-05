@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -70,7 +67,7 @@ public class EitherTest {
     return false;
   }
 
-  private ConsumerCheck consumerCheck;
+  private ConsumerCheckImpl consumerCheck;
 
   private IllegalStateException left;
 
@@ -110,14 +107,14 @@ public class EitherTest {
   public void emptyWithIfLeftIsNotConsumed() {
     sut = Either.empty();
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    verify(consumerCheck, times(0)).leftConsumer(any());
+    assertFalse(consumerCheck.isLeftCalled());
   }
 
   @Test
   public void emptyWithIfRightIsNotConsumed() {
     sut = Either.empty();
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    verify(consumerCheck, times(0)).rightConsumer(any());
+    assertFalse(consumerCheck.isRightCalled());
   }
 
   @Test
@@ -337,7 +334,7 @@ public class EitherTest {
   public void init() {
     left = new IllegalStateException();
     right = "right value";
-    consumerCheck = mock(ConsumerCheck.class);
+    consumerCheck = new ConsumerCheckImpl();
   }
 
   @Test
@@ -404,14 +401,15 @@ public class EitherTest {
   public void leftWithIfLeftIsConsumed() {
     sut = Either.ofLeft(left);
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    verify(consumerCheck, times(1)).leftConsumer(left);
+    assertTrue(consumerCheck.isLeftCalled());
+    assertEquals(left, consumerCheck.getLeft());
   }
 
   @Test
   public void leftWithIfRightIsNotConsumed() {
     sut = Either.ofLeft(left);
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    verify(consumerCheck, times(0)).rightConsumer(any());
+    assertFalse(consumerCheck.isRightCalled());
   }
 
   @Test
@@ -569,14 +567,15 @@ public class EitherTest {
   public void rightWithIfLeftIsNotConsumed() {
     sut = Either.ofRight(right);
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    verify(consumerCheck, times(0)).leftConsumer(any());
+    assertFalse(consumerCheck.isLeftCalled());
   }
 
   @Test
   public void rightWithIfRightIsConsumed() {
     sut = Either.ofRight(right);
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    verify(consumerCheck, times(1)).rightConsumer(right);
+    assertTrue(consumerCheck.isRightCalled());
+    assertEquals(right, consumerCheck.getRight());
   }
 
   @Test
