@@ -7,9 +7,9 @@ import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 
 /**
-* Unit tests for compose.
-*/
-public class ComposeTest {
+ * Unit tests for compose.
+ */
+class ComposeTest {
 
   /**
   * Inc function that returns argument + 1.
@@ -35,7 +35,7 @@ public class ComposeTest {
   * Test Compose with 10 functions.
   */
   @Test
-  public void testCompose10() {
+  void compose10() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -56,7 +56,7 @@ public class ComposeTest {
   * Test Compose with 11 functions.
   */
   @Test
-  public void testCompose11() {
+  void compose11() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -78,7 +78,7 @@ public class ComposeTest {
   * Test Compose with 12 functions.
   */
   @Test
-  public void testCompose12() {
+  void compose12() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -101,7 +101,7 @@ public class ComposeTest {
   * Test Compose with 13 functions.
   */
   @Test
-  public void testCompose13() {
+  void compose13() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -125,7 +125,7 @@ public class ComposeTest {
   * Test Compose with 14 functions.
   */
   @Test
-  public void testCompose14() {
+  void compose14() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -150,7 +150,7 @@ public class ComposeTest {
   * Test Compose with 15 functions.
   */
   @Test
-  public void testCompose15() {
+  void compose15() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -176,7 +176,7 @@ public class ComposeTest {
   * Test Compose with 16 functions
   */
   @Test
-  public void testCompose16() {
+  void compose16() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -203,7 +203,7 @@ public class ComposeTest {
   * Test Compose with 2 function.
   */
   @Test
-  public void testCompose2() {
+  void compose2() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -216,7 +216,7 @@ public class ComposeTest {
   * Test Compose with 3 functions.
   */
   @Test
-  public void testCompose3() {
+  void compose3() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -230,7 +230,7 @@ public class ComposeTest {
   * Test Compose with 4 functions.
   */
   @Test
-  public void testCompose4() {
+  void compose4() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -245,7 +245,7 @@ public class ComposeTest {
   * Test Compose with 5 functions.
   */
   @Test
-  public void testCompose5() {
+  void compose5() {
     final String expected = "42";
     final Function<String, String> f = $.compose(//
     $::identity, // 1
@@ -261,7 +261,7 @@ public class ComposeTest {
   * Test Compose with 6 functions.
   */
   @Test
-  public void testCompose6() {
+  void compose6() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -278,7 +278,7 @@ public class ComposeTest {
   * Test Compose with 7 functions.
   */
   @Test
-  public void testCompose7() {
+  void compose7() {
     final String expected = "42";
     final Function<String, String> f = $.compose(//
     $::identity, // 1
@@ -296,7 +296,7 @@ public class ComposeTest {
   * Test Compose with 8 functions.
   */
   @Test
-  public void testCompose8() {
+  void compose8() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -315,7 +315,7 @@ public class ComposeTest {
   * Test Compose with 9 functions.
   */
   @Test
-  public void testCompose9() {
+  void compose9() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1
@@ -336,7 +336,7 @@ public class ComposeTest {
   * return value.
   */
   @Test
-  public void testComposeArgCount() {
+  void composeArgCount() {
     final int expected = 120;
     final Function<Integer, Integer> f = $.compose( //
     this::inc, // 1
@@ -370,7 +370,7 @@ public class ComposeTest {
   * return value.
   */
   @Test
-  public void testComposeMore() {
+  void composeMore() {
     final String expected = "42";
     final Function<String, String> f = $.compose( //
     $::identity, // 1

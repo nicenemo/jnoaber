@@ -14,12 +14,12 @@ import eu.hanskruse.testdata.food.fruit.apples.McIntosh;
 public class RightAppliedTest {
 
   @Test
-  public void testRightAppliedAnApple() {
+  void rightAppliedAnApple() {
     assertTrue(isApple(new McIntosh()));
   }
 
   @Test
-  public void testRightAppliedAHamburger() {
+  void rightAppliedAHamburger() {
     assertFalse(isApple(new Hamburger()));
   }
 

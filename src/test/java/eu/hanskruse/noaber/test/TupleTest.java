@@ -282,7 +282,7 @@ public class TupleTest implements WithNoaber {
   private final static List<Object> expectedElements = new ArrayList<>();
 
   @BeforeAll
-  public static void beforeAll() {
+  static void beforeAll() {
     Collections.addAll(tuples, tuple0, tuple1, tuple2, tuple3, tuple4, tuple5, tuple6, tuple7, tuple8, tuple9, tuple10,
         tuple11, tuple12, tuple13, tuple14, tuple15, tuple16);
     Collections.addAll(expectedElements, et0, et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14,
@@ -300,13 +300,13 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("intRange")
-  public void testLength(int i) {
+  void length(int i) {
     assertEquals(i, tuples.get(i).size());
   }
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void tupleValuesAreEqualToExpectedValues(final Tuple sut) {
+  void tupleValuesAreEqualToExpectedValues(final Tuple sut) {
     final Object[] expected = expectedElements.stream().limit(sut.size()).toArray();
     final Object[] actual = IntStream.range(0, sut.size()).mapToObj(sut::get).toArray();
     assertArrayEquals(expected, actual);
@@ -314,25 +314,25 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void testGetWithNegativeIndexIsNotAllowed(final Tuple sut) {
+  void getWithNegativeIndexIsNotAllowed(final Tuple sut) {
     assertThrows(IndexOutOfBoundsException.class, () -> sut.get(-1));
   }
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void testWithIndexEqualToSize(final Tuple sut) {
+  void withIndexEqualToSize(final Tuple sut) {
     assertThrows(IndexOutOfBoundsException.class, () -> sut.get(sut.size()));
   }
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void testWithIndexLargerThanSize(final Tuple sut) {
+  void withIndexLargerThanSize(final Tuple sut) {
     assertThrows(IndexOutOfBoundsException.class, () -> sut.get(sut.size() + 1));
   }
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void getAllEqualsGetAllViaIterable(final Tuple sut) {
+  void getAllEqualsGetAllViaIterable(final Tuple sut) {
     final Object[] arrayObtainedViaGet = IntStream.range(0, sut.size()).mapToObj(sut::get).toArray();
     final Object[] arrayObtainedViaIterable = StreamSupport.stream(sut.asIterable().spliterator(), false).toArray();
     assertArrayEquals(arrayObtainedViaGet, arrayObtainedViaIterable);
@@ -340,14 +340,14 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void GetAllEqualsGetAllViaStream(final Tuple sut) {
+  void GetAllEqualsGetAllViaStream(final Tuple sut) {
     final Object[] arrayObtainedViaGet = IntStream.range(0, sut.size()).mapToObj(sut::get).toArray();
     final Object[] arrayObtainedViaIterable = sut.stream().toArray();
     assertArrayEquals(arrayObtainedViaGet, arrayObtainedViaIterable);
   }
 
   @Test
-  public void testTuple3WithBooleanStringAndInteger() {
+  void tuple3WithBooleanStringAndInteger() {
     final Tuple sut = tuple(Boolean.TRUE, "Hello", 42);
     final Boolean actualBoolean = sut.get(0);
     assertTrue(actualBoolean.booleanValue());
@@ -357,7 +357,7 @@ public class TupleTest implements WithNoaber {
   }
 
   @Test
-  public void tupleIterationWithIntegers() {
+  void tupleIterationWithIntegers() {
     final long expected = 6L;
     final Tuple sut = tuple(1, 2, 3);
     final long actual = sut.stream().map(Integer.class::cast).mapToInt(Integer::intValue).summaryStatistics().getSum();
@@ -365,7 +365,7 @@ public class TupleTest implements WithNoaber {
   }
 
   @Test
-  public void tupleIterationWithIntegersTooButWithouthCast() {
+  void tupleIterationWithIntegersTooButWithouthCast() {
     final long expected = 6L;
     final Tuple sut = tuple(1, 2, 3);
     final Stream<Integer> actualStream = sut.stream();
@@ -375,7 +375,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void headTest(final Tuple sut) {
+  void headTest(final Tuple sut) {
     if (sut instanceof Tuple0) {
       assertThrows(NoSuchElementException.class, sut::head);
       return;
@@ -384,10 +384,9 @@ public class TupleTest implements WithNoaber {
   }
 
 
-
   @ParameterizedTest
   @MethodSource("tuples")
-  public void lastTest(final Tuple sut) {
+  void lastTest(final Tuple sut) {
     if (sut instanceof Tuple0) {
       assertThrows(NoSuchElementException.class, sut::head);
       return;
@@ -399,7 +398,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void tailTest(final Tuple sut) {
+  void tailTest(final Tuple sut) {
     if (sut instanceof Tuple0) {
       assertThrows(UnsupportedOperationException.class, sut::tail);
       return;
@@ -407,7 +406,7 @@ public class TupleTest implements WithNoaber {
 
     final Tuple tail = sut.tail();
     if (sut instanceof Tuple1) {
-      assertTrue(tail instanceof Tuple0);
+      assertInstanceOf(Tuple0.class, tail);
       return;
     }
 
@@ -426,7 +425,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void toArrayTest(final Tuple sut) {
+  void toArrayTest(final Tuple sut) {
     final Object[] expectedToArrayElements = expectedElements.stream().limit(sut.size()).toArray();
     final Object[] actualToArrayElements = sut.toArray();
     assertArrayEquals(expectedToArrayElements, actualToArrayElements);
@@ -434,7 +433,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void toArrayTestWithProvidedArrayOfCorrectSize(final Tuple sut) {
+  void toArrayTestWithProvidedArrayOfCorrectSize(final Tuple sut) {
     final Object[] expectedToArrayElements = expectedElements.stream().limit(sut.size()).toArray();
     final Object[] providedArray = new Object[sut.size()];
     final Object[] actualToArrayElements = sut.toArray(providedArray);
@@ -444,7 +443,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void toArrayTestWithProvidedArrayOfLargerSize(final Tuple sut) {
+  void toArrayTestWithProvidedArrayOfLargerSize(final Tuple sut) {
     final Object[] expectedToArrayElements = expectedElements.stream().limit(sut.size()).toArray();
     final Object[] providedArray = new Object[sut.size() + 1];
     final Object[] actualToArrayElements = sut.toArray(providedArray);
@@ -455,7 +454,7 @@ public class TupleTest implements WithNoaber {
 
   @ParameterizedTest
   @MethodSource("tuples")
-  public void toArrayTestWithProvidedArrayOSmallerSize(final Tuple sut) {
+  void toArrayTestWithProvidedArrayOSmallerSize(final Tuple sut) {
     if (sut instanceof Tuple0) {
       return;
     }

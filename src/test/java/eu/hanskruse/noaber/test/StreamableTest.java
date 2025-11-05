@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import eu.hanskruse.noaber.Streamable;
 import eu.hanskruse.noaber.WithNoaber;
 
-public class StreamableTest implements WithNoaber {
+class StreamableTest implements WithNoaber {
   private List<Streamable<Integer>> xxs;
   private int[] lengths;
 
@@ -27,7 +27,7 @@ public class StreamableTest implements WithNoaber {
   * Initializes the tests
   */
   @BeforeEach
-  public void initialize() {
+  void initialize() {
     xxs = new ArrayList<>();
     lengths = new int[16];
     final BiFunction<Integer, Integer, Streamable<Integer>> f = (start,
@@ -47,7 +47,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEachExample() {
+  void forEachExample() {
     System.err.println("Defining dutch postal codes.." + System.currentTimeMillis());
 
     final Streamable<Integer> firstTwoDigits = () -> IntStream.range(10, 99).mapToObj(Integer::valueOf);
@@ -67,7 +67,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach2() {
+  void forEach2() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     x1 -> xxs.get(1), //
@@ -77,7 +77,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach2NoFilter() {
+  void forEach2NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     x1 -> xxs.get(1), //
@@ -86,7 +86,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach3() {
+  void forEach3() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     x1 -> xxs.get(1), //
@@ -97,7 +97,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach3NoFilter() {
+  void forEach3NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     x1 -> xxs.get(1), //
@@ -107,7 +107,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach4() {
+  void forEach4() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -119,7 +119,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach4NoFilter() {
+  void forEach4NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -130,7 +130,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach5() {
+  void forEach5() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -143,7 +143,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach5NoFilter() {
+  void forEach5NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -155,7 +155,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach6() {
+  void forEach6() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -169,7 +169,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach6NoFilter() {
+  void forEach6NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -182,7 +182,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach7() {
+  void forEach7() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -197,7 +197,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach7NoFilter() {
+  void forEach7NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -211,7 +211,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach8() {
+  void forEach8() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -227,7 +227,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach8NoFilter() {
+  void forEach8NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -242,7 +242,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach9() {
+  void forEach9() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -259,7 +259,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach9NoFilter() {
+  void forEach9NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -275,7 +275,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach10() {
+  void forEach10() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -293,7 +293,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach10NoFilter() {
+  void forEach10NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -310,7 +310,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach11() {
+  void forEach11() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -329,7 +329,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach11NoFilter() {
+  void forEach11NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -347,7 +347,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach12() {
+  void forEach12() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), xxs.get(1), //
     xxs.get(2), //
@@ -367,7 +367,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach12NoFilter() {
+  void forEach12NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), xxs.get(1), //
     xxs.get(2), //
@@ -386,7 +386,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach13() {
+  void forEach13() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -408,7 +408,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach13NoFilter() {
+  void forEach13NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -429,7 +429,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach14() {
+  void forEach14() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -452,7 +452,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach14NoFilter() {
+  void forEach14NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -474,7 +474,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach15() {
+  void forEach15() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -498,7 +498,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach15NoFilter() {
+  void forEach15NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -521,7 +521,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach16() {
+  void forEach16() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -546,7 +546,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testForEach16NoFilter() {
+  void forEach16NoFilter() {
     Streamable<Integer> xs = forEach(//
     xxs.get(0), //
     xxs.get(1), //
@@ -570,26 +570,26 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testDistinct() {
+  void distinct() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     assertArrayEquals(new Integer[] { 3, 4, 5 }, xs.distinct().stream().toArray(Integer[]::new));
   }
 
   @Test
-  public void testLimit() {
+  void limit() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     assertArrayEquals(new Integer[] { 3, 3, 4 }, xs.limit(3L).stream().toArray(Integer[]::new));
   }
 
   @Test
-  public void testParallel() {
+  void parallel() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     assertFalse(xs.stream().isParallel());
     assertTrue(xs.parallel().stream().isParallel());
   }
 
   @Test
-  public void testPeek() {
+  void peek() {
     final AtomicInteger sum = new AtomicInteger(0);
     Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     xs.peek(i -> sum.addAndGet(i)).stream().forEach(i -> {
@@ -598,7 +598,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testSequential() {
+  void sequential() {
     Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     assertFalse(xs.stream().isParallel());
     xs = xs.parallel();
@@ -608,7 +608,7 @@ public class StreamableTest implements WithNoaber {
   }
 
   @Test
-  public void testskip() {
+  void testskip() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     assertArrayEquals(new Integer[] { 4, 5, 5 }, xs.skip(2L).stream().toArray(Integer[]::new));
   }

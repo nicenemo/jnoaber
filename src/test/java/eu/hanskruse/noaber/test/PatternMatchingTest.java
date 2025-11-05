@@ -29,7 +29,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
   * FizzBuzz example.
   */
   @Test
-  public void fizzBuzzExample() {
+  void fizzBuzzExample() {
     qt().forAll(integers().all()).check(i -> {
       @SuppressWarnings("unchecked")
       final Optional<String> result = //
@@ -49,20 +49,20 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
   }
 
   @Test
-  public void anElstartIsAnApple() {
+  void anElstartIsAnApple() {
     assertTrue(isApple(new Elstar()));
   }
 
   @Disabled("TODO: fix type resolution")
   @Test
-  public void aHamburgerIsNotAnApple() {
+  void aHamburgerIsNotAnApple() {
     final Hamburger hamburger = new Hamburger();
     assertFalse(isApple(hamburger));
   }
 
 
   @Test
-  public void aa() {
+  void aa() {
     final Case<Elstar, String> caseClause = whenClass(Elstar.class).then(x -> "Elstar" + x.getClass());
     @SuppressWarnings("unchecked")
     Optional<String> result = (Optional<String>) match(new Elstar()).with(caseClause);
