@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.hanskruse</groupId>
   <artifactId>noaber</artifactId>
@@ -75,6 +76,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <quicktheories.version>0.26</quicktheories.version>
     <reporting.version>2.7.1</reporting.version>
+    <error-prone.version>2.43.0</error-prone.version>
+    <error-prone-support.version>0.26.0</error-prone-support.version>
   </properties>
   <dependencies>
     <dependency>
@@ -181,7 +184,7 @@
         <configuration>
           <show>public</show>
         </configuration>
-      </plugin>
+      </plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -190,13 +193,43 @@
           <execution>
             <id>default-compile</id>
             <configuration>
+
               <showDeprecation>true</showDeprecation>
               <showWarnings>true</showWarnings>
+              <annotationProcessorPaths>
+                <!-- Error Prone itself. -->
+                <path>
+                  <groupId>com.google.errorprone</groupId>
+                  <artifactId>error_prone_core</artifactId>
+                  <version>${error-prone.version}</version>
+                </path>
+                <!-- Error Prone Support's additional bug checkers. -->
+                <path>
+                  <groupId>tech.picnic.error-prone-support</groupId>
+                  <artifactId>error-prone-contrib</artifactId>
+                  <version>${error-prone-support.version}</version>
+                </path>
+                <!-- Error Prone Support's Refaster rules. -->
+                <path>
+                  <groupId>tech.picnic.error-prone-support</groupId>
+                  <artifactId>refaster-runner</artifactId>
+                  <version>${error-prone-support.version}</version>
+                </path>
+              </annotationProcessorPaths>
+
+
               <compilerArgs>
                 <arg>-source</arg>
                 <arg>${maven.compiler.target}</arg>
                 <arg>-target</arg>
                 <arg>${maven.compiler.source}</arg>
+                <arg>
+                  -Xplugin:ErrorProne
+                  <!-- Add other Error Prone flags here. See
+                  https://errorprone.info/docs/flags. -->
+                </arg>
+                <arg>-XDcompilePolicy=simple</arg>
+                <arg>--should-stop=ifError=FLOW</arg>
               </compilerArgs>
             </configuration>
           </execution>
@@ -205,11 +238,38 @@
             <configuration>
               <showDeprecation>true</showDeprecation>
               <showWarnings>true</showWarnings>
+              <annotationProcessorPaths>
+                <!-- Error Prone itself. -->
+                <path>
+                  <groupId>com.google.errorprone</groupId>
+                  <artifactId>error_prone_core</artifactId>
+                  <version>${error-prone.version}</version>
+                </path>
+                <!-- Error Prone Support's additional bug checkers. -->
+                <path>
+                  <groupId>tech.picnic.error-prone-support</groupId>
+                  <artifactId>error-prone-contrib</artifactId>
+                  <version>${error-prone-support.version}</version>
+                </path>
+                <!-- Error Prone Support's Refaster rules. -->
+                <path>
+                  <groupId>tech.picnic.error-prone-support</groupId>
+                  <artifactId>refaster-runner</artifactId>
+                  <version>${error-prone-support.version}</version>
+                </path>
+              </annotationProcessorPaths>
               <compilerArgs>
                 <arg>-source</arg>
                 <arg>${maven.compiler.testTarget}</arg>
                 <arg>-target</arg>
                 <arg>${maven.compiler.testSource}</arg>
+                <arg>
+                  -Xplugin:ErrorProne
+                  <!-- Add other Error Prone flags here. See
+                  https://errorprone.info/docs/flags. -->
+                </arg>
+                <arg>-XDcompilePolicy=simple</arg>
+                <arg>--should-stop=ifError=FLOW</arg>
               </compilerArgs>
             </configuration>
           </execution>
@@ -259,8 +319,8 @@
             </configuration>
           </execution>
         </executions>
-      </plugin -->
-      <!--plugin>
+      </plugin>
+      <!-- plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>${mvnprojectinforeports.version}</version>
