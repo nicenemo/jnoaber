@@ -1,5 +1,7 @@
 package eu.hanskruse.noaber.tuples;
 
+import static java.util.Objects.isNull;
+
 /**
  * Tuple of 2 elements.
  *
@@ -33,17 +35,15 @@ public abstract class Tuple2<//
     return new Tuple2<//
         T0, //
         T1>() {
-      @SuppressWarnings("unchecked")
+
       @Override
+      @SuppressWarnings("unchecked")
       public <R> R get(int i) {
-        switch (i) {
-          case 0:
-            return (R) t0;
-          case 1:
-            return (R) t1;
-          default:
-            throw createIndexOutOfBoundsException(i, size());
-        }
+        return switch (i) {
+          case 0 -> (R) t0;
+          case 1 -> (R) t1;
+          default -> throw createIndexOutOfBoundsException(i, size());
+        };
       }
 
       @Override
@@ -86,7 +86,7 @@ public abstract class Tuple2<//
    */
   @Override
   public Tuple1<T1> tail() {
-    if (null == tail) {
+    if (isNull(tail)) {
       tail = Tuple1.of(this.get_1());
     }
     return tail;

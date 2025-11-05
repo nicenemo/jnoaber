@@ -17,7 +17,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Earth(final Planet p) {
-    return p == Planet.Earth ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.EARTH ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -28,7 +28,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Jupiter(final Planet p) {
-    return p == Planet.Jupiter ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.JUPITER ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -39,7 +39,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Mars(final Planet p) {
-    return p == Planet.Mars ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.MARS ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -50,7 +50,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Mercurius(final Planet p) {
-    return p == Planet.Mercurius ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.MERCURIUS ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -61,7 +61,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Neptune(final Planet p) {
-    return p == Planet.Neptune ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.NEPTUNE ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -72,7 +72,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Pluto(final Planet p) {
-    return p == Planet.Pluto ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.PLUTO ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -83,7 +83,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Saturn(final Planet p) {
-    return p == Planet.Saturn ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.SATURN ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -94,7 +94,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Uranus(final Planet p) {
-    return p == Planet.Uranus ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.URANUS ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**
@@ -105,7 +105,7 @@ public final class SolarSystem {
    * @return Optional String value if true, else Optional.Empty.
    */
   public static Optional<String> Venus(final Planet p) {
-    return p == Planet.Venus ? Optional.of(p.toString()) : Optional.empty();
+    return p == Planet.VENUS ? Optional.of(p.toString()) : Optional.empty();
   }
 
   /**

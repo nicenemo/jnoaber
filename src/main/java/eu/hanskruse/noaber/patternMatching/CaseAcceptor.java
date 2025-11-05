@@ -40,8 +40,8 @@ public final class CaseAcceptor<T> {
     }
     final Optional<Optional<R>> result = Arrays.stream(cases)//
         .map(cse -> cse.apply(this.t))
-        .filter(r -> r.isPresent())//
+        .filter(Optional::isPresent)//
         .findFirst();
-    return result.isPresent() ? result.get() : Optional.empty();
+    return result.orElseGet(Optional::empty);
   }
 }

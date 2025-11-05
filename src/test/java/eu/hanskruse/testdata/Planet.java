@@ -1,5 +1,5 @@
 package eu.hanskruse.testdata;
 
 public enum Planet {
-  Earth, Jupiter, Mars, Mercurius, Neptune, Pluto, Saturn, Uranus, Venus
+  EARTH, JUPITER, MARS, MERCURIUS, NEPTUNE, PLUTO, SATURN, URANUS, VENUS
 }

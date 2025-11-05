@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
+import static java.util.Objects.isNull;
+
 /**
  * Tuple is a generic readonly container for multiple fields of possible
  * different types.
@@ -140,7 +142,7 @@ public interface Tuple {
    *         elements of the tuple if the provided array was too small.
    */
   default <T> T[] toArray(T[] arr) {
-    if (null == arr) {
+    if (isNull(arr)) {
       throw new NullPointerException("Argument arr should not be null");
     }
     if (arr.length < size()) {

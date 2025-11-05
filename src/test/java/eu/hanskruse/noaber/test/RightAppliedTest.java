@@ -1,7 +1,6 @@
 package eu.hanskruse.noaber.test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.function.Predicate;
 
@@ -11,20 +10,20 @@ import eu.hanskruse.testdata.food.fastfood.Hamburger;
 import eu.hanskruse.testdata.food.fruit.Apple;
 import eu.hanskruse.testdata.food.fruit.apples.McIntosh;
 
-public class RightAppliedTest {
+final class RightAppliedTest {
 
   @Test
   void rightAppliedAnApple() {
-    assertTrue(isApple(new McIntosh()));
+    assertThat(isApple(new McIntosh())).isTrue();
   }
 
   @Test
   void rightAppliedAHamburger() {
-    assertFalse(isApple(new Hamburger()));
+    assertThat(isApple(new Hamburger())).isFalse();
   }
 
   public static Predicate<Object> matchClass(final Class<?> clazz) {
-    return o -> clazz.isInstance(o);
+    return clazz::isInstance;
   }
 
   public static boolean isApple(final Object o) {

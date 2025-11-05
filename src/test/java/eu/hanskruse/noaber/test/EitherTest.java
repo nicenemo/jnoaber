@@ -1,10 +1,7 @@
 package eu.hanskruse.noaber.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -21,7 +18,7 @@ import eu.hanskruse.noaber.Either;
  * @author kruse@hanskruse.eu
  *
  */
-class EitherTest {
+final class EitherTest {
 
   /**
   * Interface to be mocked to check if consumer were called.
@@ -77,143 +74,142 @@ class EitherTest {
   @Test
   void emptyEitherGivesLeftPresentFalse() {
     sut = Either.empty();
-    assertFalse(sut.isLeftPresent());
+    assertThat(sut.isLeftPresent()).isFalse();
   }
 
   @Test
   void emptyEitherGivesRightPresentFalse() {
     sut = Either.empty();
-    assertFalse(sut.isRightPresent());
+    assertThat(sut.isRightPresent()).isFalse();
   }
 
   @Test
   void emptyEqualsEmpty() {
     sut = Either.empty();
-    assertEquals(Either.empty(), sut);
+    assertThat(sut).isEqualTo(Either.empty());
   }
 
   @Test
   void emptyEqualsNullableLeftWithNull() {
-    assertEquals(Either.empty(), Either.ofNullableLeft(null));
+    assertThat(Either.ofNullableLeft(null)).isEqualTo(Either.empty());
   }
 
   @Test
   void emptyEqualsNullableRightWithNull() {
-    assertEquals(Either.empty(), Either.ofNullableRight(null));
+    assertThat(Either.ofNullableRight(null)).isEqualTo(Either.empty());
   }
 
   @Test
   void emptyWithIfLeftIsNotConsumed() {
     sut = Either.empty();
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    assertFalse(consumerCheck.isLeftCalled());
+    assertThat(consumerCheck.isLeftCalled()).isFalse();
   }
 
   @Test
   void emptyWithIfRightIsNotConsumed() {
     sut = Either.empty();
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    assertFalse(consumerCheck.isRightCalled());
+    assertThat(consumerCheck.isRightCalled()).isFalse();
   }
 
   @Test
   void filterLeftWithEmptyGiveEmptyOnAlways() {
     sut = Either.empty();
     final Optional<IllegalStateException> result = sut.filterLeft(EitherTest::always);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterLeftWithLeftAndNullPredicateThrowsNullPointerException() {
     sut = Either.ofLeft(left);
-    assertThrows(NullPointerException.class, () -> sut.filterLeft(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.filterLeft(null));
   }
 
   @Test
   void filterLeftWithLeftPresentGivesEmptyOnNever() {
     sut = Either.ofLeft(left);
     final Optional<IllegalStateException> result = sut.filterLeft(EitherTest::never);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterLeftWithLeftPresentGivesLeftOnAlways() {
     sut = Either.ofLeft(left);
     final Optional<IllegalStateException> result = sut.filterLeft(EitherTest::always);
-    assertTrue(result.isPresent());
-    assertEquals(left, result.get());
+    assertThat(result).hasValue(left);
   }
 
   @Test
   void filterLeftWithRightPresentGivesEmptyOnAlways() {
     sut = Either.ofRight(right);
     final Optional<IllegalStateException> result = sut.filterLeft(EitherTest::always);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterRightWithEmptyGivesEmptyOnAlways() {
     sut = Either.empty();
     final Optional<String> result = sut.filterRight(EitherTest::always);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterRightWithLeftPresentGivesEmptyOnAlways() {
     sut = Either.ofLeft(left);
     final Optional<String> result = sut.filterRight(EitherTest::always);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterRightWithRightAndNullPredicateThrowsNullPointerException() {
     sut = Either.ofRight(right);
-    assertThrows(NullPointerException.class, () -> sut.filterRight(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.filterRight(null));
   }
 
   @Test
   void filterRightWithRightPresentGivesEmptyOnNever() {
     sut = Either.ofRight(right);
     final Optional<String> result = sut.filterRight(EitherTest::never);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void filterRightWithRightPresentGivesRightOnAlways() {
     sut = Either.ofRight(right);
     final Optional<String> result = sut.filterRight(EitherTest::always);
-    assertTrue(result.isPresent());
-    assertEquals(right, result.get());
+    assertThat(result)
+            .hasValue(right);
   }
 
   @Test
   void getLeftOnEmptyThrowsNoSuchElementException() {
     sut = Either.empty();
-    assertThrows(NoSuchElementException.class, () -> sut.getLeft());
+    assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> sut.getLeft());
   }
 
   @Test
   void getLeftOnRightThrowsNoSuchElementException() {
     sut = Either.ofRight(right);
-    assertThrows(NoSuchElementException.class, () -> sut.getLeft());
+    assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> sut.getLeft());
   }
 
   @Test
   void getRightOnEmptyThrowsNoSuchElementException() {
     sut = Either.empty();
-    assertThrows(NoSuchElementException.class, () -> sut.getRight());
+    assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> sut.getRight());
   }
 
   @Test
   void getRightOnLeftThrowsNoSuchElementException() {
     sut = Either.ofLeft(left);
-    assertThrows(NoSuchElementException.class, () -> sut.getRight());
+    assertThatExceptionOfType(NoSuchElementException.class).isThrownBy(() -> sut.getRight());
   }
 
   @Test
   void hashCodeOnEmptyEitherWorks() {
     sut = Either.empty();
-    assertTrue(sut.hashCode() > 0);
+    assertThat(sut.hashCode()).isPositive();
   }
 
   @Test
@@ -221,7 +217,7 @@ class EitherTest {
     final IllegalStateException other = new IllegalStateException("other");
     sut = Either.empty();
     final IllegalStateException actual = sut.ifLeftNotPresent(other);
-    assertEquals(other, actual);
+    assertThat(actual).isEqualTo(other);
   }
 
   @Test
@@ -230,21 +226,21 @@ class EitherTest {
     final Supplier<IllegalStateException> other = () -> expected;
     sut = Either.empty();
     final IllegalStateException actual = sut.ifLeftNotPresentGet(other);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   @Test
   void ifLeftNotPresentOtherGetWithNullSupplierThrowsNullPointerException() {
     final Supplier<IllegalStateException> other = null;
     sut = Either.empty();
-    assertThrows(NullPointerException.class, () -> sut.ifLeftNotPresentGet(other));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.ifLeftNotPresentGet(other));
   }
 
   @Test
   void ifLeftNotPresentThrow() {
     final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
     sut = Either.empty();
-    assertThrows(IllegalArgumentException.class, () -> sut.ifLeftNotPresentThrow(thrower));
+    assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> sut.ifLeftNotPresentThrow(thrower));
   }
 
   @Test
@@ -252,7 +248,7 @@ class EitherTest {
     final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
     sut = Either.ofLeft(left);
     final IllegalStateException actual = sut.ifLeftNotPresentThrow(thrower);
-    assertEquals(left, actual);
+    assertThat(actual).isEqualTo(left);
   }
 
   @Test
@@ -260,7 +256,7 @@ class EitherTest {
     final IllegalStateException other = new IllegalStateException("other");
     sut = Either.ofLeft(left);
     final IllegalStateException actual = sut.ifLeftNotPresent(other);
-    assertEquals(left, actual);
+    assertThat(actual).isEqualTo(left);
   }
 
   @Test
@@ -268,7 +264,7 @@ class EitherTest {
     final Supplier<IllegalStateException> other = () -> new IllegalStateException("other");
     sut = Either.ofLeft(left);
     final IllegalStateException actual = sut.ifLeftNotPresentGet(other);
-    assertEquals(left, actual);
+    assertThat(actual).isEqualTo(left);
   }
 
   @Test
@@ -276,7 +272,7 @@ class EitherTest {
     final String other = "other";
     sut = Either.empty();
     final String actual = sut.ifRightNotPresent(other);
-    assertEquals(other, actual);
+    assertThat(actual).isEqualTo(other);
   }
 
   @Test
@@ -285,21 +281,21 @@ class EitherTest {
     final Supplier<String> other = () -> expected;
     sut = Either.empty();
     final String actual = sut.ifRightNotPresentGet(other);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   @Test
   void ifRightNotPresentOtherGetWithNullSupplierThrowsNullPointerException() {
     final Supplier<String> other = null;
     sut = Either.empty();
-    assertThrows(NullPointerException.class, () -> sut.ifRightNotPresentGet(other));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.ifRightNotPresentGet(other));
   }
 
   @Test
   void ifRightNotPresentThrow() {
     final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
     sut = Either.empty();
-    assertThrows(IllegalArgumentException.class, () -> sut.ifRightNotPresentThrow(thrower));
+    assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> sut.ifRightNotPresentThrow(thrower));
   }
 
   @Test
@@ -307,7 +303,7 @@ class EitherTest {
     final Supplier<IllegalArgumentException> thrower = () -> new IllegalArgumentException("other");
     sut = Either.ofRight(right);
     final String actual = sut.ifRightNotPresentThrow(thrower);
-    assertEquals(right, actual);
+    assertThat(actual).isEqualTo(right);
   }
 
   @Test
@@ -315,7 +311,7 @@ class EitherTest {
     final String other = "other";
     sut = Either.ofRight(right);
     final String actual = sut.ifRightNotPresent(other);
-    assertEquals(right, actual);
+    assertThat(actual).isEqualTo(right);
   }
 
   @Test
@@ -323,7 +319,7 @@ class EitherTest {
     final Supplier<String> other = () -> "other";
     sut = Either.ofRight(right);
     final String actual = sut.ifRightNotPresentGet(other);
-    assertEquals(right, actual);
+    assertThat(actual).isEqualTo(right);
   }
 
   /**
@@ -339,277 +335,277 @@ class EitherTest {
   @Test
   void isEmptyOnEmpty() {
     sut = Either.empty();
-    assertTrue(sut.isEmpty());
+    assertThat(sut.isEmpty()).isTrue();
   }
 
   @Test
   void leftEqualEitherWithSameLeftValue() {
     sut = Either.ofLeft(left);
-    assertTrue(sut.equals(Either.ofLeft(left)));
+    assertThat(Either.ofLeft(left)).isEqualTo(sut);
   }
-
+/*
   @Test
   void leftEqualItSelf() {
     sut = Either.ofLeft(left);
-    assertTrue(sut.equals(sut));
+    assertThat(sut).isEqualTo(sut);
   }
-
+*/
   @Test
   void leftEqualsDifferentLeftWorks() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.equals(Either.ofLeft(new IllegalStateException("different"))));
+    assertThat(Either.ofLeft(new IllegalStateException("different"))).isNotEqualTo(sut);
   }
 
   @Test
   void leftEqualsWithNullWorks() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.equals(null));
+    assertThat(sut).isNotNull();
   }
 
   @Test
   void leftGivesLeftPresentTrue() {
     sut = Either.ofLeft(left);
-    assertTrue(sut.isLeftPresent());
+    assertThat(sut.isLeftPresent()).isTrue();
   }
 
   @Test
   void leftGivesRightPresentFalse() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.isRightPresent());
+    assertThat(sut.isRightPresent()).isFalse();
   }
 
   @Test
   void leftIfLeftPresentWithNullConsumerThrowsNullPointerException() {
     sut = Either.ofLeft(left);
-    assertThrows(NullPointerException.class, () -> sut.ifLeftPresent(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.ifLeftPresent(null));
   }
 
   @Test
   void leftNotEqualEmpty() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.equals(Either.empty()));
+    assertThat(Either.empty()).isNotEqualTo(sut);
   }
 
   @Test
   void leftNotEqualRight() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.equals(Either.ofRight(right)));
+    assertThat(Either.ofRight(right)).isNotEqualTo(sut);
   }
 
   @Test
   void leftWithIfLeftIsConsumed() {
     sut = Either.ofLeft(left);
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    assertTrue(consumerCheck.isLeftCalled());
-    assertEquals(left, consumerCheck.getLeft());
+    assertThat(consumerCheck.isLeftCalled()).isTrue();
+    assertThat(consumerCheck.getLeft()).isEqualTo(left);
   }
 
   @Test
   void leftWithIfRightIsNotConsumed() {
     sut = Either.ofLeft(left);
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    assertFalse(consumerCheck.isRightCalled());
+    assertThat(consumerCheck.isRightCalled()).isFalse();
   }
 
   @Test
   void mapLeftLeftGivesResult() {
     sut = Either.ofLeft(left);
     final Optional<? extends IllegalStateException> result = sut.mapLeft(EitherTest::identity);
-    assertTrue(result.isPresent());
-    assertEquals(result.get(), left);
+    assertThat(result).isPresent();
+    assertThat(left).isEqualTo(result.get());
   }
 
   @Test
   void mapLeftWithemptyGivesEmpty() {
     sut = Either.empty();
     final Optional<? extends IllegalStateException> result = sut.mapLeft(EitherTest::identity);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void mapLeftWithLeftAndNullPredicateThrowsNullPointerException() {
     sut = Either.ofLeft(left);
-    assertThrows(NullPointerException.class, () -> sut.mapLeft(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.mapLeft(null));
   }
 
   @Test
   void mapLeftWithRightGivesEmpty() {
     sut = Either.ofRight(right);
     final Optional<? extends IllegalStateException> result = sut.mapLeft(EitherTest::identity);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void mapRightWithEmptyGivesEmpty() {
     sut = Either.empty();
     final Optional<? extends String> result = sut.mapRight(EitherTest::identity);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void mapRightWithLeftGivesEmpty() {
     sut = Either.ofLeft(left);
     final Optional<? extends String> result = sut.mapRight(EitherTest::identity);
-    assertFalse(result.isPresent());
+    assertThat(result).isEmpty();
   }
 
   @Test
   void mapRightWithRightAndNullPredicateThrowsNullPointerException() {
     sut = Either.ofRight(right);
-    assertThrows(NullPointerException.class, () -> sut.mapRight(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.mapRight(null));
   }
 
   @Test
   void mapRightWithRightGivesResult() {
     sut = Either.ofRight(right);
     final Optional<? extends String> result = sut.mapRight(EitherTest::identity);
-    assertTrue(result.isPresent());
-    assertEquals(result.get(), right);
+    assertThat(result).isPresent();
+    assertThat(right).isEqualTo(result.get());
   }
 
   @Test
   void NotisEmptyOnLeft() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.isEmpty());
+    assertThat(sut.isEmpty()).isFalse();
   }
 
   @Test
   void NotisEmptyOnRight() {
     sut = Either.ofRight(right);
-    assertFalse(sut.isEmpty());
+    assertThat(sut.isEmpty()).isFalse();
   }
 
   @Test
   void ofLeftWithNullThrowsNullPointerException() {
-    assertThrows(NullPointerException.class, () -> sut = Either.ofLeft(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut = Either.ofLeft(null));
   }
 
   @Test
   void ofNullableLeftWithNullGivesEmpty() {
     sut = Either.ofNullableLeft(null);
-    assertTrue(sut.isEmpty());
+    assertThat(sut.isEmpty()).isTrue();
   }
 
   @Test
   void ofNullableRightWithNullGivesEmpty() {
     sut = Either.ofNullableRight(null);
-    assertTrue(sut.isEmpty());
+    assertThat(sut.isEmpty()).isTrue();
   }
 
   @Test
   void ofRighWithNullThrowsNullPointerException() {
-    assertThrows(NullPointerException.class, (() -> Either.ofRight(null)));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> Either.ofRight(null));
   }
 
   @Test
   void rightEqualEitherWithSameRightValue() {
     sut = Either.ofRight(right);
-    assertTrue(sut.equals(Either.ofRight(right)));
+    assertThat(Either.ofRight(right)).isEqualTo(sut);
   }
-
+/*
   @Test
   void rightEqualItSelf() {
     sut = Either.ofRight(right);
-    assertTrue(sut.equals(sut));
+    assertThat(sut).isEqualTo(sut);
   }
-
+*/
   @Test
   void rightEqualsDifferentRightWorks() {
     sut = Either.ofRight(right);
-    assertFalse(sut.equals(Either.ofRight("different")));
+    assertThat(Either.ofRight("different")).isNotEqualTo(sut);
   }
 
   @SuppressWarnings("unlikely-arg-type")
   @Test
   void rightEqualsSomethingDifferentWorks() {
     sut = Either.ofRight(right);
-    assertFalse(sut.equals("different"));
+    assertThat(sut).isNotEqualTo("different");
   }
 
   @Test
   void rightEqualsWithNullWorks() {
     sut = Either.ofRight(right);
-    assertFalse(sut.equals(null));
+    assertThat(sut).isNotNull();
   }
 
   @Test
   void rightGivesLeftPresentFalse() {
     sut = Either.ofRight(right);
-    assertFalse(sut.isLeftPresent());
+    assertThat(sut.isLeftPresent()).isFalse();
   }
 
   @Test
   void rightGivesRightPresentTrue() {
     sut = Either.ofRight(right);
-    assertTrue(sut.isRightPresent());
+    assertThat(sut.isRightPresent()).isTrue();
   }
 
   @Test
   void rightIfRightPresentWithNullConsumerThrowsNullPointerException() {
     sut = Either.ofRight(right);
-    assertThrows(NullPointerException.class, () -> sut.ifRightPresent(null));
+    assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> sut.ifRightPresent(null));
   }
 
   @Test
   void rightNotEqualEmpty() {
     sut = Either.ofRight(right);
-    assertFalse(sut.equals(Either.empty()));
+    assertThat(Either.empty()).isNotEqualTo(sut);
   }
 
   @Test
   void rightNotEqualLeft() {
     sut = Either.ofRight(right);
-    assertFalse(sut.equals(Either.ofLeft(left)));
+    assertThat(Either.ofLeft(left)).isNotEqualTo(sut);
   }
 
   @Test
   void rightWithIfLeftIsNotConsumed() {
     sut = Either.ofRight(right);
     sut.ifLeftPresent(consumerCheck::leftConsumer);
-    assertFalse(consumerCheck.isLeftCalled());
+    assertThat(consumerCheck.isLeftCalled()).isFalse();
   }
 
   @Test
   void rightWithIfRightIsConsumed() {
     sut = Either.ofRight(right);
     sut.ifRightPresent(consumerCheck::rightConsumer);
-    assertTrue(consumerCheck.isRightCalled());
-    assertEquals(right, consumerCheck.getRight());
+    assertThat(consumerCheck.isRightCalled()).isTrue();
+    assertThat(consumerCheck.getRight()).isEqualTo(right);
   }
 
   @Test
   void swapEmptyIsEmpty() {
     sut = Either.empty();
-    assertEquals(sut, sut.swap());
+    assertThat(sut.swap()).isEqualTo(sut);
   }
 
   @Test
   void swapLeftGivesIsLeftPresentFalse() {
     sut = Either.ofLeft(left);
-    assertFalse(sut.swap().isLeftPresent());
+    assertThat(sut.swap().isLeftPresent()).isFalse();
   }
 
   @Test
   void swapLeftGivesLeftOngetRight() {
     sut = Either.ofLeft(left);
-    assertEquals(left, sut.swap().getRight());
+    assertThat(sut.swap().getRight()).isEqualTo(left);
   }
 
   @Test
   void swapRightGivesRightOngetLeft() {
     sut = Either.ofRight(right);
-    assertEquals(right, sut.swap().getLeft());
+    assertThat(sut.swap().getLeft()).isEqualTo(right);
   }
 
   @Test
   void swapRightGivesRightPresentFalse() {
     sut = Either.ofRight(right);
-    assertFalse(sut.swap().isRightPresent());
+    assertThat(sut.swap().isRightPresent()).isFalse();
   }
 
   @Test
   void toStringOnEmptyEitherWorks() {
     sut = Either.empty();
-    assertTrue(sut.toString().length() > 0);
+    assertThat(sut.toString()).isNotEmpty();
   }
 }

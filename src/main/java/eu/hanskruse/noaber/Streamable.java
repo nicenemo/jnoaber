@@ -2,6 +2,7 @@ package eu.hanskruse.noaber;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -80,7 +81,7 @@ public interface Streamable<T> {
     return () -> {
       final Streamable<T1> seed = head == null ? Stream::empty : head;
       final Stream<Streamable<T1>> xs = tail == null ? Stream.empty() : Arrays.stream(tail);
-      return xs.filter(x -> x != null).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
+      return xs.filter(Objects::nonNull).map(Streamable::stream).collect(seed::stream, Stream::concat, Stream::concat);
     };
   }
 

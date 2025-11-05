@@ -1,9 +1,6 @@
 package eu.hanskruse.noaber.test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import eu.hanskruse.noaber.Streamable;
 import eu.hanskruse.noaber.WithNoaber;
 
-class StreamableTest implements WithNoaber {
+final class StreamableTest implements WithNoaber {
   private List<Streamable<Integer>> xxs;
   private int[] lengths;
 
@@ -50,8 +47,8 @@ class StreamableTest implements WithNoaber {
   void forEachExample() {
     System.err.println("Defining dutch postal codes.." + System.currentTimeMillis());
 
-    final Streamable<Integer> firstTwoDigits = () -> IntStream.range(10, 99).mapToObj(Integer::valueOf);
-    final Streamable<Integer> lastTwoDigits = () -> IntStream.range(0, 10).mapToObj(Integer::valueOf);
+    final Streamable<Integer> firstTwoDigits = () -> IntStream.range(10, 99).boxed();
+    final Streamable<Integer> lastTwoDigits = () -> IntStream.range(0, 10).boxed();
     final Streamable<String> az = () -> IntStream.rangeClosed((int) 'A', (int) 'Z')
     .mapToObj(i -> Character.toString((char) i));
 
@@ -72,8 +69,8 @@ class StreamableTest implements WithNoaber {
     xxs.get(0), //
     x1 -> xxs.get(1), //
     (t0, t1) -> t0 > 0, //
-    (t0, t1) -> t0 + t1);
-    assertEquals(prodLengths(2), xs.stream().parallel().toArray().length);
+    Integer::sum);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(2));
   }
 
   @Test
@@ -82,7 +79,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(0), //
     x1 -> xxs.get(1), //
     (t0, t1) -> t0 + t1);
-    assertEquals(prodLengths(2), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(2));
   }
 
   @Test
@@ -93,7 +90,7 @@ class StreamableTest implements WithNoaber {
     x2 -> xxs.get(2), //
     (t0, t1, t2) -> t0 > 0, //
     (t0, t1, t2) -> t0 + t1 + t2);
-    assertEquals(prodLengths(3), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(3));
   }
 
   @Test
@@ -103,7 +100,7 @@ class StreamableTest implements WithNoaber {
     x1 -> xxs.get(1), //
     x2 -> xxs.get(2), //
     (t0, t1, t2) -> t0 + t1 + t2);
-    assertEquals(prodLengths(3), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(3));
   }
 
   @Test
@@ -115,7 +112,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(3), //
     (t0, t1, t2, t3) -> t0 > 0, //
     (t0, t1, t2, t3) -> t0 + t1 + t2 + t3);
-    assertEquals(prodLengths(4), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(4));
   }
 
   @Test
@@ -126,7 +123,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(2), //
     xxs.get(3), //
     (t0, t1, t2, t3) -> t0 + t1 + t2 + t3);
-    assertEquals(prodLengths(4), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(4));
   }
 
   @Test
@@ -139,7 +136,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(4), //
     (t0, t1, t2, t3, t4) -> t0 > 0, //
     (t0, t1, t2, t3, t4) -> t0 + t1 + t2 + t3 + t4);
-    assertEquals(prodLengths(5), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(5));
   }
 
   @Test
@@ -151,7 +148,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(3), //
     xxs.get(4), //
     (t0, t1, t2, t3, t4) -> t0 + t1 + t2 + t3 + t4);
-    assertEquals(prodLengths(5), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(5));
   }
 
   @Test
@@ -165,7 +162,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(5), //
     (t0, t1, t2, t3, t4, t5) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5) -> t0 + t1 + t2 + t3 + t4 + t5);
-    assertEquals(prodLengths(6), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(6));
   }
 
   @Test
@@ -178,7 +175,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(4), //
     xxs.get(5), //
     (t0, t1, t2, t3, t4, t5) -> t0 + t1 + t2 + t3 + t4 + t5);
-    assertEquals(prodLengths(6), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(6));
   }
 
   @Test
@@ -193,7 +190,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(6), //
     (t0, t1, t2, t3, t4, t5, t6) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6) -> t0 + t1 + t2 + t3 + t4 + t5 + t6);
-    assertEquals(prodLengths(7), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(7));
   }
 
   @Test
@@ -207,7 +204,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(5), //
     xxs.get(6), //
     (t0, t1, t2, t3, t4, t5, t6) -> t0 + t1 + t2 + t3 + t4 + t5 + t6);
-    assertEquals(prodLengths(7), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(7));
   }
 
   @Test
@@ -223,7 +220,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(7), //
     (t0, t1, t2, t3, t4, t5, t6, t7) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7);
-    assertEquals(prodLengths(8), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(8));
   }
 
   @Test
@@ -238,7 +235,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(6), //
     xxs.get(7), //
     (t0, t1, t2, t3, t4, t5, t6, t7) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7);
-    assertEquals(prodLengths(8), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(8));
   }
 
   @Test
@@ -255,7 +252,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(8), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8);
-    assertEquals(prodLengths(9), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(9));
   }
 
   @Test
@@ -271,7 +268,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(7), //
     xxs.get(8), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8);
-    assertEquals(prodLengths(9), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(9));
   }
 
   @Test
@@ -289,7 +286,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(9), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9);
-    assertEquals(prodLengths(10), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(10));
   }
 
   @Test
@@ -306,7 +303,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(8), //
     xxs.get(9), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9);
-    assertEquals(prodLengths(10), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(10));
   }
 
   @Test
@@ -325,7 +322,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(10), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10);
-    assertEquals(prodLengths(11), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(11));
   }
 
   @Test
@@ -343,7 +340,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(9), //
     xxs.get(10), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10);
-    assertEquals(prodLengths(11), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(11));
   }
 
   @Test
@@ -363,7 +360,7 @@ class StreamableTest implements WithNoaber {
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10
     + t11);
-    assertEquals(prodLengths(12), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(12));
   }
 
   @Test
@@ -382,7 +379,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(11), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10
     + t11);
-    assertEquals(prodLengths(12), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(12));
   }
 
   @Test
@@ -404,7 +401,7 @@ class StreamableTest implements WithNoaber {
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10
     + t11 + t12);
-    assertEquals(prodLengths(13), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(13));
   }
 
   @Test
@@ -425,7 +422,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(12), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9 + t10
     + t11 + t12);
-    assertEquals(prodLengths(13), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(13));
   }
 
   @Test
@@ -448,7 +445,7 @@ class StreamableTest implements WithNoaber {
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9
     + t10 + t11 + t12 + t13);
-    assertEquals(prodLengths(14), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(14));
   }
 
   @Test
@@ -470,7 +467,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(13), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9
     + t10 + t11 + t12 + t13);
-    assertEquals(prodLengths(14), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(14));
   }
 
   @Test
@@ -494,7 +491,7 @@ class StreamableTest implements WithNoaber {
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8
     + t9 + t10 + t11 + t12 + t13 + t14);
-    assertEquals(prodLengths(15), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(15));
   }
 
   @Test
@@ -517,7 +514,7 @@ class StreamableTest implements WithNoaber {
     xxs.get(14), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8
     + t9 + t10 + t11 + t12 + t13 + t14);
-    assertEquals(prodLengths(15), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(15));
   }
 
   @Test
@@ -542,7 +539,7 @@ class StreamableTest implements WithNoaber {
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> t0 > 0, //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7
     + t8 + t9 + t10 + t11 + t12 + t13 + t14 + t15);
-    assertEquals(prodLengths(16), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(16));
   }
 
   @Test
@@ -566,26 +563,26 @@ class StreamableTest implements WithNoaber {
     xxs.get(15), //
     (t0, t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15) -> t0 + t1 + t2 + t3 + t4 + t5 + t6 + t7
     + t8 + t9 + t10 + t11 + t12 + t13 + t14 + t15);
-    assertEquals(prodLengths(16), xs.stream().parallel().toArray().length);
+    assertThat(xs.stream().parallel().toArray()).hasSize(prodLengths(16));
   }
 
   @Test
   void distinct() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
-    assertArrayEquals(new Integer[] { 3, 4, 5 }, xs.distinct().stream().toArray(Integer[]::new));
+    assertThat(xs.distinct().stream().toArray(Integer[]::new)).containsExactly(new Integer[]{3, 4, 5});
   }
 
   @Test
   void limit() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
-    assertArrayEquals(new Integer[] { 3, 3, 4 }, xs.limit(3L).stream().toArray(Integer[]::new));
+    assertThat(xs.limit(3L).stream().toArray(Integer[]::new)).containsExactly(new Integer[]{3, 3, 4});
   }
 
   @Test
   void parallel() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
-    assertFalse(xs.stream().isParallel());
-    assertTrue(xs.parallel().stream().isParallel());
+    assertThat(xs.stream().isParallel()).isFalse();
+    assertThat(xs.parallel().stream().isParallel()).isTrue();
   }
 
   @Test
@@ -594,23 +591,23 @@ class StreamableTest implements WithNoaber {
     Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
     xs.peek(i -> sum.addAndGet(i)).stream().forEach(i -> {
     /* process the stream, do nothing */});
-    assertEquals(sum(xs.stream().mapToInt(Integer::intValue).toArray()), sum.get());
+    assertThat(sum.get()).isEqualTo(sum(xs.stream().mapToInt(Integer::intValue).toArray()));
   }
 
   @Test
   void sequential() {
     Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
-    assertFalse(xs.stream().isParallel());
+    assertThat(xs.stream().isParallel()).isFalse();
     xs = xs.parallel();
-    assertTrue(xs.stream().isParallel());
+    assertThat(xs.stream().isParallel()).isTrue();
     xs = xs.sequential();
-    assertFalse(xs.stream().isParallel());
+    assertThat(xs.stream().isParallel()).isFalse();
   }
 
   @Test
-  void testskip() {
+  void skip() {
     final Streamable<Integer> xs = Arrays.asList(3, 3, 4, 5, 5)::stream;
-    assertArrayEquals(new Integer[] { 4, 5, 5 }, xs.skip(2L).stream().toArray(Integer[]::new));
+    assertThat(xs.skip(2L).stream().toArray(Integer[]::new)).containsExactly(new Integer[]{4, 5, 5});
   }
 
 }

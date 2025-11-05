@@ -157,45 +157,28 @@ public abstract class Tuple16<//
         T13, //
         T14, //
         T15>() {
-      @SuppressWarnings("unchecked")
       @Override
+      @SuppressWarnings("unchecked")
       public <R> R get(int i) {
-        switch (i) {
-          case 0:
-            return (R) t0;
-          case 1:
-            return (R) t1;
-          case 2:
-            return (R) t2;
-          case 3:
-            return (R) t3;
-          case 4:
-            return (R) t4;
-          case 5:
-            return (R) t5;
-          case 6:
-            return (R) t6;
-          case 7:
-            return (R) t7;
-          case 8:
-            return (R) t8;
-          case 9:
-            return (R) t9;
-          case 10:
-            return (R) t10;
-          case 11:
-            return (R) t11;
-          case 12:
-            return (R) t12;
-          case 13:
-            return (R) t13;
-          case 14:
-            return (R) t14;
-          case 15:
-            return (R) t15;
-          default:
-            throw createIndexOutOfBoundsException(i, size());
-        }
+        return switch (i) {
+          case 0 -> (R) t0;
+          case 1 -> (R) t1;
+          case 2 -> (R) t2;
+          case 3 -> (R) t3;
+          case 4 -> (R) t4;
+          case 5 -> (R) t5;
+          case 6 -> (R) t6;
+          case 7 -> (R) t7;
+          case 8 -> (R) t8;
+          case 9 -> (R) t9;
+          case 10 -> (R) t10;
+          case 11 -> (R) t11;
+          case 12 -> (R) t12;
+          case 13 -> (R) t13;
+          case 14 -> (R) t14;
+          case 15 -> (R) t15;
+          default -> throw createIndexOutOfBoundsException(i, size());
+        };
       }
 
       @Override

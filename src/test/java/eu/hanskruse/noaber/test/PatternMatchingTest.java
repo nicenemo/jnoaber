@@ -1,7 +1,6 @@
 package eu.hanskruse.noaber.test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
@@ -23,7 +22,7 @@ import eu.hanskruse.testdata.food.fruit.apples.Elstar;
 * @author Hans Kruse
 *
 */
-public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
+final class PatternMatchingTest implements WithQuickTheories, WithNoaber {
 
   /**
   * FizzBuzz example.
@@ -50,14 +49,14 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
 
   @Test
   void anElstartIsAnApple() {
-    assertTrue(isApple(new Elstar()));
+    assertThat(isApple(new Elstar())).isTrue();
   }
 
   @Disabled("TODO: fix type resolution")
   @Test
   void aHamburgerIsNotAnApple() {
     final Hamburger hamburger = new Hamburger();
-    assertFalse(isApple(hamburger));
+    assertThat(isApple(hamburger)).isFalse();
   }
 
 
@@ -66,7 +65,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
     final Case<Elstar, String> caseClause = whenClass(Elstar.class).then(x -> "Elstar" + x.getClass());
     @SuppressWarnings("unchecked")
     Optional<String> result = (Optional<String>) match(new Elstar()).with(caseClause);
-    assertTrue(result.isPresent());
+    assertThat(result).isPresent();
   }
 
   /*
@@ -84,7 +83,7 @@ public class PatternMatchingTest implements WithQuickTheories, WithNoaber {
     * //result.ifPresent(System.err::println); assertTrue(result.isPresent()); }
     */
 
-    /**
+    /*
     * Class matching example.
     */
     /*

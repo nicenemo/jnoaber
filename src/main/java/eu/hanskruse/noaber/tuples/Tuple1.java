@@ -27,15 +27,13 @@ public abstract class Tuple1<//
               final T0 t0) {
     return new Tuple1<//
         T0>() {
-      @SuppressWarnings("unchecked")
       @Override
+      @SuppressWarnings("unchecked")
       public <R> R get(int i) {
-        switch (i) {
-          case 0:
-            return (R) t0;
-          default:
-            throw createIndexOutOfBoundsException(i, size());
+        if (i == 0) {
+          return (R) t0;
         }
+        throw createIndexOutOfBoundsException(i, size());
       }
 
       @Override

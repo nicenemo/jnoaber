@@ -7,10 +7,12 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import static java.util.Objects.isNull;
+
 /**
  * Represents a value of one of two possible types. (a disjoint union.)
  * Instances of {@code Either} are either an instance of {@code left} or {@code right}.
- * This implementation of {@code Either} also allows for an empty value, where neither {@code left} or @code{right} are
+ * This implementation of {@code Either} also allows for an empty value, where neither {@code left} or {@code right} are
  * set.
  * A common use of Either is as an alternative to exception handling. Convention in other languages,
  * such as Scala, is that left is used for the exception and right for the success.
@@ -58,7 +60,7 @@ public final class Either<E, T> {
    *           if left is null
    */
   public static <E1, T1> Either<E1, T1> ofLeft(final E1 left) {
-    if (null == left) {
+    if (isNull(left)) {
       throw new NullPointerException("Either.ofLeft: Left should not be null.");
     }
     return new Either<>(left, null);
@@ -76,7 +78,7 @@ public final class Either<E, T> {
    * @return {@code Either} with {@code left} value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableLeft(final E1 left) {
-    if (null == left) {
+    if (isNull(left)) {
       return empty();
     }
     return new Either<>(left, null);
@@ -94,7 +96,7 @@ public final class Either<E, T> {
    * @return {@code Either} with {@code right} value set
    */
   public static <E1, T1> Either<E1, T1> ofNullableRight(final T1 right) {
-    if (null == right) {
+    if (isNull(right)) {
       return empty();
     }
     return new Either<>(null, right);
@@ -114,7 +116,7 @@ public final class Either<E, T> {
    *           if {@code right} is null
    */
   public static <E1, T1> Either<E1, T1> ofRight(final T1 right) {
-    if (null == right) {
+    if (isNull(right)) {
       throw new NullPointerException("Either.ofRight: Right should not be null.");
     }
     return new Either<>(null, right);
@@ -139,7 +141,7 @@ public final class Either<E, T> {
     this.right = right;
   }
 
-  /*
+  /**
    * (non-Javadoc)
    * @see java.lang.Object#equals(java.lang.Object)
    */
@@ -189,7 +191,7 @@ public final class Either<E, T> {
    *           if the predicate is null throw a {@code NullPointerException}
    */
   public Optional<E> filterLeft(final Predicate<? super E> predicate) {
-    if (null == predicate) {
+    if (isNull(predicate)) {
       throw new NullPointerException("Either.filterLeft: Predicate should not be null");
     }
     if (!isLeftPresent()) {
@@ -216,7 +218,7 @@ public final class Either<E, T> {
    *           if the predicate is null throw a {@code NullPointerException}
    */
   public Optional<T> filterRight(final Predicate<? super T> predicate) {
-    if (null == predicate) {
+    if (isNull(predicate)) {
       throw new NullPointerException("Either.filterRight: Predicate should not be null");
     }
     if (!isRightPresent()) {
@@ -256,7 +258,7 @@ public final class Either<E, T> {
     return right;
   }
 
-  /*
+  /**
    * (non-Javadoc)
    * @see java.lang.Object#hashCode()
    */
@@ -293,7 +295,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if other is null
    */
   public E ifLeftNotPresentGet(final Supplier<? extends E> other) {
-    if (null == other) {
+    if (isNull(other)) {
       throw new NullPointerException("Either.ifLeftNotPresentGet: other should not be null");
     }
     if (!isLeftPresent()) {
@@ -316,7 +318,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if other is null
    */
   public <X extends Throwable> E ifLeftNotPresentThrow(final Supplier<? extends X> other) throws X {
-    if (null == other) {
+    if (isNull(other)) {
       throw new NullPointerException("Either.ifLeftNotPresentThrow: other should not be null");
     }
     if (!isLeftPresent()) {
@@ -334,7 +336,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifLeftPresent(final Consumer<? super E> consumer) {
-    if (null == consumer) {
+    if (isNull(consumer)) {
       throw new NullPointerException("Either.ifLeftPresent: consumer should not be null");
     }
     if (isLeftPresent()) {
@@ -366,7 +368,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if other is null
    */
   public T ifRightNotPresentGet(final Supplier<? extends T> other) {
-    if (null == other) {
+    if (isNull(other)) {
       throw new NullPointerException("Either.ifRightNotPresentGet: other should not be null");
     }
     if (!isRightPresent()) {
@@ -389,7 +391,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if other is null
    */
   public <X extends Throwable> T ifRightNotPresentThrow(final Supplier<? extends X> other) throws X {
-    if (null == other) {
+    if (isNull(other)) {
       throw new NullPointerException("Either.ifRightNotPresentThrow: other should not be null");
     }
     if (!isRightPresent()) {
@@ -407,7 +409,7 @@ public final class Either<E, T> {
    *           throws a {@code NullPointerException} if {@code consumer} is null
    */
   public void ifRightPresent(final Consumer<? super T> consumer) {
-    if (null == consumer) {
+    if (isNull(consumer)) {
       throw new NullPointerException("Either.ifRightPresent: consumer should not be null");
     }
     if (isRightPresent()) {
@@ -460,7 +462,7 @@ public final class Either<E, T> {
    *
    */
   public <U> Optional<? extends U> mapLeft(final Function<? super E, ? extends U> mapper) {
-    if (null == mapper) {
+    if (isNull(mapper)) {
       throw new NullPointerException("Either.mapLeft: Mapper should not be null");
     }
     if (!isLeftPresent()) {
@@ -486,7 +488,7 @@ public final class Either<E, T> {
    *           a {@code NullPointerException} if {@code mapper} is null
    */
   public <U> Optional<? extends U> mapRight(final Function<? super T, ? extends U> mapper) {
-    if (null == mapper) {
+    if (isNull(mapper)) {
       throw new NullPointerException("Either.mapRight: Mapper should not be null");
     }
     if (!isRightPresent()) {
@@ -507,8 +509,7 @@ public final class Either<E, T> {
     return new Either<>(right, left);
   }
 
-  /*
-   * (non-Javadoc)
+  /**
    * @see java.lang.Object#toString()
    */
   @Override

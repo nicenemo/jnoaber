@@ -1,6 +1,5 @@
 package eu.hanskruse.noaber.test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static eu.hanskruse.noaber.Noaber.$;
 
 import java.util.function.Function;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for compose.
  */
-class ComposeTest {
+final class ComposeTest {
 
   /**
   * Inc function that returns argument + 1.
@@ -49,7 +48,7 @@ class ComposeTest {
     $::identity, // 9
     $::identity); // 10
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -71,7 +70,7 @@ class ComposeTest {
     $::identity, // 10
     $::identity); // 11
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -94,7 +93,7 @@ class ComposeTest {
     $::identity, // 11
     $::identity); // 12
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -118,7 +117,7 @@ class ComposeTest {
     $::identity, // 12
     $::identity); // 13
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -143,7 +142,7 @@ class ComposeTest {
     $::identity, // 13
     $::identity); // 14
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -169,7 +168,7 @@ class ComposeTest {
     $::identity, // 14
     $::identity); // 15
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -196,7 +195,7 @@ class ComposeTest {
     $::identity, // 15
     $::identity); // 16
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -209,7 +208,7 @@ class ComposeTest {
     $::identity, // 1
     $::identity); // 2
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -223,7 +222,7 @@ class ComposeTest {
     $::identity, // 2
     $::identity); // 3
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -238,7 +237,7 @@ class ComposeTest {
     $::identity, // 3
     $::identity); // 4
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -254,7 +253,7 @@ class ComposeTest {
     $::identity, // 4
     $::identity); // 5
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -271,7 +270,7 @@ class ComposeTest {
     $::identity, // 5
     $::identity); // 6
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -289,7 +288,7 @@ class ComposeTest {
     $::identity, // 6
     $::identity); // 7
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -308,7 +307,7 @@ class ComposeTest {
     $::identity, // 7
     $::identity); // 8
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -328,7 +327,7 @@ class ComposeTest {
     $::identity, // 8
     $::identity); // 9
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -362,7 +361,7 @@ class ComposeTest {
     // of by one errors
 
     final int actual = f.apply(0);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 
   /**
@@ -392,6 +391,6 @@ class ComposeTest {
     $::identity, // 17
     $::identity); // 18
     final String actual = f.apply(expected);
-    assertEquals(expected, actual);
+    assertThat(actual).isEqualTo(expected);
   }
 }

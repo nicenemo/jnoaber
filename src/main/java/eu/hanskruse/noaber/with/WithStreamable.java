@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 import eu.hanskruse.noaber.functions.*;
 import eu.hanskruse.noaber.Streamable;
-import eu.hanskruse.noaber.tuples.*;
+import eu.hanskruse.noaber.tuples.Tuple2;
 
 /**
 * Streamable functionality.
